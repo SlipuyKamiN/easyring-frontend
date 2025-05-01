@@ -1,16 +1,16 @@
-import SharedLayout from "-/components/SharedLayout/SharedLayout";
-import { Home } from "-/components/Home/Home";
-import { Calendar } from "-/components/Calendar/Calendar";
-import { OrdersList } from "components/OrdersList/OrdersList";
-import { DriversList } from "components/DriversList/DriversList";
-import { Settings } from "components/Settings/Settings";
-import { OrderPage } from "components/OrderPage/OrderPage";
+import SharedLayout from "-src/components/SharedLayout/SharedLayout";
+import { Home } from "-src/components/Home/Home";
+import { Calendar } from "-src/components/Calendar/Calendar";
+import { OrdersList } from "-src/components/OrdersList/OrdersList";
+import { DriversList } from "-src/components/DriversList/DriversList";
+import { Settings } from "-src/components/Settings/Settings";
+import { OrderPage } from "-src/components/OrderPage/OrderPage";
 import { Route, Routes } from "react-router-dom";
-import { CreateOrderPage } from "components/CreateOrderPage/CreateOrderPage";
-import { Sender } from "components/CreateOrderPage/Sender";
-import { OrderInfo } from "components/CreateOrderPage/OrderInfo";
-import { Recipient } from "components/CreateOrderPage/Recipient";
-import { LogInPage } from "components/LogIn/LogInPage";
+import { CreateOrderPage } from "-src/components/CreateOrderPage/CreateOrderPage";
+import { Sender } from "-src/components/CreateOrderPage/Sender";
+import { OrderInfo } from "-src/components/CreateOrderPage/OrderInfo";
+import { Recipient } from "-src/components/CreateOrderPage/Recipient";
+import { LogInPage } from "-src/components/LogIn/LogInPage";
 
 const App = () => {
   return (
