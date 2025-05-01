@@ -1,1 +1,9 @@
-export const Footer = () => <header>Footer</header>;
+import { Container } from "../SharedLayout/SharedLayout.styled";
+
+export const Footer = () => {
+  return (
+    <footer>
+      <Container>Footer</Container>
+    </footer>
+  );
+};

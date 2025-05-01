@@ -1,3 +1,5 @@
+import { Container } from "../SharedLayout/SharedLayout.styled";
+
 export const Settings = () => {
-  return <div>Settings</div>;
+  return <Container>Settings</Container>;
 };

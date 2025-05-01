@@ -1,3 +1,5 @@
+import { Container } from "../SharedLayout/SharedLayout.styled";
+
 export const OrderPage = () => {
-  return <div>OrderPage</div>;
+  return <Container>OrderPage</Container>;
 };

@@ -1,3 +1,9 @@
+import { Container } from "../SharedLayout/SharedLayout.styled";
+
 export const Calendar = () => {
-  return <div>Calendar</div>;
+  return (
+    <Container>
+      <section>Calendar</section>;
+    </Container>
+  );
 };

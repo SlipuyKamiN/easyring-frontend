@@ -1,3 +1,5 @@
+import { Container } from "../SharedLayout/SharedLayout.styled";
+
 export const LogInPage = () => {
-  return <div>LogInPage</div>;
+  return <Container>LogInPage</Container>;
 };
