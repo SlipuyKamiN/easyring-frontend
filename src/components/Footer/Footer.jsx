@@ -1,3 +1,1 @@
-const Footer = () => <header>Footer</header>;
-
-export default Footer;
+export const Footer = () => <header>Footer</header>;

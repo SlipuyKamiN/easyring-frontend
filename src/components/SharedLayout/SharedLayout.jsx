@@ -1,11 +1,14 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import { Outlet } from "react-router-dom";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 const SharedLayout = () => {
   return (
     <div>
       <Header />
-      <main>Vite App Template</main>
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
