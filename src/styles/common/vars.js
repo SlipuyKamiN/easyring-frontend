@@ -8,5 +8,5 @@ export const colors = {
 };
 
 export const transition = {
-  duration: "all 250ms linear",
+  duration: "250ms cubic-bezier(0.4, 0, 0.2, 1);",
 };

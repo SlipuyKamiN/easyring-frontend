@@ -1,37 +1,42 @@
 import { NavLink } from "react-router-dom";
+import { NavBarList, NavLinkBtn } from "./NavBar.styled";
 
 export const NavBar = () => {
   return (
-    <ul>
+    <NavBarList>
       <li>Customer</li>
       <li>
-        <a>Admin</a>
-        <ul>
-          <li>
-            <NavLink to={"admin/calendar"}>calendar</NavLink>
-          </li>
-          <li>
-            <NavLink to={"admin/orders"}>orders</NavLink>
-          </li>
-          <li>
-            <NavLink to={"admin/drivers"}>drivers</NavLink>
-          </li>
-          <li>
-            <NavLink to={"admin/settings"}>settings</NavLink>
-          </li>
-        </ul>
+        <NavLinkBtn>
+          Admin
+          <ul>
+            <li>
+              <NavLink to={"admin/calendar"}>Calendar</NavLink>
+            </li>
+            <li>
+              <NavLink to={"admin/orders"}>Orders</NavLink>
+            </li>
+            <li>
+              <NavLink to={"admin/drivers"}>Drivers</NavLink>
+            </li>
+            <li>
+              <NavLink to={"admin/settings"}>Settings</NavLink>
+            </li>
+          </ul>
+        </NavLinkBtn>
       </li>
       <li>
-        <a>Driver</a>
-        <ul>
-          <li>
-            <NavLink to={"driver/orders"}>orders</NavLink>
-          </li>
-          <li>
-            <NavLink to={"driver/settings"}>settings</NavLink>
-          </li>
-        </ul>
+        <NavLinkBtn>
+          Driver
+          <ul>
+            <li>
+              <NavLink to={"driver/orders"}>Orders</NavLink>
+            </li>
+            <li>
+              <NavLink to={"driver/settings"}>Settings</NavLink>
+            </li>
+          </ul>
+        </NavLinkBtn>
       </li>
-    </ul>
+    </NavBarList>
   );
 };
