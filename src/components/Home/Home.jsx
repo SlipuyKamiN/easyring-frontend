@@ -8,7 +8,7 @@ export const Home = () => {
         <h1>Same day delivery</h1>
         <ul>
           <li>
-            <Link to={"createorder"}>Create order</Link>
+            <Link to={"createorder/maininfo"}>Create order</Link>
           </li>
           <li>
             <label htmlFor="orderID">Track order by ID:</label>

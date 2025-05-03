@@ -8,7 +8,7 @@ import { OrderPage } from "~/components/OrderPage/OrderPage";
 import { Route, Routes } from "react-router-dom";
 import { CreateOrderPage } from "~/components/CreateOrderPage/CreateOrderPage";
 import { Sender } from "~/components/CreateOrderPage/Sender";
-import { OrderInfo } from "~/components/CreateOrderPage/OrderInfo";
+import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
 import { Recipient } from "~/components/CreateOrderPage/Recipient";
 import { LogInPage } from "~/components/LogIn/LogInPage";
 
@@ -18,8 +18,8 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />}></Route>
         <Route path="createorder" element={<CreateOrderPage />}>
+          <Route path="maininfo" element={<MainInfo />}></Route>
           <Route path="sender" element={<Sender />}></Route>
-          <Route path="orderinfo" element={<OrderInfo />}></Route>
           <Route path="recipient" element={<Recipient />}></Route>
         </Route>
         <Route path="orders/:orderId" element={<OrderPage />}></Route>
