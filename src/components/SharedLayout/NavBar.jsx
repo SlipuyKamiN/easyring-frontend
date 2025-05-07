@@ -4,7 +4,6 @@ import { NavBarList, NavLinkBtn } from "./NavBar.styled";
 export const NavBar = () => {
   return (
     <NavBarList>
-      <li>Customer</li>
       <li>
         <NavLinkBtn>
           Admin

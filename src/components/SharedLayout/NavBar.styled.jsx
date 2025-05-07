@@ -5,24 +5,38 @@ export const NavBarList = styled.ul`
   justify-content: center;
 
   margin: 0 auto;
-  padding: 100px 0 40px;
   gap: 40px;
 
   text-transform: uppercase;
   font-size: 14px;
+
+  background-color: #fff;
 `;
 
 export const NavLinkBtn = styled.a`
   position: relative;
-  padding: 10px;
+  padding: 10px 20px;
   z-index: 2;
 
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid black;
+  }
+
   ul {
+    pointer-events: none;
     position: absolute;
     z-index: 1;
     opacity: 0;
     transform: translateY(-80px);
-    transition: opacity 300ms linear, transform 250ms linear;
+    background-color: #ffffffff;
+    padding: 10px;
+
+    transition-property: opacity, transform;
+    transition-duration: 100ms, 300ms;
+    transition-delay: linear;
 
     li,
     a {
@@ -37,7 +51,9 @@ export const NavLinkBtn = styled.a`
 
   &:hover ul,
   &:focus ul {
-    transform: translateY(0);
+    pointer-events: all;
+
+    transform: translateY(10px);
     opacity: 1;
   }
 `;

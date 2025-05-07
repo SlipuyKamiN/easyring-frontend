@@ -7,6 +7,7 @@ import {
   LogoLink,
 } from "./Header.styled";
 import { BsMoonStars, BsSun } from "react-icons/bs";
+import { NavBar } from "../SharedLayout/NavBar";
 
 export const Header = () => {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -19,6 +20,7 @@ export const Header = () => {
       <LogoLink to={"/"}>
         <FirstLetterLogo>e</FirstLetterLogo>asyRing<ArrowLogo>↺</ArrowLogo>
       </LogoLink>
+      <NavBar />
       <DarkModeToggler onClick={toggleDarkMode} className="darkMode">
         {isDarkMode ? <BsSun size={20} /> : <BsMoonStars size={20} />}
       </DarkModeToggler>
