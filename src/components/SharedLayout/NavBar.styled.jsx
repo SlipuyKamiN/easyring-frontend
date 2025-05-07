@@ -13,12 +13,14 @@ export const NavBarList = styled.ul`
   background-color: #fff;
 `;
 
-export const NavLinkBtn = styled.a`
+export const NavLinkBtn = styled.button`
+  background-color: transparent;
+
   position: relative;
   padding: 10px 20px;
   z-index: 2;
 
-  overflow: hidden;
+  text-transform: uppercase;
 
   &:hover,
   &:focus {

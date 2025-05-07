@@ -58,7 +58,7 @@ export const ArrowLogo = styled.span`
 `;
 
 export const SubLogo = styled.span`
-  font-family: "Simplified Light Italic";
+  font-family: "HPSimplifiedLightItalic";
 `;
 
 export const DarkModeToggler = styled.button`

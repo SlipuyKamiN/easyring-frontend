@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "HPSimplifiedLightItalic";
+  font-style: italic;
+  src: url(https://hpsac.github.io/fonts/HPSimplifiedLightItalic.ttf)
+    format("truetype");
+  font-weight: 300;
+  font-display: swap;
+}
