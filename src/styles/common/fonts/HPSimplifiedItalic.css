@@ -1,7 +1,6 @@
 @font-face {
   font-family: "HPSimplifiedLightItalic";
   font-style: italic;
-  src: url("./HPSimplifiedLightItalic.woff") format("truetype");
+  src: url("./HPSimplifiedLightItalic.woff") format("woff");
   font-weight: 300;
-  font-display: swap;
 }
