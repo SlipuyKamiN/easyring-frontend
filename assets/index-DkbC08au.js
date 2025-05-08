@@ -110,7 +110,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   top: 33px;
   left: 20px;
 
-  font-family: "HPSimplifiedLightItalic", sans-serif;
+  font-family: "HPSimplifiedLightItalic";
   font-style: italic;
   font-size: 10px;
   color: #000;
@@ -218,9 +218,10 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
     line-height: 1.36;
   }
 `,Jg=Ue.p`
-  font-family: "HPSimplifiedLightItalic";
+  font-family: HPSimplifiedLightItalic, sans-serif;
   font-size: 26px;
   font-weight: 300;
+  font-style: italic;
   text-transform: none;
 
   margin-bottom: 30px;
