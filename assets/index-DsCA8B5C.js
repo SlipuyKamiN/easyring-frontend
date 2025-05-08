@@ -65,11 +65,12 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   border-bottom: 3px solid ${hf.primaryAccent};
   box-shadow: ${hf.primaryAccent} 0px 0px 10px;
 `,zg=Ue(bt)`
+  position: relative;
   display: flex;
   align-items: center;
 
   font-family: "Montserrat-Alt1", "Montserrat";
-  font-size: 40px;
+  font-size: 28px;
   line-height: 1;
 
   background-image: linear-gradient(
@@ -80,6 +81,10 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   color: transparent;
 
   background-clip: text;
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+  }
 `,Mg=Ue.span`
   rotate: -15deg;
   background-image: linear-gradient(
@@ -91,17 +96,34 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
 
   background-clip: text;
 `,_g=Ue.span`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "LucidaSansUnicode";
   font-weight: 500;
-  font-size: 60px;
-`;Ue.span`
+  font-size: 42px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 60px;
+  }
+`,jg=Ue.span`
+  content: "";
+  position: absolute;
+  z-index: 99;
+  top: 29px;
+  left: 16px;
+
+  color: #000;
   font-family: "HPSimplifiedLightItalic";
-`;const jg=Ue.button`
+  font-size: 9px;
+
+  @media screen and (min-width: 768px) {
+    top: 42px;
+    left: 28px;
+    font-size: 11px;
+  }
+`,Dg=Ue.button`
   background-color: transparent;
   color: ${hf.primaryAccent};
-`;var E0={color:void 0,size:void 0,className:void 0,style:void 0,attr:void 0},Qh=Nl.createContext&&Nl.createContext(E0),Dg=["attr","size","title"];function Cg(i,c){if(i==null)return{};var s=Ug(i,c),r,d;if(Object.getOwnPropertySymbols){var h=Object.getOwnPropertySymbols(i);for(d=0;d<h.length;d++)r=h[d],!(c.indexOf(r)>=0)&&Object.prototype.propertyIsEnumerable.call(i,r)&&(s[r]=i[r])}return s}function Ug(i,c){if(i==null)return{};var s={};for(var r in i)if(Object.prototype.hasOwnProperty.call(i,r)){if(c.indexOf(r)>=0)continue;s[r]=i[r]}return s}function ji(){return ji=Object.assign?Object.assign.bind():function(i){for(var c=1;c<arguments.length;c++){var s=arguments[c];for(var r in s)Object.prototype.hasOwnProperty.call(s,r)&&(i[r]=s[r])}return i},ji.apply(this,arguments)}function Zh(i,c){var s=Object.keys(i);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(i);c&&(r=r.filter(function(d){return Object.getOwnPropertyDescriptor(i,d).enumerable})),s.push.apply(s,r)}return s}function Di(i){for(var c=1;c<arguments.length;c++){var s=arguments[c]!=null?arguments[c]:{};c%2?Zh(Object(s),!0).forEach(function(r){Ng(i,r,s[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(i,Object.getOwnPropertyDescriptors(s)):Zh(Object(s)).forEach(function(r){Object.defineProperty(i,r,Object.getOwnPropertyDescriptor(s,r))})}return i}function Ng(i,c,s){return c=Hg(c),c in i?Object.defineProperty(i,c,{value:s,enumerable:!0,configurable:!0,writable:!0}):i[c]=s,i}function Hg(i){var c=Bg(i,"string");return typeof c=="symbol"?c:c+""}function Bg(i,c){if(typeof i!="object"||!i)return i;var s=i[Symbol.toPrimitive];if(s!==void 0){var r=s.call(i,c);if(typeof r!="object")return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return(c==="string"?String:Number)(i)}function T0(i){return i&&i.map((c,s)=>Nl.createElement(c.tag,Di({key:s},c.attr),T0(c.child)))}function Af(i){return c=>Nl.createElement(wg,ji({attr:Di({},i.attr)},c),T0(i.child))}function wg(i){var c=s=>{var{attr:r,size:d,title:h}=i,x=Cg(i,Dg),O=d||s.size||"1em",p;return s.className&&(p=s.className),i.className&&(p=(p?p+" ":"")+i.className),Nl.createElement("svg",ji({stroke:"currentColor",fill:"currentColor",strokeWidth:"0"},s.attr,r,x,{className:p,style:Di(Di({color:i.color||s.color},s.style),i.style),height:O,width:O,xmlns:"http://www.w3.org/2000/svg"}),h&&Nl.createElement("title",null,h),i.children)};return Qh!==void 0?Nl.createElement(Qh.Consumer,null,s=>c(s)):c(E0)}function qg(i){return Af({attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"},child:[]},{tag:"path",attr:{d:"M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"},child:[]}]})(i)}function Lg(i){return Af({attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"},child:[]}]})(i)}const Yg=Ue.ul`
-  display: flex;
+`;var E0={color:void 0,size:void 0,className:void 0,style:void 0,attr:void 0},Qh=Nl.createContext&&Nl.createContext(E0),Cg=["attr","size","title"];function Ug(i,c){if(i==null)return{};var s=Ng(i,c),r,d;if(Object.getOwnPropertySymbols){var h=Object.getOwnPropertySymbols(i);for(d=0;d<h.length;d++)r=h[d],!(c.indexOf(r)>=0)&&Object.prototype.propertyIsEnumerable.call(i,r)&&(s[r]=i[r])}return s}function Ng(i,c){if(i==null)return{};var s={};for(var r in i)if(Object.prototype.hasOwnProperty.call(i,r)){if(c.indexOf(r)>=0)continue;s[r]=i[r]}return s}function ji(){return ji=Object.assign?Object.assign.bind():function(i){for(var c=1;c<arguments.length;c++){var s=arguments[c];for(var r in s)Object.prototype.hasOwnProperty.call(s,r)&&(i[r]=s[r])}return i},ji.apply(this,arguments)}function Zh(i,c){var s=Object.keys(i);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(i);c&&(r=r.filter(function(d){return Object.getOwnPropertyDescriptor(i,d).enumerable})),s.push.apply(s,r)}return s}function Di(i){for(var c=1;c<arguments.length;c++){var s=arguments[c]!=null?arguments[c]:{};c%2?Zh(Object(s),!0).forEach(function(r){Hg(i,r,s[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(i,Object.getOwnPropertyDescriptors(s)):Zh(Object(s)).forEach(function(r){Object.defineProperty(i,r,Object.getOwnPropertyDescriptor(s,r))})}return i}function Hg(i,c,s){return c=Bg(c),c in i?Object.defineProperty(i,c,{value:s,enumerable:!0,configurable:!0,writable:!0}):i[c]=s,i}function Bg(i){var c=wg(i,"string");return typeof c=="symbol"?c:c+""}function wg(i,c){if(typeof i!="object"||!i)return i;var s=i[Symbol.toPrimitive];if(s!==void 0){var r=s.call(i,c);if(typeof r!="object")return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return(c==="string"?String:Number)(i)}function T0(i){return i&&i.map((c,s)=>Nl.createElement(c.tag,Di({key:s},c.attr),T0(c.child)))}function Af(i){return c=>Nl.createElement(qg,ji({attr:Di({},i.attr)},c),T0(i.child))}function qg(i){var c=s=>{var{attr:r,size:d,title:h}=i,x=Ug(i,Cg),O=d||s.size||"1em",p;return s.className&&(p=s.className),i.className&&(p=(p?p+" ":"")+i.className),Nl.createElement("svg",ji({stroke:"currentColor",fill:"currentColor",strokeWidth:"0"},s.attr,r,x,{className:p,style:Di(Di({color:i.color||s.color},s.style),i.style),height:O,width:O,xmlns:"http://www.w3.org/2000/svg"}),h&&Nl.createElement("title",null,h),i.children)};return Qh!==void 0?Nl.createElement(Qh.Consumer,null,s=>c(s)):c(E0)}function Lg(i){return Af({attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"},child:[]},{tag:"path",attr:{d:"M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"},child:[]}]})(i)}function Yg(i){return Af({attr:{fill:"currentColor",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"},child:[]}]})(i)}const Gg=Ue.ul`
+  display: none;
   justify-content: center;
 
   margin: 0 auto;
@@ -110,7 +132,9 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   text-transform: uppercase;
   font-size: 14px;
 
-  background-color: #fff;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `,Vh=Ue.button`
   background-color: transparent;
 
@@ -128,10 +152,11 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   ul {
     pointer-events: none;
     position: absolute;
+    left: 0;
     z-index: 1;
     opacity: 0;
     transform: translateY(-80px);
-    background-color: #ffffffff;
+    background-color: #ffffffcc;
     padding: 10px;
 
     transition-property: opacity, transform;
@@ -156,7 +181,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
     transform: translateY(10px);
     opacity: 1;
   }
-`,Gg=()=>m.jsxs(Yg,{children:[m.jsx("li",{children:m.jsxs(Vh,{children:["Admin",m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(ta,{to:"admin/calendar",children:"Calendar"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/orders",children:"Orders"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/drivers",children:"Drivers"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/settings",children:"Settings"})})]})]})}),m.jsx("li",{children:m.jsxs(Vh,{children:["Driver",m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(ta,{to:"driver/orders",children:"Orders"})}),m.jsx("li",{children:m.jsx(ta,{to:"driver/settings",children:"Settings"})})]})]})})]}),Xg=()=>{const[i,c]=M.useState(!1),s=()=>{c(!i)};return m.jsxs(Rg,{children:[m.jsxs(zg,{to:"//",children:[m.jsx(Mg,{children:"e"}),"asyRing",m.jsx(_g,{children:"↺"})]}),m.jsx(Gg,{}),m.jsx(jg,{onClick:s,className:"darkMode",children:i?m.jsx(Lg,{size:20}):m.jsx(qg,{size:20})})]})},rl=Ue.div`
+`,Xg=()=>m.jsxs(Gg,{children:[m.jsx("li",{children:m.jsxs(Vh,{children:["Admin",m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(ta,{to:"admin/calendar",children:"Calendar"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/orders",children:"Orders"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/drivers",children:"Drivers"})}),m.jsx("li",{children:m.jsx(ta,{to:"admin/settings",children:"Settings"})})]})]})}),m.jsx("li",{children:m.jsxs(Vh,{children:["Driver",m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(ta,{to:"driver/orders",children:"Orders"})}),m.jsx("li",{children:m.jsx(ta,{to:"driver/settings",children:"Settings"})})]})]})})]}),Qg=()=>{const[i,c]=M.useState(!1),s=()=>{c(!i)};return m.jsxs(Rg,{children:[m.jsxs(zg,{to:"//",children:[m.jsx(Mg,{children:"e"}),"asyRing",m.jsx(_g,{children:"↺"}),m.jsx(jg,{children:"delivery"})]}),m.jsx(Xg,{}),m.jsx(Dg,{onClick:s,className:"darkMode",children:i?m.jsx(Yg,{size:20}):m.jsx(Lg,{size:20})})]})},rl=Ue.div`
   position: relative;
   margin: 0 auto;
   width: 100%;
@@ -172,11 +197,11 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
     width: 1280px;
     padding: 78px 0 0;
   }
-`,Qg=()=>m.jsx("footer",{children:m.jsxs(rl,{children:[m.jsxs("address",{children:[m.jsx("p",{children:"easyRing Lieferdienst Mykhailo Fysiuk"}),m.jsx("a",{children:"Kaulbachstr. 6A, 12247 Berlin"})]}),m.jsx("p",{children:"+491781515156"}),m.jsx("p",{children:"easyring@delivery.com"})]})}),Zg=()=>m.jsxs("div",{children:[m.jsx(Xg,{}),m.jsx("main",{children:m.jsx(u0,{})}),m.jsx(Qg,{})]}),Vg=Ue.section`
+`,Zg=()=>m.jsx("footer",{children:m.jsxs(rl,{children:[m.jsxs("address",{children:[m.jsx("p",{children:"easyRing Lieferdienst Mykhailo Fysiuk"}),m.jsx("a",{children:"Kaulbachstr. 6A, 12247 Berlin"})]}),m.jsx("p",{children:"+491781515156"}),m.jsx("p",{children:"easyring@delivery.com"})]})}),Vg=()=>m.jsxs("div",{children:[m.jsx(Qg,{}),m.jsx("main",{children:m.jsx(u0,{})}),m.jsx(Zg,{})]}),Kg=Ue.section`
   padding: 60px 0;
 
   text-align: center;
-`,Kg=Ue.h1`
+`,kg=Ue.h1`
   max-width: 360px;
   margin: 0 auto;
 
@@ -191,7 +216,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
     font-size: 44px;
     line-height: 1.36;
   }
-`,kg=Ue.p`
+`,Jg=Ue.p`
   font-family: "HPSimplifiedLightItalic";
   font-size: 26px;
   font-weight: 300;
@@ -200,7 +225,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   margin-bottom: 30px;
 
   line-height: 0.8;
-`,Jg=Ue.ul`
+`,$g=Ue.ul`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,15 +234,15 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
 
   gap: 24px;
 
-  max-width: 270px;
+  max-width: 220px;
 
   @media screen and (min-width: 768px) {
     max-width: none;
   }
-`,$g=Ue.li`
+`,Wg=Ue.li`
   display: flex;
   gap: 10px;
-`,Wg=Ue.input`
+`,Fg=Ue.input`
   padding: 10px 16px;
 
   background-color: #dddddd66;
@@ -236,8 +261,9 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   &:focus {
     background-color: #dddddd;
   }
-`,Fg=Ue.button`
+`,Pg=Ue.button`
   display: flex;
+  align-items: center;
   gap: 10px;
   min-height: 36px;
 
@@ -264,7 +290,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   &:focus {
     background-color: #dddddd;
   }
-`,Pg=Ue(Fg)`
+`,Ig=Ue(Pg)`
   background: transparent;
   background-color: #dddddd66;
   font-weight: 400;
@@ -277,6 +303,8 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   }
 `,A0=Ue(bt)`
   display: flex;
+  align-items: center;
+
   gap: 10px;
 
   min-height: 36px;
@@ -304,7 +332,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   &:focus {
     background-color: #dddddd;
   }
-`,Ig=Ue(A0)`
+`,ep=Ue(A0)`
   background: none;
   background-color: #dddddd66;
   font-weight: 400;
@@ -315,4 +343,4 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
 
     background-color: #ddddddaa;
   }
-`;function ep(i){return Af({attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"},child:[]}]})(i)}const tp=()=>{const[i,c]=M.useState(!1);return m.jsxs(rl,{children:[m.jsxs(Vg,{children:[m.jsx(Kg,{children:"Same day delivery"}),m.jsx(kg,{children:"in Berlin"}),m.jsxs(Jg,{children:[m.jsx("li",{children:m.jsx(A0,{to:"createorder/maininfo",children:"Create order"})}),!i&&m.jsx("li",{children:m.jsx(Pg,{onClick:()=>c(!i),children:"Track order"})}),i&&m.jsxs($g,{children:[m.jsx(Wg,{type:"text",id:"orderID",placeholder:"Track by ID#132"}),m.jsx(Ig,{to:"orders/1",children:m.jsx(ep,{size:16})})]})]})]}),m.jsx("section",{children:m.jsx("p",{children:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum numquam molestiae reiciendis neque enim ipsum consequuntur corporis. Suscipit hic incidunt consectetur sed qui ipsam magni nobis nulla! Est, placeat. Culpa? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam itaque voluptatem repellendus accusantium aliquid eos perspiciatis pariatur laudantium id deleniti numquam totam esse provident facilis blanditiis aut, qui ea similique."})})]})},lp=()=>m.jsx(rl,{children:m.jsx("section",{children:"Calendar"})}),Wn=()=>m.jsxs("li",{children:[m.jsx("h4",{children:"10:00-12:00"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"Pick-up address"})]}),m.jsxs("li",{children:[m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"Delivery address"})]}),m.jsx("li",{children:m.jsx("button",{children:"Picked up"})}),m.jsx("li",{children:m.jsx("button",{children:"Delivered"})})]})]}),Kh=()=>m.jsx(rl,{children:m.jsxs("ul",{children:[m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{})]})}),Fn=()=>m.jsxs("li",{children:[m.jsx("h4",{children:"Driver name"}),m.jsx("h5",{children:"B-CE4007"}),m.jsx("p",{children:"Registered at:"}),m.jsxs("p",{children:["Status: ",m.jsx("span",{children:"Active"})]})]}),ap=()=>m.jsx(rl,{children:m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})})]})}),kh=()=>m.jsx(rl,{children:"Settings"}),np=()=>m.jsx(rl,{children:m.jsxs("section",{children:[m.jsx("h3",{children:"10:00-12:00"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("p",{children:"Senderinfo:"}),m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"+491781515156"}),m.jsx("a",{children:"Pick-up address"})]}),m.jsxs("li",{children:[m.jsx("p",{children:"Recipientinfo:"}),m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"+491781515156"}),m.jsx("a",{children:"Delivery address"})]})]}),m.jsx("p",{children:"Description"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx("button",{children:"Done"})}),m.jsx("li",{children:m.jsx("button",{children:"Cancel"})}),m.jsx("li",{children:m.jsx("button",{children:"Edit"})})]})]})}),up=()=>m.jsxs(rl,{children:[m.jsx("h2",{children:"Fill the form"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{to:"maininfo",children:"MainInfo -"})}),m.jsx("li",{children:m.jsx(bt,{to:"sender",children:"Sender -"})}),m.jsx("li",{children:m.jsx(bt,{to:"recipient",children:"Recipient -"})}),m.jsx("li",{children:m.jsx(bt,{to:"/createorder",children:"Confirm"})})]}),m.jsx(u0,{})]}),ip=()=>m.jsxs("form",{children:[m.jsx("h3",{children:"Sender info:"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Phone number:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Name, Surname:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Full address:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Email:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Comment:",m.jsx("input",{type:"text",placeholder:"doorbell/company/entrance"})]})})]}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{children:"<="})}),m.jsx("li",{children:m.jsx(bt,{children:"=>"})})]})]}),cp=()=>m.jsxs("form",{children:[m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("label",{htmlFor:"size",children:"Select size:"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("label",{htmlFor:"S",children:"S"}),m.jsx("input",{type:"radio",name:"size",id:"S"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"M",children:"M"}),m.jsx("input",{type:"radio",name:"size",id:"M"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"L",children:"L"}),m.jsx("input",{type:"radio",name:"size",id:"L"})]})]})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"description",children:"Provide description:"}),m.jsx("input",{type:"text",placeholder:"short description"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"photo",children:"Add photo:"}),m.jsx("input",{type:"image",src:"photo",alt:"photo"})]})]}),m.jsx("ul",{children:m.jsx("li",{children:m.jsx(bt,{children:"=>"})})})]}),rp=()=>m.jsxs("form",{children:[m.jsx("h3",{children:"Recipient's info:"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Phone number:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Name, Surname:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Full address:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Comment:",m.jsx("input",{type:"text",placeholder:"doorbell/company/entrance"})]})})]}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{children:"<="})}),m.jsx("li",{children:m.jsx(bt,{children:"=>"})})]})]}),fp=()=>m.jsx(rl,{children:m.jsxs("form",{children:[m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx("label",{htmlFor:"login",children:m.jsx("input",{type:"text"})})}),m.jsx("li",{children:m.jsx("label",{htmlFor:"password",children:m.jsx("input",{type:"password"})})})]}),m.jsx("button",{type:"submit",children:"login"})]})}),sp=()=>m.jsx(Fy,{children:m.jsxs(Je,{path:"/",element:m.jsx(Zg,{}),children:[m.jsx(Je,{index:!0,element:m.jsx(tp,{})}),m.jsxs(Je,{path:"createorder",element:m.jsx(up,{}),children:[m.jsx(Je,{path:"maininfo",element:m.jsx(cp,{})}),m.jsx(Je,{path:"sender",element:m.jsx(ip,{})}),m.jsx(Je,{path:"recipient",element:m.jsx(rp,{})})]}),m.jsx(Je,{path:"orders/:orderId",element:m.jsx(np,{})}),m.jsx(Je,{path:"login",element:m.jsx(fp,{})}),m.jsxs(Je,{path:"admin",children:[m.jsx(Je,{path:"calendar",element:m.jsx(lp,{})}),m.jsx(Je,{path:"orders",element:m.jsx(Kh,{})}),m.jsx(Je,{path:"drivers",element:m.jsx(ap,{})}),m.jsx(Je,{path:"settings",element:m.jsx(kh,{})})]}),m.jsxs(Je,{path:"driver",children:[m.jsx(Je,{path:"orders",element:m.jsx(Kh,{})}),m.jsx(Je,{path:"settings",element:m.jsx(kh,{})})]})]})});ny.createRoot(document.getElementById("root")).render(m.jsx(M.StrictMode,{children:m.jsx(xv,{basename:"/easyring-frontend",children:m.jsx(sp,{})})}));
+`;function tp(i){return Af({attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"},child:[]}]})(i)}const lp=()=>{const[i,c]=M.useState(!1);return m.jsxs(rl,{children:[m.jsxs(Kg,{children:[m.jsx(kg,{children:"Same day delivery"}),m.jsx(Jg,{children:"in Berlin"}),m.jsxs($g,{children:[m.jsx("li",{children:m.jsx(A0,{to:"createorder/maininfo",children:"Create order"})}),!i&&m.jsx("li",{children:m.jsx(Ig,{onClick:()=>c(!i),children:"Track order"})}),i&&m.jsxs(Wg,{children:[m.jsx(Fg,{type:"text",id:"orderID",placeholder:"Track by ID#132"}),m.jsx(ep,{to:"orders/1",children:m.jsx(tp,{size:16})})]})]})]}),m.jsx("section",{children:m.jsx("p",{children:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum numquam molestiae reiciendis neque enim ipsum consequuntur corporis. Suscipit hic incidunt consectetur sed qui ipsam magni nobis nulla! Est, placeat. Culpa? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam itaque voluptatem repellendus accusantium aliquid eos perspiciatis pariatur laudantium id deleniti numquam totam esse provident facilis blanditiis aut, qui ea similique."})})]})},ap=()=>m.jsx(rl,{children:m.jsx("section",{children:"Calendar"})}),Wn=()=>m.jsxs("li",{children:[m.jsx("h4",{children:"10:00-12:00"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"Pick-up address"})]}),m.jsxs("li",{children:[m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"Delivery address"})]}),m.jsx("li",{children:m.jsx("button",{children:"Picked up"})}),m.jsx("li",{children:m.jsx("button",{children:"Delivered"})})]})]}),Kh=()=>m.jsx(rl,{children:m.jsxs("ul",{children:[m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{}),m.jsx(Wn,{})]})}),Fn=()=>m.jsxs("li",{children:[m.jsx("h4",{children:"Driver name"}),m.jsx("h5",{children:"B-CE4007"}),m.jsx("p",{children:"Registered at:"}),m.jsxs("p",{children:["Status: ",m.jsx("span",{children:"Active"})]})]}),np=()=>m.jsx(rl,{children:m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})}),m.jsx("li",{children:m.jsx(Fn,{})})]})}),kh=()=>m.jsx(rl,{children:"Settings"}),up=()=>m.jsx(rl,{children:m.jsxs("section",{children:[m.jsx("h3",{children:"10:00-12:00"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("p",{children:"Senderinfo:"}),m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"+491781515156"}),m.jsx("a",{children:"Pick-up address"})]}),m.jsxs("li",{children:[m.jsx("p",{children:"Recipientinfo:"}),m.jsx("p",{children:"Name, Surname"}),m.jsx("a",{children:"+491781515156"}),m.jsx("a",{children:"Delivery address"})]})]}),m.jsx("p",{children:"Description"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx("button",{children:"Done"})}),m.jsx("li",{children:m.jsx("button",{children:"Cancel"})}),m.jsx("li",{children:m.jsx("button",{children:"Edit"})})]})]})}),ip=()=>m.jsxs(rl,{children:[m.jsx("h2",{children:"Fill the form"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{to:"maininfo",children:"MainInfo -"})}),m.jsx("li",{children:m.jsx(bt,{to:"sender",children:"Sender -"})}),m.jsx("li",{children:m.jsx(bt,{to:"recipient",children:"Recipient -"})}),m.jsx("li",{children:m.jsx(bt,{to:"/createorder",children:"Confirm"})})]}),m.jsx(u0,{})]}),cp=()=>m.jsxs("form",{children:[m.jsx("h3",{children:"Sender info:"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Phone number:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Name, Surname:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Full address:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Email:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Comment:",m.jsx("input",{type:"text",placeholder:"doorbell/company/entrance"})]})})]}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{children:"<="})}),m.jsx("li",{children:m.jsx(bt,{children:"=>"})})]})]}),rp=()=>m.jsxs("form",{children:[m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("label",{htmlFor:"size",children:"Select size:"}),m.jsxs("ul",{children:[m.jsxs("li",{children:[m.jsx("label",{htmlFor:"S",children:"S"}),m.jsx("input",{type:"radio",name:"size",id:"S"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"M",children:"M"}),m.jsx("input",{type:"radio",name:"size",id:"M"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"L",children:"L"}),m.jsx("input",{type:"radio",name:"size",id:"L"})]})]})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"description",children:"Provide description:"}),m.jsx("input",{type:"text",placeholder:"short description"})]}),m.jsxs("li",{children:[m.jsx("label",{htmlFor:"photo",children:"Add photo:"}),m.jsx("input",{type:"image",src:"photo",alt:"photo"})]})]}),m.jsx("ul",{children:m.jsx("li",{children:m.jsx(bt,{children:"=>"})})})]}),fp=()=>m.jsxs("form",{children:[m.jsx("h3",{children:"Recipient's info:"}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Phone number:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Name, Surname:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Full address:",m.jsx("input",{type:"text"})]})}),m.jsx("li",{children:m.jsxs("label",{htmlFor:"",children:["Comment:",m.jsx("input",{type:"text",placeholder:"doorbell/company/entrance"})]})})]}),m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx(bt,{children:"<="})}),m.jsx("li",{children:m.jsx(bt,{children:"=>"})})]})]}),sp=()=>m.jsx(rl,{children:m.jsxs("form",{children:[m.jsxs("ul",{children:[m.jsx("li",{children:m.jsx("label",{htmlFor:"login",children:m.jsx("input",{type:"text"})})}),m.jsx("li",{children:m.jsx("label",{htmlFor:"password",children:m.jsx("input",{type:"password"})})})]}),m.jsx("button",{type:"submit",children:"login"})]})}),op=()=>m.jsx(Fy,{children:m.jsxs(Je,{path:"/",element:m.jsx(Vg,{}),children:[m.jsx(Je,{index:!0,element:m.jsx(lp,{})}),m.jsxs(Je,{path:"createorder",element:m.jsx(ip,{}),children:[m.jsx(Je,{path:"maininfo",element:m.jsx(rp,{})}),m.jsx(Je,{path:"sender",element:m.jsx(cp,{})}),m.jsx(Je,{path:"recipient",element:m.jsx(fp,{})})]}),m.jsx(Je,{path:"orders/:orderId",element:m.jsx(up,{})}),m.jsx(Je,{path:"login",element:m.jsx(sp,{})}),m.jsxs(Je,{path:"admin",children:[m.jsx(Je,{path:"calendar",element:m.jsx(ap,{})}),m.jsx(Je,{path:"orders",element:m.jsx(Kh,{})}),m.jsx(Je,{path:"drivers",element:m.jsx(np,{})}),m.jsx(Je,{path:"settings",element:m.jsx(kh,{})})]}),m.jsxs(Je,{path:"driver",children:[m.jsx(Je,{path:"orders",element:m.jsx(Kh,{})}),m.jsx(Je,{path:"settings",element:m.jsx(kh,{})})]})]})});ny.createRoot(document.getElementById("root")).render(m.jsx(M.StrictMode,{children:m.jsx(xv,{basename:"/easyring-frontend",children:m.jsx(op,{})})}));
