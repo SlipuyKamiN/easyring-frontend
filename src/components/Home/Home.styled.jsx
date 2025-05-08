@@ -25,9 +25,10 @@ export const HeroTitle = styled.h1`
 `;
 
 export const HeroSubtitle = styled.p`
-  font-family: "HPSimplifiedLightItalic";
+  font-family: HPSimplifiedLightItalic, sans-serif;
   font-size: 26px;
   font-weight: 300;
+  font-style: italic;
   text-transform: none;
 
   margin-bottom: 30px;
