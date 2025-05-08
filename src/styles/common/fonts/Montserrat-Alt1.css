@@ -4,8 +4,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("./Montserrat-Alt1-Regular.woff2") format("woff2"),
-    url("./Montserrat-Alt1-Regular.woff") format("woff"),
-    url("/easyring-frontend/src/styles/common/fonts/MontserratAlt1-Regular.ttf")
-      format("truetype");
+  src: url("./MontserratAlt1-Regular.woff2") format("woff2"),
+    url("./MontserratAlt1-Regular.woff") format("woff"),
+    url("./MontserratAlt1-Regular.ttf") format("truetype");
 }
