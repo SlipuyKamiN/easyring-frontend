@@ -109,7 +109,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   content: "";
   position: absolute;
   z-index: 99;
-  top: 36px;
+  top: 34px;
   left: 20px;
 
   font-family: "HPSimplifiedLightItalic";
