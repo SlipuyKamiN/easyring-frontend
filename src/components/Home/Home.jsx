@@ -1,9 +1,12 @@
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import {
+  BenefitItem,
+  BenefitsList,
   HeroBtnsList,
   HeroSection,
   HeroSubtitle,
   HeroTitle,
+  SectionTitle,
   TrackInput,
   TrackInputWrapper,
 } from "./Home.styled";
@@ -13,6 +16,12 @@ import {
   SecondaryBtnLink,
 } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
+import { GoChecklist } from "react-icons/go";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { BsCashCoin } from "react-icons/bs";
+import { LiaPeopleCarrySolid } from "react-icons/lia";
+import { TbTruckDelivery } from "react-icons/tb";
+import { FaFlagCheckered } from "react-icons/fa";
 import { useState } from "react";
 
 export const Home = () => {
@@ -21,7 +30,10 @@ export const Home = () => {
   return (
     <Container>
       <HeroSection>
-        <HeroTitle>Same day delivery</HeroTitle>
+        <HeroTitle>
+          S<span>a</span>m<span>e</span> d<span>a</span>y d<span>e</span>liv
+          <span>e</span>ry
+        </HeroTitle>
         <HeroSubtitle>in Berlin</HeroSubtitle>
         <HeroBtnsList>
           <li>
@@ -49,15 +61,32 @@ export const Home = () => {
         </HeroBtnsList>
       </HeroSection>
       <section>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-          numquam molestiae reiciendis neque enim ipsum consequuntur corporis.
-          Suscipit hic incidunt consectetur sed qui ipsam magni nobis nulla!
-          Est, placeat. Culpa? Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Aperiam itaque voluptatem repellendus accusantium
-          aliquid eos perspiciatis pariatur laudantium id deleniti numquam totam
-          esse provident facilis blanditiis aut, qui ea similique.
-        </p>
+        <SectionTitle>How it works?</SectionTitle>
+        <BenefitsList>
+          <BenefitItem>
+            <HiOutlineClipboardDocumentList size={60} />
+            <h3>Fill the form</h3>
+            <p>First, describe the parcel, sender`s and recipient`s info.</p>
+          </BenefitItem>
+          <BenefitItem>
+            <BsCashCoin size={60} />
+            <h3>Pay</h3>
+            <p>You can easily pay online or when parcel arrived to you.</p>
+          </BenefitItem>
+          <BenefitItem>
+            <LiaPeopleCarrySolid size={60} />
+            <h3>Meet the courier</h3>
+            <p>Give the parcel to the professional.</p>
+          </BenefitItem>
+          <BenefitItem>
+            <TbTruckDelivery size={60} />
+            <h3>
+              Enjoy{"  "}
+              <FaFlagCheckered size={20} />
+            </h3>
+            <p>Receive the parcel at place and time which you prefer.</p>
+          </BenefitItem>
+        </BenefitsList>
       </section>
     </Container>
   );
