@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const NavBarList = styled.ul`
-  display: flex;
+  display: none;
   justify-content: center;
 
   margin: 0 auto;
@@ -10,7 +10,9 @@ export const NavBarList = styled.ul`
   text-transform: uppercase;
   font-size: 14px;
 
-  background-color: #fff;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 export const NavLinkBtn = styled.button`
@@ -30,10 +32,11 @@ export const NavLinkBtn = styled.button`
   ul {
     pointer-events: none;
     position: absolute;
+    left: 0;
     z-index: 1;
     opacity: 0;
     transform: translateY(-80px);
-    background-color: #ffffffff;
+    background-color: #ffffffcc;
     padding: 10px;
 
     transition-property: opacity, transform;

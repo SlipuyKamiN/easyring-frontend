@@ -5,6 +5,7 @@ import {
   FirstLetterLogo,
   HeaderBar,
   LogoLink,
+  SubLogo,
 } from "./Header.styled";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { NavBar } from "../SharedLayout/NavBar";
@@ -19,6 +20,7 @@ export const Header = () => {
     <HeaderBar>
       <LogoLink to={"//"}>
         <FirstLetterLogo>e</FirstLetterLogo>asyRing<ArrowLogo>↺</ArrowLogo>
+        <SubLogo>delivery</SubLogo>
       </LogoLink>
       <NavBar />
       <DarkModeToggler onClick={toggleDarkMode} className="darkMode">

@@ -4,6 +4,7 @@ import { transition } from "~/styles/common/vars";
 
 export const PrimaryBtn = styled.button`
   display: flex;
+  align-items: center;
   gap: 10px;
   min-height: 36px;
 
@@ -47,6 +48,8 @@ export const SecondaryBtn = styled(PrimaryBtn)`
 
 export const BtnLink = styled(Link)`
   display: flex;
+  align-items: center;
+
   gap: 10px;
 
   min-height: 36px;

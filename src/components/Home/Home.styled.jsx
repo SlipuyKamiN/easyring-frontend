@@ -44,7 +44,7 @@ export const HeroBtnsList = styled.ul`
 
   gap: 24px;
 
-  max-width: 270px;
+  max-width: 220px;
 
   @media screen and (min-width: 768px) {
     max-width: none;

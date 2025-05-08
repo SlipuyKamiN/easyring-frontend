@@ -21,11 +21,12 @@ export const HeaderBar = styled.header`
 `;
 
 export const LogoLink = styled(Link)`
+  position: relative;
   display: flex;
   align-items: center;
 
   font-family: "Montserrat-Alt1", "Montserrat";
-  font-size: 40px;
+  font-size: 28px;
   line-height: 1;
 
   background-image: linear-gradient(
@@ -36,6 +37,10 @@ export const LogoLink = styled(Link)`
   color: transparent;
 
   background-clip: text;
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const FirstLetterLogo = styled.span`
@@ -51,14 +56,31 @@ export const FirstLetterLogo = styled.span`
 `;
 
 export const ArrowLogo = styled.span`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "LucidaSansUnicode";
   font-weight: 500;
-  font-size: 60px;
+  font-size: 42px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 60px;
+  }
 `;
 
 export const SubLogo = styled.span`
+  content: "";
+  position: absolute;
+  z-index: 99;
+  top: 29px;
+  left: 16px;
+
+  color: #000;
   font-family: "HPSimplifiedLightItalic";
+  font-size: 9px;
+
+  @media screen and (min-width: 768px) {
+    top: 42px;
+    left: 28px;
+    font-size: 11px;
+  }
 `;
 
 export const DarkModeToggler = styled.button`
