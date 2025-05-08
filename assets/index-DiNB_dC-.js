@@ -69,7 +69,9 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   display: flex;
   align-items: center;
 
-  font-family: "Montserrat-Alt1", "Montserrat";
+  font-family: "Montserrat-Alt1";
+  font-style: normal;
+  font-weight: 400;
   font-size: 32px;
   line-height: 1;
 
