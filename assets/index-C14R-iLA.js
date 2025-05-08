@@ -69,7 +69,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   display: flex;
   align-items: center;
 
-  font-family: "Montserrat-Alt1";
+  font-family: Montserrat-Alt1, Montserrat;
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -209,14 +209,14 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   margin: 0 auto;
 
   font-weight: 600;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
   @media screen and (min-width: 1200px) {
-    font-size: 44px;
+    font-size: 52px;
     line-height: 1.36;
   }
 `,Jg=Ue.p`
@@ -253,6 +253,8 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   border: none;
   border-radius: 8px;
 
+  font-size: 16px;
+
   text-transform: uppercase;
 
   transition: background-color ${Tf.duration};
@@ -282,7 +284,8 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   color: #000;
 
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
+
   font-weight: 600;
 
   border-radius: 8px;
@@ -324,7 +327,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   color: #000;
 
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 
   border-radius: 8px;
