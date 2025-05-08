@@ -19,7 +19,8 @@ export const PrimaryBtn = styled.button`
   color: #000;
 
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
+
   font-weight: 600;
 
   border-radius: 8px;
@@ -65,7 +66,7 @@ export const BtnLink = styled(Link)`
   color: #000;
 
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 
   border-radius: 8px;

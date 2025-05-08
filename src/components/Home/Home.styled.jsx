@@ -12,14 +12,14 @@ export const HeroTitle = styled.h1`
   margin: 0 auto;
 
   font-weight: 600;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
   @media screen and (min-width: 1200px) {
-    font-size: 44px;
+    font-size: 52px;
     line-height: 1.36;
   }
 `;
@@ -63,6 +63,8 @@ export const TrackInput = styled.input`
   background-color: #dddddd66;
   border: none;
   border-radius: 8px;
+
+  font-size: 16px;
 
   text-transform: uppercase;
 
