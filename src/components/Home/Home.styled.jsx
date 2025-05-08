@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { transition } from "~/styles/common/vars";
 
 export const HeroSection = styled.section`
   padding: 60px 0;
@@ -30,6 +31,8 @@ export const HeroSubtitle = styled.p`
   text-transform: none;
 
   margin-bottom: 30px;
+
+  line-height: 0.8;
 `;
 
 export const HeroBtnsList = styled.ul`
@@ -37,6 +40,39 @@ export const HeroBtnsList = styled.ul`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 
-  gap: 30px;
+  gap: 24px;
+
+  max-width: 270px;
+
+  @media screen and (min-width: 768px) {
+    max-width: none;
+  }
+`;
+
+export const TrackInputWrapper = styled.li`
+  display: flex;
+  gap: 10px;
+`;
+
+export const TrackInput = styled.input`
+  padding: 10px 16px;
+
+  background-color: #dddddd66;
+  border: none;
+  border-radius: 8px;
+
+  text-transform: uppercase;
+
+  transition: background-color ${transition.duration};
+
+  &::placeholder {
+    text-transform: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #dddddd;
+  }
 `;

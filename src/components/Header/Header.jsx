@@ -17,7 +17,7 @@ export const Header = () => {
 
   return (
     <HeaderBar>
-      <LogoLink to={"/"}>
+      <LogoLink to={"//"}>
         <FirstLetterLogo>e</FirstLetterLogo>asyRing<ArrowLogo>↺</ArrowLogo>
       </LogoLink>
       <NavBar />

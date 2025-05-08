@@ -1,14 +1,23 @@
-import { Link } from "react-router-dom";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import {
   HeroBtnsList,
   HeroSection,
   HeroSubtitle,
   HeroTitle,
+  TrackInput,
+  TrackInputWrapper,
 } from "./Home.styled";
-import { BtnLink, SecondaryBtnLink } from "../Common/Button.styled";
+import {
+  BtnLink,
+  SecondaryBtn,
+  SecondaryBtnLink,
+} from "../Common/Button.styled";
+import { FaSearch } from "react-icons/fa";
+import { useState } from "react";
 
 export const Home = () => {
+  const [inputVisible, setInputVisible] = useState(false);
+
   return (
     <Container>
       <HeroSection>
@@ -18,14 +27,25 @@ export const Home = () => {
           <li>
             <BtnLink to={"createorder/maininfo"}>Create order</BtnLink>
           </li>
-          <li>
-            <SecondaryBtnLink to={"orders/1"}>Track order</SecondaryBtnLink>
-          </li>
-          <li>
-            <label htmlFor="orderID">Track order by ID:</label>
-            <input type="text" id="orderID" />
-            <button type="submit">Track</button>
-          </li>
+          {!inputVisible && (
+            <li>
+              <SecondaryBtn onClick={() => setInputVisible(!inputVisible)}>
+                Track order
+              </SecondaryBtn>
+            </li>
+          )}
+          {inputVisible && (
+            <TrackInputWrapper>
+              <TrackInput
+                type="text"
+                id="orderID"
+                placeholder="Track by ID#132"
+              />
+              <SecondaryBtnLink to={"orders/1"}>
+                <FaSearch size={16} />
+              </SecondaryBtnLink>
+            </TrackInputWrapper>
+          )}
         </HeroBtnsList>
       </HeroSection>
       <section>
