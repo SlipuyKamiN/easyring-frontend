@@ -71,7 +71,7 @@ export const SubLogo = styled.span`
   content: "";
   position: absolute;
   z-index: 99;
-  top: 36px;
+  top: 34px;
   left: 20px;
 
   font-family: "HPSimplifiedLightItalic";
