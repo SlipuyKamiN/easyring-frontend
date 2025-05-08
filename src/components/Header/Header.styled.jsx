@@ -25,7 +25,9 @@ export const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  font-family: "Montserrat-Alt1", "Montserrat";
+  font-family: "Montserrat-Alt1";
+  font-style: normal;
+  font-weight: 400;
   font-size: 32px;
   line-height: 1;
 
