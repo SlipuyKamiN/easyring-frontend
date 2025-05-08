@@ -70,7 +70,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   align-items: center;
 
   font-family: "Montserrat-Alt1", "Montserrat";
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1;
 
   background-image: linear-gradient(
@@ -98,7 +98,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
 `,_g=Ue.span`
   font-family: "LucidaSansUnicode";
   font-weight: 500;
-  font-size: 42px;
+  font-size: 48px;
 
   @media screen and (min-width: 768px) {
     font-size: 60px;
@@ -107,12 +107,12 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   content: "";
   position: absolute;
   z-index: 99;
-  top: 29px;
-  left: 16px;
+  top: 33px;
+  left: 20px;
 
-  color: #000;
   font-family: "HPSimplifiedLightItalic";
-  font-size: 9px;
+  font-size: 10px;
+  color: #000;
 
   @media screen and (min-width: 768px) {
     top: 42px;
