@@ -13,7 +13,7 @@ import {
 } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+import { RiArrowDownWideFill } from "react-icons/ri";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { IconLink } from "../Footer/Footer.styled";
 
@@ -29,12 +29,12 @@ export const Hero = () => {
         <HeroSubtitle>in Berlin</HeroSubtitle>
         <HeroBtnsList>
           <li>
-            <BtnLink to={"createorder/maininfo"}>Create order</BtnLink>
+            <BtnLink to={"createorder/maininfo"}>Create pick-up</BtnLink>
           </li>
           {!inputVisible && (
             <li>
               <SecondaryBtn onClick={() => setInputVisible(!inputVisible)}>
-                Track order
+                Track parcel
               </SecondaryBtn>
             </li>
           )}
@@ -53,7 +53,7 @@ export const Hero = () => {
           )}
         </HeroBtnsList>
         <IconLink href="#how-it-works">
-          <IoIosArrowDown size={50} />
+          <RiArrowDownWideFill size={50} />
         </IconLink>
       </Container>
     </HeroSection>
