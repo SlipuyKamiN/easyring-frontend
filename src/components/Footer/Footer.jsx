@@ -19,6 +19,7 @@ export const Footer = () => {
               href="https://wa.me/491781516236"
               target="_blank"
               rel="noopener nofollow noreferrer"
+              className="whats-app"
             >
               <FaWhatsapp size={35} />
             </IconLink>
@@ -28,6 +29,7 @@ export const Footer = () => {
               href="https://t.me/@easyRing_delivery"
               target="_blank"
               rel="noopener nofollow noreferrer"
+              className="telegram"
             >
               <FaTelegramPlane size={35} />
             </IconLink>
@@ -37,6 +39,7 @@ export const Footer = () => {
               href="https://www.instagram.com/easyring.delivery/"
               target="_blank"
               rel="noopener nofollow noreferrer"
+              className="instagram"
             >
               <FaInstagram size={35} />
             </IconLink>

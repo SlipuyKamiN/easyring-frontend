@@ -23,9 +23,19 @@ export const SocialsList = styled.ul`
 export const IconLink = styled.a`
   color: #dddddd;
 
-  &:hover,
-  &:focus {
-    color: ${colors.primaryAccent};
+  &.whats-app:hover,
+  &.whats-app:focus {
+    color: #25d366;
+  }
+
+  &.telegram:hover,
+  &.telegram:focus {
+    color: #0088cc;
+  }
+
+  &.instagram:hover,
+  &.instagram:focus {
+    color: #fd1d1d;
   }
 `;
 
