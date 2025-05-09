@@ -47,7 +47,7 @@ export const Hero = () => {
                 autoFocus
               />
               <SecondaryBtnLink to={"orders/1"}>
-                <FaSearch size={16} />
+                <FaSearch size={20} />
               </SecondaryBtnLink>
             </TrackInputWrapper>
           )}
