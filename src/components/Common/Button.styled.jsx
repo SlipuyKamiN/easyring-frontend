@@ -6,7 +6,7 @@ export const PrimaryBtn = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 36px;
+  min-height: 40px;
 
   padding: 10px 16px;
 
@@ -53,7 +53,7 @@ export const BtnLink = styled(Link)`
 
   gap: 10px;
 
-  min-height: 36px;
+  min-height: 40px;
 
   padding: 10px 16px;
 

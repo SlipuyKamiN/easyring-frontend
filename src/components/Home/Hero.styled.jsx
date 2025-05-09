@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { transition } from "~/styles/common/vars";
 
 export const HeroSection = styled.section`
-  padding: 60px 0;
+  padding: 150px 0 60px;
 
   text-align: center;
 `;
@@ -14,14 +14,15 @@ export const HeroTitle = styled.h1`
   font-family: Montserrat-Alt1;
 
   font-weight: 600;
-  font-size: 40px;
+  font-size: 50px;
+
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
   @media screen and (min-width: 1200px) {
-    font-size: 52px;
+    font-size: 60px;
     line-height: 1.36;
   }
 
@@ -38,7 +39,7 @@ export const HeroSubtitle = styled.p`
   font-style: italic;
   text-transform: none;
 
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 
   line-height: 0.8;
 `;
@@ -48,7 +49,7 @@ export const HeroBtnsList = styled.ul`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 
   gap: 24px;
 
@@ -66,6 +67,7 @@ export const TrackInputWrapper = styled.li`
 
 export const TrackInput = styled.input`
   padding: 10px 16px;
+  height: 40px;
 
   background-color: #dddddd66;
   border: none;
@@ -84,81 +86,5 @@ export const TrackInput = styled.input`
   &:hover,
   &:focus {
     background-color: #dddddd;
-  }
-`;
-
-export const SectionTitle = styled.h2`
-  text-align: center;
-  padding: 10px 0;
-  margin-bottom: 10px;
-
-  background: linear-gradient(
-    90deg,
-    rgba(100, 100, 100, 0.4) 0%,
-    rgba(100, 100, 100, 0.6) 60%,
-    rgba(100, 100, 100, 0.2) 100%
-  );
-
-  color: transparent;
-
-  background-clip: text;
-`;
-
-export const BenefitsList = styled.ul`
-  max-width: 360px;
-  margin: 0 auto;
-  padding: 20px;
-  counter-reset: benefits;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-
-  @media screen and (min-width: 768px) {
-    max-width: none;
-  }
-`;
-
-export const BenefitItem = styled.li`
-  width: 150px;
-  position: relative;
-  padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  & > svg {
-    margin-left: 70px;
-    margin-bottom: 10px;
-  }
-
-  h3 {
-    height: 60px;
-  }
-
-  &::before {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    content: counter(benefits) ".";
-    counter-increment: benefits;
-
-    font-family: Montserrat-Alt1;
-    font-size: 100px;
-    font-weight: 600;
-    line-height: 1;
-
-    background: linear-gradient(
-      90deg,
-      rgba(100, 100, 100, 0.4) 0%,
-      rgba(100, 100, 100, 0.6) 70%,
-      rgba(100, 100, 100, 0.2) 100%
-    );
-
-    color: transparent;
-
-    background-clip: text;
   }
 `;

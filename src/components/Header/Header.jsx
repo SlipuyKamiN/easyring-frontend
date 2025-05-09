@@ -1,14 +1,9 @@
 import { useState } from "react";
-import {
-  ArrowLogo,
-  DarkModeToggler,
-  FirstLetterLogo,
-  HeaderBar,
-  LogoLink,
-  SubLogo,
-} from "./Header.styled";
+import { DarkModeToggler, HeaderWrapper, PageHeader } from "./Header.styled";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { NavBar } from "../SharedLayout/NavBar";
+import { PageLogo } from "../Common/PageLogo";
+import { Container } from "../SharedLayout/SharedLayout.styled";
 
 export const Header = () => {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -17,15 +12,16 @@ export const Header = () => {
   };
 
   return (
-    <HeaderBar>
-      <LogoLink to={"//"}>
-        <FirstLetterLogo>e</FirstLetterLogo>asyRing<ArrowLogo>↺</ArrowLogo>
-        <SubLogo>delivery</SubLogo>
-      </LogoLink>
-      <NavBar />
-      <DarkModeToggler onClick={toggleDarkMode} className="darkMode">
-        {isDarkMode ? <BsSun size={20} /> : <BsMoonStars size={20} />}
-      </DarkModeToggler>
-    </HeaderBar>
+    <PageHeader>
+      <Container>
+        <HeaderWrapper>
+          <PageLogo />
+          <NavBar />
+          <DarkModeToggler onClick={toggleDarkMode} className="darkMode">
+            {isDarkMode ? <BsSun size={20} /> : <BsMoonStars size={20} />}
+          </DarkModeToggler>
+        </HeaderWrapper>
+      </Container>
+    </PageHeader>
   );
 };

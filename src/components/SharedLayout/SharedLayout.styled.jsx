@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 100%;
-  padding: 60px 0 0;
+  padding: 0 15px;
 
   outline: tomato 1px solid;
 
@@ -14,6 +14,6 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    padding: 78px 0 0;
+    padding: 0 25px;
   }
 `;
