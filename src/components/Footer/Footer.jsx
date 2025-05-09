@@ -16,7 +16,7 @@ export const Footer = () => {
         <SocialsList>
           <li>
             <IconLink
-              href="http://"
+              href="https://wa.me/491781516236"
               target="_blank"
               rel="noopener nofollow noreferrer"
             >
@@ -25,7 +25,7 @@ export const Footer = () => {
           </li>
           <li>
             <IconLink
-              href="http://"
+              href="https://t.me/@easyRing_delivery"
               target="_blank"
               rel="noopener nofollow noreferrer"
             >
@@ -34,7 +34,7 @@ export const Footer = () => {
           </li>
           <li>
             <IconLink
-              href="http://"
+              href="https://www.instagram.com/easyring.delivery/"
               target="_blank"
               rel="noopener nofollow noreferrer"
             >
@@ -59,7 +59,7 @@ export const Footer = () => {
               </a>
             </AddressListItem>
             <AddressListItem>
-              <a href="tel:+491781515156">+491781515156</a>
+              <a href="tel:+491781516236">+491781516236</a>
             </AddressListItem>
           </ul>
         </address>
