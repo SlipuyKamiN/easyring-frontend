@@ -2,9 +2,13 @@ import styled from "@emotion/styled";
 import { transition } from "~/styles/common/vars";
 
 export const HeroSection = styled.section`
-  padding: 150px 0 60px;
+  padding: 120px 0 60px;
 
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 150px 0 60px;
+  }
 `;
 
 export const HeroTitle = styled.h1`
@@ -49,7 +53,7 @@ export const HeroBtnsList = styled.ul`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 auto 50px;
+  margin: 0 auto 80px;
 
   gap: 24px;
 
@@ -57,6 +61,11 @@ export const HeroBtnsList = styled.ul`
 
   @media screen and (min-width: 768px) {
     max-width: none;
+    margin-bottom: 0;
+
+    & + a {
+      display: none;
+    }
   }
 `;
 
