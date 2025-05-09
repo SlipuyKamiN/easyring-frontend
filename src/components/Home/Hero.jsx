@@ -43,7 +43,8 @@ export const Hero = () => {
               <TrackInput
                 type="text"
                 id="orderID"
-                placeholder="Track by ID#132"
+                placeholder="Track by Parcel ID"
+                autoFocus
               />
               <SecondaryBtnLink to={"orders/1"}>
                 <FaSearch size={16} />
