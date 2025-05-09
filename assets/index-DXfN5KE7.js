@@ -490,7 +490,7 @@ Please change the parent <Route path="${G}"> to <Route path="${G==="/"?"*":`${G}
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 
   @media screen and (min-width: 768px) {
     gap: 30px;
