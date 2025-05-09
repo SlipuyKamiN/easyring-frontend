@@ -1,18 +1,17 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-import { NavBar } from "./NavBar";
+import { RootWrapper } from "./SharedLayout.styled";
 
 const SharedLayout = () => {
   return (
-    <div>
+    <RootWrapper>
       <Header />
       <main>
-        {/* <NavBar /> */}
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </RootWrapper>
   );
 };
 
