@@ -42,7 +42,7 @@ export const StepsList = styled.ul`
 
 export const StepItem = styled.li`
   position: relative;
-  width: 175px;
+  width: 155px;
   padding: 5px;
 
   display: flex;
