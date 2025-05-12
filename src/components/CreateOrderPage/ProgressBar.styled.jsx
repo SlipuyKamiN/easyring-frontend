@@ -7,7 +7,7 @@ export const ProgressList = styled.ul`
   justify-content: center;
   align-items: center;
 
-  gap: 20px;
+  gap: 40px;
 
   @media screen and (min-width: 768px) {
     gap: 80px;
@@ -35,17 +35,27 @@ export const ProgressLink = styled(NavLink)`
     content: "";
     position: absolute;
     top: 15px;
-    left: 35px;
-    width: 70px;
-    border-bottom: 4px solid black;
-    border-radius: 8px;
+    left: 30px;
+    width: 40px;
+    border-bottom: 4px solid ${colors.light.gray};
     transition: border-color ${transition.duration};
-    border-color: ${colors.light.gray};
+    border-radius: 8px;
   }
 
   &.active,
   &.active::after {
     color: ${colors.accent.cyan};
     border-color: ${colors.accent.cyan};
+  }
+
+  @media screen and (min-width: 768px) {
+    &::after {
+      position: absolute;
+      left: 35px;
+      width: 70px;
+      border-bottom: 4px solid ${colors.light.gray};
+      transition: border-color ${transition.duration};
+      border-radius: 8px;
+    }
   }
 `;
