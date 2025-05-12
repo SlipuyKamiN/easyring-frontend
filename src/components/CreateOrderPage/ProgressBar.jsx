@@ -1,12 +1,17 @@
-import { Container, Section } from "../SharedLayout/SharedLayout.styled";
-import { ProgressItem, ProgressLink, ProgressList } from "./ProgressBar.styled";
+import { Container } from "../SharedLayout/SharedLayout.styled";
+import {
+  ProgressItem,
+  ProgressLink,
+  ProgressList,
+  ProgressSection,
+} from "./ProgressBar.styled";
 import { TbMapPinShare, TbMapPinDown } from "react-icons/tb";
 import { GoChecklist } from "react-icons/go";
 import { LuBox } from "react-icons/lu";
 
 export const ProgressBar = () => {
   return (
-    <Section>
+    <ProgressSection>
       <Container>
         <ProgressList>
           <ProgressItem>
@@ -31,6 +36,6 @@ export const ProgressBar = () => {
           </ProgressItem>
         </ProgressList>
       </Container>
-    </Section>
+    </ProgressSection>
   );
 };

@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { colors, transition } from "~/styles/common/vars";
+import { Section } from "../SharedLayout/SharedLayout.styled";
+
+export const ProgressSection = styled(Section)`
+  padding-bottom: 0;
+`;
 
 export const ProgressList = styled.ul`
   display: flex;
