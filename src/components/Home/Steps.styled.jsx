@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
 
-export const StepsSection = styled.section`
-  padding: 60px 0;
-`;
-
 export const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 20px;

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { transition } from "~/styles/common/vars";
+import { colors, transition } from "~/styles/common/vars";
 
 export const PrimaryBtn = styled.button`
   display: flex;
@@ -10,13 +10,8 @@ export const PrimaryBtn = styled.button`
 
   padding: 10px 16px;
 
-  background: linear-gradient(
-    90deg,
-    rgba(100, 100, 100, 0.4) 0%,
-    rgba(100, 100, 100, 0.6) 60%,
-    rgba(100, 100, 100, 0.2) 100%
-  );
-  color: #000;
+  background: ${colors.light.gradient};
+  color: ${colors.light.gray};
 
   text-transform: uppercase;
   font-size: 16px;
@@ -30,20 +25,21 @@ export const PrimaryBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #dddddd;
+    background-color: ${colors.light.gray};
   }
 `;
 
 export const SecondaryBtn = styled(PrimaryBtn)`
   background: transparent;
-  background-color: #dddddd66;
+  background-color: ${colors.light.silver};
+
   font-weight: 400;
 
   &:hover,
   &:focus {
-    color: #000;
+    color: ${colors.light.darkGray};
 
-    background-color: #ddddddaa;
+    background-color: ${colors.light.gray};
   }
 `;
 
@@ -57,13 +53,9 @@ export const BtnLink = styled(Link)`
 
   padding: 10px 16px;
 
-  background: linear-gradient(
-    90deg,
-    rgba(100, 100, 100, 0.4) 0%,
-    rgba(100, 100, 100, 0.6) 60%,
-    rgba(100, 100, 100, 0.2) 100%
-  );
-  color: #000;
+  background: ${colors.light.gradient};
+
+  color: ${colors.light.darkGray};
 
   text-transform: uppercase;
   font-size: 16px;
@@ -76,19 +68,19 @@ export const BtnLink = styled(Link)`
 
   &:hover,
   &:focus {
-    background-color: #dddddd;
+    background-color: ${colors.light.gray};
   }
 `;
 
 export const SecondaryBtnLink = styled(BtnLink)`
   background: none;
-  background-color: #dddddd66;
+  background-color: ${colors.light.gray};
   font-weight: 400;
 
   &:hover,
   &:focus {
-    color: #000;
+    color: ${colors.light.darkGray};
 
-    background-color: #ddddddaa;
+    background-color: ${colors.light.gray};
   }
 `;

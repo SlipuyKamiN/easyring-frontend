@@ -1,19 +1,14 @@
-import {
-  StepItem,
-  StepsList,
-  SectionTitle,
-  StepsSection,
-} from "./Steps.styled";
+import { StepItem, StepsList, SectionTitle } from "./Steps.styled";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { BsCashCoin } from "react-icons/bs";
 import { LiaPeopleCarrySolid } from "react-icons/lia";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaFlagCheckered } from "react-icons/fa";
-import { Container } from "../SharedLayout/SharedLayout.styled";
+import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 
 export const Steps = () => {
   return (
-    <StepsSection id="how-it-works">
+    <Section id="how-it-works">
       <Container>
         <SectionTitle>How it works</SectionTitle>
         <StepsList>
@@ -47,6 +42,6 @@ export const Steps = () => {
           </StepItem>
         </StepsList>
       </Container>
-    </StepsSection>
+    </Section>
   );
 };

@@ -11,6 +11,7 @@ import { Sender } from "~/components/CreateOrderPage/Sender";
 import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
 import { Recipient } from "~/components/CreateOrderPage/Recipient";
 import { LogInPage } from "~/components/LogIn/LogInPage";
+import { Confirm } from "../CreateOrderPage/Confirm";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="maininfo" element={<MainInfo />}></Route>
           <Route path="sender" element={<Sender />}></Route>
           <Route path="recipient" element={<Recipient />}></Route>
+          <Route path="confirm" element={<Confirm />}></Route>
         </Route>
         <Route path="orders/:orderId" element={<OrderPage />}></Route>
         <Route path="login" element={<LogInPage />}></Route>

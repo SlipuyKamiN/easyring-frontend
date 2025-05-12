@@ -81,3 +81,11 @@ export const Container = styled.div`
     padding: 0 25px;
   }
 `;
+
+export const Section = styled.section`
+  padding: 65px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 90px 0;
+  }
+`;
