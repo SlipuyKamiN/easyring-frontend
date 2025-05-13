@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { FormWrapper } from "./CreateOrderPage.styled";
-import { SizeButton, SizeButtonsList } from "./MainInfo.styled";
+import {
+  SizeButton,
+  SizeButtonsList,
+  SizeDescription,
+  SizeInput,
+  SizeText,
+} from "./MainInfo.styled";
 import { TbBoxAlignBottomRight, TbBoxAlignBottom } from "react-icons/tb";
 import { BsBox } from "react-icons/bs";
 
@@ -16,27 +22,29 @@ export const MainInfo = () => {
               <SizeButtonsList>
                 <li>
                   <SizeButton htmlFor="S">
-                    <input type="radio" name="size" id="S" />
-
-                    <span>
+                    <SizeInput type="radio" name="size" id="S" />
+                    <SizeText>
                       <TbBoxAlignBottomRight size={36} />S
-                    </span>
+                    </SizeText>
+                    <SizeDescription>2kg</SizeDescription>
                   </SizeButton>
                 </li>
                 <li>
                   <SizeButton htmlFor="M">
-                    <input type="radio" name="size" id="M" />
-                    <span>
+                    <SizeInput type="radio" name="size" id="M" />
+                    <SizeText>
                       <TbBoxAlignBottom size={36} />M
-                    </span>
+                    </SizeText>
+                    <SizeDescription>10kg</SizeDescription>
                   </SizeButton>
                 </li>
                 <li>
                   <SizeButton htmlFor="L">
-                    <input type="radio" name="size" id="L" />
-                    <span>
+                    <SizeInput type="radio" name="size" id="L" />
+                    <SizeText>
                       <BsBox size={36} />L
-                    </span>
+                    </SizeText>
+                    <SizeDescription>30kg</SizeDescription>
                   </SizeButton>
                 </li>
               </SizeButtonsList>

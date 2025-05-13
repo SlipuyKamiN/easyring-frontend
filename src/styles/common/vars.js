@@ -18,8 +18,8 @@ export const colors = {
     blue: "#0A84FF",
     darkBlue: "#0040DD",
   },
-  classicWhite: "#000000",
-  classicBlack: "#ffffff",
+  classicBlack: "#000000",
+  classicWhite: "#ffffff",
   errorRed: "#FF0000",
 };
 
