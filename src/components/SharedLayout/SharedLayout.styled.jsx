@@ -65,7 +65,6 @@ export const RootWrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  position: relative;
   margin: 0 auto;
   width: 100%;
   padding: 0 15px;

@@ -2,23 +2,41 @@ import { Link } from "react-router-dom";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { FormWrapper } from "./CreateOrderPage.styled";
 import {
+  ParcelDescription,
   SizeButton,
   SizeButtonsList,
   SizeDescription,
   SizeInput,
+  SizeLabel,
   SizeText,
 } from "./MainInfo.styled";
 import { TbBoxAlignBottomRight, TbBoxAlignBottom } from "react-icons/tb";
 import { BsBox } from "react-icons/bs";
+import DatePicker from "react-date-picker";
+import TimeRangePicker from "@wojtekmaj/react-timerange-picker";
+import { useState } from "react";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css";
+import "react-clock/dist/Clock.css";
 
 export const MainInfo = () => {
+  const [dateValue, onDateChange] = useState(new Date());
+  const [timeValue, onTimeChange] = useState(["10:00", "11:00"]);
+
+  console.log(dateValue, timeValue);
+
+  const today = new Date();
+  const nextWeek = new Date();
+  nextWeek.setDate(today.getDate() + 14);
+
   return (
     <Section>
       <Container>
         <FormWrapper>
           <ul>
             <li>
-              <label htmlFor="size">Select size:</label>
+              <SizeLabel htmlFor="size">Select size to:</SizeLabel>
               <SizeButtonsList>
                 <li>
                   <SizeButton htmlFor="S">
@@ -50,12 +68,43 @@ export const MainInfo = () => {
               </SizeButtonsList>
             </li>
             <li>
-              <label htmlFor="description">Provide description:</label>
-              <input type="text" placeholder="short description" />
+              <SizeLabel htmlFor="date">Select date:</SizeLabel>
+              <DatePicker
+                id="date"
+                format="dd.MM"
+                minDate={today}
+                maxDate={nextWeek}
+                maxDetail="month"
+                required
+                calendarProps={{
+                  minDetail: "month",
+                }}
+                onChange={onDateChange}
+                value={dateValue}
+              />
             </li>
             <li>
-              <label htmlFor="photo">Add photo:</label>
-              <input type="image" src="photo" alt="photo" />
+              <SizeLabel htmlFor="time">Select delivery time:</SizeLabel>
+              <TimeRangePicker
+                disableClock
+                maxDetail="minute"
+                minTime="08:00:00"
+                maxTime="20:00:00"
+                required
+                onChange={onTimeChange}
+                value={timeValue}
+              />
+            </li>
+            <li>
+              <ParcelDescription
+                type="text"
+                placeholder="Parcel description"
+                rows={1}
+                onInput={(e) => {
+                  e.currentTarget.style.height = "auto";
+                  e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                }}
+              />
             </li>
           </ul>
           <ul>

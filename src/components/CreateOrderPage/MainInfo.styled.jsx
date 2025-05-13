@@ -6,6 +6,13 @@ export const SizeButtonsList = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 20px;
+
+  margin-bottom: 20px;
+`;
+
+export const SizeLabel = styled.label`
+  display: block;
+  margin-bottom: 10px;
 `;
 
 export const SizeButton = styled.label`
@@ -16,7 +23,7 @@ export const SizeButton = styled.label`
   width: 60px;
 
   border-radius: 14px;
-  background-color: ${colors.light.gray};
+  background-color: ${colors.light.silver};
 
   overflow: hidden;
 
@@ -109,4 +116,15 @@ export const SizeDescription = styled.span`
     bottom: 8px;
     left: 8px;
   }
+`;
+
+export const ParcelDescription = styled.textarea`
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 16px;
+  background-color: ${colors.light.silver};
+
+  font-family: inherit;
+  resize: none;
 `;
