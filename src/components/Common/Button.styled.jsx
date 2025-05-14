@@ -5,17 +5,19 @@ import { colors, transition } from "~/styles/common/vars";
 export const PrimaryBtn = styled.button`
   display: flex;
   align-items: center;
+
   gap: 10px;
+
   min-height: 40px;
 
   padding: 10px 16px;
 
   background: ${colors.light.gradient};
-  color: ${colors.light.gray};
+
+  color: ${colors.light.darkGray};
 
   text-transform: uppercase;
   font-size: 16px;
-
   font-weight: 600;
 
   border-radius: 8px;
@@ -73,8 +75,9 @@ export const BtnLink = styled(Link)`
 `;
 
 export const SecondaryBtnLink = styled(BtnLink)`
-  background: none;
-  background-color: ${colors.light.gray};
+  background: transparent;
+  background-color: ${colors.light.silver};
+
   font-weight: 400;
 
   &:hover,

@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { FormWrapper } from "./CreateOrderPage.styled";
 import {
+  FormBtnsList,
+  InputList,
+  InputListItem,
   ParcelDescription,
   SizeButton,
   SizeButtonsList,
@@ -9,32 +11,26 @@ import {
   SizeInput,
   SizeLabel,
   SizeText,
+  TimePickerWrapper,
 } from "./MainInfo.styled";
 import { TbBoxAlignBottomRight, TbBoxAlignBottom } from "react-icons/tb";
 import { BsBox } from "react-icons/bs";
-import DatePicker from "react-date-picker";
-import TimeRangePicker from "@wojtekmaj/react-timerange-picker";
-import { useState } from "react";
-import "react-date-picker/dist/DatePicker.css";
-import "react-calendar/dist/Calendar.css";
-import "@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css";
-import "react-clock/dist/Clock.css";
+import {
+  DatePicker,
+  LocalizationProvider,
+  TimePicker,
+} from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { de } from "date-fns/locale/de";
+import { addDays } from "date-fns";
+import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 
 export const MainInfo = () => {
-  const [dateValue, onDateChange] = useState(new Date());
-  const [timeValue, onTimeChange] = useState(["10:00", "11:00"]);
-
-  console.log(dateValue, timeValue);
-
-  const today = new Date();
-  const nextWeek = new Date();
-  nextWeek.setDate(today.getDate() + 14);
-
   return (
     <Section>
       <Container>
         <FormWrapper>
-          <ul>
+          <InputList>
             <li>
               <SizeLabel htmlFor="size">Select size to:</SizeLabel>
               <SizeButtonsList>
@@ -67,34 +63,59 @@ export const MainInfo = () => {
                 </li>
               </SizeButtonsList>
             </li>
-            <li>
-              <SizeLabel htmlFor="date">Select date:</SizeLabel>
-              <DatePicker
-                id="date"
-                format="dd.MM"
-                minDate={today}
-                maxDate={nextWeek}
-                maxDetail="month"
-                required
-                calendarProps={{
-                  minDetail: "month",
-                }}
-                onChange={onDateChange}
-                value={dateValue}
-              />
-            </li>
-            <li>
-              <SizeLabel htmlFor="time">Select delivery time:</SizeLabel>
-              <TimeRangePicker
-                disableClock
-                maxDetail="minute"
-                minTime="08:00:00"
-                maxTime="20:00:00"
-                required
-                onChange={onTimeChange}
-                value={timeValue}
-              />
-            </li>
+            <InputListItem>
+              <LocalizationProvider
+                dateAdapter={AdapterDateFns}
+                adapterLocale={de}
+              >
+                <DatePicker
+                  minDate={new Date()}
+                  maxDate={addDays(new Date(), 14)}
+                  label={"Pick up date"}
+                  format="dd.MM"
+                  required
+                  slotProps={{
+                    field: {
+                      clearable: true,
+                      fullWidth: true,
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+            </InputListItem>
+            <InputListItem>
+              <TimePickerWrapper>
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  adapterLocale={de}
+                >
+                  <TimePicker
+                    label={"Delivery from"}
+                    minutesStep={30}
+                    minTime={new Date(0, 0, 0, 8, 0)}
+                    maxTime={new Date(0, 0, 0, 20, 0)}
+                    slotProps={{ field: { clearable: true } }}
+                  />
+                </LocalizationProvider>
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  adapterLocale={de}
+                >
+                  <TimePicker
+                    label={"until"}
+                    minutesStep={30}
+                    minTime={new Date(0, 0, 0, 8, 0)}
+                    maxTime={new Date(0, 0, 0, 20, 0)}
+                    slotProps={{
+                      field: {
+                        clearable: true,
+                        variant: "outlined",
+                      },
+                    }}
+                  />
+                </LocalizationProvider>
+              </TimePickerWrapper>
+            </InputListItem>
             <li>
               <ParcelDescription
                 type="text"
@@ -106,12 +127,15 @@ export const MainInfo = () => {
                 }}
               />
             </li>
-          </ul>
-          <ul>
+          </InputList>
+          <FormBtnsList>
             <li>
-              <Link>{"=>"}</Link>
+              <SecondaryBtnLink to={"/"}>Cancel</SecondaryBtnLink>
             </li>
-          </ul>
+            <li>
+              <PrimaryBtn>Next</PrimaryBtn>
+            </li>
+          </FormBtnsList>
         </FormWrapper>
       </Container>
     </Section>

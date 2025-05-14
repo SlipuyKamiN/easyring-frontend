@@ -1,0 +1,36 @@
+.MuiTimeField-root {
+  border-radius: 16px;
+  font-family: Montserrat, sans-serif;
+}
+
+.MuiFormControl-root .MuiPickersOutlinedInput-notchedOutline {
+  border: none;
+  max-width: 175px;
+}
+
+.MuiFormControl-root {
+  max-width: 175px;
+}
+
+.MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+}
+
+.MuiPickersInputBase-root.MuiPickersOutlinedInput-root {
+  font-family: Montserrat;
+
+  padding: 0 10px;
+  background-color: #f2f2f7;
+  border-radius: 16px;
+  min-width: 130px;
+  max-width: 175px;
+}
+
+.Mui-focused {
+  color: #000000 !important;
+}
+
+.MuiPickersOutlinedInput-notchedOutline {
+  border-color: #000000 !important;
+}

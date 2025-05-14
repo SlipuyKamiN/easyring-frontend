@@ -120,6 +120,7 @@ export const SizeDescription = styled.span`
 
 export const ParcelDescription = styled.textarea`
   width: 100%;
+  min-height: 56px;
   padding: 10px;
   border: none;
   border-radius: 16px;
@@ -127,4 +128,27 @@ export const ParcelDescription = styled.textarea`
 
   font-family: inherit;
   resize: none;
+`;
+
+export const InputList = styled.ul`
+  margin-bottom: 30px;
+`;
+
+export const InputListItem = styled.li`
+  max-width: 100%;
+  margin: 0 auto 20px;
+`;
+
+export const TimePickerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const FormBtnsList = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
