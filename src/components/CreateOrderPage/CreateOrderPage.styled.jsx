@@ -6,7 +6,7 @@ export const FormWrapper = styled.form`
   padding: 40px;
 
   max-width: 450px;
-  border-radius: 16px;
-  background-color: ${`${colors.light.silver}80`};
+  border-radius: 40px;
+  background-color: ${`${colors.light.gray}40`};
   backdrop-filter: blur(10px);
 `;
