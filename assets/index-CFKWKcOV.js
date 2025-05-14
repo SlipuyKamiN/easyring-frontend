@@ -631,8 +631,8 @@ Please change the parent <Route path="${k}"> to <Route path="${k==="/"?"*":`${k}
   padding: 40px;
 
   max-width: 450px;
-  border-radius: 16px;
-  background-color: ${`${tt.light.silver}80`};
+  border-radius: 40px;
+  background-color: ${`${tt.light.gray}40`};
   backdrop-filter: blur(10px);
 `,A5=()=>y.jsx(os,{children:y.jsx(An,{children:y.jsxs(vd,{children:[y.jsx("h3",{children:"Sender info:"}),y.jsxs("ul",{children:[y.jsx("li",{children:y.jsxs("label",{htmlFor:"",children:["Phone number:",y.jsx("input",{type:"text"})]})}),y.jsx("li",{children:y.jsxs("label",{htmlFor:"",children:["Name, Surname:",y.jsx("input",{type:"text"})]})}),y.jsx("li",{children:y.jsxs("label",{htmlFor:"",children:["Full address:",y.jsx("input",{type:"text"})]})}),y.jsx("li",{children:y.jsxs("label",{htmlFor:"",children:["Email:",y.jsx("input",{type:"text"})]})}),y.jsx("li",{children:y.jsxs("label",{htmlFor:"",children:["Comment:",y.jsx("input",{type:"text",placeholder:"doorbell/company/entrance"})]})})]}),y.jsxs("ul",{children:[y.jsx("li",{children:y.jsx(Ja,{children:"<="})}),y.jsx("li",{children:y.jsx(Ja,{children:"=>"})})]})]})})}),N5=Ge.ul`
   display: flex;
