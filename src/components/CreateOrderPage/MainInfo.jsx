@@ -22,21 +22,46 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { de } from "date-fns/locale/de";
-import { addDays } from "date-fns";
+import { addDays, addHours } from "date-fns";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
+import { Controller, useForm } from "react-hook-form";
+// import { yupResolver } from "@hookform/resolvers/yup";
 
-export const MainInfo = () => {
+export const MainInfo = ({ newParcel, setNewParcel }) => {
+  const { control, register, handleSubmit, watch } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      size: "",
+      date: "",
+      startTime: "",
+      endTime: "",
+      description: "",
+    },
+    // resolver: yupResolver(signinSchema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  console.log(newParcel, setNewParcel);
+
   return (
     <Section>
       <Container>
-        <FormWrapper>
+        <FormWrapper autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <InputList>
             <li>
-              <SizeLabel htmlFor="size">Select size to:</SizeLabel>
+              <SizeLabel>Select size to:</SizeLabel>
               <SizeButtonsList>
                 <li>
-                  <SizeButton htmlFor="S">
-                    <SizeInput type="radio" name="size" id="S" />
+                  <SizeButton>
+                    <SizeInput
+                      type="radio"
+                      name="size"
+                      value={"S"}
+                      {...register("size")}
+                    />
                     <SizeText>
                       <TbBoxAlignBottomRight size={36} />S
                     </SizeText>
@@ -44,8 +69,13 @@ export const MainInfo = () => {
                   </SizeButton>
                 </li>
                 <li>
-                  <SizeButton htmlFor="M">
-                    <SizeInput type="radio" name="size" id="M" />
+                  <SizeButton>
+                    <SizeInput
+                      type="radio"
+                      name="size"
+                      value={"M"}
+                      {...register("size")}
+                    />
                     <SizeText>
                       <TbBoxAlignBottom size={36} />M
                     </SizeText>
@@ -53,8 +83,13 @@ export const MainInfo = () => {
                   </SizeButton>
                 </li>
                 <li>
-                  <SizeButton htmlFor="L">
-                    <SizeInput type="radio" name="size" id="L" />
+                  <SizeButton>
+                    <SizeInput
+                      type="radio"
+                      name="size"
+                      value={"L"}
+                      {...register("size")}
+                    />
                     <SizeText>
                       <BsBox size={36} />L
                     </SizeText>
@@ -68,17 +103,23 @@ export const MainInfo = () => {
                 dateAdapter={AdapterDateFns}
                 adapterLocale={de}
               >
-                <DatePicker
-                  minDate={new Date()}
-                  maxDate={addDays(new Date(), 14)}
-                  label={"Pick up date"}
-                  format="dd.MM.yy"
-                  required
-                  slotProps={{
-                    field: {
-                      clearable: true,
-                    },
-                  }}
+                <Controller
+                  name="date"
+                  control={control}
+                  render={({ field }) => (
+                    <DatePicker
+                      {...field}
+                      minDate={new Date()}
+                      maxDate={addDays(new Date(), 14)}
+                      label={"Pick up date"}
+                      format="dd.MM.yy"
+                      slotProps={{
+                        field: {
+                          clearable: true,
+                        },
+                      }}
+                    />
+                  )}
                 />
               </LocalizationProvider>
             </InputListItem>
@@ -88,28 +129,50 @@ export const MainInfo = () => {
                   dateAdapter={AdapterDateFns}
                   adapterLocale={de}
                 >
-                  <TimePicker
-                    label={"Delivery from"}
-                    minutesStep={30}
-                    minTime={new Date(0, 0, 0, 8, 0)}
-                    maxTime={new Date(0, 0, 0, 20, 0)}
-                    slotProps={{ field: { clearable: true } }}
+                  <Controller
+                    name={"startTime"}
+                    control={control}
+                    render={({ field }) => (
+                      <TimePicker
+                        {...field}
+                        label={"Delivery from"}
+                        minutesStep={30}
+                        minTime={new Date(0, 0, 0, 8, 0)}
+                        maxTime={new Date(0, 0, 0, 20, 0)}
+                        slotProps={{ field: { clearable: true } }}
+                      />
+                    )}
                   />
                 </LocalizationProvider>
                 <LocalizationProvider
                   dateAdapter={AdapterDateFns}
                   adapterLocale={de}
                 >
-                  <TimePicker
-                    label={"until"}
-                    minutesStep={30}
-                    minTime={new Date(0, 0, 0, 8, 0)}
-                    maxTime={new Date(0, 0, 0, 20, 0)}
-                    slotProps={{
-                      field: {
-                        clearable: true,
-                        variant: "outlined",
-                      },
+                  <Controller
+                    name={"endTime"}
+                    control={control}
+                    render={({ field }) => {
+                      const startTime = watch("startTime");
+                      const minEndTime = startTime
+                        ? addHours(startTime, 2)
+                        : new Date(0, 0, 0, 8, 0);
+
+                      return (
+                        <TimePicker
+                          {...field}
+                          disabled={!startTime}
+                          label={"until"}
+                          minutesStep={30}
+                          minTime={minEndTime}
+                          maxTime={new Date(0, 0, 0, 20, 0)}
+                          slotProps={{
+                            field: {
+                              clearable: true,
+                              variant: "outlined",
+                            },
+                          }}
+                        />
+                      );
                     }}
                   />
                 </LocalizationProvider>
@@ -117,6 +180,7 @@ export const MainInfo = () => {
             </InputListItem>
             <li>
               <ParcelDescription
+                {...register("description")}
                 type="text"
                 placeholder="Parcel description"
                 rows={1}
@@ -132,7 +196,7 @@ export const MainInfo = () => {
               <SecondaryBtnLink to={"/"}>Cancel</SecondaryBtnLink>
             </li>
             <li>
-              <PrimaryBtn>Next</PrimaryBtn>
+              <PrimaryBtn type="Submit">Next</PrimaryBtn>
             </li>
           </FormBtnsList>
         </FormWrapper>
