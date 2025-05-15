@@ -72,12 +72,11 @@ export const MainInfo = () => {
                   minDate={new Date()}
                   maxDate={addDays(new Date(), 14)}
                   label={"Pick up date"}
-                  format="dd.MM"
+                  format="dd.MM.yy"
                   required
                   slotProps={{
                     field: {
                       clearable: true,
-                      fullWidth: true,
                     },
                   }}
                 />

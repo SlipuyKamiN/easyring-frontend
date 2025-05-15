@@ -121,12 +121,13 @@ export const SizeDescription = styled.span`
 export const ParcelDescription = styled.textarea`
   width: 100%;
   min-height: 56px;
-  padding: 10px;
+  padding: 10px 15px;
   border: none;
   border-radius: 16px;
   background-color: ${colors.light.silver};
 
   font-family: inherit;
+  font-size: 16px;
   resize: none;
 `;
 

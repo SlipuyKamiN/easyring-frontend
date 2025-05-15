@@ -5,11 +5,9 @@
 
 .MuiFormControl-root .MuiPickersOutlinedInput-notchedOutline {
   border: none;
-  max-width: 175px;
 }
 
 .MuiFormControl-root {
-  max-width: 175px;
 }
 
 .MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root {
@@ -23,8 +21,6 @@
   padding: 0 10px;
   background-color: #f2f2f7;
   border-radius: 16px;
-  min-width: 130px;
-  max-width: 175px;
 }
 
 .Mui-focused {
@@ -33,4 +29,24 @@
 
 .MuiPickersOutlinedInput-notchedOutline {
   border-color: #000000 !important;
+}
+
+.MuiFormControl-root.MuiPickersTextField-root {
+  //date
+  width: 100%;
+  max-width: none;
+}
+
+.MuiFormControl-root.MuiPickersTextField-root {
+  //time
+  min-width: 130px;
+  max-width: none;
+
+  @media screen and (min-width: 768px) {
+    max-width: 175px;
+  }
+}
+
+.MuiPickersInputBase-root.MuiPickersOutlinedInput-root.MuiPickersInputBase-colorPrimary.MuiPickersInputBase-adornedEnd {
+  padding: 0px 15px;
 }
