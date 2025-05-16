@@ -681,7 +681,7 @@ Please change the parent <Route path="${E}"> to <Route path="${E==="/"?"*":`${E}
   input:focus + label,
   input:not(:placeholder-shown) + label {
     transform: translateY(-25px);
-    padding: 4px 20px 4px 10px;
+    padding: 4px 20px 5px 10px;
 
     font-size: 12px;
     color: ${at.light.darkGray};
@@ -689,6 +689,9 @@ Please change the parent <Route path="${E}"> to <Route path="${E==="/"?"*":`${E}
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
+  }
+  input:focus + label {
+    box-shadow: -3px -5px 10px -5px;
   }
 `,$a=Ze.input`
   width: 100%;
