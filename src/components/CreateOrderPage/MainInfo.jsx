@@ -27,7 +27,7 @@ import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { mainInfoSchema } from "~/schemas/newParcelSchema";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 
 export const MainInfo = () => {
@@ -40,17 +40,20 @@ export const MainInfo = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      size: "",
-      date: "",
-      startTime: "",
-      endTime: "",
+      size: "S",
+      date: new Date(),
+      startTime: " ",
+      endTime: " ",
       description: "",
     },
     resolver: yupResolver(mainInfoSchema),
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+    navigate("/createorder/sender");
   };
 
   return (

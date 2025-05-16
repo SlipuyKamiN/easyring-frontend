@@ -23,3 +23,52 @@ export const mainInfoSchema = yup.object().shape({
 
   description: yup.string().required("Please provide the parcel description"),
 });
+
+export const senderSchema = yup.object().shape({
+  phone: yup
+    .string()
+    .matches(
+      /^\+?[0-9]+$/,
+      'Phone number must contain digits and start with "+"'
+    )
+    .required("Phone number is required"),
+
+  name: yup
+    .string()
+    .matches(
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
+      "Name must contain first and last name using only letters"
+    )
+    .required("Name is required"),
+
+  address: yup.string().required("Address is required"),
+
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+
+  comment: yup.string(),
+});
+
+export const recipientSchema = yup.object().shape({
+  phone: yup
+    .string()
+    .matches(
+      /^\+?[0-9]+$/,
+      'Phone number must contain digits and start with "+"'
+    )
+    .required("Phone number is required"),
+
+  name: yup
+    .string()
+    .matches(
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
+      "Name must contain first and last name using only letters"
+    )
+    .required("Name is required"),
+
+  address: yup.string().required("Address is required"),
+
+  comment: yup.string(),
+});
