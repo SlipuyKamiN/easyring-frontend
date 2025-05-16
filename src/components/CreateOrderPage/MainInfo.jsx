@@ -1,5 +1,5 @@
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
-import { FormWrapper } from "./CreateOrderPage.styled";
+import { ErrorText, FormWrapper } from "./CreateOrderPage.styled";
 import {
   FormBtnsList,
   InputList,
@@ -25,10 +25,19 @@ import { de } from "date-fns/locale/de";
 import { addDays, addHours } from "date-fns";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { Controller, useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { mainInfoSchema } from "~/schemas/newParcelSchema";
+import { Navigate } from "react-router-dom";
+import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 
-export const MainInfo = ({ newParcel, setNewParcel }) => {
-  const { control, register, handleSubmit, watch } = useForm({
+export const MainInfo = () => {
+  const {
+    control,
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
     mode: "onChange",
     defaultValues: {
       size: "",
@@ -37,14 +46,12 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
       endTime: "",
       description: "",
     },
-    // resolver: yupResolver(signinSchema),
+    resolver: yupResolver(mainInfoSchema),
   });
 
   const onSubmit = (data) => {
     console.log(data);
   };
-
-  console.log(newParcel, setNewParcel);
 
   return (
     <Section>
@@ -97,6 +104,7 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
                   </SizeButton>
                 </li>
               </SizeButtonsList>
+              <ValidationErrorText inputError={errors.size} />
             </li>
             <InputListItem>
               <LocalizationProvider
@@ -121,6 +129,7 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
                     />
                   )}
                 />
+                <ValidationErrorText inputError={errors.date} />
               </LocalizationProvider>
             </InputListItem>
             <InputListItem>
@@ -164,7 +173,7 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
                           label={"until"}
                           minutesStep={30}
                           minTime={minEndTime}
-                          maxTime={new Date(0, 0, 0, 20, 0)}
+                          maxTime={new Date(0, 0, 0, 22, 0)}
                           slotProps={{
                             field: {
                               clearable: true,
@@ -177,6 +186,9 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
                   />
                 </LocalizationProvider>
               </TimePickerWrapper>
+              <ValidationErrorText
+                inputError={errors.startTime || errors.endTime}
+              />
             </InputListItem>
             <li>
               <ParcelDescription
@@ -189,6 +201,7 @@ export const MainInfo = ({ newParcel, setNewParcel }) => {
                   e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
                 }}
               />
+              <ValidationErrorText inputError={errors.description} />
             </li>
           </InputList>
           <FormBtnsList>
