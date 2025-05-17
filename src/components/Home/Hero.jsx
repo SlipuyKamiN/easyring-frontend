@@ -54,7 +54,7 @@ export const Hero = () => {
             </TrackInputWrapper>
           )}
         </HeroBtnsList>
-        <IconLink href="#how-it-works">
+        <IconLink>
           <RiArrowDownWideFill size={50} />
         </IconLink>
       </Container>
