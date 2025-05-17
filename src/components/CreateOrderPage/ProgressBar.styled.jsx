@@ -5,6 +5,10 @@ import { Section } from "../SharedLayout/SharedLayout.styled";
 
 export const ProgressSection = styled(Section)`
   padding-bottom: 0;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 0;
+  }
 `;
 
 export const ProgressList = styled.ul`
@@ -49,8 +53,8 @@ export const ProgressLink = styled(NavLink)`
 
   &.active,
   &.active::after {
-    color: ${colors.accent.cyan};
-    border-color: ${colors.accent.cyan};
+    color: ${colors.light.darkGray};
+    border-color: ${colors.light.darkGray};
   }
 
   @media screen and (min-width: 768px) {

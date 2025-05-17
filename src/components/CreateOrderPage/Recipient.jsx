@@ -71,7 +71,6 @@ export const Recipient = () => {
                 render={({ field }) => (
                   <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
                     <GeoapifyGeocoderAutocomplete
-                      {...field}
                       placeholder="Full address"
                       limit={5}
                       filterByCircle={{

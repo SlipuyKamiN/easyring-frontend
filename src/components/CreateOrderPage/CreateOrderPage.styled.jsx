@@ -62,7 +62,7 @@ export const InputItem = styled.li`
   input:focus + label,
   input:not(:placeholder-shown) + label {
     transform: translateY(-25px);
-    padding: 4px 20px 5px 10px;
+    padding: 4px 20px 4px 10px;
 
     font-size: 12px;
     color: ${colors.light.darkGray};

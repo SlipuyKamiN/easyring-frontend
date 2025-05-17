@@ -4,7 +4,7 @@ const newParcelObject = {
   id: "",
   mainInfo: {
     size: "S",
-    date: new Date(),
+    date: "",
     startTime: "",
     endTime: "",
     description: "",
@@ -23,7 +23,7 @@ const newParcelObject = {
     comment: "",
   },
   tracking: {
-    id: "RR123",
+    id: "RR434493",
     currentStage: "Created",
     timeStamps: {
       createdAt: "08:00",

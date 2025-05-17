@@ -44,7 +44,6 @@ export const Sender = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(updSender(data));
     navigate("/createorder/recipient");
   };
@@ -72,7 +71,6 @@ export const Sender = () => {
                 render={({ field }) => (
                   <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
                     <GeoapifyGeocoderAutocomplete
-                      {...field}
                       placeholder="Full address"
                       limit={5}
                       filterByCircle={{

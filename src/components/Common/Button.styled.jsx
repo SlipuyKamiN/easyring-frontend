@@ -75,6 +75,7 @@ export const BtnLink = styled(Link)`
 `;
 
 export const SecondaryBtnLink = styled(BtnLink)`
+  max-width: 150px;
   background: transparent;
   background-color: ${colors.light.silver};
 

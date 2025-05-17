@@ -1,5 +1,5 @@
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
-import { ErrorText, FormWrapper } from "./CreateOrderPage.styled";
+import { FormWrapper } from "./CreateOrderPage.styled";
 import {
   FormBtnsList,
   InputList,
@@ -22,7 +22,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { de } from "date-fns/locale/de";
-import { addDays, addHours } from "date-fns";
+import { addDays, addHours, formatISO, isValid, parseISO } from "date-fns";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,11 +31,13 @@ import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
+import { combineDateTime } from "~/helpers/combineDateTime";
 
 export const MainInfo = () => {
   const { size, date, startTime, endTime, description } = useSelector(
     ({ newParcel }) => newParcel.mainInfo
   );
+
   const {
     control,
     register,
@@ -46,9 +48,9 @@ export const MainInfo = () => {
     mode: "onChange",
     defaultValues: {
       size,
-      date,
-      startTime,
-      endTime,
+      date: parseISO(date),
+      startTime: parseISO(startTime),
+      endTime: parseISO(endTime),
       description,
     },
     resolver: yupResolver(mainInfoSchema),
@@ -58,7 +60,10 @@ export const MainInfo = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
+    data.startTime = combineDateTime(data.date, data.startTime);
+    data.endTime = combineDateTime(data.date, data.endTime);
+    data.date = formatISO(data.date);
+
     dispatch(updMainInfo(data));
     navigate("/createorder/sender");
   };
@@ -179,7 +184,7 @@ export const MainInfo = () => {
                       return (
                         <TimePicker
                           {...field}
-                          disabled={!startTime}
+                          disabled={!isValid(startTime)}
                           label={"until"}
                           minutesStep={30}
                           minTime={minEndTime}
