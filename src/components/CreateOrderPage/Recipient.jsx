@@ -58,8 +58,9 @@ export const Recipient = () => {
               <InputItem>
                 <TextInput
                   {...register("phone")}
-                  type="number"
+                  type="tel"
                   placeholder=" "
+                  onFocus={() => setValue("phone", "+")}
                 />
                 <label>Phone number</label>
                 <ValidationErrorText inputError={errors.phone} />

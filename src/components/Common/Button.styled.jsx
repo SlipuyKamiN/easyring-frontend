@@ -8,7 +8,7 @@ export const PrimaryBtn = styled.button`
 
   gap: 10px;
 
-  min-height: 40px;
+  height: 40px;
 
   padding: 10px 16px;
   background-color: ${colors.light.silver};
@@ -50,7 +50,7 @@ export const PrimaryBtnLink = styled(Link)`
 
   gap: 10px;
 
-  min-height: 40px;
+  height: 40px;
 
   padding: 10px 16px;
 
