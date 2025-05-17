@@ -41,7 +41,14 @@ export const senderSchema = yup.object().shape({
     )
     .required("Name is required"),
 
-  address: yup.object().required("Please provide the pick-up address"),
+  address: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the delivery address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the delivery address"),
 
   email: yup
     .string()
@@ -68,7 +75,14 @@ export const recipientSchema = yup.object().shape({
     )
     .required("Name is required"),
 
-  address: yup.object().required("Please provide the delivery address"),
+  address: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the delivery address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the delivery address"),
 
   comment: yup.string(),
 });
