@@ -42,8 +42,8 @@ export const MainInfo = () => {
     defaultValues: {
       size: "S",
       date: new Date(),
-      startTime: " ",
-      endTime: " ",
+      startTime: "",
+      endTime: "",
       description: "",
     },
     resolver: yupResolver(mainInfoSchema),

@@ -5,17 +5,23 @@ import {
   InputItem,
   TextInput,
 } from "./CreateOrderPage.styled";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { recipientSchema } from "~/schemas/newParcelSchema";
 import { FormBtnsList } from "./MainInfo.styled";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useNavigate } from "react-router-dom";
+import {
+  GeoapifyContext,
+  GeoapifyGeocoderAutocomplete,
+} from "@geoapify/react-geocoder-autocomplete";
 
 export const Recipient = () => {
   const {
     register,
+    control,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -52,8 +58,28 @@ export const Recipient = () => {
               <ValidationErrorText inputError={errors.name} />
             </InputItem>
             <InputItem>
-              <TextInput {...register("address")} type="text" placeholder=" " />
-              <label>Full address</label>
+              <Controller
+                name="address"
+                control={control}
+                render={({ field }) => (
+                  <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
+                    <GeoapifyGeocoderAutocomplete
+                      {...field}
+                      placeholder="Full address"
+                      limit={5}
+                      filterByCircle={{
+                        lat: 52.52,
+                        lon: 13.405,
+                        radiusMeters: 30000,
+                      }}
+                      placeSelect={(value) => {
+                        setValue("address", value);
+                      }}
+                      value={field.value?.properties?.formatted || ""}
+                    />
+                  </GeoapifyContext>
+                )}
+              />
               <ValidationErrorText inputError={errors.address} />
             </InputItem>
             <InputItem>

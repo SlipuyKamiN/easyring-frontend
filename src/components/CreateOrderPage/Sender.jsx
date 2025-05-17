@@ -6,17 +6,23 @@ import {
   InputItem,
   TextInput,
 } from "./CreateOrderPage.styled";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { senderSchema } from "~/schemas/newParcelSchema";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { FormBtnsList } from "./MainInfo.styled";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
+import {
+  GeoapifyContext,
+  GeoapifyGeocoderAutocomplete,
+} from "@geoapify/react-geocoder-autocomplete";
 
 export const Sender = () => {
   const {
     register,
     handleSubmit,
+    control,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -29,8 +35,7 @@ export const Sender = () => {
     },
     resolver: yupResolver(senderSchema),
   });
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -54,8 +59,28 @@ export const Sender = () => {
               <ValidationErrorText inputError={errors.name} />
             </InputItem>
             <InputItem>
-              <TextInput {...register("address")} type="text" placeholder=" " />
-              <label>Full address</label>
+              <Controller
+                name="address"
+                control={control}
+                render={({ field }) => (
+                  <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
+                    <GeoapifyGeocoderAutocomplete
+                      {...field}
+                      placeholder="Full address"
+                      limit={5}
+                      filterByCircle={{
+                        lat: 52.52,
+                        lon: 13.405,
+                        radiusMeters: 30000,
+                      }}
+                      placeSelect={(value) => {
+                        setValue("address", value);
+                      }}
+                      value={field.value?.properties?.formatted || ""}
+                    />
+                  </GeoapifyContext>
+                )}
+              />
               <ValidationErrorText inputError={errors.address} />
             </InputItem>
             <InputItem>

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.14.0",
+    "@geoapify/geocoder-autocomplete": "^2.1.0",
+    "@geoapify/react-geocoder-autocomplete": "^2.0.1",
     "@hookform/resolvers": "^5.0.1",
     "@mui/material": "^7.1.0",
     "@mui/x-date-pickers": "^8.3.1",
