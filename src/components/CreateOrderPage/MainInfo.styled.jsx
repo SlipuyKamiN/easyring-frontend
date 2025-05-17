@@ -150,6 +150,7 @@ export const TimePickerWrapper = styled.div`
 
 export const FormBtnsList = styled.ul`
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
 `;

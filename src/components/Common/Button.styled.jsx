@@ -11,8 +11,7 @@ export const PrimaryBtn = styled.button`
   min-height: 40px;
 
   padding: 10px 16px;
-
-  background: ${colors.light.gradient};
+  background-color: ${colors.light.silver};
 
   color: ${colors.light.darkGray};
 
@@ -33,7 +32,7 @@ export const PrimaryBtn = styled.button`
 
 export const SecondaryBtn = styled(PrimaryBtn)`
   background: transparent;
-  background-color: ${colors.light.silver};
+  background: ${colors.light.gradient};
 
   font-weight: 400;
 
@@ -45,7 +44,7 @@ export const SecondaryBtn = styled(PrimaryBtn)`
   }
 `;
 
-export const BtnLink = styled(Link)`
+export const PrimaryBtnLink = styled(Link)`
   display: flex;
   align-items: center;
 
@@ -55,7 +54,7 @@ export const BtnLink = styled(Link)`
 
   padding: 10px 16px;
 
-  background: ${colors.light.gradient};
+  background-color: ${colors.light.silver};
 
   color: ${colors.light.darkGray};
 
@@ -74,10 +73,9 @@ export const BtnLink = styled(Link)`
   }
 `;
 
-export const SecondaryBtnLink = styled(BtnLink)`
-  max-width: 150px;
+export const SecondaryBtnLink = styled(PrimaryBtnLink)`
   background: transparent;
-  background-color: ${colors.light.silver};
+  background: ${colors.light.gradient};
 
   font-weight: 400;
 
@@ -87,4 +85,13 @@ export const SecondaryBtnLink = styled(BtnLink)`
 
     background-color: ${colors.light.gray};
   }
+`;
+
+export const HeroMainBtn = styled(PrimaryBtnLink)`
+  font-weight: 600;
+  background: ${colors.light.gradient};
+`;
+
+export const HeroSecondaryBtn = styled(SecondaryBtn)`
+  background: none;
 `;

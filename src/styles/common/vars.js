@@ -4,7 +4,7 @@ export const colors = {
     gray: "#C7C7CC",
     darkGray: "#8E8E93",
     gradient:
-      "linear-gradient(90deg,rgba(242, 242, 247, 0.4) 0%, rgba(142, 142, 147, 0.8) 60%, rgba(199, 199, 204, 0.6) 100%);",
+      "linear-gradient(90deg,rgba(242, 242, 247, 0.4) 0%, rgba(199, 199, 204, 0.5) 60%, rgba(242, 242, 247, 0.6) 100%)",
   },
   dark: {
     silver: "#8E8E93",

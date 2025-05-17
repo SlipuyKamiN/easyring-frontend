@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const calculateDistance = async (sender, recipient) => {
-  if (!sender.properties || !recipient.properties) return 0;
+  if (!sender.address.properties || !recipient.address.properties) return 0;
 
   const startPoint = `${sender.address.properties.lat.toString()},${sender.address.properties.lon.toString()}`;
   const endPoint = `${recipient.address.properties.lat.toString()},${recipient.address.properties.lon.toString()}`;
@@ -12,6 +12,8 @@ export const calculateDistance = async (sender, recipient) => {
     )
     .then((res) => res.data.features[0].properties.distance)
     .catch((err) => console.log(err));
+
+  console.log(recipient.address.properties);
 
   return (distance / 1000).toFixed(2);
 };

@@ -41,7 +41,7 @@ export const senderSchema = yup.object().shape({
     )
     .required("Name is required"),
 
-  address: yup.mixed(),
+  address: yup.object().required("Please provide the pick-up address"),
 
   email: yup
     .string()
@@ -68,7 +68,7 @@ export const recipientSchema = yup.object().shape({
     )
     .required("Name is required"),
 
-  address: yup.mixed(),
+  address: yup.object().required("Please provide the delivery address"),
 
   comment: yup.string(),
 });

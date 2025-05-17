@@ -14,11 +14,7 @@ import {
 import { format } from "date-fns";
 import { CiEdit } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import {
-  PrimaryBtn,
-  SecondaryBtn,
-  SecondaryBtnLink,
-} from "../Common/Button.styled";
+import { PrimaryBtn, PrimaryBtnLink } from "../Common/Button.styled";
 import { calculateDistance } from "~/helpers/calculateDistance";
 import { calculatePrice } from "~/helpers/calculatePrice";
 
@@ -91,47 +87,42 @@ export const Confirm = () => {
               </SectionTitle>
               <AddressList>
                 <AddressListItem>
-                  <p>
-                    Parcel size:{" "}
-                    <ImportantDetails>{mainInfo.size}</ImportantDetails>
-                  </p>
+                  <p>Parcel size: </p>
+                  <ImportantDetails>
+                    {mainInfo.size ? mainInfo.size : "not selected"}
+                  </ImportantDetails>
                 </AddressListItem>
                 <AddressListItem>
-                  <p>
-                    Pick up date:{" "}
-                    <ImportantDetails>
-                      {format(mainInfo.date, "dd-MM-yyyy")}
-                    </ImportantDetails>
-                  </p>
+                  <p>Pick up date: </p>
+                  <ImportantDetails>
+                    {mainInfo.startTime
+                      ? format(mainInfo.date, "dd-MM-yyyy")
+                      : "not selected"}
+                  </ImportantDetails>
                 </AddressListItem>
                 <AddressListItem>
-                  <p>
-                    Time window:{" "}
-                    <ImportantDetails>
-                      {mainInfo.startTime
-                        ? format(mainInfo.startTime, "HH:mm")
-                        : "00:00"}
-                    </ImportantDetails>
-                    {" — "}
-                    <ImportantDetails>
-                      {mainInfo.endTime
-                        ? format(mainInfo.endTime, "HH:mm")
-                        : "00:00"}
-                    </ImportantDetails>
-                  </p>
+                  <p>Time window: </p>
+                  <ImportantDetails>
+                    {mainInfo.startTime
+                      ? format(mainInfo.startTime, "HH:mm")
+                      : "00:00"}
+                  </ImportantDetails>
+                  {" — "}
+                  <ImportantDetails>
+                    {mainInfo.endTime
+                      ? format(mainInfo.endTime, "HH:mm")
+                      : "00:00"}
+                  </ImportantDetails>
                 </AddressListItem>
                 <AddressListItem>
-                  <p>
-                    Distance: <ImportantDetails>{distance} km</ImportantDetails>
-                  </p>
+                  <p>Distance:</p>
+                  <ImportantDetails>{distance} km</ImportantDetails>
                 </AddressListItem>
                 <AddressListItem>
-                  <p>
-                    Price:{" "}
-                    <ImportantDetails>
-                      {calculatePrice(distance)} EUR
-                    </ImportantDetails>
-                  </p>
+                  <p>Delivery price: </p>
+                  <ImportantDetails>
+                    {calculatePrice(distance, mainInfo.size)} EUR
+                  </ImportantDetails>
                 </AddressListItem>
               </AddressList>
             </InfoSection>
@@ -168,22 +159,22 @@ export const Confirm = () => {
           <ConfirmBtnsList>
             {!isApplied && (
               <li>
-                <SecondaryBtn onClick={() => setIsApplied(true)}>
+                <PrimaryBtn onClick={() => setIsApplied(true)}>
                   Apply
-                </SecondaryBtn>
+                </PrimaryBtn>
               </li>
             )}
             {isApplied && !paid && (
               <>
                 <li>
-                  <SecondaryBtnLink onClick={() => setPaid(true)}>
+                  <PrimaryBtnLink onClick={() => setPaid(true)}>
                     Pay now
-                  </SecondaryBtnLink>
+                  </PrimaryBtnLink>
                 </li>
                 <li>
-                  <SecondaryBtnLink onClick={() => setPaid(true)}>
+                  <PrimaryBtnLink onClick={() => setPaid(true)}>
                     Pay later
-                  </SecondaryBtnLink>
+                  </PrimaryBtnLink>
                 </li>
               </>
             )}

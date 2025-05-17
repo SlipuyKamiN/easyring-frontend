@@ -7,8 +7,8 @@ import {
   TrackInputWrapper,
 } from "./Hero.styled";
 import {
-  BtnLink,
-  SecondaryBtn,
+  HeroMainBtn,
+  HeroSecondaryBtn,
   SecondaryBtnLink,
 } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
@@ -29,13 +29,15 @@ export const Hero = () => {
         <HeroSubtitle>in Berlin</HeroSubtitle>
         <HeroBtnsList>
           <li>
-            <BtnLink to={"createorder/maininfo"}>Create pick-up</BtnLink>
+            <HeroMainBtn to={"createorder/maininfo"}>
+              Create pick-up
+            </HeroMainBtn>
           </li>
           {!inputVisible && (
             <li>
-              <SecondaryBtn onClick={() => setInputVisible(!inputVisible)}>
+              <HeroSecondaryBtn onClick={() => setInputVisible(!inputVisible)}>
                 Track parcel
-              </SecondaryBtn>
+              </HeroSecondaryBtn>
             </li>
           )}
           {inputVisible && (

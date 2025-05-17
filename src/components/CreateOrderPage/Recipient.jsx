@@ -1,5 +1,6 @@
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import {
+  DecorationBg,
   FormName,
   FormWrapper,
   InputItem,
@@ -43,7 +44,6 @@ export const Recipient = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(updRecipient(data));
     navigate("/createorder/confirm");
   };
@@ -51,58 +51,64 @@ export const Recipient = () => {
   return (
     <Section>
       <Container>
-        <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-          <FormName>Recipient's info:</FormName>
-          <ul>
-            <InputItem>
-              <TextInput {...register("phone")} type="text" placeholder=" " />
-              <label>Phone number</label>
-              <ValidationErrorText inputError={errors.phone} />
-            </InputItem>
-            <InputItem>
-              <TextInput {...register("name")} type="text" placeholder=" " />
-              <label>Full name</label>
-              <ValidationErrorText inputError={errors.name} />
-            </InputItem>
-            <InputItem>
-              <Controller
-                name="address"
-                control={control}
-                render={({ field }) => (
-                  <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
-                    <GeoapifyGeocoderAutocomplete
-                      placeholder="Full address"
-                      limit={5}
-                      filterByCircle={{
-                        lat: 52.52,
-                        lon: 13.405,
-                        radiusMeters: 30000,
-                      }}
-                      placeSelect={(value) => {
-                        setValue("address", value);
-                      }}
-                      value={field.value?.properties?.formatted || ""}
-                    />
-                  </GeoapifyContext>
-                )}
-              />
-              <ValidationErrorText inputError={errors.address} />
-            </InputItem>
-            <InputItem>
-              <TextInput {...register("comment")} type="text" placeholder=" " />
-              <label>Comment (recommended)</label>
-              <ValidationErrorText inputError={errors.comment} />
-            </InputItem>
-          </ul>
-          <FormBtnsList>
-            <li>
-              <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>
-            </li>
-            <li>
-              <PrimaryBtn type="Submit">Confirm</PrimaryBtn>
-            </li>
-          </FormBtnsList>
-        </FormWrapper>
+        <DecorationBg>
+          <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+            <FormName>Recipient's info:</FormName>
+            <ul>
+              <InputItem>
+                <TextInput {...register("phone")} type="text" placeholder=" " />
+                <label>Phone number</label>
+                <ValidationErrorText inputError={errors.phone} />
+              </InputItem>
+              <InputItem>
+                <TextInput {...register("name")} type="text" placeholder=" " />
+                <label>Full name</label>
+                <ValidationErrorText inputError={errors.name} />
+              </InputItem>
+              <InputItem>
+                <Controller
+                  name="address"
+                  control={control}
+                  render={({ field }) => (
+                    <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
+                      <GeoapifyGeocoderAutocomplete
+                        placeholder="Full address"
+                        limit={5}
+                        filterByCircle={{
+                          lat: 52.52,
+                          lon: 13.405,
+                          radiusMeters: 30000,
+                        }}
+                        placeSelect={(value) => {
+                          setValue("address", value);
+                        }}
+                        value={field.value?.properties?.formatted || ""}
+                      />
+                    </GeoapifyContext>
+                  )}
+                />
+                <ValidationErrorText inputError={errors.address} />
+              </InputItem>
+              <InputItem>
+                <TextInput
+                  {...register("comment")}
+                  type="text"
+                  placeholder=" "
+                />
+                <label>Comment (recommended)</label>
+                <ValidationErrorText inputError={errors.comment} />
+              </InputItem>
+            </ul>
+            <FormBtnsList>
+              <li>
+                <PrimaryBtn type="Submit">Confirm</PrimaryBtn>
+              </li>
+              <li>
+                <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>
+              </li>
+            </FormBtnsList>
+          </FormWrapper>
+        </DecorationBg>
       </Container>
     </Section>
   );

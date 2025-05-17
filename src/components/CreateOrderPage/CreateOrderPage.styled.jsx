@@ -1,6 +1,16 @@
 import styled from "@emotion/styled";
 import { colors, transition } from "~/styles/common/vars";
 
+export const DecorationBg = styled.div`
+  width: 100%;
+  border-radius: 40px;
+
+  @media screen and (min-width: 768px) {
+    background-color: ${`${colors.light.gray}60`};
+    backdrop-filter: blur(10px);
+  }
+`;
+
 export const FormWrapper = styled.form`
   margin: 0 auto;
   padding: 40px;

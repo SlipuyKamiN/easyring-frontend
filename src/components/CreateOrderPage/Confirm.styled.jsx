@@ -5,8 +5,8 @@ import { colors } from "~/styles/common/vars";
 export const ConfirmSectionWrapper = styled.div`
   background-color: ${`${colors.light.gray}60`};
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 40px;
+  padding: 40px;
 `;
 
 export const InfoSectionsList = styled.ul`
@@ -49,6 +49,10 @@ export const AddressListItem = styled.li`
   margin-bottom: 10px;
   border-bottom: 1px solid ${colors.light.gray};
   border-radius: 2px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   h5 {
     font-size: 16px;
