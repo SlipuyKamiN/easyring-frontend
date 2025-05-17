@@ -129,6 +129,13 @@ export const ParcelDescription = styled.textarea`
   font-family: inherit;
   font-size: 16px;
   resize: none;
+
+  outline: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: ${colors.light.darkGray} 0px 0px 10px;
+  }
 `;
 
 export const InputList = styled.ul`

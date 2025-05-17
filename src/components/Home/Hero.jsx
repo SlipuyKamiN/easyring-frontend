@@ -9,7 +9,7 @@ import {
 import {
   HeroMainBtn,
   HeroSecondaryBtn,
-  SecondaryBtnLink,
+  PrimaryBtnLink,
 } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
@@ -43,14 +43,14 @@ export const Hero = () => {
           {inputVisible && (
             <TrackInputWrapper>
               <TrackInput
-                type="text"
+                type="number"
                 id="orderID"
                 placeholder="Track by Parcel ID"
                 autoFocus
               />
-              <SecondaryBtnLink to={"orders/1"}>
+              <PrimaryBtnLink to={"orders/1"}>
                 <FaSearch size={20} />
-              </SecondaryBtnLink>
+              </PrimaryBtnLink>
             </TrackInputWrapper>
           )}
         </HeroBtnsList>

@@ -57,7 +57,11 @@ export const Sender = () => {
             <FormName>Sender info:</FormName>
             <ul>
               <InputItem>
-                <TextInput {...register("phone")} type="text" placeholder=" " />
+                <TextInput
+                  {...register("phone")}
+                  type="number"
+                  placeholder=" "
+                />
                 <label>Phone number</label>
                 <ValidationErrorText inputError={errors.phone} />
               </InputItem>
@@ -91,7 +95,11 @@ export const Sender = () => {
                 <ValidationErrorText inputError={errors.address} />
               </InputItem>
               <InputItem>
-                <TextInput {...register("email")} type="text" placeholder=" " />
+                <TextInput
+                  {...register("email")}
+                  type="email"
+                  placeholder=" "
+                />
                 <label>Email</label>
                 <ValidationErrorText inputError={errors.email} />
               </InputItem>

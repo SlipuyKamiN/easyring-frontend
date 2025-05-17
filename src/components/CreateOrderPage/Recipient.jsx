@@ -56,7 +56,11 @@ export const Recipient = () => {
             <FormName>Recipient's info:</FormName>
             <ul>
               <InputItem>
-                <TextInput {...register("phone")} type="text" placeholder=" " />
+                <TextInput
+                  {...register("phone")}
+                  type="number"
+                  placeholder=" "
+                />
                 <label>Phone number</label>
                 <ValidationErrorText inputError={errors.phone} />
               </InputItem>
