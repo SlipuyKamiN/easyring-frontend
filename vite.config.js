@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  base: "/easyring-frontend/", // заміни на свою назву на GitHub
+  base: "/easyring-frontend/",
   plugins: [react()],
   resolve: {
     alias: {
