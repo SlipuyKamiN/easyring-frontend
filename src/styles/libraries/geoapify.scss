@@ -16,6 +16,8 @@
   border: none;
   outline: none;
 
+  overflow: hidden;
+
   font-size: 14px;
   border-radius: 16px;
 
@@ -53,4 +55,11 @@
   border: none;
   box-shadow: #1c1c1e 0px 10px 10px;
   border-radius: 0 0 16px 16px;
+}
+
+.geoapify-close-button {
+  background-color: #f2f2f7e8;
+  max-height: 100%;
+  border-radius: 50%;
+  border: none;
 }
