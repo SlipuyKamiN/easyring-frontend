@@ -13,7 +13,5 @@ export const calculateDistance = async (sender, recipient) => {
     .then((res) => res.data.features[0].properties.distance)
     .catch((err) => console.log(err));
 
-  console.log(recipient.address.properties);
-
   return (distance / 1000).toFixed(2);
 };
