@@ -29,8 +29,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { mainInfoSchema } from "~/schemas/newParcelSchema";
 import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
+import { useDispatch, useSelector } from "react-redux";
+import { updMainInfo } from "~/Redux/newParcelSlice";
 
 export const MainInfo = () => {
+  const { size, date, startTime, endTime, description } = useSelector(
+    ({ newParcel }) => newParcel.mainInfo
+  );
   const {
     control,
     register,
@@ -40,19 +45,21 @@ export const MainInfo = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      size: "S",
-      date: new Date(),
-      startTime: "",
-      endTime: "",
-      description: "",
+      size,
+      date,
+      startTime,
+      endTime,
+      description,
     },
     resolver: yupResolver(mainInfoSchema),
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(updMainInfo(data));
     navigate("/createorder/sender");
   };
 

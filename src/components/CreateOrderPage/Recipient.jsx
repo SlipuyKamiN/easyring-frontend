@@ -16,8 +16,13 @@ import {
   GeoapifyContext,
   GeoapifyGeocoderAutocomplete,
 } from "@geoapify/react-geocoder-autocomplete";
+import { useDispatch, useSelector } from "react-redux";
+import { updRecipient } from "~/Redux/newParcelSlice";
 
 export const Recipient = () => {
+  const { phone, name, address, comment } = useSelector(
+    ({ newParcel }) => newParcel.recipient
+  );
   const {
     register,
     control,
@@ -27,17 +32,19 @@ export const Recipient = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      phone: "",
-      name: "",
-      address: "",
-      comment: "",
+      phone,
+      name,
+      address,
+      comment,
     },
     resolver: yupResolver(recipientSchema),
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(updRecipient(data));
     navigate("/createorder/confirm");
   };
 
