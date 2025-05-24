@@ -5,8 +5,6 @@ import { useEffect } from "react";
 export const CreateOrderPage = () => {
   const location = useLocation();
 
-  console.log(location);
-
   useEffect(() => {
     window.scrollTo({
       top: 0,

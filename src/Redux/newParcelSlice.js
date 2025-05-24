@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { calculateDistance } from "~/helpers/calculateDistance";
+import { calculatePrice } from "~/helpers/calculatePrice";
 
 const newParcelObject = {
-  id: "",
   mainInfo: {
     size: "S",
     date: "",
     startTime: "",
     endTime: "",
     description: "",
+    distance: 0,
   },
   sender: {
     phone: "",
@@ -23,20 +25,17 @@ const newParcelObject = {
     comment: "",
   },
   tracking: {
-    id: "RR434493",
-    currentStage: "Created",
-    timeStamps: {
-      createdAt: "08:00",
-      confirmedAt: "08:30",
-      pickedUpAt: "09:00",
-      deliveredAt: "10:00",
-    },
-    stages: {
-      created: "Created",
-      confirmed: "Confirmed",
-      pickedUp: "pickedUp",
-      delivered: "Delivered",
-    },
+    history: [],
+  },
+  payment: {
+    price: 0,
+    type: "cash",
+    transactionDetails: {},
+    isPaid: false,
+  },
+  driver: {
+    name: "",
+    id: "",
   },
 };
 
@@ -77,9 +76,33 @@ const newParcelSlice = createSlice({
         };
       },
     },
+    updPrice: {
+      reducer(state, action) {
+        console.log(action.payload);
+
+        state.payment.price = action.payload.value.price;
+        state.mainInfo.distance = action.payload.value.distance;
+        return state;
+      },
+      prepare(value) {
+        return {
+          payload: { value },
+        };
+      },
+    },
   },
 });
 
-export const { updMainInfo, updSender, updRecipient } = newParcelSlice.actions;
+export const updatePrice =
+  ({ sender, recipient, size }) =>
+  async (dispatch) => {
+    const distance = await calculateDistance(sender, recipient);
+    const price = calculatePrice(distance, size);
+
+    dispatch(updPrice({ distance, price }));
+  };
+
+export const { updMainInfo, updSender, updRecipient, updPrice } =
+  newParcelSlice.actions;
 
 export const newParcelReducer = newParcelSlice.reducer;

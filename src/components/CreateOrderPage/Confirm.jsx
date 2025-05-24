@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import {
   AddressList,
@@ -13,10 +13,9 @@ import {
 } from "./Confirm.styled";
 import { format } from "date-fns";
 import { CiEdit } from "react-icons/ci";
-import { useEffect, useState } from "react";
 import { PrimaryBtn, PrimaryBtnLink } from "../Common/Button.styled";
-import { calculateDistance } from "~/helpers/calculateDistance";
-import { calculatePrice } from "~/helpers/calculatePrice";
+import { useEffect, useState } from "react";
+import { updatePrice } from "~/Redux/newParcelSlice";
 
 const GoogleMapsLink = (address) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -29,18 +28,16 @@ const GoogleMapsGetDirections = (address) =>
   )}`;
 
 export const Confirm = () => {
-  const { mainInfo, sender, recipient, tracking } = useSelector(
+  const dispatch = useDispatch();
+  const { mainInfo, sender, recipient, tracking, payment } = useSelector(
     (state) => state.newParcel
   );
   const [paid, setPaid] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
-  const [distance, setDistance] = useState(0);
 
   useEffect(() => {
-    (async () => {
-      setDistance(await calculateDistance(sender, recipient));
-    })();
-  }, [recipient, sender, setDistance]);
+    dispatch(updatePrice({ sender, recipient, size: mainInfo.size }));
+  }, [sender, recipient, mainInfo.size, dispatch]);
 
   return (
     <Section>
@@ -116,12 +113,13 @@ export const Confirm = () => {
                 </AddressListItem>
                 <AddressListItem>
                   <p>Distance:</p>
-                  <ImportantDetails>{distance} km</ImportantDetails>
+                  <ImportantDetails>{mainInfo.distance} km</ImportantDetails>
                 </AddressListItem>
                 <AddressListItem>
                   <p>Delivery price: </p>
                   <ImportantDetails>
-                    {calculatePrice(distance, mainInfo.size)} EUR
+                    {/* {calculatePrice(distance, mainInfo.size)} EUR */}
+                    {payment.price} EUR
                   </ImportantDetails>
                 </AddressListItem>
               </AddressList>
