@@ -54,6 +54,7 @@ const newParcelSlice = createSlice({
         };
       },
     },
+
     updSender: {
       reducer(state, action) {
         state.sender = action.payload.value;
@@ -65,6 +66,7 @@ const newParcelSlice = createSlice({
         };
       },
     },
+
     updRecipient: {
       reducer(state, action) {
         state.recipient = action.payload.value;
@@ -76,6 +78,7 @@ const newParcelSlice = createSlice({
         };
       },
     },
+
     updPrice: {
       reducer(state, action) {
         console.log(action.payload);
