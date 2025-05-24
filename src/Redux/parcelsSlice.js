@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = `${import.meta.env.REACT_APP_BASE_URL}/api/parcels`;
+const BASE_URL = `${import.meta.env.VITE_BASE_URL}/api/parcels`;
 
 export const parcelsApi = createApi({
   reducerPath: "parcelsApi",
@@ -44,12 +44,12 @@ export const parcelsApi = createApi({
     }),
 
     updateParcel: builder.mutation({
-      query: (id, body) => ({ url: `/${id}`, method: "PATCH", body }),
+      query: ({ id, body }) => ({ url: `/${id}`, method: "PATCH", body }),
       invalidatesTags: ["parcels"],
     }),
 
     updateDriver: builder.mutation({
-      query: (id, body) => ({
+      query: ({ id, body }) => ({
         url: `/update/driver/${id}`,
         method: "PATCH",
         body,
@@ -58,7 +58,7 @@ export const parcelsApi = createApi({
     }),
 
     updatePayment: builder.mutation({
-      query: (id, body) => ({
+      query: ({ id, body }) => ({
         url: `/update/payment/${id}`,
         method: "PATCH",
         body,
@@ -67,7 +67,7 @@ export const parcelsApi = createApi({
     }),
 
     updateTracking: builder.mutation({
-      query: (id, body) => ({
+      query: ({ id, body }) => ({
         url: `/update/tracking/${id}`,
         method: "PATCH",
         body,

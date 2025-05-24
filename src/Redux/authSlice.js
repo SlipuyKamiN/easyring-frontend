@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { resetUser, setUser } from "./userSlice";
 
-const BASE_URL = `${import.meta.env.REACT_APP_BASE_URL}/api/auth`;
+const BASE_URL = `${import.meta.env.VITE_BASE_URL}/api/auth`;
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -20,19 +20,19 @@ export const authApi = createApi({
   tagTypes: ["auth"],
   endpoints: (builder) => ({
     signup: builder.mutation({
-      query: ({ name, email, password }) => ({
+      query: (body) => ({
         url: "/signup",
         method: "POST",
-        body: { name, email, password },
+        body,
       }),
       invalidatesTags: ["auth"],
     }),
 
     signin: builder.mutation({
-      query: ({ email, password }) => ({
+      query: (body) => ({
         url: "/signin",
         method: "POST",
-        body: { email, password },
+        body,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         dispatch(setUser((await queryFulfilled).data));
@@ -62,11 +62,10 @@ export const authApi = createApi({
     }),
 
     updateUser: builder.mutation({
-      query: (body) => ({
-        url: "/user",
+      query: ({ id, body }) => ({
+        url: `/user/${id}`,
         method: "PATCH",
         body,
-        formData: true,
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         dispatch(setUser((await queryFulfilled).data));
@@ -87,4 +86,5 @@ export const {
   useCurrentUserQuery,
   useLogoutMutation,
   useUpdateUserMutation,
+  useGetAllUsersQuery,
 } = authApi;
