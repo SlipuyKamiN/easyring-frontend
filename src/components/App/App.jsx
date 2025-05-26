@@ -24,7 +24,7 @@ const App = () => {
           <Route path="recipient" element={<Recipient />}></Route>
           <Route path="confirm" element={<Confirm />}></Route>
         </Route>
-        <Route path="orders/:orderId" element={<OrderPage />}></Route>
+        <Route path="tracking/:parcelId" element={<OrderPage />}></Route>
         <Route path="login" element={<SignInPage />}></Route>
         <Route path="admin">
           <Route path="calendar" element={<Calendar />}></Route>

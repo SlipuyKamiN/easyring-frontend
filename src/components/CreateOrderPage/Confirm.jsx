@@ -4,10 +4,13 @@ import {
   AddressList,
   AddressListItem,
   ConfirmSectionWrapper,
+  IconsWrapper,
   ImportantDetails,
   InfoSection,
   InfoSectionsList,
   ListTitle,
+  PaymentOption,
+  PaymentOptionsList,
   SectionTitle,
 } from "./Confirm.styled";
 import { format } from "date-fns";
@@ -17,17 +20,23 @@ import { useEffect } from "react";
 import { updatePrice } from "~/Redux/newParcelSlice";
 import { getGoogleMapsLink } from "~/helpers/getGoogleMaps";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
-import { useCreateParcelMutation } from "~/Redux/parcelsSlice";
+import {
+  useCreateParcelMutation,
+  useUpdatePaymentMutation,
+} from "~/Redux/parcelsSlice";
 import { FaApplePay, FaGooglePay } from "react-icons/fa";
 import { SiVisa } from "react-icons/si";
 import { GiReceiveMoney } from "react-icons/gi";
 import { newParcelSchema } from "~/schemas/newParcelSchema";
+import { useNavigate } from "react-router-dom";
 
 export const Confirm = () => {
   const [createParcel, { data, isError, error, isLoading }] =
     useCreateParcelMutation();
+  const [updatePayment] = useUpdatePaymentMutation();
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { mainInfo, sender, recipient, payment } = newParcel;
 
   useEffect(() => {
@@ -43,19 +52,59 @@ export const Confirm = () => {
       .catch(console.log);
   };
 
+  const selectPaymentType = (paymentType) => {
+    const handleDispatch = (paymentObject) => {
+      dispatch(
+        updatePayment(paymentObject)
+          .then(() => navigate(`/tracking/${data._id}`))
+          .catch(console.log)
+      );
+    };
+
+    switch (paymentType) {
+      case "online":
+        handleDispatch({ type: "online", isPaid: true });
+        break;
+
+      default:
+        handleDispatch({ type: "cash", isPaid: false });
+        break;
+    }
+  };
+
   return (
     <Section>
       <Container>
         <ConfirmSectionWrapper>
           {data?._id && !error ? (
-            <ul>
-              <li>
-                <PrimaryBtn>Pay now</PrimaryBtn>
-              </li>
-              <li>
-                <PrimaryBtn>Pay later</PrimaryBtn>
-              </li>
-            </ul>
+            <PaymentOptionsList>
+              <PaymentOption>
+                <PrimaryBtn
+                  onClick={() => {
+                    selectPaymentType("online");
+                  }}
+                >
+                  <span>Pay now</span>
+                  <IconsWrapper>
+                    <FaApplePay />
+                    <FaGooglePay />
+                    <SiVisa />
+                  </IconsWrapper>
+                </PrimaryBtn>
+              </PaymentOption>
+              <PaymentOption>
+                <PrimaryBtn
+                  onClick={() => {
+                    selectPaymentType("cash");
+                  }}
+                >
+                  <span>Pay later</span>
+                  <span>
+                    <GiReceiveMoney size={35} />
+                  </span>
+                </PrimaryBtn>
+              </PaymentOption>
+            </PaymentOptionsList>
           ) : (
             <>
               <InfoSectionsList>
