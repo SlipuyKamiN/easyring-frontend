@@ -5,9 +5,9 @@ import { calculatePrice } from "~/helpers/calculatePrice";
 const newParcelObject = {
   mainInfo: {
     size: "S",
-    date: "",
-    startTime: "",
-    endTime: "",
+    date: null,
+    startTime: null,
+    endTime: null,
     description: "",
     distance: 0,
   },
@@ -29,7 +29,7 @@ const newParcelObject = {
   },
   payment: {
     price: 0,
-    type: "cash",
+    type: null,
     transactionDetails: {},
     isPaid: false,
   },
@@ -81,8 +81,6 @@ const newParcelSlice = createSlice({
 
     updPrice: {
       reducer(state, action) {
-        console.log(action.payload);
-
         state.payment.price = action.payload.value.price;
         state.mainInfo.distance = action.payload.value.distance;
         return state;

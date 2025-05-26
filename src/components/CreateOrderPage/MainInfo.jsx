@@ -22,7 +22,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { de } from "date-fns/locale/de";
-import { addDays, addHours, formatISO, isValid, parseISO } from "date-fns";
+import { addDays, addHours, formatISO, isValid } from "date-fns";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,12 +31,13 @@ import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
-import { combineDateTime } from "~/helpers/combineDateTime";
+import { combineDateTime, parceInitialDate } from "~/helpers/combineDateTime";
+import { getNewParcelState } from "~/Redux/newParcelSelectors";
 
 export const MainInfo = () => {
-  const { size, date, startTime, endTime, description } = useSelector(
-    ({ newParcel }) => newParcel.mainInfo
-  );
+  const {
+    mainInfo: { size, date, startTime, endTime, description },
+  } = useSelector(getNewParcelState);
 
   const {
     control,
@@ -48,9 +49,9 @@ export const MainInfo = () => {
     mode: "onChange",
     defaultValues: {
       size,
-      date: parseISO(date),
-      startTime: parseISO(startTime),
-      endTime: parseISO(endTime),
+      date: parceInitialDate(date),
+      startTime: parceInitialDate(startTime),
+      endTime: parceInitialDate(endTime),
       description,
     },
     resolver: yupResolver(mainInfoSchema),

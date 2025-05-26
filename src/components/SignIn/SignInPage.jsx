@@ -1,6 +1,6 @@
 import { Container } from "../SharedLayout/SharedLayout.styled";
 
-export const LogInPage = () => {
+export const SignInPage = () => {
   return (
     <Container>
       <form>

@@ -62,9 +62,3 @@ export const AddressListItem = styled.li`
 export const ImportantDetails = styled.span`
   font-weight: 600;
 `;
-
-export const ConfirmBtnsList = styled.ul`
-  display: flex;
-  gap: 20px;
-  justify-content: right;
-`;

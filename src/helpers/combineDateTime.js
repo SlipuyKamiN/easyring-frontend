@@ -1,4 +1,4 @@
-import { formatISO, setHours, setMinutes } from "date-fns";
+import { formatISO, parseISO, setHours, setMinutes } from "date-fns";
 
 export const combineDateTime = (dateObject, timeObject) => {
   const hours = timeObject.getHours();
@@ -8,4 +8,8 @@ export const combineDateTime = (dateObject, timeObject) => {
   combined = setMinutes(combined, minutes);
 
   return formatISO(combined);
+};
+
+export const parceInitialDate = (date) => {
+  return date ? parseISO(date) : null;
 };

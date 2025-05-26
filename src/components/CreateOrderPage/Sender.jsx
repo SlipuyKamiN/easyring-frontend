@@ -19,11 +19,10 @@ import {
 } from "@geoapify/react-geocoder-autocomplete";
 import { useDispatch, useSelector } from "react-redux";
 import { updSender } from "~/Redux/newParcelSlice";
+import { getNewParcelState } from "~/Redux/newParcelSelectors";
 
 export const Sender = () => {
-  const { phone, name, address, email, comment } = useSelector(
-    ({ newParcel }) => newParcel.sender
-  );
+  const { sender } = useSelector(getNewParcelState);
   const {
     register,
     handleSubmit,
@@ -32,13 +31,7 @@ export const Sender = () => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    defaultValues: {
-      phone,
-      name,
-      address,
-      email,
-      comment,
-    },
+    defaultValues: sender,
     resolver: yupResolver(senderSchema),
   });
   const navigate = useNavigate();

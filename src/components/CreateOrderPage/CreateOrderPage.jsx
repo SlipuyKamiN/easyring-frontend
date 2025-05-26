@@ -8,7 +8,7 @@ export const CreateOrderPage = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // або 'auto' якщо без анімації
+      behavior: "smooth",
     });
   }, [location.pathname]);
 

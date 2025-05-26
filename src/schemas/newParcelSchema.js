@@ -53,6 +53,11 @@ export const senderSchema = yup.object().shape({
   email: yup
     .string()
     .email("Invalid email address")
+    .test("domain-has-dot", "Email domain must contain a dot", (value) => {
+      if (!value) return false;
+      const domain = value.split("@")[1];
+      return domain && domain.includes(".");
+    })
     .required("Email is required"),
 
   comment: yup.string(),
@@ -85,4 +90,26 @@ export const recipientSchema = yup.object().shape({
     .required("Please provide the delivery address"),
 
   comment: yup.string(),
+});
+
+export const newParcelSchema = yup.object().shape({
+  mainInfo: yup.object({
+    ...mainInfoSchema.fields,
+    distance: yup.number().required(),
+  }),
+  sender: senderSchema,
+  recipient: recipientSchema,
+  tracking: yup.object({
+    history: yup.array().required(),
+  }),
+  payment: yup.object({
+    price: yup.number().required(),
+    type: yup.string().oneOf(["cash", "online", null]).nullable(),
+    transactionDetails: yup.object().required(),
+    isPaid: yup.boolean().required(),
+  }),
+  driver: yup.object({
+    name: yup.string(),
+    id: yup.string(),
+  }),
 });

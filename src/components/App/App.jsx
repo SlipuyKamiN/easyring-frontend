@@ -10,7 +10,7 @@ import { CreateOrderPage } from "~/components/CreateOrderPage/CreateOrderPage";
 import { Sender } from "~/components/CreateOrderPage/Sender";
 import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
 import { Recipient } from "~/components/CreateOrderPage/Recipient";
-import { LogInPage } from "~/components/LogIn/LogInPage";
+import { SignInPage } from "~/components/SignIn/SignInPage";
 import { Confirm } from "../CreateOrderPage/Confirm";
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="confirm" element={<Confirm />}></Route>
         </Route>
         <Route path="orders/:orderId" element={<OrderPage />}></Route>
-        <Route path="login" element={<LogInPage />}></Route>
+        <Route path="login" element={<SignInPage />}></Route>
         <Route path="admin">
           <Route path="calendar" element={<Calendar />}></Route>
           <Route path="orders" element={<OrdersList />}></Route>
