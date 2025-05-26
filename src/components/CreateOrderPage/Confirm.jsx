@@ -53,12 +53,10 @@ export const Confirm = () => {
   };
 
   const selectPaymentType = (paymentType) => {
-    const handleDispatch = (paymentObject) => {
-      dispatch(
-        updatePayment(paymentObject)
-          .then(() => navigate(`/tracking/${data._id}`))
-          .catch(console.log)
-      );
+    const handleDispatch = (body) => {
+      updatePayment({ id: data._id, body })
+        .then(() => navigate(`/tracking/${data._id}`))
+        .catch(console.log);
     };
 
     switch (paymentType) {

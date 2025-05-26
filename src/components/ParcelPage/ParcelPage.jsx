@@ -1,10 +1,19 @@
-import { Container } from "../SharedLayout/SharedLayout.styled";
+import { useParams } from "react-router-dom";
+import { Container, Section } from "../SharedLayout/SharedLayout.styled";
+import { useGetParcelByIdQuery } from "~/Redux/parcelsSlice";
 
-export const OrderPage = () => {
+export const ParcelPage = () => {
+  const { parcelId } = useParams();
+  const { data } = useGetParcelByIdQuery(parcelId);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <Container>
-      <section>
-        <h3>10:00-12:00</h3>
+    <Section>
+      <Container>
+        <h3>{data._id}</h3>
         <ul>
           <li>
             <p>Senderinfo:</p>
@@ -32,7 +41,7 @@ export const OrderPage = () => {
             <button>Edit</button>
           </li>
         </ul>
-      </section>
-    </Container>
+      </Container>
+    </Section>
   );
 };

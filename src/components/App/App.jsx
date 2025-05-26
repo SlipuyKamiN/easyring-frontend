@@ -4,7 +4,7 @@ import { Calendar } from "~/components/Calendar/Calendar";
 import { OrdersList } from "~/components/OrdersList/OrdersList";
 import { DriversList } from "~/components/DriversList/DriversList";
 import { Settings } from "~/components/Settings/Settings";
-import { OrderPage } from "~/components/OrderPage/OrderPage";
+import { ParcelPage } from "~/components/ParcelPage/ParcelPage";
 import { Route, Routes } from "react-router-dom";
 import { CreateOrderPage } from "~/components/CreateOrderPage/CreateOrderPage";
 import { Sender } from "~/components/CreateOrderPage/Sender";
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="recipient" element={<Recipient />}></Route>
           <Route path="confirm" element={<Confirm />}></Route>
         </Route>
-        <Route path="tracking/:parcelId" element={<OrderPage />}></Route>
+        <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
         <Route path="login" element={<SignInPage />}></Route>
         <Route path="admin">
           <Route path="calendar" element={<Calendar />}></Route>
