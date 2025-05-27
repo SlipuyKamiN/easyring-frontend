@@ -20,11 +20,12 @@ jobs:
         run: npm run lint
 
       - name: Build
-        env:
-          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
         run: |
             echo "repository variable : $VITE_BASE_URL"
             npm run build
+        env:
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
+
         
           
 
