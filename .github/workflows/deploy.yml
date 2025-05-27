@@ -3,6 +3,8 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
+env:
+  env_var: ${{ vars.VITE_BASE_URL }}
     
 jobs:
   build-and-deploy:
@@ -20,7 +22,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_URL: ${{ env.VITE_BASE_URL }}
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
