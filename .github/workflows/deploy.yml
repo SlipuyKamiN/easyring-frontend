@@ -3,8 +3,6 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
-env:
-  VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
     
 jobs:
   build-and-deploy:
@@ -20,9 +18,7 @@ jobs:
         run: npm run lint
 
       - name: Build
-        run: |
-            echo "repository variable : $VITE_BASE_URL"
-            npm run build
+        run: npm run build
         env:
           VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
 
