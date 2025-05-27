@@ -9,8 +9,18 @@ import {
   TrackingList,
 } from "./ParcelPage.styled";
 import { format } from "date-fns";
-import { InfoSectionsList } from "../Common/InfoSections.styled";
-import { MainInfoSection } from "../Common/InfoSections";
+import {
+  InfoSection,
+  InfoSectionsList,
+  SectionTitle,
+} from "../Common/InfoSections.styled";
+import {
+  MainInfoSection,
+  ParticipantInfoSection,
+} from "../Common/InfoSections";
+import { useSelector } from "react-redux";
+import { getUserState } from "~/Redux/userSelectors";
+import { SocialsLinks } from "../Common/SocialsLinks";
 
 const statuses = {
   100: "Created",
@@ -22,6 +32,9 @@ const statuses = {
 export const ParcelPage = () => {
   const { parcelId } = useParams();
   const { data } = useGetParcelByIdQuery(parcelId);
+  const { isLoggedIn } = useSelector(getUserState);
+
+  console.log("loggedIn:", isLoggedIn);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -49,6 +62,23 @@ export const ParcelPage = () => {
               </TrackingList>
             </li>
             <MainInfoSection mainInfo={data.mainInfo} payment={data.payment} />
+            {isLoggedIn ? (
+              <>
+                <ParticipantInfoSection
+                  participant="Sender"
+                  data={data.sender}
+                />
+                <ParticipantInfoSection
+                  participant="Recipient"
+                  data={data.recipient}
+                />
+              </>
+            ) : (
+              <InfoSection>
+                <SectionTitle>Questions? Contact us!</SectionTitle>
+                <SocialsLinks />
+              </InfoSection>
+            )}
           </InfoSectionsList>
         </ConfirmSectionWrapper>
       </Container>

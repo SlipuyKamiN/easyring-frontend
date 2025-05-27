@@ -23,8 +23,6 @@ export const TrackingItem = styled.li`
   flex-wrap: wrap;
   gap: 10px;
 
-  margin-bottom: 30px;
-
   color: ${colors.light.darkGray};
 
   p {
@@ -32,6 +30,10 @@ export const TrackingItem = styled.li`
     text-transform: uppercase;
     font-weight: 600;
     text-align: left;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
   }
 
   &:not(:last-child)::after {
