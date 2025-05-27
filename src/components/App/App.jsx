@@ -14,8 +14,6 @@ import { SignInPage } from "~/components/SignIn/SignInPage";
 import { Confirm } from "../CreateOrderPage/Confirm";
 
 const App = () => {
-  console.log("BASE_URL:", import.meta.env.VITE_BASE_URL);
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
