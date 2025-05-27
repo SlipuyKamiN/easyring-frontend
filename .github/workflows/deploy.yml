@@ -3,17 +3,15 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
-env:
-    VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
-
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Install 🔧
+      - name: Install
         run: npm install
 
       - name: Lint
@@ -22,9 +20,9 @@ jobs:
       - name: Build
         run: npm run build
         env:
-            VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
 
-      - name: Deploy 🚀
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
