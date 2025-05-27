@@ -9,16 +9,42 @@ import {
 import {
   HeroMainBtn,
   HeroSecondaryBtn,
-  PrimaryBtnLink,
+  PrimaryBtn,
 } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import { RiArrowDownWideFill } from "react-icons/ri";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { IconLink } from "../Footer/Footer.styled";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { trackingIDSchema } from "~/schemas/trackingIDSchema";
 
 export const Hero = () => {
   const [inputVisible, setInputVisible] = useState(false);
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+    defaultValues: {
+      trackingID: "",
+    },
+    resolver: yupResolver(trackingIDSchema),
+  });
+
+  const onSubmit = ({ parcelID }) => {
+    navigate(`/tracking/${parcelID}`);
+  };
+
+  const showInput = () => {
+    setInputVisible(!inputVisible);
+  };
+
   return (
     <HeroSection>
       <Container>
@@ -35,23 +61,31 @@ export const Hero = () => {
           </li>
           {!inputVisible && (
             <li>
-              <HeroSecondaryBtn onClick={() => setInputVisible(!inputVisible)}>
+              <HeroSecondaryBtn onClick={showInput}>
                 Track parcel
               </HeroSecondaryBtn>
             </li>
           )}
           {inputVisible && (
-            <TrackInputWrapper>
-              <TrackInput
-                type="number"
-                id="orderID"
-                placeholder="Track by Parcel ID"
-                autoFocus
-              />
-              <PrimaryBtnLink to={"orders/1"}>
-                <FaSearch size={20} />
-              </PrimaryBtnLink>
-            </TrackInputWrapper>
+            <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+              <TrackInputWrapper>
+                <TrackInput
+                  {...register("trackingID")}
+                  type="text"
+                  id="trackingID"
+                  minLength={10}
+                  maxLength={10}
+                  placeholder="Parcel ID"
+                  autoFocus
+                />
+                <PrimaryBtn type="submit">
+                  <FaSearch size={20} />
+                </PrimaryBtn>
+              </TrackInputWrapper>
+              {errors.trackingID && (
+                <ValidationErrorText inputError={errors.trackingID} />
+              )}
+            </form>
           )}
         </HeroBtnsList>
         <IconLink>

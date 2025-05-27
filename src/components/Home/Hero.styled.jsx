@@ -50,7 +50,7 @@ export const HeroSubtitle = styled.p`
 
 export const HeroBtnsList = styled.ul`
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-wrap: wrap;
   margin: 0 auto 80px;
