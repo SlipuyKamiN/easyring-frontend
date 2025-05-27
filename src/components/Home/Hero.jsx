@@ -37,8 +37,8 @@ export const Hero = () => {
     resolver: yupResolver(trackingIDSchema),
   });
 
-  const onSubmit = ({ parcelID }) => {
-    navigate(`/tracking/${parcelID}`);
+  const onSubmit = ({ trackingID }) => {
+    navigate(`/tracking/${trackingID}`);
   };
 
   const showInput = () => {

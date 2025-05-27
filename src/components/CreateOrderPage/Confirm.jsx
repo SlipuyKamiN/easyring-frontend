@@ -1,24 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import {
-  AddressList,
-  AddressListItem,
   ConfirmSectionWrapper,
   IconsWrapper,
-  ImportantDetails,
-  InfoSection,
-  InfoSectionsList,
-  ListTitle,
   PaymentOption,
   PaymentOptionsList,
-  SectionTitle,
 } from "./Confirm.styled";
-import { format } from "date-fns";
-import { CiEdit } from "react-icons/ci";
 import { PrimaryBtn } from "../Common/Button.styled";
 import { useEffect } from "react";
 import { updatePrice } from "~/Redux/newParcelSlice";
-import { getGoogleMapsLink } from "~/helpers/getGoogleMaps";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
 import {
   useCreateParcelMutation,
@@ -29,6 +19,11 @@ import { SiVisa } from "react-icons/si";
 import { GiReceiveMoney } from "react-icons/gi";
 import { newParcelSchema } from "~/schemas/newParcelSchema";
 import { useNavigate } from "react-router-dom";
+import {
+  InfoSections,
+  MainInfoSection,
+  ParticipantInfoSection,
+} from "../Common/InfoSections";
 
 export const Confirm = () => {
   const [createParcel, { data, isError, error, isLoading }] =
@@ -105,116 +100,20 @@ export const Confirm = () => {
             </PaymentOptionsList>
           ) : (
             <>
-              <InfoSectionsList>
-                <ListTitle>Preview of your parcel</ListTitle>
-                <InfoSection>
-                  <SectionTitle to={"/createorder/sender"}>
-                    Sender: <CiEdit size={20} />
-                  </SectionTitle>
-                  <address>
-                    <AddressList>
-                      <AddressListItem>
-                        <a href={`tel:${sender.phone}`}>{sender.phone}</a>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <h5>{sender.name}</h5>
-                      </AddressListItem>
+              <InfoSections listTitle={"Preview of your parcel"}>
+                <ParticipantInfoSection
+                  participant={"Sender"}
+                  data={sender}
+                  edit
+                />
+                <MainInfoSection mainInfo={mainInfo} payment={payment} edit />
+                <ParticipantInfoSection
+                  participant={"Recipient"}
+                  data={recipient}
+                  edit
+                />
+              </InfoSections>
 
-                      <AddressListItem>
-                        <a
-                          href={getGoogleMapsLink(
-                            sender.address?.properties?.formatted
-                          )}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {sender.address?.properties?.formatted}
-                        </a>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <a href={`mailto:${sender.email}`}>{sender.email}</a>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <p>{sender.comment}</p>
-                      </AddressListItem>
-                    </AddressList>
-                  </address>
-                </InfoSection>
-                <InfoSection>
-                  <SectionTitle to={"/createorder/maininfo"}>
-                    Parcel: <CiEdit size={20} />
-                  </SectionTitle>
-                  <AddressList>
-                    <AddressListItem>
-                      <p>Parcel size: </p>
-                      <ImportantDetails>
-                        {mainInfo.size ? mainInfo.size : "not selected"}
-                      </ImportantDetails>
-                    </AddressListItem>
-                    <AddressListItem>
-                      <p>Pick up date: </p>
-                      <ImportantDetails>
-                        {mainInfo.startTime
-                          ? format(mainInfo.date, "dd-MM-yyyy")
-                          : "not selected"}
-                      </ImportantDetails>
-                    </AddressListItem>
-                    <AddressListItem>
-                      <p>Time window: </p>
-                      <ImportantDetails>
-                        {mainInfo.startTime
-                          ? format(mainInfo.startTime, "HH:mm")
-                          : "00:00"}
-                      </ImportantDetails>
-                      {" — "}
-                      <ImportantDetails>
-                        {mainInfo.endTime
-                          ? format(mainInfo.endTime, "HH:mm")
-                          : "00:00"}
-                      </ImportantDetails>
-                    </AddressListItem>
-                    <AddressListItem>
-                      <p>Distance:</p>
-                      <ImportantDetails>
-                        {mainInfo.distance} km
-                      </ImportantDetails>
-                    </AddressListItem>
-                    <AddressListItem>
-                      <p>Delivery price: </p>
-                      <ImportantDetails>{payment.price} EUR</ImportantDetails>
-                    </AddressListItem>
-                  </AddressList>
-                </InfoSection>
-                <InfoSection>
-                  <SectionTitle to={"/createorder/recipient"}>
-                    Recipient: <CiEdit size={20} />
-                  </SectionTitle>
-                  <address>
-                    <AddressList>
-                      <AddressListItem>
-                        <a href={`tel:${recipient.phone}`}>{recipient.phone}</a>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <h5>{recipient.name}</h5>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <a
-                          href={getGoogleMapsLink(
-                            recipient.address?.properties?.formatted
-                          )}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {recipient.address?.properties?.formatted}
-                        </a>
-                      </AddressListItem>
-                      <AddressListItem>
-                        <p>{recipient.comment}</p>
-                      </AddressListItem>
-                    </AddressList>
-                  </address>
-                </InfoSection>
-              </InfoSectionsList>
               <PrimaryBtn onClick={handleConfirm}>Confirm Pick-up</PrimaryBtn>
             </>
           )}
