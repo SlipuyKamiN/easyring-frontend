@@ -1,21 +1,25 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { ProgressBar } from "./ProgressBar";
 import { useEffect } from "react";
+import { scrollToTop } from "~/helpers/scrollToTop";
+import { Container } from "../SharedLayout/SharedLayout.styled";
+import { ConfirmSection } from "./CreateOrderPage.styled";
 
 export const CreateOrderPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    scrollToTop();
   }, [location.pathname]);
 
   return (
     <>
       <ProgressBar />
-      <Outlet />
+      <ConfirmSection>
+        <Container>
+          <Outlet />
+        </Container>
+      </ConfirmSection>
     </>
   );
 };

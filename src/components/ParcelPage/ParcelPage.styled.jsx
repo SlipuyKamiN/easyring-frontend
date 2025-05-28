@@ -8,7 +8,7 @@ export const BarcodeLabel = styled(Barcode)`
   max-width: 210px;
   width: auto;
 
-  background-color: ${colors.light.silver};
+  background-color: ${`${colors.light.silver}60`};
   padding: 5px;
 `;
 

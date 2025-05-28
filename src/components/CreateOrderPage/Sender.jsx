@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Container, Section } from "../SharedLayout/SharedLayout.styled";
+import { useNavigate } from "react-router-dom";
 import {
   DecorationBg,
   FormName,
@@ -43,81 +42,69 @@ export const Sender = () => {
   };
 
   return (
-    <Section>
-      <Container>
-        <DecorationBg>
-          <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-            <FormName>Sender info:</FormName>
-            <ul>
-              <InputItem>
-                <TextInput
-                  {...register("phone")}
-                  type="tel"
-                  placeholder=" "
-                  onFocus={() => setValue("phone", "+")}
-                />
-                <label>Phone number</label>
-                <ValidationErrorText inputError={errors.phone} />
-              </InputItem>
-              <InputItem>
-                <TextInput {...register("name")} type="text" placeholder=" " />
-                <label>Full name</label>
-                <ValidationErrorText inputError={errors.name} />
-              </InputItem>
-              <InputItem>
-                <Controller
-                  name="address"
-                  control={control}
-                  render={({ field }) => (
-                    <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
-                      <GeoapifyGeocoderAutocomplete
-                        placeholder="Full address"
-                        limit={5}
-                        filterByCircle={{
-                          lat: 52.52,
-                          lon: 13.405,
-                          radiusMeters: 30000,
-                        }}
-                        placeSelect={(value) => {
-                          setValue("address", value);
-                        }}
-                        value={field.value?.properties?.formatted || ""}
-                      />
-                    </GeoapifyContext>
-                  )}
-                />
-                <ValidationErrorText inputError={errors.address} />
-              </InputItem>
-              <InputItem>
-                <TextInput
-                  {...register("email")}
-                  type="email"
-                  placeholder=" "
-                />
-                <label>Email</label>
-                <ValidationErrorText inputError={errors.email} />
-              </InputItem>
-              <InputItem>
-                <TextInput
-                  {...register("comment")}
-                  type="text"
-                  placeholder=" "
-                />
-                <label>Comment (recommended)</label>
-                <ValidationErrorText inputError={errors.comment} />
-              </InputItem>
-            </ul>
-            <FormBtnsList>
-              <li>
-                <PrimaryBtn type="Submit">Next</PrimaryBtn>
-              </li>
-              <li>
-                <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>
-              </li>
-            </FormBtnsList>
-          </FormWrapper>
-        </DecorationBg>
-      </Container>
-    </Section>
+    <DecorationBg>
+      <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <FormName>Sender info:</FormName>
+        <ul>
+          <InputItem>
+            <TextInput
+              {...register("phone")}
+              type="tel"
+              placeholder=" "
+              onFocus={() => setValue("phone", "+")}
+            />
+            <label>Phone number</label>
+            <ValidationErrorText inputError={errors.phone} />
+          </InputItem>
+          <InputItem>
+            <TextInput {...register("name")} type="text" placeholder=" " />
+            <label>Full name</label>
+            <ValidationErrorText inputError={errors.name} />
+          </InputItem>
+          <InputItem>
+            <Controller
+              name="address"
+              control={control}
+              render={({ field }) => (
+                <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
+                  <GeoapifyGeocoderAutocomplete
+                    placeholder="Full address"
+                    limit={5}
+                    filterByCircle={{
+                      lat: 52.52,
+                      lon: 13.405,
+                      radiusMeters: 30000,
+                    }}
+                    placeSelect={(value) => {
+                      setValue("address", value);
+                    }}
+                    value={field.value?.properties?.formatted || ""}
+                  />
+                </GeoapifyContext>
+              )}
+            />
+            <ValidationErrorText inputError={errors.address} />
+          </InputItem>
+          <InputItem>
+            <TextInput {...register("email")} type="email" placeholder=" " />
+            <label>Email</label>
+            <ValidationErrorText inputError={errors.email} />
+          </InputItem>
+          <InputItem>
+            <TextInput {...register("comment")} type="text" placeholder=" " />
+            <label>Comment (recommended)</label>
+            <ValidationErrorText inputError={errors.comment} />
+          </InputItem>
+        </ul>
+        <FormBtnsList>
+          <li>
+            <PrimaryBtn type="Submit">Next</PrimaryBtn>
+          </li>
+          <li>
+            <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>
+          </li>
+        </FormBtnsList>
+      </FormWrapper>
+    </DecorationBg>
   );
 };

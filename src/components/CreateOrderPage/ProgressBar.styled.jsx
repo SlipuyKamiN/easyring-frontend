@@ -4,9 +4,12 @@ import { colors, transition } from "~/styles/common/vars";
 import { Section } from "../SharedLayout/SharedLayout.styled";
 
 export const ProgressSection = styled(Section)`
+  padding-top: 80px;
   padding-bottom: 0;
 
   @media screen and (min-width: 768px) {
+    padding-top: 100px;
+
     padding-bottom: 0;
   }
 `;
