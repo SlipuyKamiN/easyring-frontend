@@ -1,7 +1,5 @@
-import { DecorationBg, FormWrapper } from "./CreateOrderPage.styled";
+import { DecorationBg } from "./CreateOrderPage.styled";
 import {
-  FormBtnsList,
-  InputList,
   InputListItem,
   ParcelDescription,
   SizeButton,
@@ -32,6 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
 import { combineDateTime, parceInitialDate } from "~/helpers/combineDateTime";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
+import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 
 export const MainInfo = () => {
   const {
@@ -45,7 +44,7 @@ export const MainInfo = () => {
     watch,
     formState: { errors },
   } = useForm({
-    mode: "onChange",
+    mode: "onBlur",
     defaultValues: {
       size,
       date: parceInitialDate(date),

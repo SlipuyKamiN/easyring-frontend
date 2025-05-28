@@ -138,10 +138,6 @@ export const ParcelDescription = styled.textarea`
   }
 `;
 
-export const InputList = styled.ul`
-  margin-bottom: 30px;
-`;
-
 export const InputListItem = styled.li`
   max-width: 100%;
   margin: 0 auto 20px;
@@ -153,11 +149,4 @@ export const TimePickerWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-`;
-
-export const FormBtnsList = styled.ul`
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
 `;

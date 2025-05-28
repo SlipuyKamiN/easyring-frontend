@@ -12,6 +12,7 @@ import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
 import { Recipient } from "~/components/CreateOrderPage/Recipient";
 import { SignInPage } from "~/components/SignIn/SignInPage";
 import { Confirm } from "../CreateOrderPage/Confirm";
+import { SignUpPage } from "../SignIn/SignUpPage";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
           <Route path="confirm" element={<Confirm />}></Route>
         </Route>
         <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
-        <Route path="login" element={<SignInPage />}></Route>
+        <Route path="signin" element={<SignInPage />}></Route>
+        <Route path="signup" element={<SignUpPage />}></Route>
         <Route path="admin">
           <Route path="calendar" element={<Calendar />}></Route>
           <Route path="orders" element={<OrdersList />}></Route>

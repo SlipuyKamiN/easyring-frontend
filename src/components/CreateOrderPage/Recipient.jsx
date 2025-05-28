@@ -1,14 +1,7 @@
-import {
-  DecorationBg,
-  FormName,
-  FormWrapper,
-  InputItem,
-  TextInput,
-} from "./CreateOrderPage.styled";
+import { DecorationBg } from "./CreateOrderPage.styled";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { recipientSchema } from "~/schemas/newParcelSchema";
-import { FormBtnsList } from "./MainInfo.styled";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +12,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { updRecipient } from "~/Redux/newParcelSlice";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
+import {
+  FormName,
+  FormWrapper,
+  InputItem,
+  InputList,
+  TextInput,
+  FormBtnsList,
+} from "../Common/Form.styled";
 
 export const Recipient = () => {
   const { recipient } = useSelector(getNewParcelState);
@@ -29,7 +30,7 @@ export const Recipient = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: "onChange",
+    mode: "onBlur",
     defaultValues: recipient,
     resolver: yupResolver(recipientSchema),
   });
@@ -45,7 +46,7 @@ export const Recipient = () => {
     <DecorationBg>
       <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <FormName>Recipient's info:</FormName>
-        <ul>
+        <InputList>
           <InputItem>
             <TextInput
               {...register("phone")}
@@ -90,7 +91,7 @@ export const Recipient = () => {
             <label>Comment (recommended)</label>
             <ValidationErrorText inputError={errors.comment} />
           </InputItem>
-        </ul>
+        </InputList>
         <FormBtnsList>
           <li>
             <PrimaryBtn type="Submit">Confirm</PrimaryBtn>

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { colors } from "~/styles/common/vars";
+import { Link } from "react-router-dom";
 
 export const PageFooter = styled.footer`
   padding: 40px 0;
@@ -22,7 +23,7 @@ export const SocialsList = styled.ul`
 `;
 
 export const IconLink = styled.a`
-  color: #dddddd;
+  color: ${colors.light.gray};
 
   &.whats-app:hover,
   &.whats-app:focus {
@@ -46,10 +47,19 @@ export const AddressListItem = styled.li`
   }
 
   a {
-    color: #dddddd;
+    color: ${colors.light.gray};
   }
   a:hover,
   a:focus {
-    color: ${colors.primaryAccent};
+    color: ${colors.light.darkGray};
+  }
+`;
+
+export const ReactLink = styled(Link)`
+  color: ${colors.light.gray};
+
+  &:hover,
+  &:focus {
+    color: ${colors.accent.cyan};
   }
 `;

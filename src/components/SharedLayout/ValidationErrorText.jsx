@@ -1,4 +1,4 @@
-import { ErrorText } from "../CreateOrderPage/CreateOrderPage.styled";
+import { ErrorText } from "../Common/Form.styled";
 
 export const ValidationErrorText = ({ inputError }) => {
   if (!inputError) return;
