@@ -57,7 +57,10 @@ export const SignInPage = () => {
               />
               <label htmlFor="password">Password</label>
               <ValidationErrorText inputError={errors.password} />
-              <HidePasswordBtn onClick={() => setVisible(!passVisible)}>
+              <HidePasswordBtn
+                type="button"
+                onClick={() => setVisible(!passVisible)}
+              >
                 {passVisible ? <LiaEye size={20} /> : <LiaEyeSlash size={20} />}
               </HidePasswordBtn>
             </InputItem>
