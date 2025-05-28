@@ -10,7 +10,7 @@ export const SocialsLinks = () => (
         rel="noopener nofollow noreferrer"
         className="whats-app"
       >
-        <FaWhatsapp size={35} />
+        <FaWhatsapp size={36} />
       </IconLink>
     </li>
     <li>
@@ -20,7 +20,7 @@ export const SocialsLinks = () => (
         rel="noopener nofollow noreferrer"
         className="telegram"
       >
-        <FaTelegramPlane size={35} />
+        <FaTelegramPlane size={36} />
       </IconLink>
     </li>
     <li>
@@ -30,7 +30,7 @@ export const SocialsLinks = () => (
         rel="noopener nofollow noreferrer"
         className="instagram"
       >
-        <FaInstagram size={35} />
+        <FaInstagram size={36} />
       </IconLink>
     </li>
   </SocialsList>

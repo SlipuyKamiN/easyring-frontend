@@ -47,8 +47,6 @@ export const SignUpPage = () => {
     }).then(reset);
   };
 
-  console.log(errors);
-
   return (
     <Section>
       <Container>

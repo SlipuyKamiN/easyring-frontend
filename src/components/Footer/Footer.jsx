@@ -33,7 +33,7 @@ export const Footer = () => {
           </ul>
         </address>
         <ReactLink to={"/signin"}>
-          <FaReact size={40} />
+          <FaReact size={36} />
         </ReactLink>
       </FooterContainer>
     </PageFooter>

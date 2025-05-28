@@ -5,7 +5,7 @@ import { OrdersList } from "~/components/OrdersList/OrdersList";
 import { DriversList } from "~/components/DriversList/DriversList";
 import { Settings } from "~/components/Settings/Settings";
 import { ParcelPage } from "~/components/ParcelPage/ParcelPage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { CreateOrderPage } from "~/components/CreateOrderPage/CreateOrderPage";
 import { Sender } from "~/components/CreateOrderPage/Sender";
 import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
@@ -13,8 +13,16 @@ import { Recipient } from "~/components/CreateOrderPage/Recipient";
 import { SignInPage } from "~/components/SignIn/SignInPage";
 import { Confirm } from "../CreateOrderPage/Confirm";
 import { SignUpPage } from "../SignIn/SignUpPage";
+import { useEffect } from "react";
+import { scrollToTop } from "~/helpers/scrollToTop";
 
 const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    scrollToTop();
+  }, [location.pathname]);
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
