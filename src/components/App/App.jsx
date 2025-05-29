@@ -16,13 +16,22 @@ import { SignUpPage } from "../SignIn/SignUpPage";
 import { useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
 import { ParcelsPage } from "../ParcelsList/ParcelsPage";
+import { useSelector } from "react-redux";
+import { getUserState } from "~/Redux/userSelectors";
+import { useCurrentUserQuery } from "~/Redux/authSlice";
 
 const App = () => {
   const location = useLocation();
+  const user = useSelector(getUserState);
+  const skip = !user.token && !user.isLoggedIn;
+
+  const { isLoading } = useCurrentUserQuery("", { skip });
 
   useEffect(() => {
     scrollToTop();
   }, [location.pathname]);
+
+  if (isLoading) return <div>Signing in...</div>;
 
   return (
     <Routes>
