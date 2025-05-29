@@ -10,9 +10,8 @@ import Select from "react-select";
 import { TrackInputWrapper } from "../Home/Hero.styled";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 
-export const Filter = ({
-  props: { setQuery, searchParams, updateParam, get },
-}) => {
+export const Filter = ({ props }) => {
+  const { setQuery, searchParams, updateParam, get } = props;
   const { data } = useGetAllUsersQuery();
 
   const driversOptions = [];

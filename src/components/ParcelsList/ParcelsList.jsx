@@ -1,15 +1,18 @@
 import { Container } from "../SharedLayout/SharedLayout.styled";
-import { Filter } from "./Filter";
 import { ParcelCard } from "./ParcelCard";
+import { CardList } from "./ParcelsList.styled";
 
-export const ParcelsList = () => {
+export const ParcelsList = ({ parcels }) => {
+  if (!parcels) return <div>No parcels</div>;
+
   return (
     <>
-      <Filter />
       <Container>
-        <ul>
-          <ParcelCard />
-        </ul>
+        <CardList>
+          {parcels.map((parcel) => (
+            <ParcelCard key={parcel._id} parcel={parcel} />
+          ))}
+        </CardList>
       </Container>
     </>
   );
