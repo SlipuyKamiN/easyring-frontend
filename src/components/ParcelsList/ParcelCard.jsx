@@ -1,4 +1,4 @@
-export const OrderCard = () => {
+export const ParcelCard = () => {
   return (
     <li>
       <h4>10:00-12:00</h4>

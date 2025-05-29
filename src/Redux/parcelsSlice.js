@@ -34,7 +34,7 @@ export const parcelsApi = createApi({
     }),
 
     searchParcels: builder.query({
-      query: (searchParams) => ({ url: `/${searchParams}` }),
+      query: (searchParams) => ({ url: `?${searchParams.toString()}` }),
       providesTags: ["parcels"],
     }),
 

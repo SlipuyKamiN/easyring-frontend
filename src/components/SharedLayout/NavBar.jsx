@@ -12,7 +12,7 @@ export const NavBar = () => {
               <NavLink to={"admin/calendar"}>Calendar</NavLink>
             </li>
             <li>
-              <NavLink to={"admin/orders"}>Orders</NavLink>
+              <NavLink to={"admin/parcels"}>Parcels</NavLink>
             </li>
             <li>
               <NavLink to={"admin/drivers"}>Drivers</NavLink>
@@ -28,7 +28,7 @@ export const NavBar = () => {
           Driver
           <ul>
             <li>
-              <NavLink to={"driver/orders"}>Orders</NavLink>
+              <NavLink to={"driver/parcels"}>Parcels</NavLink>
             </li>
             <li>
               <NavLink to={"driver/settings"}>Settings</NavLink>

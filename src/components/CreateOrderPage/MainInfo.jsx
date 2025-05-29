@@ -63,6 +63,8 @@ export const MainInfo = () => {
     data.endTime = combineDateTime(data.date, data.endTime);
     data.date = formatISO(data.date);
 
+    console.log(data.date, data.startTime);
+
     dispatch(updMainInfo(data));
     navigate("/createorder/sender");
   };

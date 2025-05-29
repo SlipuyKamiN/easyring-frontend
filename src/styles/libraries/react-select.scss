@@ -1,0 +1,27 @@
+.react-select-container .react-select__control {
+  width: 248px;
+  height: 56px;
+  background-color: #f2f2f7;
+  border-radius: 16px;
+  border: none;
+
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  text-align: left;
+
+  &--is-focused {
+    outline: none;
+    box-shadow: #8e8e93 0px 0px 10px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.react-select-container .react-select__menu {
+  cursor: pointer;
+  top: 48px;
+
+  text-align: left;
+}

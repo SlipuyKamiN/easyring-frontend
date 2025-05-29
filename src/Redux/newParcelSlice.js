@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { formatISO } from "date-fns";
 import { calculateDistance } from "~/helpers/calculateDistance";
 import { calculatePrice } from "~/helpers/calculatePrice";
 
@@ -26,13 +25,7 @@ const newParcelObject = {
     comment: "",
   },
   tracking: {
-    history: [
-      {
-        statusName: "Created",
-        status: 100,
-        date: formatISO(new Date()),
-      },
-    ],
+    history: [],
   },
   payment: {
     price: 0,

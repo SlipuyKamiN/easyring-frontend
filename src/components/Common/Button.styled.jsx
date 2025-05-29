@@ -26,6 +26,7 @@ export const PrimaryBtn = styled.button`
 
   &:hover,
   &:focus {
+    outline: none;
     background-color: ${colors.light.gray};
   }
 `;

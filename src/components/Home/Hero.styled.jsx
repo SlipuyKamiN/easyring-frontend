@@ -71,6 +71,7 @@ export const HeroBtnsList = styled.ul`
 
 export const TrackInputWrapper = styled.li`
   display: flex;
+  align-items: center;
   gap: 10px;
 `;
 
@@ -94,6 +95,7 @@ export const TrackInput = styled.input`
 
   &:hover,
   &:focus {
+    outline: none;
     background-color: ${colors.light.gray};
   }
 `;
