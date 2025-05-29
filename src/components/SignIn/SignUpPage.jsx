@@ -14,8 +14,8 @@ import { signUpSchema } from "~/schemas/signSchema";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useSignupMutation } from "~/Redux/authSlice";
 import { LiaEye, LiaEyeSlash } from "react-icons/lia";
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
   name: "",
@@ -29,6 +29,7 @@ const defaultValues = {
 export const SignUpPage = () => {
   const [signUp] = useSignupMutation();
   const [passVisible, setVisible] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -44,7 +45,13 @@ export const SignUpPage = () => {
     signUp({
       ...data,
       login: data.login.toLowerCase(),
-    }).then(reset);
+      carNumber: data.carNumber.toUpperCase(),
+    })
+      .then(() => {
+        navigate("/signin");
+        reset();
+      })
+      .catch(console.log);
   };
 
   return (

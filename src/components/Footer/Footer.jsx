@@ -1,3 +1,4 @@
+import { useLogoutMutation } from "~/Redux/authSlice";
 import { PageLogo } from "../Common/PageLogo";
 import { SocialsLinks } from "../Common/SocialsLinks";
 import {
@@ -7,8 +8,22 @@ import {
   ReactLink,
 } from "./Footer.styled";
 import { FaReact } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { getUserState } from "~/Redux/userSelectors";
+import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
+  const [logout] = useLogoutMutation();
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector(getUserState);
+
+  console.log("isLoggedIn", isLoggedIn);
+
+  const onClick = () => {
+    if (isLoggedIn) return logout();
+    navigate("/signin");
+  };
+
   return (
     <PageFooter>
       <FooterContainer>
@@ -32,7 +47,7 @@ export const Footer = () => {
             </AddressListItem>
           </ul>
         </address>
-        <ReactLink to={"/signin"}>
+        <ReactLink onClick={onClick}>
           <FaReact size={36} />
         </ReactLink>
       </FooterContainer>

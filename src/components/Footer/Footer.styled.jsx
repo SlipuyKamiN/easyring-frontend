@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { colors } from "~/styles/common/vars";
-import { Link } from "react-router-dom";
 
 export const PageFooter = styled.footer`
   padding: 40px 0;
@@ -55,7 +54,8 @@ export const AddressListItem = styled.li`
   }
 `;
 
-export const ReactLink = styled(Link)`
+export const ReactLink = styled.button`
+  background-color: transparent;
   color: ${colors.light.gray};
 
   &:hover,
