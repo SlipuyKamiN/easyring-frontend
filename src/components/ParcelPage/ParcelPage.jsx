@@ -21,13 +21,7 @@ import {
 import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/userSelectors";
 import { SocialsLinks } from "../Common/SocialsLinks";
-
-const statuses = {
-  100: "Created",
-  200: "Confirmed",
-  300: "Picked up",
-  400: "Delivered",
-};
+import { statuses } from "~/data/parcelStatuses";
 
 export const ParcelPage = () => {
   const { parcelId } = useParams();

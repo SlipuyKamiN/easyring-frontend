@@ -21,6 +21,7 @@ export const colors = {
   classicBlack: "#000000",
   classicWhite: "#ffffff",
   errorRed: "#FF0000",
+  success: "limegreen",
 };
 
 export const transition = {

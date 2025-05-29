@@ -40,17 +40,17 @@ export const parcelsApi = createApi({
 
     deleteParcel: builder.mutation({
       query: (id) => ({ url: `/${id}`, method: "DELETE" }),
-      providesTags: ["parcels"],
+      invalidatesTags: ["parcels"],
     }),
 
     updateParcel: builder.mutation({
-      query: ({ id, body }) => ({ url: `/${id}`, method: "PATCH", body }),
+      query: ({ _id, body }) => ({ url: `/${_id}`, method: "PATCH", body }),
       invalidatesTags: ["parcels"],
     }),
 
     updateDriver: builder.mutation({
-      query: ({ id, body }) => ({
-        url: `/update/driver/${id}`,
+      query: ({ _id, body }) => ({
+        url: `/update/driver/${_id}`,
         method: "PATCH",
         body,
       }),
@@ -58,8 +58,8 @@ export const parcelsApi = createApi({
     }),
 
     updatePayment: builder.mutation({
-      query: ({ id, body }) => ({
-        url: `/update/payment/${id}`,
+      query: ({ _id, body }) => ({
+        url: `/update/payment/${_id}`,
         method: "PATCH",
         body,
       }),
@@ -67,8 +67,8 @@ export const parcelsApi = createApi({
     }),
 
     updateTracking: builder.mutation({
-      query: ({ id, body }) => ({
-        url: `/update/tracking/${id}`,
+      query: ({ _id, body }) => ({
+        url: `/update/tracking/${_id}`,
         method: "PATCH",
         body,
       }),

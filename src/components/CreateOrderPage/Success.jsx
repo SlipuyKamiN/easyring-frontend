@@ -15,13 +15,14 @@ import { format } from "date-fns";
 import { CiBookmarkCheck } from "react-icons/ci";
 
 export const Success = ({ data }) => {
+  const { _id, mainInfo } = data;
   const [updatePayment] = useUpdatePaymentMutation();
   const navigate = useNavigate();
 
   const selectPaymentType = (paymentType) => {
     const handleDispatch = (body) => {
-      updatePayment({ id: data._id, body })
-        .then(() => navigate(`/tracking/${data._id}`))
+      updatePayment({ _id, body })
+        .then(() => navigate(`/tracking/${_id}`))
         .catch(console.log);
     };
 
@@ -46,8 +47,8 @@ export const Success = ({ data }) => {
         The courier will arrive
         <br />
         <b>
-          between {format(data.mainInfo.startTime, "HH:mm")} and{" "}
-          {format(data.mainInfo.endTime, "HH:mm")}.
+          between {format(mainInfo.startTime, "HH:mm")} and{" "}
+          {format(mainInfo.endTime, "HH:mm")}.
         </b>
         <br />
         Please stay available during this time. You’ll also receive a

@@ -1,66 +1,74 @@
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { Card } from "./ParcelCard.styled";
-import { useGetAllUsersQuery } from "~/Redux/authSlice";
-import Select from "react-select";
-import { useUpdateDriverMutation } from "~/Redux/parcelsSlice";
+import {
+  Card,
+  CardDetailsList,
+  DeleteButton,
+  HeadingWrapper,
+  TrackingLink,
+} from "./ParcelCard.styled";
+import { SelectDriver } from "./SelectDriver";
+import { ConfirmStatusBtn } from "./ConfirmParcelStatus";
+import { Joystick } from "./Joystick";
+import { RxCrossCircled } from "react-icons/rx";
+import { useDeleteParcelMutation } from "~/Redux/parcelsSlice";
+import { statuses } from "~/data/parcelStatuses";
 
-export const ParcelCard = ({
-  parcel: { _id, mainInfo, sender, recipient, payment, driver },
-}) => {
-  const { startTime, endTime } = mainInfo;
-  const { data } = useGetAllUsersQuery();
-  const [updateDriver] = useUpdateDriverMutation();
+export const ParcelCard = ({ parcel }) => {
+  const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
+  const { date, startTime, endTime } = mainInfo;
+  const [deleteParcel] = useDeleteParcelMutation();
+  const parcelStatus = tracking.history[tracking.history.length - 1].status;
 
-  const driversOptions = [];
-
-  if (data?.users) {
-    data.users.map(({ _id, name }) =>
-      driversOptions.push({
-        value: { name, _id },
-        label: name,
-      })
-    );
-  }
+  console.log();
 
   return (
     <Card>
-      <Link to={`/tracking/${_id}`}>
-        <h3>{_id}</h3>
-        <h2>
-          {format(startTime, "HH:mm")}-{format(endTime, "HH:mm")}
-        </h2>
-      </Link>
-      <ul>
+      <HeadingWrapper>
+        <TrackingLink to={`/tracking/${_id}`}>
+          <h3>{_id}</h3>
+          <h2>
+            {format(startTime, "HH:mm")} - {format(endTime, "HH:mm")}
+          </h2>
+          <p>
+            <b> {format(date, "dd.MM.yy")}</b>
+          </p>
+        </TrackingLink>
+        <DeleteButton type="button" onClick={() => deleteParcel(_id)}>
+          <RxCrossCircled size={30} />
+        </DeleteButton>
+      </HeadingWrapper>
+      <CardDetailsList>
         <li>
-          <p>Sender: {sender.name}</p>
+          <p>
+            Sender: <b>{sender.name}</b>
+          </p>
         </li>
         <li>
-          <p>Recipient: {recipient.name}</p>
-        </li>
-        <li>Is paid: {payment.isPaid.toString()}</li>
-        <li>
-          <Select
-            defaultValue={driversOptions.find(({ value }) => {
-              if (value._id === driver.id) return value;
-            })}
-            className="react-select-container"
-            classNamePrefix="react-select"
-            placeholder="Select driver"
-            onChange={(e) => updateDriver({ id: _id, body: e.value })}
-            isClearable={true}
-            options={driversOptions}
-          />
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <button>Picked up</button>
+          <p>
+            Recipient:<b> {recipient.name}</b>
+          </p>
         </li>
         <li>
-          <button>Delivered</button>
+          <p>
+            Is paid:
+            <span className={payment.isPaid ? "paid" : ""}>
+              {payment.isPaid ? "PAID" : "NOT PAID"}
+            </span>
+          </p>
         </li>
-      </ul>
+        <li>
+          <p>
+            Status:
+            <b>{statuses[parcelStatus].toUpperCase()}</b>
+          </p>
+        </li>
+      </CardDetailsList>
+      <CardDetailsList>
+        <SelectDriver parcel={parcel} />
+        <ConfirmStatusBtn parcel={parcel} />
+      </CardDetailsList>
+      <Joystick parcel={parcel} />
     </Card>
   );
 };

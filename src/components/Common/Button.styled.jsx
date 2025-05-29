@@ -29,6 +29,11 @@ export const PrimaryBtn = styled.button`
     outline: none;
     background-color: ${colors.light.gray};
   }
+
+  &:disabled {
+    background-color: ${colors.light.gray};
+    cursor: not-allowed;
+  }
 `;
 
 export const SecondaryBtn = styled(PrimaryBtn)`

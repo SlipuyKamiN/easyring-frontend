@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Filter } from "./Filter";
 import { useSmartSearchParams } from "~/hooks/updateSearchParams";
 import { useSearchParcelsQuery } from "~/Redux/parcelsSlice";
@@ -8,6 +8,12 @@ export const ParcelsPage = () => {
   const [query, setQuery] = useState("");
   const { searchParams, updateParam, get } = useSmartSearchParams();
   const { data } = useSearchParcelsQuery(query);
+
+  useEffect(() => {
+    if (searchParams.size >= 1 && query === "") {
+      setQuery(searchParams.toString());
+    }
+  }, []);
 
   if (!data) return <div>Loading..</div>;
 
