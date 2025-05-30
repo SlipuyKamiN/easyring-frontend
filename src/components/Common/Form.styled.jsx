@@ -63,6 +63,10 @@ export const InputItem = styled.li`
     @media screen and (min-width: 768px) {
       font-size: 16px;
     }
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
   }
 
   input:focus + label,
@@ -115,4 +119,7 @@ export const HidePasswordBtn = styled.button`
   position: absolute;
   top: 15px;
   right: 10px;
+
+  background-color: transparent;
+  color: ${colors.light.darkGray};
 `;

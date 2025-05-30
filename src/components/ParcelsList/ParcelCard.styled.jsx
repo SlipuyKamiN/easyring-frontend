@@ -11,13 +11,15 @@ export const Card = styled.li`
 
   width: 300px;
 
+  text-align: left;
+
   @media screen and (min-width: 768px) {
     width: 300px;
     max-width: none;
   }
 `;
 
-export const HeadingWrapper = styled.div`
+export const CardHeadingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -25,7 +27,7 @@ export const HeadingWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-export const TrackingLink = styled(Link)`
+export const CardLink = styled(Link)`
   display: block;
   width: 160px;
 `;

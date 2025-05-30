@@ -21,7 +21,7 @@ export const Footer = () => {
 
   const onClick = () => {
     if (isLoggedIn) return logout();
-    navigate("/signin");
+    navigate("/auth/signin");
   };
 
   return (

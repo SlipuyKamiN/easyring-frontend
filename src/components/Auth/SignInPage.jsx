@@ -67,7 +67,7 @@ export const SignInPage = () => {
           </InputList>
           <FormBtnsList>
             <PrimaryBtn type="submit">log in</PrimaryBtn>
-            <SecondaryBtnLink to={"/signup"}>register</SecondaryBtnLink>
+            <SecondaryBtnLink to={"/auth/signup"}>register</SecondaryBtnLink>
           </FormBtnsList>
         </FormWrapper>
       </Container>

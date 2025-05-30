@@ -1,11 +1,10 @@
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardDetailsList,
   DeleteButton,
-  HeadingWrapper,
-  TrackingLink,
+  CardHeadingWrapper,
+  CardLink,
 } from "./ParcelCard.styled";
 import { SelectDriver } from "./SelectDriver";
 import { ConfirmStatusBtn } from "./ConfirmParcelStatus";
@@ -20,12 +19,10 @@ export const ParcelCard = ({ parcel }) => {
   const [deleteParcel] = useDeleteParcelMutation();
   const parcelStatus = tracking.history[tracking.history.length - 1].status;
 
-  console.log();
-
   return (
     <Card>
-      <HeadingWrapper>
-        <TrackingLink to={`/tracking/${_id}`}>
+      <CardHeadingWrapper>
+        <CardLink to={`/tracking/${_id}`}>
           <h3>{_id}</h3>
           <h2>
             {format(startTime, "HH:mm")} - {format(endTime, "HH:mm")}
@@ -33,11 +30,11 @@ export const ParcelCard = ({ parcel }) => {
           <p>
             <b> {format(date, "dd.MM.yy")}</b>
           </p>
-        </TrackingLink>
+        </CardLink>
         <DeleteButton type="button" onClick={() => deleteParcel(_id)}>
           <RxCrossCircled size={30} />
         </DeleteButton>
-      </HeadingWrapper>
+      </CardHeadingWrapper>
       <CardDetailsList>
         <li>
           <p>

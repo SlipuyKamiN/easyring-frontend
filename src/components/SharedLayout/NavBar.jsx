@@ -15,7 +15,7 @@ export const NavBar = () => {
               <NavLink to={"admin/parcels"}>Parcels</NavLink>
             </li>
             <li>
-              <NavLink to={"admin/drivers"}>Drivers</NavLink>
+              <NavLink to={"admin/users"}>Users</NavLink>
             </li>
             <li>
               <NavLink to={"admin/settings"}>Settings</NavLink>

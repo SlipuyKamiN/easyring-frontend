@@ -13,7 +13,7 @@ export const ParcelsPage = () => {
     if (searchParams.size >= 1 && query === "") {
       setQuery(searchParams.toString());
     }
-  }, []);
+  }, [query, searchParams]);
 
   if (!data) return <div>Loading..</div>;
 
