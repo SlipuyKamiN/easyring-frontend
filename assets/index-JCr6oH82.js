@@ -587,6 +587,14 @@ Please change the parent <Route path="${k}"> to <Route path="${k==="/"?"*":`${k}
   font-size: 14px;
   border-radius: 16px;
 
+  &[name="login"] {
+    text-transform: lowercase;
+  }
+
+  &[name="carNumber"] {
+    text-transform: uppercase;
+  }
+
   &:hover,
   &:focus {
     box-shadow: ${Ie.light.darkGray} 0px 0px 10px;
