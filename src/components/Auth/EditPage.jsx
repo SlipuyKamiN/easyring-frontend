@@ -7,8 +7,6 @@ export const EditPage = () => {
   const { state } = useLocation();
 
   const onSubmit = (data) => {
-    console.log(state);
-
     updateUser({
       _id: state._id,
       body: {

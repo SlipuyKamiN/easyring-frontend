@@ -39,12 +39,30 @@ export const UserForm = ({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: "onSubmit",
     defaultValues,
     resolver: yupResolver(signUpSchema),
   });
+
+  const handleOnChange = ({ target }) => {
+    const { name, value } = target;
+    const set = (v) => setValue(name, v);
+
+    switch (target.name) {
+      case "login":
+        set(value.toLowerCase());
+        break;
+      case "carNumber":
+        set(value.toUpperCase());
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <Section>
@@ -53,7 +71,12 @@ export const UserForm = ({
           <InputList>
             {inputNames.map((name) => (
               <InputItem key={name}>
-                <TextInput type="text" placeholder=" " {...register(name)} />
+                <TextInput
+                  onInput={handleOnChange}
+                  type="text"
+                  placeholder=" "
+                  {...register(name)}
+                />
                 <label>{name.replace("N", " n")}</label>
                 <ValidationErrorText inputError={errors[name]} />
               </InputItem>

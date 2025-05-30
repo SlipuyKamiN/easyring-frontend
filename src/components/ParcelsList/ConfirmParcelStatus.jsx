@@ -2,12 +2,10 @@ import { formatISO } from "date-fns";
 import { PrimaryBtn } from "../Common/Button.styled";
 import { useUpdateTrackingMutation } from "~/Redux/parcelsSlice";
 
-export const ConfirmStatusBtn = ({ parcel }) => {
+export const ConfirmStatusBtn = ({ parcel, status }) => {
   const [updateTracking] = useUpdateTrackingMutation();
   const isDriver = parcel.driver._id;
-  const isConfirmed = parcel.tracking.history.find(
-    ({ status }) => status === 200
-  );
+  const isConfirmed = status >= 200;
 
   return (
     <li>

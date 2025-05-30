@@ -21,9 +21,17 @@ export const UserCard = ({ user }) => {
 
   useEffect(() => {
     if (currentRole !== role) {
-      updateUser({ _id, body: { ...user, role: currentRole } });
+      const body = {
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        carNumber: user.carNumber,
+        login: user.login,
+        role: currentRole,
+      };
+      updateUser({ _id, body });
     }
-  }, [currentRole, role, user, updateUser, _id]);
+  }, [currentRole, updateUser, _id, user, role]);
 
   return (
     <Card>
@@ -40,6 +48,7 @@ export const UserCard = ({ user }) => {
               email,
               carNumber,
               login,
+              role,
             },
           }}
         >

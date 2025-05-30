@@ -17,7 +17,7 @@ export const ParcelCard = ({ parcel }) => {
   const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
   const { date, startTime, endTime } = mainInfo;
   const [deleteParcel] = useDeleteParcelMutation();
-  const parcelStatus = tracking.history[tracking.history.length - 1].status;
+  const status = tracking.history[tracking.history.length - 1].status;
 
   return (
     <Card>
@@ -57,15 +57,15 @@ export const ParcelCard = ({ parcel }) => {
         <li>
           <p>
             Status:
-            <b>{statuses[parcelStatus].toUpperCase()}</b>
+            <b>{statuses[status].toUpperCase()}</b>
           </p>
         </li>
       </CardDetailsList>
       <CardDetailsList>
-        <SelectDriver parcel={parcel} />
-        <ConfirmStatusBtn parcel={parcel} />
+        <SelectDriver parcel={parcel} status={status} />
+        <ConfirmStatusBtn parcel={parcel} status={status} />
       </CardDetailsList>
-      <Joystick parcel={parcel} />
+      <Joystick parcel={parcel} status={status} />
     </Card>
   );
 };

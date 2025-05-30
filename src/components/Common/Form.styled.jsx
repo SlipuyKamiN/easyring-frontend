@@ -98,14 +98,6 @@ export const TextInput = styled.input`
   font-size: 14px;
   border-radius: 16px;
 
-  &[name="login"] {
-    text-transform: lowercase;
-  }
-
-  &[name="carNumber"] {
-    text-transform: uppercase;
-  }
-
   &:hover,
   &:focus {
     box-shadow: ${colors.light.darkGray} 0px 0px 10px;

@@ -16,13 +16,13 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { FaFlagCheckered } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
-export const Joystick = ({ parcel }) => {
-  const { _id, sender, recipient, payment, tracking } = parcel;
+export const Joystick = ({ parcel, status }) => {
+  const { _id, sender, recipient, payment } = parcel;
   const [updateTracking] = useUpdateTrackingMutation();
   const [updatePayment] = useUpdatePaymentMutation();
-  const isConfirmed = tracking.history.find(({ status }) => status === 200);
-  const isPickedUp = tracking.history.find(({ status }) => status === 300);
-  const isDelivered = tracking.history.find(({ status }) => status === 400);
+  const isConfirmed = status >= 200;
+  const isPickedUp = status >= 300;
+  const isDelivered = status >= 400;
 
   return (
     <JoyList>

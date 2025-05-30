@@ -67,9 +67,6 @@ export const authApi = createApi({
         method: "PATCH",
         body,
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        dispatch(setUser((await queryFulfilled).data));
-      },
       invalidatesTags: ["auth"],
     }),
 
@@ -86,7 +83,7 @@ export const authApi = createApi({
 
     getAllUsers: builder.query({
       query: () => "/users",
-      invalidatesTags: ["auth"],
+      providesTags: ["auth"],
     }),
   }),
 });

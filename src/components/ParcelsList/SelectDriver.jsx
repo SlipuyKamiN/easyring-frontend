@@ -3,7 +3,7 @@ import Select from "react-select";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 import { useUpdateDriverMutation } from "~/Redux/parcelsSlice";
 
-export const SelectDriver = ({ parcel }) => {
+export const SelectDriver = ({ parcel, status }) => {
   const { data } = useGetAllUsersQuery();
 
   const [updateDriver] = useUpdateDriverMutation();
@@ -29,6 +29,7 @@ export const SelectDriver = ({ parcel }) => {
   return (
     <li>
       <Select
+        isDisabled={status >= 200}
         className="react-select-container"
         classNamePrefix="react-select"
         placeholder="Select driver"
