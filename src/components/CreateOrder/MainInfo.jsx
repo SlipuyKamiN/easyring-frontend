@@ -1,4 +1,4 @@
-import { DecorationBg } from "./CreateOrderPage.styled";
+import { DecorationBg } from "../../pages/CreateOrderPage.styled";
 import {
   InputListItem,
   ParcelDescription,

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { colors } from "~/styles/common/vars";
-import { Section } from "../SharedLayout/SharedLayout.styled";
+import { Section } from "../components/SharedLayout/SharedLayout.styled";
 
 export const ConfirmSection = styled(Section)`
   padding: 20px 0 40px;

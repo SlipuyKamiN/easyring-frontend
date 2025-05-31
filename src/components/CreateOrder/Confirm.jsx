@@ -14,8 +14,7 @@ import { FaCheck } from "react-icons/fa6";
 import { Success } from "./Success";
 
 export const Confirm = () => {
-  const [createParcel, { data, isError, error, isLoading }] =
-    useCreateParcelMutation();
+  const [createParcel, { data, error }] = useCreateParcelMutation();
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
   const { mainInfo, sender, recipient, payment } = newParcel;
@@ -23,8 +22,6 @@ export const Confirm = () => {
   useEffect(() => {
     dispatch(updatePrice({ sender, recipient, size: mainInfo.size }));
   }, [sender, recipient, mainInfo.size, dispatch]);
-
-  console.log(data, isError, error, isLoading);
 
   const handleConfirm = async () => {
     newParcelSchema

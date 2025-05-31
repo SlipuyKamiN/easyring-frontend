@@ -1,34 +1,35 @@
 import { useParams } from "react-router-dom";
-import { Container, Section } from "../SharedLayout/SharedLayout.styled";
+import {
+  Container,
+  Section,
+} from "~/components/SharedLayout/SharedLayout.styled";
 import { useGetParcelByIdQuery } from "~/Redux/parcelsSlice";
-import { ConfirmSectionWrapper } from "../CreateOrderPage/Confirm.styled";
+import { ConfirmSectionWrapper } from "~/components/CreateOrder/Confirm.styled";
 import {
   BarcodeLabel,
   DateWrapper,
   TrackingItem,
   TrackingList,
-} from "./ParcelPage.styled";
+} from "~/pages/ParcelPage.styled";
 import { format } from "date-fns";
 import {
   InfoSection,
   InfoSectionsList,
   SectionTitle,
-} from "../Common/InfoSections.styled";
+} from "~/components/Common/InfoSections.styled";
 import {
   MainInfoSection,
   ParticipantInfoSection,
-} from "../Common/InfoSections";
+} from "~/components/Common/InfoSections";
 import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/userSelectors";
-import { SocialsLinks } from "../Common/SocialsLinks";
+import { SocialsLinks } from "~/components/Common/SocialsLinks";
 import { statuses } from "~/data/parcelStatuses";
 
-export const ParcelPage = () => {
+const ParcelPage = () => {
   const { parcelId } = useParams();
   const { data } = useGetParcelByIdQuery(parcelId);
   const { isLoggedIn } = useSelector(getUserState);
-
-  console.log("loggedIn:", isLoggedIn);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -79,3 +80,5 @@ export const ParcelPage = () => {
     </Section>
   );
 };
+
+export default ParcelPage;

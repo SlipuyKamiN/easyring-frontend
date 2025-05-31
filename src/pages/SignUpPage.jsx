@@ -1,8 +1,8 @@
 import { useSignupMutation } from "~/Redux/authSlice";
 import { useNavigate } from "react-router-dom";
-import { UserForm } from "./UserForm";
+import { UserForm } from "~/components/Auth/UserForm";
 
-export const SignUpPage = () => {
+const SignUpPage = () => {
   const [signUp] = useSignupMutation();
   const navigate = useNavigate();
 
@@ -20,3 +20,5 @@ export const SignUpPage = () => {
 
   return <UserForm onSubmit={onSubmit} pageName="signup" />;
 };
+
+export default SignUpPage;

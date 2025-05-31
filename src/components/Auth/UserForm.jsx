@@ -18,6 +18,7 @@ import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 import { useState } from "react";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
+import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 
 const initialValues = {
   name: "",
@@ -47,23 +48,6 @@ export const UserForm = ({
     resolver: yupResolver(signUpSchema),
   });
 
-  const handleOnChange = ({ target }) => {
-    const { name, value } = target;
-    const set = (v) => setValue(name, v);
-
-    switch (target.name) {
-      case "login":
-        set(value.toLowerCase());
-        break;
-      case "carNumber":
-        set(value.toUpperCase());
-        break;
-
-      default:
-        break;
-    }
-  };
-
   return (
     <Section>
       <Container>
@@ -72,7 +56,7 @@ export const UserForm = ({
             {inputNames.map((name) => (
               <InputItem key={name}>
                 <TextInput
-                  onInput={handleOnChange}
+                  onInput={(e) => handleInputTextCase(e.target, setValue)}
                   type="text"
                   placeholder=" "
                   {...register(name)}

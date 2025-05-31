@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Filter } from "./Filter";
+import { Filter } from "~/components/ParcelsList/Filter";
 import { useSmartSearchParams } from "~/hooks/updateSearchParams";
 import { useSearchParcelsQuery } from "~/Redux/parcelsSlice";
-import { ParcelsList } from "./ParcelsList";
+import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
 
-export const ParcelsPage = () => {
+const ParcelsPage = () => {
   const [query, setQuery] = useState("");
   const { searchParams, updateParam, get } = useSmartSearchParams();
   const { data } = useSearchParcelsQuery(query);
@@ -24,3 +24,5 @@ export const ParcelsPage = () => {
     </>
   );
 };
+
+export default ParcelsPage;

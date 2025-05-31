@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
-import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
+import {
+  PrimaryBtn,
+  SecondaryBtnLink,
+} from "~/components/Common/Button.styled";
 import {
   FormBtnsList,
   FormWrapper,
@@ -7,23 +10,28 @@ import {
   InputItem,
   InputList,
   TextInput,
-} from "../Common/Form.styled";
-import { Container, Section } from "../SharedLayout/SharedLayout.styled";
+} from "~/components/Common/Form.styled";
+import {
+  Container,
+  Section,
+} from "~/components/SharedLayout/SharedLayout.styled";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "~/schemas/signSchema";
-import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
+import { ValidationErrorText } from "~/components/SharedLayout/ValidationErrorText";
 import { useSigninMutation } from "~/Redux/authSlice";
 import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 
 import { useState } from "react";
+import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 
-export const SignInPage = () => {
+const SignInPage = () => {
   const [signIn] = useSigninMutation();
   const [passVisible, setVisible] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     reset,
   } = useForm({
     mode: "onSubmit",
@@ -44,7 +52,12 @@ export const SignInPage = () => {
         <FormWrapper autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <InputList>
             <InputItem>
-              <TextInput type="text" placeholder=" " {...register("login")} />
+              <TextInput
+                type="text"
+                placeholder=" "
+                {...register("login")}
+                onInput={(e) => handleInputTextCase(e.target, setValue)}
+              />
               <label>Login</label>
               <ValidationErrorText inputError={errors.login} />
             </InputItem>
@@ -74,3 +87,5 @@ export const SignInPage = () => {
     </Section>
   );
 };
+
+export default SignInPage;

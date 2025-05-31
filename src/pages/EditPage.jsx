@@ -1,8 +1,8 @@
 import { useUpdateUserMutation } from "~/Redux/authSlice";
-import { UserForm } from "./UserForm";
+import { UserForm } from "~/components/Auth/UserForm";
 import { useLocation } from "react-router-dom";
 
-export const EditPage = () => {
+const EditPage = () => {
   const [updateUser] = useUpdateUserMutation();
   const { state } = useLocation();
 
@@ -21,3 +21,5 @@ export const EditPage = () => {
     <UserForm defaultValues={state.user} onSubmit={onSubmit} pageName="edit" />
   );
 };
+
+export default EditPage;

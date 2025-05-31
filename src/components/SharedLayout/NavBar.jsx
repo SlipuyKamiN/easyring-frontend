@@ -9,13 +9,13 @@ export const NavBar = () => {
           Admin
           <ul>
             <li>
-              <NavLink to={"admin/calendar"}>Calendar</NavLink>
-            </li>
-            <li>
               <NavLink to={"admin/parcels"}>Parcels</NavLink>
             </li>
             <li>
               <NavLink to={"admin/users"}>Users</NavLink>
+            </li>
+            <li>
+              <NavLink to={"admin/map"}>Map</NavLink>
             </li>
             <li>
               <NavLink to={"admin/settings"}>Settings</NavLink>
@@ -31,7 +31,7 @@ export const NavBar = () => {
               <NavLink to={"driver/parcels"}>Parcels</NavLink>
             </li>
             <li>
-              <NavLink to={"driver/settings"}>Settings</NavLink>
+              <NavLink to={"auth/edit"}>Settings</NavLink>
             </li>
           </ul>
         </NavLinkBtn>

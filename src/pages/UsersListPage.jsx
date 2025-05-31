@@ -1,9 +1,12 @@
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
-import { Container, Section } from "../SharedLayout/SharedLayout.styled";
-import { UserCard } from "./UserCard";
-import { CardList } from "../ParcelsList/ParcelsList.styled";
+import {
+  Container,
+  Section,
+} from "../components/SharedLayout/SharedLayout.styled";
+import { UserCard } from "../components/UsersList/UserCard";
+import { CardList } from "../components/ParcelsList/ParcelsList.styled";
 
-export const UsersList = () => {
+const UsersListPage = () => {
   const { data } = useGetAllUsersQuery("");
 
   if (!data) return <div>Loading users...</div>;
@@ -20,3 +23,5 @@ export const UsersList = () => {
     </Section>
   );
 };
+
+export default UsersListPage;

@@ -1,16 +1,16 @@
-import { DecorationBg } from "./CreateOrderPage.styled";
+import { useNavigate } from "react-router-dom";
+import { DecorationBg } from "../../pages/CreateOrderPage.styled";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { recipientSchema } from "~/schemas/newParcelSchema";
-import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
+import { senderSchema } from "~/schemas/newParcelSchema";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
-import { useNavigate } from "react-router-dom";
+import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import {
   GeoapifyContext,
   GeoapifyGeocoderAutocomplete,
 } from "@geoapify/react-geocoder-autocomplete";
 import { useDispatch, useSelector } from "react-redux";
-import { updRecipient } from "~/Redux/newParcelSlice";
+import { updSender } from "~/Redux/newParcelSlice";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
 import {
   FormName,
@@ -21,31 +21,31 @@ import {
   FormBtnsList,
 } from "../Common/Form.styled";
 
-export const Recipient = () => {
-  const { recipient } = useSelector(getNewParcelState);
+export const Sender = () => {
+  const { sender } = useSelector(getNewParcelState);
   const {
     register,
+    handleSubmit,
     control,
     setValue,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     mode: "onBlur",
-    defaultValues: recipient,
-    resolver: yupResolver(recipientSchema),
+    defaultValues: sender,
+    resolver: yupResolver(senderSchema),
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    dispatch(updRecipient(data));
-    navigate("/createorder/confirm");
+    dispatch(updSender(data));
+    navigate("/createorder/recipient");
   };
 
   return (
     <DecorationBg>
       <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <FormName>Recipient's info:</FormName>
+        <FormName>Sender info:</FormName>
         <InputList>
           <InputItem>
             <TextInput
@@ -87,14 +87,19 @@ export const Recipient = () => {
             <ValidationErrorText inputError={errors.address} />
           </InputItem>
           <InputItem>
+            <TextInput {...register("email")} type="email" placeholder=" " />
+            <label>Email</label>
+            <ValidationErrorText inputError={errors.email} />
+          </InputItem>
+          <InputItem>
             <TextInput {...register("comment")} type="text" placeholder=" " />
-            <label>Comment (recommended)</label>
+            <label>Comment</label>
             <ValidationErrorText inputError={errors.comment} />
           </InputItem>
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn type="Submit">Confirm</PrimaryBtn>
+            <PrimaryBtn type="Submit">Next</PrimaryBtn>
           </li>
           <li>
             <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>

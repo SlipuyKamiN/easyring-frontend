@@ -1,25 +1,24 @@
-import SharedLayout from "~/components/SharedLayout/SharedLayout";
-import { Home } from "~/components/Home/Home";
-import { Calendar } from "~/components/Calendar/Calendar";
-import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
-import { UsersList } from "~/components/UsersList/UsersList";
-import { Settings } from "~/components/Settings/Settings";
-import { ParcelPage } from "~/components/ParcelPage/ParcelPage";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { CreateOrderPage } from "~/components/CreateOrderPage/CreateOrderPage";
-import { Sender } from "~/components/CreateOrderPage/Sender";
-import { MainInfo } from "~/components/CreateOrderPage/MainInfo";
-import { Recipient } from "~/components/CreateOrderPage/Recipient";
-import { SignInPage } from "~/components/Auth/SignInPage";
-import { Confirm } from "../CreateOrderPage/Confirm";
-import { SignUpPage } from "../Auth/SignUpPage";
+import { getUserState } from "~/Redux/userSelectors";
+import { useSelector } from "react-redux";
+import { Sender } from "~/components/CreateOrder/Sender";
+import { MainInfo } from "~/components/CreateOrder/MainInfo";
+import { Recipient } from "~/components/CreateOrder/Recipient";
+import { Confirm } from "~/components/CreateOrder/Confirm";
 import { useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
-import { ParcelsPage } from "../ParcelsList/ParcelsPage";
-import { useSelector } from "react-redux";
-import { getUserState } from "~/Redux/userSelectors";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
-import { EditPage } from "../Auth/EditPage";
+import SharedLayout from "~/components/SharedLayout/SharedLayout";
+import Home from "~/pages/Home";
+import CreateOrderPage from "~/pages/CreateOrderPage";
+import ParcelPage from "~/pages/ParcelPage";
+import ParcelsPage from "../../pages/ParcelsPage";
+import SignInPage from "~/pages/SignInPage";
+import SignUpPage from "../../pages/SignUpPage";
+import UsersListPage from "~/pages/UsersListPage";
+import EditPage from "../../pages/EditPage";
+import MapPage from "~/pages/MapPage";
+import SettingsPage from "~/pages/SettingsPage";
 
 const App = () => {
   const location = useLocation();
@@ -51,14 +50,13 @@ const App = () => {
           <Route path="edit" element={<EditPage />}></Route>
         </Route>
         <Route path="admin">
-          <Route path="calendar" element={<Calendar />}></Route>
           <Route path="parcels" element={<ParcelsPage />}></Route>
-          <Route path="users" element={<UsersList />}></Route>
-          <Route path="settings" element={<Settings />}></Route>
+          <Route path="users" element={<UsersListPage />}></Route>
+          <Route path="map" element={<MapPage />}></Route>
+          <Route path="settings" element={<SettingsPage />}></Route>
         </Route>
         <Route path="driver">
-          <Route path="parcels" element={<ParcelsList />}></Route>
-          <Route path="settings" element={<Settings />}></Route>
+          <Route path="parcels" element={<ParcelsPage />}></Route>
         </Route>
       </Route>
     </Routes>

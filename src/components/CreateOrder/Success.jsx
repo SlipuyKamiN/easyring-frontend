@@ -13,6 +13,8 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { CiBookmarkCheck } from "react-icons/ci";
+import { useEffect } from "react";
+import { scrollToTop } from "~/helpers/scrollToTop";
 
 export const Success = ({ data }) => {
   const { _id, mainInfo } = data;
@@ -36,6 +38,10 @@ export const Success = ({ data }) => {
         break;
     }
   };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <>
