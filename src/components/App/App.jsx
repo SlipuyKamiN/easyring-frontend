@@ -49,16 +49,19 @@ const App = () => {
         <Route path="auth">
           <Route
             path="signin"
-            element={<RestrictedRoute component={SignInPage} />}
+            element={<RestrictedRoute element={<SignInPage />} />}
           ></Route>
           <Route
             path="signup"
-            element={<RestrictedRoute component={SignUpPage} />}
+            element={<RestrictedRoute element={<SignUpPage />} />}
           ></Route>
           <Route
             path="edit"
             element={
-              <PrivateRoute component={EditPage} roles={["admin", "driver"]} />
+              <PrivateRoute
+                element={<EditPage />}
+                roles={["admin", "driver"]}
+              />
             }
           ></Route>
         </Route>
@@ -67,7 +70,7 @@ const App = () => {
             path="parcels"
             element={
               <PrivateRoute
-                component={ParcelsPage}
+                element={<ParcelsPage />}
                 roles={["admin", "driver"]}
               />
             }
@@ -76,19 +79,19 @@ const App = () => {
             path="users"
             redirectTo="user/parcels"
             element={
-              <PrivateRoute component={UsersListPage} roles={["admin"]} />
+              <PrivateRoute element={<UsersListPage />} roles={["admin"]} />
             }
           ></Route>
           <Route
             path="map"
             redirectTo="user/parcels"
-            element={<PrivateRoute component={MapPage} roles={["admin"]} />}
+            element={<PrivateRoute element={<MapPage />} roles={["admin"]} />}
           ></Route>
           <Route
             path="settings"
             redirectTo="user/parcels"
             element={
-              <PrivateRoute component={SettingsPage} roles={["admin"]} />
+              <PrivateRoute element={<SettingsPage />} roles={["admin"]} />
             }
           ></Route>
         </Route>
