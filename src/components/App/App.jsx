@@ -1,13 +1,10 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { getUserState } from "~/Redux/userSelectors";
-import { useSelector } from "react-redux";
 import { Sender } from "~/components/CreateOrder/Sender";
 import { MainInfo } from "~/components/CreateOrder/MainInfo";
 import { Recipient } from "~/components/CreateOrder/Recipient";
 import { Confirm } from "~/components/CreateOrder/Confirm";
 import { lazy, useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
-import { useCurrentUserQuery } from "~/Redux/authSlice";
 import SharedLayout from "~/components/SharedLayout/SharedLayout";
 import Home from "~/pages/Home";
 import CreateOrderPage from "~/pages/CreateOrderPage";
@@ -24,16 +21,10 @@ const SettingsPage = lazy(() => import("~/pages/SettingsPage"));
 
 const App = () => {
   const location = useLocation();
-  const user = useSelector(getUserState);
-  const skip = !user.token && !user.isLoggedIn;
-
-  const { isLoading } = useCurrentUserQuery("", { skip });
 
   useEffect(() => {
     scrollToTop();
   }, [location.pathname]);
-
-  if (isLoading) return <div>Signing in...</div>;
 
   return (
     <Routes>

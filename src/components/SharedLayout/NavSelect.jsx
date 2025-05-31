@@ -39,7 +39,7 @@ export const NavSelect = () => {
   const options = optionsList.filter(({ roles }) => roles.includes(user.role));
   const value = options.find((o) => o.value === pathname || o.value === "/");
 
-  if (!user._id && !user.token) return;
+  if (!user._id && !user.isLoggedIn) return;
 
   const state = {
     _id: user._id,
@@ -55,6 +55,7 @@ export const NavSelect = () => {
     <Select
       className="react-nav-select-container"
       classNamePrefix="react-nav-select"
+      placeholder={<FaHome size={20} />}
       isSearchable={false}
       value={value}
       options={options}
