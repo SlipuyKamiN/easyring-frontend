@@ -13,8 +13,7 @@ import {
 } from "./Joystick.styled";
 import { FaDirections } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { FaFlagCheckered } from "react-icons/fa";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { FaFlagCheckered, FaCheck } from "react-icons/fa";
 
 export const Joystick = ({ parcel, status }) => {
   const { _id, sender, recipient, payment } = parcel;
@@ -81,7 +80,7 @@ export const Joystick = ({ parcel, status }) => {
             });
           }}
         >
-          <IoMdCheckmarkCircleOutline size={25} />
+          <FaCheck size={25} />
         </JoyButton>
       </li>
       <PayWrapper>

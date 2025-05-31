@@ -84,17 +84,23 @@ export const PayWrapper = styled.li`
 export const PayButton = styled.button`
   width: 100%;
   height: 100%;
-  font-size: 16px;
+  font-size: 18px;
 
   font-weight: 600;
+  line-height: 1;
 
   transition: all ${transition.duration};
 
+  color: ${colors.errorRed};
+
+  span {
+    font-size: 14px;
+  }
+
   &:disabled {
-    &:disabled {
-      cursor: not-allowed;
-      background-color: ${`${colors.light.darkGray}60`};
-    }
+    cursor: not-allowed;
+    color: ${colors.light.gray};
+    background-color: ${`${colors.light.darkGray}60`};
   }
 
   &:hover,
