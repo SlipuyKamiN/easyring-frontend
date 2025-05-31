@@ -5,6 +5,10 @@
 @use "@geoapify/geocoder-autocomplete/styles/minimal.css";
 @use "styles/libraries/geoapify.scss";
 @use "styles/libraries/react-select.scss";
+@use "styles/libraries/swiper.scss";
+@use "swiper/scss";
+@use "swiper/scss/navigation";
+@use "swiper/scss/pagination";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("styles/common/fonts/Montserrat-Alt1.css");

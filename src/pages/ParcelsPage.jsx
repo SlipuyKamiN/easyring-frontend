@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Filter } from "~/components/ParcelsList/Filter";
-import { useSmartSearchParams } from "~/hooks/updateSearchParams";
+import { useSmartSearchParams } from "~/hooks/useSmartSearchParams";
 import { useSearchParcelsQuery } from "~/Redux/parcelsSlice";
 import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
 import { useSelector } from "react-redux";

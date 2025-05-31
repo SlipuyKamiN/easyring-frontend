@@ -9,14 +9,10 @@ export const Card = styled.li`
   border-radius: 20px;
   background-color: ${`${colors.light.gray}60`};
 
-  width: 300px;
+  min-width: 290px;
+  max-width: 300px;
 
   text-align: left;
-
-  @media screen and (min-width: 768px) {
-    width: 300px;
-    max-width: none;
-  }
 `;
 
 export const CardHeadingWrapper = styled.div`
