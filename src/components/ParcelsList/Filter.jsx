@@ -1,7 +1,11 @@
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { PrimaryBtn } from "../Common/Button.styled";
 import { FaSearch } from "react-icons/fa";
-import { FilterInput, FilterInputList } from "./Filter.styled";
+import {
+  DatePickerWrapper,
+  FilterInput,
+  FilterInputList,
+} from "./Filter.styled";
 import { addDays, formatISO } from "date-fns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -11,7 +15,7 @@ import { TrackInputWrapper } from "../Home/Hero.styled";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 
 export const Filter = ({ props }) => {
-  const { setQuery, searchParams, updateParam, get } = props;
+  const { setQuery, searchParams, updateParam, get, isAdmin } = props;
   const { data } = useGetAllUsersQuery();
 
   const driversOptions = [];
@@ -32,22 +36,24 @@ export const Filter = ({ props }) => {
         <form autoComplete="off" onSubmit={onSubmit}>
           <FilterInputList>
             <TrackInputWrapper>
-              <FilterInput
-                onChange={(e) =>
-                  updateParam("search", e.target.value.toUpperCase())
-                }
-                value={get("search")}
-                type="text"
-                id="trackingID"
-                minLength={10}
-                maxLength={10}
-                placeholder="Parcel ID"
-              />
+              {isAdmin && (
+                <FilterInput
+                  onChange={(e) =>
+                    updateParam("search", e.target.value.toUpperCase())
+                  }
+                  value={get("search")}
+                  type="text"
+                  id="trackingID"
+                  minLength={10}
+                  maxLength={10}
+                  placeholder="Parcel ID"
+                />
+              )}
               <PrimaryBtn type="submit">
                 <FaSearch size={20} />
               </PrimaryBtn>
             </TrackInputWrapper>
-            <li>
+            <DatePickerWrapper>
               <LocalizationProvider
                 dateAdapter={AdapterDateFns}
                 adapterLocale={de}
@@ -66,18 +72,22 @@ export const Filter = ({ props }) => {
                   }}
                 />
               </LocalizationProvider>
-            </li>
-            <li>
-              <Select
-                value={driversOptions.find(({ _id }) => _id === get("driver"))}
-                className="react-select-container"
-                classNamePrefix="react-select"
-                placeholder="Select driver"
-                isClearable={true}
-                onChange={(e) => updateParam("driver", e?.value?._id)}
-                options={driversOptions}
-              />
-            </li>
+            </DatePickerWrapper>
+            {isAdmin && (
+              <li>
+                <Select
+                  value={driversOptions.find(
+                    ({ _id }) => _id === get("driver")
+                  )}
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  placeholder="Select driver"
+                  isClearable={true}
+                  onChange={(e) => updateParam("driver", e?.value?._id)}
+                  options={driversOptions}
+                />
+              </li>
+            )}
           </FilterInputList>
         </form>
       </Container>

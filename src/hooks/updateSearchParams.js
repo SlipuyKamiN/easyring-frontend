@@ -1,8 +1,8 @@
 import { parseISO } from "date-fns";
 import { useSearchParams } from "react-router-dom";
 
-export const useSmartSearchParams = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+export const useSmartSearchParams = (initialParams = "") => {
+  const [searchParams, setSearchParams] = useSearchParams(initialParams);
   const params = Object.fromEntries([...searchParams]);
 
   const updateParam = (key, value) => {

@@ -11,6 +11,9 @@ import CreateOrderPage from "~/pages/CreateOrderPage";
 import ParcelPage from "~/pages/ParcelPage";
 import RestrictedRoute from "../RestrictedRoute";
 import PrivateRoute from "../PrivateRoute";
+import { useCurrentUserQuery } from "~/Redux/authSlice";
+import { getUserState } from "~/Redux/userSelectors";
+import { useSelector } from "react-redux";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
@@ -21,10 +24,16 @@ const SettingsPage = lazy(() => import("~/pages/SettingsPage"));
 
 const App = () => {
   const location = useLocation();
+  const user = useSelector(getUserState);
+  const skip = !user.token && !user.isLoggedIn;
+
+  const { isLoading } = useCurrentUserQuery("", { skip });
 
   useEffect(() => {
     scrollToTop();
   }, [location.pathname]);
+
+  if (isLoading) return <div>Singing in...</div>;
 
   return (
     <Routes>

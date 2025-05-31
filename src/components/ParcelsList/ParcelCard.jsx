@@ -13,7 +13,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useDeleteParcelMutation } from "~/Redux/parcelsSlice";
 import { statuses } from "~/data/parcelStatuses";
 
-export const ParcelCard = ({ parcel }) => {
+export const ParcelCard = ({ parcel, isAdmin }) => {
   const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
   const { date, startTime, endTime } = mainInfo;
   const [deleteParcel] = useDeleteParcelMutation();
@@ -31,9 +31,11 @@ export const ParcelCard = ({ parcel }) => {
             <b> {format(date, "dd.MM.yy")}</b>
           </p>
         </CardLink>
-        <DeleteButton type="button" onClick={() => deleteParcel(_id)}>
-          <RxCrossCircled size={30} />
-        </DeleteButton>
+        {isAdmin && (
+          <DeleteButton type="button" onClick={() => deleteParcel(_id)}>
+            <RxCrossCircled size={30} />
+          </DeleteButton>
+        )}
       </CardHeadingWrapper>
       <CardDetailsList>
         <li>
@@ -61,10 +63,12 @@ export const ParcelCard = ({ parcel }) => {
           </p>
         </li>
       </CardDetailsList>
-      <CardDetailsList>
-        <SelectDriver parcel={parcel} status={status} />
-        <ConfirmStatusBtn parcel={parcel} status={status} />
-      </CardDetailsList>
+      {isAdmin && (
+        <CardDetailsList>
+          <SelectDriver parcel={parcel} status={status} />
+          <ConfirmStatusBtn parcel={parcel} status={status} />
+        </CardDetailsList>
+      )}
       <Joystick parcel={parcel} status={status} />
     </Card>
   );

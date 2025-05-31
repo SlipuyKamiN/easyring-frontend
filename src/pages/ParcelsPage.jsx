@@ -3,10 +3,19 @@ import { Filter } from "~/components/ParcelsList/Filter";
 import { useSmartSearchParams } from "~/hooks/updateSearchParams";
 import { useSearchParcelsQuery } from "~/Redux/parcelsSlice";
 import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
+import { useSelector } from "react-redux";
+import { getUserState } from "~/Redux/userSelectors";
+import { getDefaultSearchParams } from "~/helpers/getDefaultSearchParams";
 
 const ParcelsPage = () => {
-  const [query, setQuery] = useState("");
-  const { searchParams, updateParam, get } = useSmartSearchParams();
+  const user = useSelector(getUserState);
+  const isAdmin = user.role === "admin";
+  const [query, setQuery] = useState(
+    isAdmin ? "" : getDefaultSearchParams(user._id)
+  );
+  const { searchParams, updateParam, get } = useSmartSearchParams(
+    !isAdmin && getDefaultSearchParams(user._id)
+  );
   const { data } = useSearchParcelsQuery(query);
 
   useEffect(() => {
@@ -19,8 +28,8 @@ const ParcelsPage = () => {
 
   return (
     <>
-      <Filter props={{ setQuery, searchParams, updateParam, get }} />
-      <ParcelsList parcels={data.parcels} />
+      <Filter props={{ setQuery, searchParams, updateParam, get, isAdmin }} />
+      <ParcelsList parcels={data.parcels} isAdmin={isAdmin} />
     </>
   );
 };

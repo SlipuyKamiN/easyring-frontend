@@ -14,3 +14,7 @@ export const FilterInput = styled(TrackInput)`
   height: 56px;
   border-radius: 16px;
 `;
+
+export const DatePickerWrapper = styled.li`
+  max-width: 175px;
+`;
