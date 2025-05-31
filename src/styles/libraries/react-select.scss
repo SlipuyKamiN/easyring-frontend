@@ -25,3 +25,51 @@
 
   text-align: left;
 }
+
+.react-nav-select-container .react-nav-select__control {
+  width: 45px;
+  height: 30px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  text-align: left;
+
+  &--is-focused {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.react-nav-select-container .react-nav-select__menu {
+  cursor: pointer;
+  top: 24px;
+  left: 0;
+
+  text-align: left;
+}
+
+.react-nav-select-container .react-nav-select__single-value {
+  color: #8e8e93;
+
+  margin: 0;
+  padding: 6px 0 0;
+}
+
+.react-nav-select-container .react-nav-select__value-container {
+  margin: 0;
+  padding: 0;
+}
+
+.react-nav-select-container .react-nav-select__dropdown-indicator {
+  margin: 0;
+  padding: 0;
+}

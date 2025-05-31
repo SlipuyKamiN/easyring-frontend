@@ -5,20 +5,22 @@ import { Sender } from "~/components/CreateOrder/Sender";
 import { MainInfo } from "~/components/CreateOrder/MainInfo";
 import { Recipient } from "~/components/CreateOrder/Recipient";
 import { Confirm } from "~/components/CreateOrder/Confirm";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
 import SharedLayout from "~/components/SharedLayout/SharedLayout";
 import Home from "~/pages/Home";
 import CreateOrderPage from "~/pages/CreateOrderPage";
 import ParcelPage from "~/pages/ParcelPage";
-import ParcelsPage from "../../pages/ParcelsPage";
-import SignInPage from "~/pages/SignInPage";
-import SignUpPage from "../../pages/SignUpPage";
-import UsersListPage from "~/pages/UsersListPage";
-import EditPage from "../../pages/EditPage";
-import MapPage from "~/pages/MapPage";
-import SettingsPage from "~/pages/SettingsPage";
+import RestrictedRoute from "../RestrictedRoute";
+import PrivateRoute from "../PrivateRoute";
+const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
+const SignInPage = lazy(() => import("~/pages/SignInPage"));
+const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
+const UsersListPage = lazy(() => import("~/pages/UsersListPage"));
+const EditPage = lazy(() => import("../../pages/EditPage"));
+const MapPage = lazy(() => import("~/pages/MapPage"));
+const SettingsPage = lazy(() => import("~/pages/SettingsPage"));
 
 const App = () => {
   const location = useLocation();
@@ -45,18 +47,50 @@ const App = () => {
         </Route>
         <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
         <Route path="auth">
-          <Route path="signin" element={<SignInPage />}></Route>
-          <Route path="signup" element={<SignUpPage />}></Route>
-          <Route path="edit" element={<EditPage />}></Route>
+          <Route
+            path="signin"
+            element={<RestrictedRoute component={SignInPage} />}
+          ></Route>
+          <Route
+            path="signup"
+            element={<RestrictedRoute component={SignUpPage} />}
+          ></Route>
+          <Route
+            path="edit"
+            element={
+              <PrivateRoute component={EditPage} roles={["admin", "driver"]} />
+            }
+          ></Route>
         </Route>
-        <Route path="admin">
-          <Route path="parcels" element={<ParcelsPage />}></Route>
-          <Route path="users" element={<UsersListPage />}></Route>
-          <Route path="map" element={<MapPage />}></Route>
-          <Route path="settings" element={<SettingsPage />}></Route>
-        </Route>
-        <Route path="driver">
-          <Route path="parcels" element={<ParcelsPage />}></Route>
+        <Route path="user">
+          <Route
+            path="parcels"
+            element={
+              <PrivateRoute
+                component={ParcelsPage}
+                roles={["admin", "driver"]}
+              />
+            }
+          ></Route>
+          <Route
+            path="users"
+            redirectTo="user/parcels"
+            element={
+              <PrivateRoute component={UsersListPage} roles={["admin"]} />
+            }
+          ></Route>
+          <Route
+            path="map"
+            redirectTo="user/parcels"
+            element={<PrivateRoute component={MapPage} roles={["admin"]} />}
+          ></Route>
+          <Route
+            path="settings"
+            redirectTo="user/parcels"
+            element={
+              <PrivateRoute component={SettingsPage} roles={["admin"]} />
+            }
+          ></Route>
         </Route>
       </Route>
     </Routes>

@@ -19,6 +19,7 @@ import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 import { useState } from "react";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
+import { useLogoutMutation } from "~/Redux/authSlice";
 
 const initialValues = {
   name: "",
@@ -37,6 +38,7 @@ export const UserForm = ({
   pageName = "signup",
 }) => {
   const [passVisible, setVisible] = useState(false);
+  const [logout] = useLogoutMutation();
   const {
     register,
     handleSubmit,
@@ -90,7 +92,9 @@ export const UserForm = ({
             ) : (
               <>
                 <PrimaryBtn type="submit">Update</PrimaryBtn>
-                <SecondaryBtn type="button">Log out</SecondaryBtn>
+                <SecondaryBtn type="button" onClick={logout}>
+                  Log out
+                </SecondaryBtn>
               </>
             )}
           </FormBtnsList>

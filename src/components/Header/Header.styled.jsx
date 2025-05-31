@@ -4,7 +4,7 @@ import { colors } from "~/styles/common/vars";
 export const PageHeader = styled.header`
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
 
@@ -23,6 +23,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const DarkModeToggler = styled.button`
+  padding: 4px 0 0;
   background-color: transparent;
-  color: ${colors.primaryAccent};
+  color: ${colors.light.darkGray};
 `;

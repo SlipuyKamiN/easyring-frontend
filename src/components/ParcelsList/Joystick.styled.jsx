@@ -10,6 +10,7 @@ export const JoyList = styled.ul`
   justify-content: center;
   gap: 5px;
 `;
+
 export const JoyButton = styled.button`
   display: block;
   flex-grow: 1;
@@ -41,7 +42,7 @@ export const JoyButton = styled.button`
 export const JoyLink = styled.a`
   display: block;
   flex-grow: 1;
-  width: 125px;
+  width: 120px;
   height: 100%;
   padding: 10px 25px 10px 0;
 
