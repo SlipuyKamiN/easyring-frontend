@@ -29,7 +29,7 @@ export const CardHeadingWrapper = styled.div`
 
 export const CardLink = styled(Link)`
   display: block;
-  width: 160px;
+  width: 180px;
 `;
 
 export const DeleteButton = styled.button`

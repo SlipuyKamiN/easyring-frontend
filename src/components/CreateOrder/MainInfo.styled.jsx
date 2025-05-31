@@ -136,6 +136,10 @@ export const ParcelDescription = styled.textarea`
   &:focus {
     box-shadow: ${colors.light.darkGray} 0px 0px 10px;
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const InputListItem = styled.li`

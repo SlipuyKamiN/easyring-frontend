@@ -61,6 +61,7 @@ export const InputItem = styled.li`
     transition: all ${transition.duration};
 
     @media screen and (min-width: 768px) {
+      top: 12px;
       font-size: 16px;
     }
 
@@ -95,7 +96,7 @@ export const TextInput = styled.input`
   border: none;
   outline: none;
 
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 16px;
 
   &:hover,
@@ -104,7 +105,7 @@ export const TextInput = styled.input`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
