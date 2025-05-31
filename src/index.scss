@@ -1,13 +1,12 @@
-@import-normalize;
+@use "styles/common/base";
+@use "styles/common/utils";
+
+@use "styles/libraries/mui-date-time-picker.scss";
+@use "@geoapify/geocoder-autocomplete/styles/minimal.css";
+@use "styles/libraries/geoapify.scss";
+@use "styles/libraries/react-select.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("styles/common/fonts/Montserrat-Alt1.css");
 @import url("styles/common/fonts/HPSimplifiedItalic.css");
 @import url("styles/common/fonts/LucidaSansUnicode.css");
-@import "styles/common/base";
-@import "styles/common/utils";
-
-@import "styles/libraries/mui-date-time-picker.scss";
-@import "@geoapify/geocoder-autocomplete/styles/minimal.css";
-@import "styles/libraries/geoapify.scss";
-@import "styles/libraries/react-select.scss";
