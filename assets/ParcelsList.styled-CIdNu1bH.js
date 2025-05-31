@@ -1,4 +1,4 @@
-import{i as t,n as e,_ as i,t as n,G as r}from"./index-CD0warjG.js";const l=e.li`
+import{i as t,n as e,_ as i,t as n,$ as r}from"./index-BX0w0riI.js";const l=e.li`
   position: relative;
 
   padding: 20px;
@@ -21,7 +21,7 @@ import{i as t,n as e,_ as i,t as n,G as r}from"./index-CD0warjG.js";const l=e.li
   margin-bottom: 10px;
 `,d=e(i)`
   display: block;
-  width: 160px;
+  width: 180px;
 `,c=e.button`
   display: block;
 
