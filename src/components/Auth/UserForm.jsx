@@ -59,7 +59,13 @@ export const UserForm = ({
               <InputItem key={name}>
                 <TextInput
                   onInput={(e) => handleInputTextCase(e.target, setValue)}
-                  type="text"
+                  type={
+                    name === "phone"
+                      ? "tel"
+                      : name === "email"
+                      ? "email"
+                      : "text"
+                  }
                   placeholder=" "
                   {...register(name)}
                 />
