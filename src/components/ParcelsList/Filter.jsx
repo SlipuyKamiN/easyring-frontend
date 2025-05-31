@@ -16,7 +16,7 @@ import { useGetAllUsersQuery } from "~/Redux/authSlice";
 
 export const Filter = ({ props }) => {
   const { setQuery, searchParams, updateParam, get, isAdmin } = props;
-  const { data } = useGetAllUsersQuery();
+  const { data } = useGetAllUsersQuery("", { skip: !isAdmin });
 
   const driversOptions = [];
 
