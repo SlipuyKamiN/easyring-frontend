@@ -1,4 +1,4 @@
-import{n as c,i as t,Z as f,_ as C,r as j,j as e,u as v,S as $,C as y}from"./index-DLECvRXl.js";import{C as R,a as U,b as k,D as L,R as D,c as N,d as S}from"./ParcelsList.styled-WL4QLzSq.js";const w=c.ul`
+import{n as c,i as t,Z as f,_ as C,r as j,j as e,u as v,S as $,C as y}from"./index-DVrz8gH-.js";import{C as R,a as U,b as k,D as L,R as D,c as N,d as S}from"./ParcelsList.styled-BI1WplSx.js";const w=c.ul`
   display: flex;
   justify-content: center;
 `,m=c.label`
