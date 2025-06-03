@@ -33,6 +33,8 @@ const App = () => {
     scrollToTop();
   }, [location.pathname]);
 
+  console.log("hello");
+
   if (isLoading) return <div>Singing in...</div>;
 
   return (
