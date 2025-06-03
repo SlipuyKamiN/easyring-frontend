@@ -23,6 +23,8 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+        env:
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
 
       - name: Deploy to GitHub Pages (dev branch)
         if: github.ref == 'refs/heads/dev'
