@@ -24,7 +24,6 @@ export const ParcelsList = ({ parcels, isAdmin }) => {
         {width < 768 && (
           <Swiper
             initialSlide={slideIndex}
-            onSlidesLengthChange={() => setSlideIndex(0)}
             modules={[Pagination, Navigation]}
             centeredSlides
             pagination={{ clickable: true, type: "bullets" }}
