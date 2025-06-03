@@ -33,8 +33,6 @@ const App = () => {
     scrollToTop();
   }, [location.pathname]);
 
-  console.log("hello");
-
   if (isLoading) return <div>Singing in...</div>;
 
   return (
@@ -69,7 +67,7 @@ const App = () => {
         </Route>
         <Route path="user">
           <Route
-            path="parcels"
+            path="parcels/"
             element={
               <PrivateRoute
                 element={<ParcelsPage />}

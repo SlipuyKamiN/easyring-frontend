@@ -4,12 +4,13 @@ import { Container } from "../SharedLayout/SharedLayout.styled";
 import { ParcelCard } from "./ParcelCard";
 import { CardList } from "./ParcelsList.styled";
 import { useWindowDimensions } from "~/hooks/useWindowDimensions";
+import useLocalStorage from "~/hooks/useLocalStorage";
 
 export const ParcelsList = ({ parcels, isAdmin }) => {
   const { width } = useWindowDimensions();
+  const [slideIndex, setSlideIndex] = useLocalStorage("slide", 0);
 
   if (!parcels) return <div>No parcels</div>;
-
   return (
     <>
       <Container>
@@ -22,11 +23,14 @@ export const ParcelsList = ({ parcels, isAdmin }) => {
         )}
         {width < 768 && (
           <Swiper
+            initialSlide={slideIndex}
+            onSlidesLengthChange={() => setSlideIndex(0)}
             modules={[Pagination, Navigation]}
             centeredSlides
             pagination={{ clickable: true, type: "bullets" }}
             spaceBetween={40}
             slidesPerView={"auto"}
+            onSlideChange={({ activeIndex }) => setSlideIndex(activeIndex)}
           >
             {parcels.map((parcel) => (
               <SwiperSlide key={parcel._id}>
