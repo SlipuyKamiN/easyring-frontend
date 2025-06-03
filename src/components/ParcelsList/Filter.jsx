@@ -13,18 +13,23 @@ import { de } from "date-fns/locale";
 import Select from "react-select";
 import { TrackInputWrapper } from "../Home/Hero.styled";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
+import { useMemo } from "react";
 
 export const Filter = ({ props }) => {
   const { setQuery, searchParams, updateParam, get, isAdmin } = props;
   const { data } = useGetAllUsersQuery("", { skip: !isAdmin });
 
-  const driversOptions = [];
+  const driversOptions = useMemo(() => {
+    if (!data?.users) return [];
+    return data.users.map((item) => ({
+      value: item,
+      label: item.name,
+    }));
+  }, [data]);
 
-  if (data?.users) {
-    data.users.map((item) =>
-      driversOptions.push({ value: item, label: item.name })
-    );
-  }
+  const selectedDriver = useMemo(() => {
+    return driversOptions.find(({ value }) => value._id === get("driver"));
+  }, [driversOptions, get]);
 
   const onSubmit = () => {
     setQuery(searchParams.toString());
@@ -76,9 +81,7 @@ export const Filter = ({ props }) => {
             {isAdmin && (
               <li>
                 <Select
-                  value={driversOptions.find(
-                    ({ _id }) => _id === get("driver")
-                  )}
+                  value={selectedDriver}
                   className="react-select-container"
                   classNamePrefix="react-select"
                   placeholder="Select driver"

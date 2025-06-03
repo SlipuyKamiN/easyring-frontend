@@ -1,8 +1,15 @@
 import { parseISO } from "date-fns";
+import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { getISOTodayDate } from "~/helpers/getISOTodayDate";
+import { getUserState } from "~/Redux/userSelectors";
 
-export const useSmartSearchParams = (initialParams = "") => {
-  const [searchParams, setSearchParams] = useSearchParams(initialParams);
+export const useSmartSearchParams = () => {
+  const user = useSelector(getUserState);
+  const [searchParams, setSearchParams] = useSearchParams({
+    date: getISOTodayDate(),
+    driver: user._id,
+  });
   const params = Object.fromEntries([...searchParams]);
 
   const updateParam = (key, value) => {
