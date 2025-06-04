@@ -14,6 +14,7 @@ import PrivateRoute from "../PrivateRoute";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
 import { getUserState } from "~/Redux/userSelectors";
 import { useSelector } from "react-redux";
+import { LoadingSection } from "../Common/LoadingSection";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
@@ -27,13 +28,13 @@ const App = () => {
   const user = useSelector(getUserState);
   const skip = !user.token && !user.isLoggedIn;
 
-  const { isLoading } = useCurrentUserQuery("", { skip });
+  const { isFetching } = useCurrentUserQuery("", { skip });
 
   useEffect(() => {
     scrollToTop();
   }, [location.pathname]);
 
-  if (isLoading) return <div>Singing in...</div>;
+  if (isFetching) return <LoadingSection />;
 
   return (
     <Routes>

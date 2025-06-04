@@ -5,15 +5,16 @@ import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
 import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/userSelectors";
 import { useEffect, useState } from "react";
+import { LoadingSection } from "~/components/Common/LoadingSection";
+import { EmptySection } from "~/components/Common/EmptySection";
 
 const ParcelsPage = () => {
   const user = useSelector(getUserState);
   const isAdmin = user.role === "admin";
   const { searchParams, updateParam, get } = useSmartSearchParams(user);
   const [query, setQuery] = useState("");
-  const { data, error } = useSearchParcelsQuery(query);
-
-  console.log(error);
+  const { data, error, isFetching } = useSearchParcelsQuery(query);
+  const isData = data && !error;
 
   useEffect(() => {
     if (searchParams.size >= 1 && !query) {
@@ -24,8 +25,9 @@ const ParcelsPage = () => {
   return (
     <>
       <Filter props={{ setQuery, searchParams, updateParam, get, isAdmin }} />
-      {!data || (error && <div>There are no parcels for today!</div>)}
-      {!error && data && (
+      {!error && isFetching && <LoadingSection />}
+      {!isData && !isFetching && <EmptySection />}
+      {isData && !isFetching && (
         <ParcelsList parcels={data.parcels} isAdmin={isAdmin} />
       )}
     </>
