@@ -5,6 +5,7 @@ import {
   DeleteButton,
   CardHeadingWrapper,
   CardLink,
+  Overlay,
 } from "./ParcelCard.styled";
 import { SelectDriver } from "./SelectDriver";
 import { ConfirmStatusBtn } from "./ConfirmParcelStatus";
@@ -12,6 +13,7 @@ import { Joystick } from "./Joystick";
 import { RxCrossCircled } from "react-icons/rx";
 import { useDeleteParcelMutation } from "~/Redux/parcelsSlice";
 import { statuses } from "~/data/parcelStatuses";
+import { FaCheck } from "react-icons/fa";
 
 export const ParcelCard = ({ parcel, isAdmin }) => {
   const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
@@ -70,6 +72,11 @@ export const ParcelCard = ({ parcel, isAdmin }) => {
         </CardDetailsList>
       )}
       <Joystick parcel={parcel} status={status} />
+      {status === 400 && (
+        <Overlay>
+          <FaCheck size={90} />
+        </Overlay>
+      )}
     </Card>
   );
 };

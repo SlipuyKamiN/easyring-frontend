@@ -13,6 +13,8 @@ export const Card = styled.li`
   max-width: 300px;
 
   text-align: left;
+
+  overflow: hidden;
 `;
 
 export const CardHeadingWrapper = styled.div`
@@ -68,4 +70,20 @@ export const CardDetailsList = styled.ul`
       color: ${colors.success};
     }
   }
+`;
+
+export const Overlay = styled.div`
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${`${colors.light.silver}bb`};
+  color: ${colors.success};
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
