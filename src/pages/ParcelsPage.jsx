@@ -13,7 +13,7 @@ const ParcelsPage = () => {
   const isAdmin = user.role === "admin";
   const { searchParams, updateParam, get } = useSmartSearchParams(user);
   const [query, setQuery] = useState("");
-  const { data, error, isFetching } = useSearchParcelsQuery(query);
+  const { data, error, isLoading } = useSearchParcelsQuery(query);
   const isData = data && !error;
 
   useEffect(() => {
@@ -25,9 +25,9 @@ const ParcelsPage = () => {
   return (
     <>
       <Filter props={{ setQuery, searchParams, updateParam, get, isAdmin }} />
-      {!error && isFetching && <LoadingSection />}
-      {!isData && !isFetching && <EmptySection />}
-      {isData && !isFetching && (
+      {!error && isLoading && <LoadingSection />}
+      {!isData && !isLoading && <EmptySection />}
+      {isData && !isLoading && (
         <ParcelsList parcels={data.parcels} isAdmin={isAdmin} />
       )}
     </>
