@@ -9,6 +9,9 @@ export const handleInputTextCase = (target, setValue) => {
     case "carNumber":
       set(value.toUpperCase());
       break;
+    case "trackingID":
+      set(value.toUpperCase());
+      break;
 
     default:
       break;

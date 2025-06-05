@@ -85,8 +85,6 @@ export const TrackInput = styled.input`
 
   font-size: 16px;
 
-  text-transform: uppercase;
-
   transition: background-color ${transition.duration};
 
   &::placeholder {

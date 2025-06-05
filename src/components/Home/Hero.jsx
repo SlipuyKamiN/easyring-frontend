@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { trackingIDSchema } from "~/schemas/trackingIDSchema";
+import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 
 export const Hero = () => {
   const [inputVisible, setInputVisible] = useState(false);
@@ -28,6 +29,7 @@ export const Hero = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: "onSubmit",
@@ -76,6 +78,7 @@ export const Hero = () => {
                   minLength={10}
                   maxLength={10}
                   placeholder="Parcel ID"
+                  onInput={(e) => handleInputTextCase(e.target, setValue)}
                   autoFocus
                 />
                 <PrimaryBtn type="submit">
