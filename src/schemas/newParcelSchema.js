@@ -110,6 +110,6 @@ export const newParcelSchema = yup.object().shape({
   }),
   driver: yup.object({
     name: yup.string(),
-    id: yup.string(),
+    _id: yup.string(),
   }),
 });
