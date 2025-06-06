@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { DarkModeToggler, HeaderWrapper, PageHeader } from "./Header.styled";
+import {
+  DarkModeToggler,
+  HeaderWrapper,
+  PageHeader,
+  UiConfigWrapper,
+} from "./Header.styled";
 import { BsMoonStars, BsSun } from "react-icons/bs";
 import { NavSelect } from "../SharedLayout/NavSelect";
 import { PageLogo } from "../Common/PageLogo";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { LangToggler } from "../SharedLayout/LangToggler";
-import { UiConfigWrapper } from "../SharedLayout/LangToggler.styled";
 
 export const Header = () => {
   const [isDarkMode, setDarkMode] = useState(false);

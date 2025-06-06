@@ -1,1 +1,23 @@
-{ "create-pickup": "Create pick-up" }
+{
+  "create-pickup": "Create pick-up",
+  "track-parcel": "Track parcel",
+  "how-it-works": "How it works",
+  "steps": [
+    {
+      "title": "Fill the form",
+      "desc": "Add parcel details, time, recipient — get your<b> Parcel ID</b>."
+    },
+    {
+      "title": "Pay",
+      "desc": "You can pay online or when the parcel is delivered to you."
+    },
+    {
+      "title": "Meet the courier",
+      "desc": "Match the <b>Parcel ID</b> and hand over the parcel."
+    },
+    {
+      "title": "Enjoy",
+      "desc": "Receive the parcel at your preferred time and place."
+    }
+  ]
+}

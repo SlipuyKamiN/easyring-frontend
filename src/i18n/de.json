@@ -1,1 +1,23 @@
-{ "create-pickup": "Pick-up erstellen" }
+{
+  "create-pickup": "Pick-up erstellen",
+  "track-parcel": "Track-Paket",
+  "how-it-works": "Wie es funktioniert",
+  "steps": [
+    {
+      "title": "Fülle das Formular aus",
+      "desc": "Fügen Sie Paketdetails, Uhrzeit und Empfänger hinzu - erhalten Sie Ihre <b>Paket-ID</b>."
+    },
+    {
+      "title": "Bezahlen",
+      "desc": "Sie können online oder bei der Zustellung des Pakets bezahlen."
+    },
+    {
+      "title": "Treffen mit dem Kurier",
+      "desc": "Stimmen Sie die Paket-ID ab und übergeben Sie das Paket."
+    },
+    {
+      "title": "Genießen",
+      "desc": "Sie erhalten das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
+    }
+  ]
+}

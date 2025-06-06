@@ -22,8 +22,10 @@ import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { trackingIDSchema } from "~/schemas/trackingIDSchema";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
+import { useTranslation } from "react-i18next";
 
 export const Hero = () => {
+  const { t } = useTranslation();
   const [inputVisible, setInputVisible] = useState(false);
   const navigate = useNavigate();
   const {
@@ -58,13 +60,13 @@ export const Hero = () => {
         <HeroBtnsList>
           <li>
             <HeroMainBtn to={"createorder/maininfo"}>
-              Create pick-up
+              {t("create-pickup")}
             </HeroMainBtn>
           </li>
           {!inputVisible && (
             <li>
               <HeroSecondaryBtn onClick={showInput}>
-                Track parcel
+                {t("track-parcel")}
               </HeroSecondaryBtn>
             </li>
           )}
