@@ -47,9 +47,11 @@ export const NavSelect = () => {
   };
 
   delete state.user.createdAt;
+  delete state.user.updatedAt;
   delete state.user.isLoggedIn;
   delete state.user.token;
   delete state.user._id;
+  delete state.user._persist;
 
   return (
     <Select

@@ -67,18 +67,15 @@ export const authApi = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: ["auth"],
+      invalidatesTags: ["auth", "user"],
     }),
 
     deleteUser: builder.mutation({
-      query: (id) => ({
-        url: `/user/${id}`,
+      query: (_id) => ({
+        url: `/user/${_id}`,
         method: "DELETE",
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        dispatch(setUser((await queryFulfilled).data));
-      },
-      invalidatesTags: ["auth"],
+      invalidatesTags: ["auth", "user"],
     }),
 
     getAllUsers: builder.query({

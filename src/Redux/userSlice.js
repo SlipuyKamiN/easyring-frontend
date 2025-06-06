@@ -14,10 +14,11 @@ const initialState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
+  tagTypes: ["user"],
   reducers: {
     setUser: {
       reducer(state, action) {
-        state = { ...state, ...action.payload.value.data, isLoggedIn: true };
+        state = { ...state, ...action.payload.value, isLoggedIn: true };
         return state;
       },
       prepare(value) {
