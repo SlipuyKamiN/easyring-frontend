@@ -14,14 +14,37 @@ import {
 import { FaDirections } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaFlagCheckered, FaCheck } from "react-icons/fa";
+import { statuses } from "~/data/parcelStatuses";
+import { notification } from "../Common/notification";
 
 export const Joystick = ({ parcel, status }) => {
   const { _id, sender, recipient, payment } = parcel;
-  const [updateTracking] = useUpdateTrackingMutation();
-  const [updatePayment] = useUpdatePaymentMutation();
+  const [dispatchTracking] = useUpdateTrackingMutation();
+  const [dispatchPayment] = useUpdatePaymentMutation();
   const isConfirmed = status >= 200;
   const isPickedUp = status >= 300;
   const isDelivered = status >= 400;
+
+  const updateTracking = (status) => {
+    dispatchTracking({
+      _id,
+      body: {
+        statusName: statuses[status],
+        status,
+        date: formatISO(new Date()),
+      },
+    })
+      .unwrap()
+      .then(() => notification(statuses[status].toUpperCase(), "success"))
+      .catch((e) => notification(e.message));
+  };
+
+  const updatePayment = (body) => {
+    dispatchPayment({ _id, body })
+      .unwrap()
+      .then(() => notification("PAID", "success"))
+      .catch((e) => notification(e.message));
+  };
 
   return (
     <JoyList>
@@ -39,16 +62,7 @@ export const Joystick = ({ parcel, status }) => {
         <JoyButton
           type="button"
           disabled={!isConfirmed || isPickedUp}
-          onClick={() => {
-            updateTracking({
-              _id,
-              body: {
-                statusName: "Picked up",
-                status: 300,
-                date: formatISO(new Date()),
-              },
-            });
-          }}
+          onClick={() => updateTracking(300)}
         >
           <TbTruckDelivery size={25} />
         </JoyButton>
@@ -70,14 +84,7 @@ export const Joystick = ({ parcel, status }) => {
           type="button"
           disabled={!isPickedUp || isDelivered || !payment.isPaid}
           onClick={() => {
-            updateTracking({
-              _id,
-              body: {
-                statusName: "Delivered",
-                status: 400,
-                date: formatISO(new Date()),
-              },
-            });
+            updateTracking(400);
           }}
         >
           <FaCheck size={25} />
@@ -85,9 +92,7 @@ export const Joystick = ({ parcel, status }) => {
       </li>
       <PayWrapper>
         <PayButton
-          onClick={() =>
-            updatePayment({ _id, body: { type: "cash", isPaid: true } })
-          }
+          onClick={() => updatePayment({ type: "cash", isPaid: true })}
           type="button"
           disabled={!isConfirmed || payment.isPaid}
         >

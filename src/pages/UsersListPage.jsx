@@ -5,11 +5,20 @@ import {
 } from "../components/SharedLayout/SharedLayout.styled";
 import { UserCard } from "../components/UsersList/UserCard";
 import { CardList } from "../components/ParcelsList/ParcelsList.styled";
+import { useEffect } from "react";
+import { notification } from "~/components/Common/notification";
+import { LoadingSection } from "~/components/Common/LoadingSection";
 
 const UsersListPage = () => {
-  const { data } = useGetAllUsersQuery("");
+  const { data, error, isLoading } = useGetAllUsersQuery("");
 
-  if (!data) return <div>Loading users...</div>;
+  useEffect(() => {
+    if (error) {
+      notification(error.data.message);
+    }
+  }, [error]);
+
+  if (!isLoading) return <LoadingSection />;
 
   return (
     <Section>

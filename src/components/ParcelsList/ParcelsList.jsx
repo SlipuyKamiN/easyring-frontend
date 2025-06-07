@@ -10,7 +10,6 @@ export const ParcelsList = ({ parcels, isAdmin }) => {
   const { width } = useWindowDimensions();
   const [slideIndex, setSlideIndex] = useLocalStorage("slide", 0);
 
-  if (!parcels) return <div>No parcels</div>;
   return (
     <>
       <Container>

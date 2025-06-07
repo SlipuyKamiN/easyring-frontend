@@ -13,6 +13,7 @@ import {
 import { FaCheck } from "react-icons/fa6";
 import { Success } from "./Success";
 import { useTranslation } from "react-i18next";
+import { notification } from "../Common/notification";
 
 export const Confirm = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ export const Confirm = () => {
     newParcelSchema
       .validate(newParcel)
       .then(() => createParcel(newParcel))
-      .catch(console.log);
+      .catch((e) => notification(e.message));
   };
 
   return (

@@ -16,27 +16,28 @@ import { CiBookmarkCheck } from "react-icons/ci";
 import { useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
 import { useTranslation } from "react-i18next";
+import { notification } from "../Common/notification";
 
 export const Success = ({ data }) => {
   const { t } = useTranslation();
   const { _id, mainInfo } = data;
-  const [updatePayment] = useUpdatePaymentMutation();
+  const [dispatchPayment] = useUpdatePaymentMutation();
   const navigate = useNavigate();
 
   const selectPaymentType = (paymentType) => {
-    const handleDispatch = (body) => {
-      updatePayment({ _id, body })
+    const updatePayment = (body) => {
+      dispatchPayment({ _id, body })
         .then(() => navigate(`/tracking/${_id}`))
-        .catch(console.log);
+        .catch((e) => notification(e.data.message));
     };
 
     switch (paymentType) {
       case "online":
-        handleDispatch({ type: "online", isPaid: true });
+        updatePayment({ type: "online", isPaid: true });
         break;
 
       default:
-        handleDispatch({ type: "cash", isPaid: false });
+        updatePayment({ type: "cash", isPaid: false });
         break;
     }
   };

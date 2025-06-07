@@ -24,6 +24,7 @@ import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 import { useState } from "react";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 import { useTranslation } from "react-i18next";
+import { notification } from "~/components/Common/notification";
 
 const SignInPage = () => {
   const { t } = useTranslation();
@@ -45,7 +46,10 @@ const SignInPage = () => {
   });
 
   const onSubmit = ({ login, password }) => {
-    signIn({ login: login.toLowerCase(), password }).then(reset);
+    signIn({ login: login.toLowerCase(), password })
+      .unwrap()
+      .then(reset)
+      .catch((e) => notification(e.data.message));
   };
 
   return (

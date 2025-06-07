@@ -7,6 +7,7 @@ import { getUserState } from "~/Redux/userSelectors";
 import { useEffect, useState } from "react";
 import { LoadingSection } from "~/components/Common/LoadingSection";
 import { EmptySection } from "~/components/Common/EmptySection";
+import { notification } from "~/components/Common/notification";
 
 const ParcelsPage = () => {
   const user = useSelector(getUserState);
@@ -21,6 +22,12 @@ const ParcelsPage = () => {
       setQuery(searchParams.toString());
     }
   }, [query, searchParams]);
+
+  useEffect(() => {
+    if (error) {
+      notification(error.data.message);
+    }
+  }, [error]);
 
   return (
     <>

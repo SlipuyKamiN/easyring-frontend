@@ -15,6 +15,7 @@ import { useCurrentUserQuery } from "~/Redux/authSlice";
 import { getUserState } from "~/Redux/userSelectors";
 import { useSelector } from "react-redux";
 import { LoadingSection } from "../Common/LoadingSection";
+import { ToastContainer } from "react-toastify";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
@@ -37,67 +38,70 @@ const App = () => {
   if (isFetching) return <LoadingSection />;
 
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home />}></Route>
-        <Route path="createorder" element={<CreateOrderPage />}>
-          <Route path="maininfo" element={<MainInfo />}></Route>
-          <Route path="sender" element={<Sender />}></Route>
-          <Route path="recipient" element={<Recipient />}></Route>
-          <Route path="confirm" element={<Confirm />}></Route>
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="createorder" element={<CreateOrderPage />}>
+            <Route path="maininfo" element={<MainInfo />}></Route>
+            <Route path="sender" element={<Sender />}></Route>
+            <Route path="recipient" element={<Recipient />}></Route>
+            <Route path="confirm" element={<Confirm />}></Route>
+          </Route>
+          <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
+          <Route path="auth">
+            <Route
+              path="signin"
+              element={<RestrictedRoute element={<SignInPage />} />}
+            ></Route>
+            <Route
+              path="signup"
+              element={<RestrictedRoute element={<SignUpPage />} />}
+            ></Route>
+            <Route
+              path="edit"
+              element={
+                <PrivateRoute
+                  element={<EditPage />}
+                  roles={["admin", "driver"]}
+                />
+              }
+            ></Route>
+          </Route>
+          <Route path="user">
+            <Route
+              path="parcels/"
+              element={
+                <PrivateRoute
+                  element={<ParcelsPage />}
+                  roles={["admin", "driver"]}
+                />
+              }
+            ></Route>
+            <Route
+              path="users"
+              redirectTo="user/parcels"
+              element={
+                <PrivateRoute element={<UsersListPage />} roles={["admin"]} />
+              }
+            ></Route>
+            <Route
+              path="map"
+              redirectTo="user/parcels"
+              element={<PrivateRoute element={<MapPage />} roles={["admin"]} />}
+            ></Route>
+            <Route
+              path="settings"
+              redirectTo="user/parcels"
+              element={
+                <PrivateRoute element={<SettingsPage />} roles={["admin"]} />
+              }
+            ></Route>
+          </Route>
         </Route>
-        <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
-        <Route path="auth">
-          <Route
-            path="signin"
-            element={<RestrictedRoute element={<SignInPage />} />}
-          ></Route>
-          <Route
-            path="signup"
-            element={<RestrictedRoute element={<SignUpPage />} />}
-          ></Route>
-          <Route
-            path="edit"
-            element={
-              <PrivateRoute
-                element={<EditPage />}
-                roles={["admin", "driver"]}
-              />
-            }
-          ></Route>
-        </Route>
-        <Route path="user">
-          <Route
-            path="parcels/"
-            element={
-              <PrivateRoute
-                element={<ParcelsPage />}
-                roles={["admin", "driver"]}
-              />
-            }
-          ></Route>
-          <Route
-            path="users"
-            redirectTo="user/parcels"
-            element={
-              <PrivateRoute element={<UsersListPage />} roles={["admin"]} />
-            }
-          ></Route>
-          <Route
-            path="map"
-            redirectTo="user/parcels"
-            element={<PrivateRoute element={<MapPage />} roles={["admin"]} />}
-          ></Route>
-          <Route
-            path="settings"
-            redirectTo="user/parcels"
-            element={
-              <PrivateRoute element={<SettingsPage />} roles={["admin"]} />
-            }
-          ></Route>
-        </Route>
-      </Route>
-    </Routes>
+      </Routes>
+      <ToastContainer />
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Select from "react-select";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 import { useUpdateDriverMutation } from "~/Redux/parcelsSlice";
+import { notification } from "../Common/notification";
 
 export const SelectDriver = ({ parcel, status }) => {
   const { data } = useGetAllUsersQuery();
@@ -26,6 +27,13 @@ export const SelectDriver = ({ parcel, status }) => {
     }
   }, [driversOptions, parcel.driver._id]);
 
+  const handleDriverChange = (e) => {
+    setSelectedDriver(e);
+    updateDriver({ _id: parcel._id, body: e.value }).catch((e) =>
+      notification(e.message)
+    );
+  };
+
   return (
     <li>
       <Select
@@ -34,10 +42,7 @@ export const SelectDriver = ({ parcel, status }) => {
         classNamePrefix="react-select"
         placeholder="Select driver"
         value={selectedDriver}
-        onChange={(e) => {
-          setSelectedDriver(e);
-          updateDriver({ _id: parcel._id, body: e.value });
-        }}
+        onChange={handleDriverChange}
         isClearable={true}
         options={driversOptions}
       />
