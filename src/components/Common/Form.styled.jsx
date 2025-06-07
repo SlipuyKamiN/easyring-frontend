@@ -1,19 +1,26 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const FormWrapper = styled.form`
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
 
   max-width: 450px;
   border-radius: 40px;
-  background-color: ${`${colors.light.gray}60`};
+  background-color: ${({ theme }) => `${theme.colors.hi100}60`};
   backdrop-filter: blur(10px);
+
+  transition: background-color ${transition.duration};
+
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 export const FormName = styled.h3`
   margin-bottom: 20px;
   text-align: left;
+  padding: 0 10px;
 `;
 
 export const ErrorText = styled.span`
@@ -22,7 +29,7 @@ export const ErrorText = styled.span`
   margin-bottom: 5px;
 
   font-size: 12px;
-  color: ${colors.errorRed};
+  color: ${({ theme }) => theme.base.error};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -54,9 +61,9 @@ export const InputItem = styled.li`
     text-align: left;
     font-size: 14px;
 
-    color: ${colors.light.gray};
+    color: ${({ theme }) => theme.colors.mid100};
 
-    background-color: ${colors.light.silver};
+    background-color: ${({ theme }) => theme.colors.hi200};
 
     transition: all ${transition.duration};
 
@@ -76,14 +83,14 @@ export const InputItem = styled.li`
     padding: 4px 20px 4px 10px;
 
     font-size: 12px;
-    color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.lo200};
 
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
   }
   input:focus + label {
-    box-shadow: -3px -5px 10px -5px;
+    box-shadow: ${({ theme }) => theme.colors.lo100} -3px -5px 10px -5px;
   }
 `;
 
@@ -91,7 +98,8 @@ export const TextInput = styled.input`
   width: 100%;
   height: 50px;
   padding: 0 20px;
-  background-color: ${colors.light.silver};
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
 
   border: none;
   outline: none;
@@ -99,9 +107,11 @@ export const TextInput = styled.input`
   font-size: 16px;
   border-radius: 16px;
 
+  transition: all ${transition.duration};
+
   &:hover,
   &:focus {
-    box-shadow: ${colors.light.darkGray} 0px 0px 10px;
+    box-shadow: ${({ theme }) => theme.colors.lo100} 0px 0px 10px;
   }
 
   @media screen and (min-width: 768px) {
@@ -122,5 +132,48 @@ export const HidePasswordBtn = styled.button`
   right: 10px;
 
   background-color: transparent;
-  color: ${colors.light.darkGray};
+  color: ${({ theme }) => theme.colors.lo100};
+`;
+
+export const GeoAddressWrapper = styled.div`
+  .geoapify-autocomplete-input {
+    transition: ${transition.duration};
+
+    color: ${({ theme }) => theme.colors.lo200};
+    background-color: ${({ theme }) => theme.colors.hi200};
+
+    &:hover,
+    &:focus {
+      box-shadow: ${({ theme }) => theme.colors.mid100} 0px 0px 10px;
+    }
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.mid100};
+    }
+
+    @media screen and (min-width: 768px) {
+      &::placeholder {
+        color: ${({ theme }) => theme.colors.mid100};
+      }
+    }
+  }
+
+  .geoapify-autocomplete-input-label.focused {
+    color: ${({ theme }) => theme.colors.lo200};
+  }
+
+  .geoapify-autocomplete-items {
+    background-color: ${({ theme }) => theme.colors.hi200};
+    box-shadow: ${({ theme }) => theme.colors.mid100} 0px 10px 10px;
+
+    .secondary-part {
+      color: ${({ theme }) => theme.colors.lo100};
+    }
+  }
+
+  .geoapify-close-button {
+    color: ${({ theme }) => theme.colors.lo200};
+    background-color: ${({ theme }) => theme.colors.hi200};
+    opacity: 0.8;
+  }
 `;

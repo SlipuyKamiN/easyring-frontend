@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
-import { colors } from "~/styles/common/vars";
 import { PrimaryBtn } from "../Common/Button.styled";
 
 export const ConfirmSectionWrapper = styled.section`
-  background-color: ${`${colors.light.gray}60`};
+  background-color: ${({ theme }) => `${theme.colors.hi100}60`};
   backdrop-filter: blur(10px);
   border-radius: 40px;
-  padding: 40px;
+  padding: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 export const SuccessHeading = styled.div`
@@ -18,7 +21,7 @@ export const SuccessHeading = styled.div`
 
   margin-bottom: 10px;
 
-  color: limegreen;
+  color: ${({ theme }) => theme.base.success};
 
   h2 {
     display: block;
@@ -74,7 +77,7 @@ export const IconsWrapper = styled.span`
   svg {
     padding: 0 5px;
     border-radius: 10px;
-    border: 1px solid ${colors.light.darkGray};
+    border: 1px solid ${({ theme }) => theme.colors.lo200};
 
     font-size: 36px;
     width: 60px;

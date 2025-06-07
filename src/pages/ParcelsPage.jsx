@@ -3,7 +3,7 @@ import { useSmartSearchParams } from "~/hooks/useSmartSearchParams";
 import { useSearchParcelsQuery } from "~/Redux/parcelsSlice";
 import { ParcelsList } from "~/components/ParcelsList/ParcelsList";
 import { useSelector } from "react-redux";
-import { getUserState } from "~/Redux/userSelectors";
+import { getUserState } from "~/Redux/selectors";
 import { useEffect, useState } from "react";
 import { LoadingSection } from "~/components/Common/LoadingSection";
 import { EmptySection } from "~/components/Common/EmptySection";

@@ -6,6 +6,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/selectors";
+import { SelectWrapper } from "../ParcelsList/Filter.styled";
 
 const optionsList = [
   {
@@ -54,14 +55,16 @@ export const NavSelect = () => {
   delete state.user._persist;
 
   return (
-    <Select
-      className="react-nav-select-container"
-      classNamePrefix="react-nav-select"
-      placeholder={<FaHome size={20} />}
-      isSearchable={false}
-      value={value}
-      options={options}
-      onChange={(e) => navigate(e.value, { state })}
-    />
+    <SelectWrapper>
+      <Select
+        className="react-nav-select-container"
+        classNamePrefix="react-nav-select"
+        placeholder={<FaHome size={20} />}
+        isSearchable={false}
+        value={value}
+        options={options}
+        onChange={(e) => navigate(e.value, { state })}
+      />
+    </SelectWrapper>
   );
 };

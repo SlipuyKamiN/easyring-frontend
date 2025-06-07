@@ -15,7 +15,6 @@
 
 .MuiFormControl-root.Mui-focused {
   outline: none;
-  box-shadow: #8e8e93 0px 0px 10px;
   border-radius: 16px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -29,13 +28,16 @@
   &.MuiFormLabel-filled {
     width: 150px;
 
-    left: -14px;
-    top: 3px;
+    left: -13px;
+    top: 4px;
     border-radius: 20px 25px 0 0;
     padding-left: 10px;
-    box-shadow: #8e8e93 -3px -5px 10px -5px;
-    background-color: #f2f2f7;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (min-width: 768px) {
+      left: -14px;
+      top: 3px;
+    }
   }
 
   &.MuiFormLabel-filled {
@@ -48,7 +50,6 @@
   font-family: Montserrat;
 
   padding: 0 10px;
-  background-color: #f2f2f7;
   border-radius: 16px;
   border: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -60,13 +61,8 @@
 }
 
 .Mui-focused {
-  color: #000000 !important;
   border: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.MuiPickersOutlinedInput-notchedOutline {
-  border-color: #000000 !important;
 }
 
 .MuiFormControl-root.MuiPickersTextField-root {

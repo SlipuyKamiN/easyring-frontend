@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { colors } from "~/styles/common/vars";
 import { Section } from "../components/SharedLayout/SharedLayout.styled";
 
 export const ConfirmSection = styled(Section)`
@@ -15,7 +14,7 @@ export const DecorationBg = styled.div`
   border-radius: 40px;
 
   @media screen and (min-width: 768px) {
-    background-color: ${`${colors.light.gray}60`};
+    background-color: ${({ theme }) => `${theme.colors.hi100}60`};
     backdrop-filter: blur(10px);
   }
 `;

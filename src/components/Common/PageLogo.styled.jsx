@@ -13,11 +13,7 @@ export const LogoLink = styled(Link)`
   font-size: 32px;
   line-height: 1;
 
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  background-image: ${({ theme }) => theme.colors.logo.main};
   color: transparent;
 
   background-clip: text;
@@ -29,11 +25,7 @@ export const LogoLink = styled(Link)`
 
 export const FirstLetterLogo = styled.span`
   rotate: -15deg;
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 0, 0, 1) 600%
-  );
+  background-image: ${({ theme }) => theme.colors.logo.initCap};
   color: transparent;
 
   background-clip: text;
@@ -59,7 +51,7 @@ export const SubLogo = styled.span`
   font-family: "HPSimplifiedLightItalic";
   font-style: italic;
   font-size: 10px;
-  color: #000;
+  color: ${({ theme }) => theme.colors.lo200};
 
   @media screen and (min-width: 768px) {
     top: 42px;

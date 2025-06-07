@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const RootWrapper = styled.div`
   width: 100%;
   min-height: 100dvh;
 
-  color: ${colors.primaryAccent};
-  background-color: ${colors.secondary};
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
 
   transition: ${transition.duration};
 
@@ -35,33 +35,6 @@ export const RootWrapper = styled.div`
   background-position-y: top, -150px, 400px, 400px;
   background-size: 357px 357px, 1240px 820px, 800px 800px, 1240px 820px;
   background-repeat: no-repeat, repeat-y, no-repeat, no-repeat, no-repeat;
-  /* 
-  //костиль DarkMode//
-
-  &.darkMode {
-    color: ${colors.secondary};
-    background-color: ${colors.primaryAccent};
-
-    header.darkMode {
-      border-bottom: 3px solid ${colors.secondary};
-      box-shadow: ${colors.secondary} 0px 0px 10px;
-    }
-
-    button.darkMode {
-      border-color: ${colors.secondary};
-
-      color: ${colors.secondary};
-    }
-
-    input.darkMode {
-      color: ${colors.secondary};
-      border-color: ${colors.secondary};
-
-      &::placeholder {
-        color: #ffffff66;
-      }
-    }
-  } */
 `;
 
 export const Container = styled.div`

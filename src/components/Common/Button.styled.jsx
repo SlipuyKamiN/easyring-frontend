@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const PrimaryBtn = styled.button`
   display: flex;
@@ -11,42 +11,42 @@ export const PrimaryBtn = styled.button`
   height: 40px;
 
   padding: 10px 16px;
-  background-color: ${colors.light.silver};
-
-  color: ${colors.light.darkGray};
 
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
+  line-height: 1;
 
   border-radius: 8px;
   border: none;
 
   transition: background-color ${transition.duration};
 
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
+
   &:hover,
   &:focus {
-    outline: none;
-    background-color: ${colors.light.gray};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 
   &:disabled {
-    background-color: ${colors.light.gray};
     cursor: not-allowed;
+    color: ${({ theme }) => theme.colors.mid100};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 `;
 
 export const SecondaryBtn = styled(PrimaryBtn)`
   background: transparent;
-  background: ${colors.light.gradient};
 
   font-weight: 400;
+  color: ${({ theme }) => theme.colors.lo200};
+  background: ${({ theme }) => theme.colors.hi100};
 
   &:hover,
   &:focus {
-    color: ${colors.light.darkGray};
-
-    background-color: ${colors.light.gray};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 `;
 
@@ -60,10 +60,6 @@ export const PrimaryBtnLink = styled(Link)`
 
   padding: 10px 16px;
 
-  background-color: ${colors.light.silver};
-
-  color: ${colors.light.darkGray};
-
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
@@ -73,29 +69,32 @@ export const PrimaryBtnLink = styled(Link)`
 
   transition: background-color ${transition.duration};
 
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
+
   &:hover,
   &:focus {
-    background-color: ${colors.light.gray};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 `;
 
 export const SecondaryBtnLink = styled(PrimaryBtnLink)`
-  background: transparent;
-  background: ${colors.light.gradient};
-
   font-weight: 400;
+
+  background: transparent;
+  color: ${({ theme }) => theme.colors.lo200};
+  background: ${({ theme }) => theme.colors.hi100};
 
   &:hover,
   &:focus {
-    color: ${colors.light.darkGray};
-
-    background-color: ${colors.light.gray};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 `;
 
 export const HeroMainBtn = styled(PrimaryBtnLink)`
   font-weight: 600;
-  background: ${colors.light.gradient};
+  color: ${({ theme }) => theme.colors.hi200};
+  background: ${({ theme }) => theme.colors.gradient};
 `;
 
 export const HeroSecondaryBtn = styled(SecondaryBtn)`

@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const Card = styled.li`
   position: relative;
 
   padding: 20px;
   border-radius: 20px;
-  background-color: ${`${colors.light.gray}60`};
+
+  color: ${({ theme }) => theme.colors.lo100};
+  background-color: ${({ theme }) => `${theme.colors.hi100}60`};
 
   min-width: 290px;
   max-width: 300px;
@@ -28,6 +30,8 @@ export const CardHeadingWrapper = styled.div`
 export const CardLink = styled(Link)`
   display: block;
   width: 180px;
+
+  color: ${({ theme }) => theme.colors.lo200};
 `;
 
 export const DeleteButton = styled.button`
@@ -38,22 +42,23 @@ export const DeleteButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${colors.light.gray};
-  color: ${colors.light.darkGray};
+  background-color: ${({ theme }) => theme.colors.hi200};
+  color: ${({ theme }) => theme.colors.lo100};
   transition: all ${transition.duration};
 
   &:hover,
   &:focus {
-    color: ${colors.errorRed};
-    background-color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.base.error};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 
-  &:disabled {
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
     cursor: not-allowed;
 
-    svg {
-      color: ${colors.errorRed};
-    }
+    color: ${({ theme }) => theme.base.error};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 `;
 
@@ -72,11 +77,11 @@ export const CardDetailsList = styled.ul`
 
     span {
       font-weight: 600;
-      color: ${colors.errorRed};
+      color: ${({ theme }) => theme.base.error};
     }
 
     span.paid {
-      color: ${colors.success};
+      color: ${({ theme }) => theme.base.success};
     }
   }
 `;
@@ -88,8 +93,8 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${`${colors.light.silver}bb`};
-  color: ${colors.success};
+  background-color: ${({ theme }) => `${theme.colors.hi100}60`};
+  color: ${({ theme }) => theme.base.success};
   text-align: center;
 
   display: flex;

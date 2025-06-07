@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 import { Section } from "../SharedLayout/SharedLayout.styled";
 
 export const ProgressSection = styled(Section)`
@@ -41,7 +41,7 @@ export const ProgressLink = styled(NavLink)`
   margin: auto;
 
   position: relative;
-  color: ${colors.light.gray};
+  color: ${({ theme }) => theme.colors.hi100};
 
   &::after {
     content: "";
@@ -49,15 +49,15 @@ export const ProgressLink = styled(NavLink)`
     top: 15px;
     left: 30px;
     width: 40px;
-    border-bottom: 4px solid ${colors.light.gray};
+    border-bottom: 4px solid ${({ theme }) => theme.colors.hi100};
     transition: border-color ${transition.duration};
     border-radius: 8px;
   }
 
   &.active,
   &.active::after {
-    color: ${colors.light.darkGray};
-    border-color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.lo100};
+    border-color: ${({ theme }) => theme.colors.lo100};
   }
 
   @media screen and (min-width: 768px) {
@@ -65,7 +65,7 @@ export const ProgressLink = styled(NavLink)`
       position: absolute;
       left: 35px;
       width: 70px;
-      border-bottom: 4px solid ${colors.light.gray};
+      border-bottom: 4px solid ${({ theme }) => theme.colors.hi100};
       transition: border-color ${transition.duration};
       border-radius: 8px;
     }

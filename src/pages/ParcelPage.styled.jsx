@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Barcode from "react-barcode";
-import { colors } from "~/styles/common/vars";
 
 export const BarcodeLabel = styled(Barcode)`
   border-radius: 16px;
@@ -8,8 +7,12 @@ export const BarcodeLabel = styled(Barcode)`
   max-width: 210px;
   width: auto;
 
-  background-color: ${`${colors.light.silver}60`};
+  background-color: ${({ theme }) => `${theme.base.white}dd`};
   padding: 5px;
+
+  svg {
+    fill: ${({ theme }) => theme.colors.hi200};
+  }
 `;
 
 export const TrackingList = styled.ul`
@@ -23,7 +26,7 @@ export const TrackingItem = styled.li`
   flex-wrap: wrap;
   gap: 10px;
 
-  color: ${colors.light.darkGray};
+  color: ${({ theme }) => theme.colors.lo100};
 
   p {
     font-size: 18px;
@@ -43,12 +46,12 @@ export const TrackingItem = styled.li`
     top: 36px;
 
     height: 38px;
-    border: 2px solid ${colors.light.darkGray};
+    border: 2px solid ${({ theme }) => theme.colors.lo100};
     border-radius: 10px;
   }
 
   &:last-child::before {
-    background-color: ${colors.light.gray};
+    background-color: transparent;
   }
 
   &::before {
@@ -56,10 +59,10 @@ export const TrackingItem = styled.li`
 
     width: 25px;
     height: 25px;
-    border: 4px solid ${colors.light.darkGray};
+    border: 4px solid ${({ theme }) => theme.colors.lo100};
     border-radius: 50%;
 
-    background-color: ${colors.light.gradient};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 `;
 

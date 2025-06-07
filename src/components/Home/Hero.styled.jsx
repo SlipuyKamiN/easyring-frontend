@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const HeroSection = styled.section`
   padding: 120px 0 60px;
@@ -79,21 +79,23 @@ export const TrackInput = styled.input`
   padding: 10px 16px;
   height: 40px;
 
-  background: ${colors.light.gradient};
   border: none;
   border-radius: 8px;
 
   font-size: 16px;
 
   transition: background-color ${transition.duration};
+  background: ${({ theme }) => theme.colors.gradient};
+  color: ${({ theme }) => theme.colors.hi200};
 
   &::placeholder {
     text-transform: none;
+    color: ${({ theme }) => theme.colors.hi200};
   }
 
   &:hover,
   &:focus {
     outline: none;
-    background-color: ${colors.light.gray};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 `;

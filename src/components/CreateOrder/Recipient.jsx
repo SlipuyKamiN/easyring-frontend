@@ -19,6 +19,7 @@ import {
   InputList,
   TextInput,
   FormBtnsList,
+  GeoAddressWrapper,
 } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
 
@@ -65,27 +66,29 @@ export const Recipient = () => {
             <ValidationErrorText inputError={errors.name} />
           </InputItem>
           <InputItem>
-            <Controller
-              name="address"
-              control={control}
-              render={({ field }) => (
-                <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
-                  <GeoapifyGeocoderAutocomplete
-                    placeholder={t("form.address")}
-                    limit={5}
-                    filterByCircle={{
-                      lat: 52.52,
-                      lon: 13.405,
-                      radiusMeters: 30000,
-                    }}
-                    placeSelect={(value) => {
-                      setValue("address", value);
-                    }}
-                    value={field.value?.properties?.formatted || ""}
-                  />
-                </GeoapifyContext>
-              )}
-            />
+            <GeoAddressWrapper>
+              <Controller
+                name="address"
+                control={control}
+                render={({ field }) => (
+                  <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
+                    <GeoapifyGeocoderAutocomplete
+                      placeholder={t("form.address")}
+                      limit={5}
+                      filterByCircle={{
+                        lat: 52.52,
+                        lon: 13.405,
+                        radiusMeters: 30000,
+                      }}
+                      placeSelect={(value) => {
+                        setValue("address", value);
+                      }}
+                      value={field.value?.properties?.formatted || ""}
+                    />
+                  </GeoapifyContext>
+                )}
+              />
+            </GeoAddressWrapper>
             <ValidationErrorText inputError={errors.address} />
           </InputItem>
           <InputItem>

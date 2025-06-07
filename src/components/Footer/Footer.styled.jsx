@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Container } from "../SharedLayout/SharedLayout.styled";
-import { colors } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const PageFooter = styled.footer`
   padding: 40px 0;
@@ -22,7 +22,7 @@ export const SocialsList = styled.ul`
 `;
 
 export const IconLink = styled.a`
-  color: ${colors.light.gray};
+  color: ${({ theme }) => theme.colors.mid100};
 
   &.whats-app:hover,
   &.whats-app:focus {
@@ -46,20 +46,22 @@ export const AddressListItem = styled.li`
   }
 
   a {
-    color: ${colors.light.gray};
+    color: ${({ theme }) => theme.colors.mid100};
   }
   a:hover,
   a:focus {
-    color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.lo200};
   }
 `;
 
 export const ReactLink = styled.button`
   background-color: transparent;
-  color: ${colors.light.gray};
+  color: ${({ theme }) => theme.colors.mid100};
+
+  transition: color ${transition.duration};
 
   &:hover,
   &:focus {
-    color: ${colors.accent.cyan};
+    color: ${({ theme }) => theme.accent.cyan};
   }
 `;

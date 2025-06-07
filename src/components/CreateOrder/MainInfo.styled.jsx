@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const SizeButtonsList = styled.ul`
   display: flex;
@@ -23,7 +23,7 @@ export const SizeButton = styled.label`
   width: 60px;
 
   border-radius: 14px;
-  background-color: ${colors.light.silver};
+  background-color: ${({ theme }) => theme.colors.hi200};
 
   overflow: hidden;
 
@@ -33,14 +33,14 @@ export const SizeButton = styled.label`
 
   &:hover,
   &:focus {
-    background-color: ${colors.light.darkGray};
+    background-color: ${({ theme }) => theme.colors.mid100};
   }
 
   &:hover > span,
   &:focus > span,
   &:hover > svg,
   &:focus > svg {
-    color: ${colors.classicBlack};
+    color: ${({ theme }) => theme.colors.lo200};
   }
 
   @media screen and (min-width: 768px) {
@@ -55,11 +55,11 @@ export const SizeInput = styled.input`
   height: 100%;
 
   &:checked + span {
-    color: ${colors.classicWhite};
-    background-color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.hi200};
+    background-color: ${({ theme }) => theme.colors.lo100};
 
     & + span {
-      color: ${colors.classicWhite};
+      color: ${({ theme }) => theme.colors.hi200};
     }
 
     & svg {
@@ -81,7 +81,7 @@ export const SizeText = styled.span`
   line-height: 1;
   font-weight: 800;
   transition: all ${transition.duration};
-  color: ${`${colors.light.darkGray}80`};
+  color: ${({ theme }) => `${theme.colors.lo200}60`};
 
   & svg {
     position: absolute;
@@ -124,17 +124,18 @@ export const ParcelDescription = styled.textarea`
   padding: 10px 15px;
   border: none;
   border-radius: 16px;
-  background-color: ${colors.light.silver};
 
   font-family: inherit;
   font-size: 16px;
   resize: none;
 
   outline: none;
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
 
   &:hover,
   &:focus {
-    box-shadow: ${colors.light.darkGray} 0px 0px 10px;
+    box-shadow: ${({ theme }) => theme.colors.lo100} 0px 0px 10px;
   }
 
   @media screen and (min-width: 768px) {
@@ -153,4 +154,38 @@ export const TimePickerWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+`;
+
+export const MuiPickerWrapper = styled.div`
+  max-width: 284px;
+  margin: 0 auto;
+
+  .MuiFormControl-root.Mui-focused {
+    box-shadow: ${({ theme }) => theme.colors.mid100} 0px 0px 10px;
+  }
+
+  .MuiFormControl-root .MuiFormLabel-root.MuiInputLabel-root {
+    &.Mui-focused,
+    &.MuiFormLabel-filled {
+      box-shadow: ${({ theme }) => theme.colors.mid100} -3px -5px 10px -5px;
+      background-color: ${({ theme }) => theme.colors.hi200};
+    }
+
+    &.MuiFormLabel-filled {
+      box-shadow: none;
+      background-color: ${({ theme }) => theme.colors.hi200};
+    }
+  }
+
+  .MuiPickersInputBase-root.MuiPickersOutlinedInput-root {
+    background-color: ${({ theme }) => theme.colors.hi200};
+  }
+
+  .Mui-focused {
+    color: ${({ theme }) => theme.colors.lo200} !important;
+  }
+
+  .MuiPickersOutlinedInput-notchedOutline {
+    border-color: ${({ theme }) => theme.colors.lo200} !important;
+  }
 `;

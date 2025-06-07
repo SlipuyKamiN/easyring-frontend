@@ -4,14 +4,7 @@ export const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 20px;
 
-  background: linear-gradient(
-    90deg,
-    rgba(100, 100, 100, 0.4) 0%,
-    rgba(100, 100, 100, 0.6) 60%,
-    rgba(100, 100, 100, 0.2) 100%
-  );
-
-  color: transparent;
+  color: ${({ theme }) => theme.colors.lo100};
 
   background-clip: text;
 
@@ -45,9 +38,12 @@ export const StepItem = styled.li`
   flex-direction: column;
   gap: 10px;
 
+  color: ${({ theme }) => theme.colors.lo200};
+
   & > svg {
     margin-left: 70px;
     margin-bottom: 10px;
+    color: ${({ theme }) => theme.colors.mid100};
   }
 
   &::before {
@@ -62,12 +58,7 @@ export const StepItem = styled.li`
     font-weight: 600;
     line-height: 1;
 
-    background: linear-gradient(
-      90deg,
-      rgba(100, 100, 100, 0.4) 0%,
-      rgba(100, 100, 100, 0.6) 70%,
-      rgba(100, 100, 100, 0.2) 100%
-    );
+    background: ${({ theme }) => theme.colors.gradient};
 
     color: transparent;
 

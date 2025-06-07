@@ -1,6 +1,7 @@
 import { DecorationBg } from "../../pages/CreateOrderPage.styled";
 import {
   InputListItem,
+  MuiPickerWrapper,
   ParcelDescription,
   SizeButton,
   SizeButtonsList,
@@ -122,84 +123,91 @@ export const MainInfo = () => {
             <ValidationErrorText inputError={errors.size} />
           </li>
           <InputListItem>
-            <LocalizationProvider
-              dateAdapter={AdapterDateFns}
-              adapterLocale={de}
-            >
-              <Controller
-                name="date"
-                control={control}
-                render={({ field }) => (
-                  <DatePicker
-                    {...field}
-                    minDate={new Date()}
-                    maxDate={addDays(new Date(), 14)}
-                    label={t("form.mainInfo.date")}
-                    format="dd.MM.yy"
-                    slotProps={{
-                      field: {
-                        clearable: true,
-                      },
-                    }}
-                  />
-                )}
-              />
-              <ValidationErrorText inputError={errors.date} />
-            </LocalizationProvider>
-          </InputListItem>
-          <InputListItem>
-            <TimePickerWrapper>
+            <MuiPickerWrapper>
               <LocalizationProvider
                 dateAdapter={AdapterDateFns}
                 adapterLocale={de}
               >
                 <Controller
-                  name={"startTime"}
+                  name="date"
                   control={control}
                   render={({ field }) => (
-                    <TimePicker
+                    <DatePicker
                       {...field}
-                      label={t("form.mainInfo.startTime")}
-                      minutesStep={30}
-                      minTime={new Date(0, 0, 0, 8, 0)}
-                      maxTime={new Date(0, 0, 0, 20, 0)}
-                      slotProps={{ field: { clearable: true } }}
+                      minDate={new Date()}
+                      maxDate={addDays(new Date(), 14)}
+                      label={t("form.mainInfo.date")}
+                      format="dd.MM.yy"
+                      slotProps={{
+                        field: {
+                          clearable: true,
+                        },
+                      }}
                     />
                   )}
                 />
+                <ValidationErrorText inputError={errors.date} />
               </LocalizationProvider>
-              <LocalizationProvider
-                dateAdapter={AdapterDateFns}
-                adapterLocale={de}
-              >
-                <Controller
-                  name={"endTime"}
-                  control={control}
-                  render={({ field }) => {
-                    const startTime = watch("startTime");
-                    const minEndTime = startTime
-                      ? addHours(startTime, 2)
-                      : new Date(0, 0, 0, 8, 0);
-
-                    return (
+            </MuiPickerWrapper>
+          </InputListItem>
+          <InputListItem>
+            <TimePickerWrapper>
+              <MuiPickerWrapper>
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  adapterLocale={de}
+                >
+                  <Controller
+                    className="dark"
+                    name={"startTime"}
+                    control={control}
+                    render={({ field }) => (
                       <TimePicker
                         {...field}
-                        disabled={!isValid(startTime)}
-                        label={t("form.mainInfo.endTime")}
+                        label={t("form.mainInfo.startTime")}
                         minutesStep={30}
-                        minTime={minEndTime}
-                        maxTime={new Date(0, 0, 0, 22, 0)}
-                        slotProps={{
-                          field: {
-                            clearable: true,
-                            variant: "outlined",
-                          },
-                        }}
+                        minTime={new Date(0, 0, 0, 8, 0)}
+                        maxTime={new Date(0, 0, 0, 20, 0)}
+                        slotProps={{ field: { clearable: true } }}
                       />
-                    );
-                  }}
-                />
-              </LocalizationProvider>
+                    )}
+                  />
+                </LocalizationProvider>
+              </MuiPickerWrapper>
+              <MuiPickerWrapper>
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  adapterLocale={de}
+                >
+                  <Controller
+                    name={"endTime"}
+                    control={control}
+                    render={({ field }) => {
+                      const startTime = watch("startTime");
+                      const minEndTime = startTime
+                        ? addHours(startTime, 2)
+                        : new Date(0, 0, 0, 8, 0);
+
+                      return (
+                        <TimePicker
+                          {...field}
+                          disabled={!isValid(startTime)}
+                          label={t("form.mainInfo.endTime")}
+                          minutesStep={30}
+                          minTime={minEndTime}
+                          maxTime={new Date(0, 0, 0, 22, 0)}
+                          slotProps={{
+                            field: {
+                              clearable: true,
+                              variant: "outlined",
+                            },
+                          }}
+                        />
+                      );
+                    }}
+                  />
+                </LocalizationProvider>
+              </MuiPickerWrapper>
             </TimePickerWrapper>
             <ValidationErrorText
               inputError={errors.startTime || errors.endTime}

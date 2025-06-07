@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const PageHeader = styled.header`
   width: 100%;
@@ -11,8 +11,8 @@ export const PageHeader = styled.header`
   padding: 5px 0;
 
   backdrop-filter: blur(10px);
-  border-bottom: 3px solid ${colors.primaryAccent};
-  box-shadow: ${colors.primaryAccent} 0px 0px 10px;
+  border-bottom: 3px solid ${({ theme }) => theme.colors.lo100};
+  box-shadow: ${({ theme }) => theme.colors.lo100} 0px 0px 10px;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -34,7 +34,7 @@ export const LanguagePicker = styled.button`
   overflow: hidden;
   border-radius: 8px;
 
-  border: 1px solid ${colors.light.darkGray};
+  border: 1px solid ${({ theme }) => theme.colors.lo200};
 
   filter: grayscale(100%) contrast(90%);
 
@@ -57,5 +57,5 @@ export const LanguagePicker = styled.button`
 export const DarkModeToggler = styled.button`
   padding: 4px 0 0;
   background-color: transparent;
-  color: ${colors.light.darkGray};
+  color: ${({ theme }) => theme.colors.lo200};
 `;

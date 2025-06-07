@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, transition } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const JoyList = styled.ul`
   position: relative;
@@ -23,19 +23,24 @@ export const JoyButton = styled.button`
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  background-color: ${colors.light.silver};
-  color: ${colors.light.darkGray};
 
   transition: all ${transition.duration};
 
-  &:disabled {
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
     cursor: not-allowed;
-    background-color: ${`${colors.light.darkGray}60`};
+    color: ${({ theme }) => theme.colors.mid100};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 
   &:hover,
   &:focus {
-    background-color: ${colors.light.gray};
+    color: ${({ theme }) => theme.colors.hi100};
+    background-color: ${({ theme }) => theme.colors.hi200};
   }
 `;
 
@@ -52,19 +57,24 @@ export const JoyLink = styled.a`
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  background-color: ${colors.light.silver};
-  color: ${colors.light.darkGray};
+
   transition: all ${transition.duration};
 
-  &[disabled] {
+  color: ${({ theme }) => theme.colors.lo200};
+  background-color: ${({ theme }) => theme.colors.hi200};
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
     cursor: not-allowed;
-    pointer-events: none;
-    background-color: ${`${colors.light.darkGray}60`};
+    color: ${({ theme }) => theme.colors.mid100};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 
   &:hover,
   &:focus {
-    background-color: ${colors.light.gray};
+    color: ${({ theme }) => theme.colors.hi100};
+    background-color: ${({ theme }) => theme.colors.hi200};
   }
 `;
 
@@ -77,8 +87,8 @@ export const PayWrapper = styled.li`
   transform: translate(-50%, -50%);
   border-radius: 50%;
   overflow: hidden;
-  background-color: ${colors.light.gray};
-  border: 5px solid ${colors.light.gray};
+  background-color: ${({ theme }) => theme.colors.mid100};
+  border: 5px solid ${({ theme }) => theme.colors.mid100};
 `;
 
 export const PayButton = styled.button`
@@ -91,20 +101,26 @@ export const PayButton = styled.button`
 
   transition: all ${transition.duration};
 
-  color: ${colors.errorRed};
-
   span {
     font-size: 14px;
   }
 
-  &:disabled {
+  transition: all ${transition.duration};
+
+  color: ${({ theme }) => theme.base.error};
+  background-color: ${({ theme }) => theme.colors.hi200};
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus {
     cursor: not-allowed;
-    color: ${colors.light.gray};
-    background-color: ${`${colors.light.darkGray}60`};
+    color: ${({ theme }) => theme.colors.mid100};
+    background-color: ${({ theme }) => theme.colors.hi100};
   }
 
   &:hover,
   &:focus {
-    background-color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.hi100};
+    background-color: ${({ theme }) => theme.colors.hi200};
   }
 `;

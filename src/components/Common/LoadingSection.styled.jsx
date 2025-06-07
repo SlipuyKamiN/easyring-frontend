@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
-import { colors } from "~/styles/common/vars";
 
 export const SpinnerWrapper = styled.div`
   svg {
-    color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.lo100};
     animation-name: loading;
     animation-duration: 1000ms;
     animation-iteration-count: infinite;
@@ -12,7 +11,7 @@ export const SpinnerWrapper = styled.div`
 `;
 
 export const EmptyWrapper = styled.div`
-  color: ${colors.light.darkGray};
+  color: ${({ theme }) => theme.colors.lo100};
 
   font-size: 36px;
   font-weight: 600;
