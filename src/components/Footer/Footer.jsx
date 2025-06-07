@@ -11,16 +11,24 @@ import { FaReact } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/selectors";
 import { useNavigate } from "react-router-dom";
+import { notification } from "../Common/notification";
 
 export const Footer = () => {
   const [logout] = useLogoutMutation();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector(getUserState);
 
-  console.log("isLoggedIn", isLoggedIn);
-
   const onClick = () => {
-    if (isLoggedIn) return logout();
+    if (isLoggedIn) {
+      logout()
+        .unwrap()
+        .then(() => {
+          notification("Logout success", "success");
+        })
+        .catch((e) => notification(e.data.message));
+
+      return;
+    }
     navigate("/auth/signin");
   };
 

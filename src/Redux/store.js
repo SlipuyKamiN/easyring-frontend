@@ -25,7 +25,7 @@ const userPersistConfig = {
 const uiConfigPersistConfig = {
   key: "uiConfig",
   storage,
-  whitelist: ["darkMode", "language"],
+  whitelist: ["mode", "language"],
 };
 
 const rootReducer = combineReducers({
