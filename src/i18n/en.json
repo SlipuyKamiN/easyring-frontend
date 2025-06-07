@@ -19,5 +19,62 @@
       "title": "Enjoy",
       "desc": "Receive the parcel at your preferred time and place."
     }
-  ]
+  ],
+  "form": {
+    "mainInfo": {
+      "size": "Select size to:",
+      "date": "Pick up date",
+      "startTime": "Delivery from",
+      "endTime": "until",
+      "description": "Parcel description"
+    },
+    "phone": "Phone number",
+    "name": "Full name",
+    "address": "Full address",
+    "email": "Email",
+    "login": "Login",
+    "carNumber": "Car number",
+    "password": "Password",
+    "comment": "Comment",
+    "sender": "Sender:",
+    "recipient": "Recipient:",
+    "parcel": "Parcel:",
+    "preview": {
+      "title": "Preview of your parcel",
+      "size": "Parcel size:",
+      "date": "Pick up date:",
+      "time": "Time window:",
+      "distance": "Distance:",
+      "price": "Delivery price:",
+      "confirm": "Confirm"
+    },
+    "success": {
+      "title": "Success!",
+      "info": [
+        "The courier will arrive",
+        "between {{startTime}} and {{endTime}}.",
+        "Please stay available during this time. You’ll also receive a confirmation email."
+      ],
+      "pay-now": "Pay now",
+      "pay-later": "Pay later"
+    },
+    "nav": {
+      "next": "Next",
+      "cancel": "Cancel",
+      "back": "Back"
+    },
+    "action": {
+      "register": "Register",
+      "log-in": "Log in",
+      "log-out": "Log out",
+      "update": "Update"
+    }
+  },
+  "tracking": {
+    "created": "Created",
+    "confirmed": "Confirmed",
+    "picked-up": "Picked-up",
+    "delivered": "Delivered",
+    "contact": "Questions? Contact us!"
+  }
 }

@@ -9,6 +9,7 @@ import {
 } from "./InfoSections.styled";
 import { CiEdit } from "react-icons/ci";
 import { getGoogleMapsLink } from "~/helpers/getGoogleMaps";
+import { useTranslation } from "react-i18next";
 
 export const InfoSections = ({ children, listTitle }) => {
   return (
@@ -30,36 +31,38 @@ export const MainInfoSection = ({
   payment: { price },
   edit = false,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <InfoSection>
       {edit ? (
         <SectionTitle to={"/createorder/maininfo"}>
-          Parcel: <CiEdit size={20} />
+          {t("form.parcel")} <CiEdit size={20} />
         </SectionTitle>
       ) : (
-        <SectionTitle>Parcel:</SectionTitle>
+        <SectionTitle>{t("form.parcel")}</SectionTitle>
       )}
       <AddressList>
         <AddressListItem>
-          <p>Parcel size: </p>
+          <p>{t("form.preview.size")}</p>
           <b>{size}</b>
         </AddressListItem>
         <AddressListItem>
-          <p>Pick up date: </p>
-          <b>{format(date, "dd-MM-yyyy")}</b>
+          <p>{t("form.preview.date")}</p>
+          <b>{format(date, "dd.MM.yyyy")}</b>
         </AddressListItem>
         <AddressListItem>
-          <p>Time window: </p>
+          <p>{t("form.preview.time")}</p>
           <b>{format(startTime, "HH:mm")}</b>
           {" — "}
           <b>{format(endTime, "HH:mm")}</b>
         </AddressListItem>
         <AddressListItem>
-          <p>Distance:</p>
+          <p>{t("form.preview.distance")}</p>
           <b>{distance} km</b>
         </AddressListItem>
         <AddressListItem>
-          <p>Delivery price: </p>
+          <p>{t("form.preview.price")}</p>
           <b>{price} EUR</b>
         </AddressListItem>
       </AddressList>
@@ -72,14 +75,16 @@ export const ParticipantInfoSection = ({
   data: { phone, name, email = "", address = {}, comment },
   edit = false,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <InfoSection>
       {edit ? (
         <SectionTitle to={`/createorder/${participant.toLowerCase()}`}>
-          {participant}: <CiEdit size={20} />
+          {t(`form.${participant}`)} <CiEdit size={20} />
         </SectionTitle>
       ) : (
-        <SectionTitle>{participant}:</SectionTitle>
+        <SectionTitle>{t(`form.${participant}`)}</SectionTitle>
       )}
       <address>
         <AddressList>

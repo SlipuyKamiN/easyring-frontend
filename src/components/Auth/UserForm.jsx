@@ -20,6 +20,7 @@ import { useState } from "react";
 import { Container, Section } from "../SharedLayout/SharedLayout.styled";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 import { useLogoutMutation } from "~/Redux/authSlice";
+import { useTranslation } from "react-i18next";
 
 const initialValues = {
   name: "",
@@ -37,6 +38,7 @@ export const UserForm = ({
   onSubmit,
   pageName = "signup",
 }) => {
+  const { t } = useTranslation();
   const [passVisible, setVisible] = useState(false);
   const [logout] = useLogoutMutation();
   const {
@@ -69,7 +71,7 @@ export const UserForm = ({
                   placeholder=" "
                   {...register(name)}
                 />
-                <label>{name.replace("N", " n")}</label>
+                <label>{t(`form.${name}`)}</label>
                 <ValidationErrorText inputError={errors[name]} />
               </InputItem>
             ))}
@@ -79,7 +81,7 @@ export const UserForm = ({
                 placeholder=" "
                 {...register("password")}
               />
-              <label>Password</label>
+              <label>{t(`form.password`)}</label>
               <ValidationErrorText inputError={errors.password} />
               <HidePasswordBtn
                 type="button"
@@ -92,14 +94,18 @@ export const UserForm = ({
           <FormBtnsList>
             {pageName === "signup" ? (
               <>
-                <PrimaryBtn type="submit">Register</PrimaryBtn>
-                <SecondaryBtnLink to={"/auth/signin"}>log in</SecondaryBtnLink>
+                <PrimaryBtn type="submit">
+                  {t("form.action.register")}
+                </PrimaryBtn>
+                <SecondaryBtnLink to={"/auth/signin"}>
+                  {t("form.action.log-in")}
+                </SecondaryBtnLink>
               </>
             ) : (
               <>
-                <PrimaryBtn type="submit">Update</PrimaryBtn>
+                <PrimaryBtn type="submit">{t("form.action.update")}</PrimaryBtn>
                 <SecondaryBtn type="button" onClick={logout}>
-                  Log out
+                  {t("form.action.log-out")}
                 </SecondaryBtn>
               </>
             )}

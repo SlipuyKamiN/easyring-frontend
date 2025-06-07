@@ -1,6 +1,6 @@
 export const statuses = {
-  100: "Created",
-  200: "Confirmed",
-  300: "Picked up",
-  400: "Delivered",
+  100: "created",
+  200: "confirmed",
+  300: "picked-up",
+  400: "delivered",
 };

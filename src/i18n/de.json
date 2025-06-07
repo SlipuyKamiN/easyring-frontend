@@ -13,11 +13,68 @@
     },
     {
       "title": "Treffen mit dem Kurier",
-      "desc": "Stimmen Sie die Paket-ID ab und übergeben Sie das Paket."
+      "desc": "Stimmen Sie die <b>Paket-ID</b> ab und übergeben Sie das Paket."
     },
     {
       "title": "Genießen",
       "desc": "Sie erhalten das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
     }
-  ]
+  ],
+  "form": {
+    "mainInfo": {
+      "size": "Größe auswählen:",
+      "date": "Lieferdatum",
+      "startTime": "Lieferung von",
+      "endTime": "bis",
+      "description": "Beschreibung"
+    },
+    "phone": "Telefonnummer",
+    "name": "Name und Vorname",
+    "address": "Komplette Adresse",
+    "email": "Email",
+    "login": "Login",
+    "carNumber": "Kennzeichen",
+    "password": "Passwort",
+    "comment": "Kommentar",
+    "sender": "Absender:",
+    "recipient": "Empfänger:",
+    "parcel": "Paket:",
+    "preview": {
+      "title": "Vorschau",
+      "size": "Größe des Pakets:",
+      "date": "Lieferdatum:",
+      "time": "Zeitfenster:",
+      "distance": "Entfernung:",
+      "price": "Lieferpreis:",
+      "confirm": "Bestätigen"
+    },
+    "success": {
+      "title": "Success!",
+      "info": [
+        "Der Kurier kommt zwischen",
+        "{{startTime}} und {{endTime}}.",
+        "Bitte halten Sie sich in diesem Zeitraum bereit. Sie erhalten außerdem eine Bestätigungs-E-Mail."
+      ],
+      "pay-now": "Jetzt bezahlen",
+      "pay-later": "Später bezahlen"
+    },
+    "nav": {
+      "next": "Weiter",
+      "cancel": "Abbrechen",
+      "back": "Zurück"
+    },
+    "action": {
+      "register": "Register",
+      "log-in": "Einloggen",
+      "log-out": "Abmelden",
+      "update": "Update"
+    }
+  },
+  "tracking": {
+    "created": "Erstellt",
+    "confirmed": "Bestätigt",
+    "picked-up": "Abgeholt",
+    "delivered": "Geliefert",
+    "contact": "Noch Fragen? Kontaktieren Sie uns!"
+  }
 }

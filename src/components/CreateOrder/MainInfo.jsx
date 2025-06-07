@@ -31,8 +31,10 @@ import { updMainInfo } from "~/Redux/newParcelSlice";
 import { combineDateTime, parceInitialDate } from "~/helpers/combineDateTime";
 import { getNewParcelState } from "~/Redux/newParcelSelectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
+import { useTranslation } from "react-i18next";
 
 export const MainInfo = () => {
+  const { t } = useTranslation();
   const {
     mainInfo: { size, date, startTime, endTime, description },
   } = useSelector(getNewParcelState);
@@ -74,7 +76,7 @@ export const MainInfo = () => {
       <FormWrapper autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <InputList>
           <li>
-            <SizeLabel>Select size to:</SizeLabel>
+            <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>
             <SizeButtonsList>
               <li>
                 <SizeButton>
@@ -134,7 +136,7 @@ export const MainInfo = () => {
                     {...field}
                     minDate={new Date()}
                     maxDate={addDays(new Date(), 14)}
-                    label={"Pick up date"}
+                    label={t("form.mainInfo.date")}
                     format="dd.MM.yy"
                     slotProps={{
                       field: {
@@ -159,7 +161,7 @@ export const MainInfo = () => {
                   render={({ field }) => (
                     <TimePicker
                       {...field}
-                      label={"Delivery from"}
+                      label={t("form.mainInfo.startTime")}
                       minutesStep={30}
                       minTime={new Date(0, 0, 0, 8, 0)}
                       maxTime={new Date(0, 0, 0, 20, 0)}
@@ -185,7 +187,7 @@ export const MainInfo = () => {
                       <TimePicker
                         {...field}
                         disabled={!isValid(startTime)}
-                        label={"until"}
+                        label={t("form.mainInfo.endTime")}
                         minutesStep={30}
                         minTime={minEndTime}
                         maxTime={new Date(0, 0, 0, 22, 0)}
@@ -209,7 +211,7 @@ export const MainInfo = () => {
             <ParcelDescription
               {...register("description")}
               type="text"
-              placeholder="Parcel description"
+              placeholder={t("form.mainInfo.description")}
               rows={1}
               onInput={(e) => {
                 e.currentTarget.style.height = "auto";
@@ -221,10 +223,10 @@ export const MainInfo = () => {
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn type="Submit">Next</PrimaryBtn>
+            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
           </li>
           <li>
-            <SecondaryBtnLink to={"/"}>Cancel</SecondaryBtnLink>
+            <SecondaryBtnLink to={"/"}>{t("form.nav.cancel")}</SecondaryBtnLink>
           </li>
         </FormBtnsList>
       </FormWrapper>

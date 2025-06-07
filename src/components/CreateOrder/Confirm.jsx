@@ -12,8 +12,10 @@ import {
 } from "../Common/InfoSections";
 import { FaCheck } from "react-icons/fa6";
 import { Success } from "./Success";
+import { useTranslation } from "react-i18next";
 
 export const Confirm = () => {
+  const { t } = useTranslation();
   const [createParcel, { data, error }] = useCreateParcelMutation();
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
@@ -36,17 +38,17 @@ export const Confirm = () => {
         <Success data={data} />
       ) : (
         <>
-          <InfoSections listTitle={"Preview of your parcel"}>
-            <ParticipantInfoSection participant={"Sender"} data={sender} edit />
+          <InfoSections listTitle={t("form.preview.title")}>
+            <ParticipantInfoSection participant={"sender"} data={sender} edit />
             <MainInfoSection mainInfo={mainInfo} payment={payment} edit />
             <ParticipantInfoSection
-              participant={"Recipient"}
+              participant={"recipient"}
               data={recipient}
               edit
             />
           </InfoSections>
           <ConfirmBtn onClick={handleConfirm}>
-            Confirm
+            {t("form.preview.confirm")}
             <FaCheck size={16} />
           </ConfirmBtn>
         </>

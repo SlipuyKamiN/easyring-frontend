@@ -25,8 +25,10 @@ import { useSelector } from "react-redux";
 import { getUserState } from "~/Redux/userSelectors";
 import { SocialsLinks } from "~/components/Common/SocialsLinks";
 import { statuses } from "~/data/parcelStatuses";
+import { useTranslation } from "react-i18next";
 
 const ParcelPage = () => {
+  const { t } = useTranslation();
   const { parcelId } = useParams();
   const { data } = useGetParcelByIdQuery(parcelId);
   const { isLoggedIn } = useSelector(getUserState);
@@ -46,7 +48,7 @@ const ParcelPage = () => {
                 {data.tracking.history.map(({ status, date }) => (
                   <TrackingItem key={status}>
                     <div>
-                      <p>{statuses[status]}</p>
+                      <p>{t(`tracking.${statuses[status]}`)}</p>
                       <DateWrapper>
                         <span>{format(date, "dd MMMM")}</span>
                         <span>{format(date, "HH:mm")}</span>
@@ -70,7 +72,7 @@ const ParcelPage = () => {
               </>
             ) : (
               <InfoSection>
-                <SectionTitle>Questions? Contact us!</SectionTitle>
+                <SectionTitle>{t("tracking.contact")}</SectionTitle>
                 <SocialsLinks />
               </InfoSection>
             )}

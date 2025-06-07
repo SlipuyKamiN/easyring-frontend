@@ -23,8 +23,10 @@ import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 
 import { useState } from "react";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
+import { useTranslation } from "react-i18next";
 
 const SignInPage = () => {
+  const { t } = useTranslation();
   const [signIn] = useSigninMutation();
   const [passVisible, setVisible] = useState(false);
   const {
@@ -58,7 +60,7 @@ const SignInPage = () => {
                 {...register("login")}
                 onInput={(e) => handleInputTextCase(e.target, setValue)}
               />
-              <label>Login</label>
+              <label>{t("form.login")}</label>
               <ValidationErrorText inputError={errors.login} />
             </InputItem>
             <InputItem>
@@ -68,7 +70,7 @@ const SignInPage = () => {
                 placeholder=" "
                 {...register("password")}
               />
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">{t("form.password")}</label>
               <ValidationErrorText inputError={errors.password} />
               <HidePasswordBtn
                 type="button"
@@ -79,8 +81,10 @@ const SignInPage = () => {
             </InputItem>
           </InputList>
           <FormBtnsList>
-            <PrimaryBtn type="submit">log in</PrimaryBtn>
-            <SecondaryBtnLink to={"/auth/signup"}>register</SecondaryBtnLink>
+            <PrimaryBtn type="submit">{t("form.action.log-in")}</PrimaryBtn>
+            <SecondaryBtnLink to={"/auth/signup"}>
+              {t("form.action.register")}
+            </SecondaryBtnLink>
           </FormBtnsList>
         </FormWrapper>
       </Container>

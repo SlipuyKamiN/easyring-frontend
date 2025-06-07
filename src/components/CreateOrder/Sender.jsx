@@ -20,8 +20,10 @@ import {
   TextInput,
   FormBtnsList,
 } from "../Common/Form.styled";
+import { useTranslation } from "react-i18next";
 
 export const Sender = () => {
+  const { t } = useTranslation();
   const { sender } = useSelector(getNewParcelState);
   const {
     register,
@@ -45,7 +47,7 @@ export const Sender = () => {
   return (
     <DecorationBg>
       <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-        <FormName>Sender info:</FormName>
+        <FormName>{t("form.sender")}</FormName>
         <InputList>
           <InputItem>
             <TextInput
@@ -54,12 +56,12 @@ export const Sender = () => {
               placeholder=" "
               onFocus={() => setValue("phone", "+")}
             />
-            <label>Phone number</label>
+            <label>{t("form.phone")}</label>
             <ValidationErrorText inputError={errors.phone} />
           </InputItem>
           <InputItem>
             <TextInput {...register("name")} type="text" placeholder=" " />
-            <label>Full name</label>
+            <label>{t("form.name")}</label>
             <ValidationErrorText inputError={errors.name} />
           </InputItem>
           <InputItem>
@@ -69,7 +71,7 @@ export const Sender = () => {
               render={({ field }) => (
                 <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
                   <GeoapifyGeocoderAutocomplete
-                    placeholder="Full address"
+                    placeholder={t("form.address")}
                     limit={5}
                     filterByCircle={{
                       lat: 52.52,
@@ -88,21 +90,21 @@ export const Sender = () => {
           </InputItem>
           <InputItem>
             <TextInput {...register("email")} type="email" placeholder=" " />
-            <label>Email</label>
+            <label>{t("form.email")}</label>
             <ValidationErrorText inputError={errors.email} />
           </InputItem>
           <InputItem>
             <TextInput {...register("comment")} type="text" placeholder=" " />
-            <label>Comment</label>
+            <label>{t("form.comment")}</label>
             <ValidationErrorText inputError={errors.comment} />
           </InputItem>
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn type="Submit">Next</PrimaryBtn>
+            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
           </li>
           <li>
-            <SecondaryBtnLink to={-1}>Back</SecondaryBtnLink>
+            <SecondaryBtnLink to={-1}>{t("form.nav.back")}</SecondaryBtnLink>
           </li>
         </FormBtnsList>
       </FormWrapper>

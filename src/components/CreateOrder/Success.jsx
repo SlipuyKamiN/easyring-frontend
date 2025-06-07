@@ -15,8 +15,10 @@ import { format } from "date-fns";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
+import { useTranslation } from "react-i18next";
 
 export const Success = ({ data }) => {
+  const { t } = useTranslation();
   const { _id, mainInfo } = data;
   const [updatePayment] = useUpdatePaymentMutation();
   const navigate = useNavigate();
@@ -47,18 +49,19 @@ export const Success = ({ data }) => {
     <>
       <SuccessHeading>
         <CiBookmarkCheck size={50} />
-        <h2>Success!</h2>
+        <h2>{t("form.success.title")}</h2>
       </SuccessHeading>
       <SuccessText>
-        The courier will arrive
+        {t("form.success.info.0")}
         <br />
         <b>
-          between {format(mainInfo.startTime, "HH:mm")} and{" "}
-          {format(mainInfo.endTime, "HH:mm")}.
+          {t("form.success.info.1", {
+            startTime: format(mainInfo.startTime, "HH:mm"),
+            endTime: format(mainInfo.endTime, "HH:mm"),
+          })}
         </b>
         <br />
-        Please stay available during this time. You’ll also receive a
-        confirmation email.
+        {t("form.success.info.2")}
       </SuccessText>
       <PaymentOptionsList>
         <PaymentOption>
@@ -67,7 +70,7 @@ export const Success = ({ data }) => {
               selectPaymentType("online");
             }}
           >
-            <span>Pay now</span>
+            <span>{t("form.success.pay-now")}</span>
             <IconsWrapper>
               <FaApplePay />
               <FaGooglePay />
@@ -81,7 +84,7 @@ export const Success = ({ data }) => {
               selectPaymentType("cash");
             }}
           >
-            <span>Pay later</span>
+            <span>{t("form.success.pay-later")}</span>
             <span>
               <GiReceiveMoney size={35} />
             </span>
