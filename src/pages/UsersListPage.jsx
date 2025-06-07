@@ -18,7 +18,7 @@ const UsersListPage = () => {
     }
   }, [error]);
 
-  if (!isLoading) return <LoadingSection />;
+  if (!data && isLoading) return <LoadingSection />;
 
   return (
     <Section>

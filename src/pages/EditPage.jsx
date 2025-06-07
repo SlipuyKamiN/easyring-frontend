@@ -1,6 +1,7 @@
 import { useUpdateUserMutation } from "~/Redux/authSlice";
 import { UserForm } from "~/components/Auth/UserForm";
 import { useLocation } from "react-router-dom";
+import { notification } from "~/components/Common/notification";
 
 const EditPage = () => {
   const [updateUser] = useUpdateUserMutation();
@@ -14,7 +15,9 @@ const EditPage = () => {
         login: data.login.toLowerCase(),
         carNumber: data.carNumber.toUpperCase(),
       },
-    }).catch(console.log);
+    })
+      .then(() => notification("User updated!", "success"))
+      .catch((e) => notification(e.data.message));
   };
 
   return (

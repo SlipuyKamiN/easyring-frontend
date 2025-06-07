@@ -14,6 +14,8 @@ export const SuccessHeading = styled.div`
   align-items: center;
   justify-content: center;
 
+  gap: 5px;
+
   margin-bottom: 10px;
 
   color: limegreen;

@@ -26,15 +26,16 @@ import { getUserState } from "~/Redux/userSelectors";
 import { SocialsLinks } from "~/components/Common/SocialsLinks";
 import { statuses } from "~/data/parcelStatuses";
 import { useTranslation } from "react-i18next";
+import { LoadingSection } from "~/components/Common/LoadingSection";
 
 const ParcelPage = () => {
   const { t } = useTranslation();
   const { parcelId } = useParams();
-  const { data } = useGetParcelByIdQuery(parcelId);
+  const { data, isLoading } = useGetParcelByIdQuery(parcelId);
   const { isLoggedIn } = useSelector(getUserState);
 
-  if (!data) {
-    return <div>Loading...</div>;
+  if (!data && isLoading) {
+    return <LoadingSection />;
   }
 
   return (

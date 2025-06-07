@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
 import { getUserState } from "~/Redux/userSelectors";
+import { LoadingSection } from "./Common/LoadingSection";
 
 const PrivateRoute = ({ element, redirectTo = "/auth/signin", roles = [] }) => {
   const user = useSelector(getUserState);
@@ -16,9 +17,9 @@ const PrivateRoute = ({ element, redirectTo = "/auth/signin", roles = [] }) => {
 
   if (!roles.includes(user.role)) return <Navigate to={redirectTo} />;
 
-  if (isLoading) return <div>Loading spinner...</div>;
+  if (isLoading) return <LoadingSection />;
 
-  return <div>Loading spinner...</div>;
+  return <LoadingSection />;
 };
 
 export default PrivateRoute;

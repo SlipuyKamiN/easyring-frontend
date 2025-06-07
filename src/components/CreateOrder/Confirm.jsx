@@ -14,10 +14,11 @@ import { FaCheck } from "react-icons/fa6";
 import { Success } from "./Success";
 import { useTranslation } from "react-i18next";
 import { notification } from "../Common/notification";
+import { LoadingSpinner } from "../Common/LoadingSection";
 
 export const Confirm = () => {
   const { t } = useTranslation();
-  const [createParcel, { data, error }] = useCreateParcelMutation();
+  const [createParcel, { data, error, isLoading }] = useCreateParcelMutation();
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
   const { mainInfo, sender, recipient, payment } = newParcel;
@@ -48,9 +49,9 @@ export const Confirm = () => {
               edit
             />
           </InfoSections>
-          <ConfirmBtn onClick={handleConfirm}>
+          <ConfirmBtn onClick={handleConfirm} disabled={isLoading}>
             {t("form.preview.confirm")}
-            <FaCheck size={16} />
+            {isLoading ? <LoadingSpinner size={16} /> : <FaCheck size={16} />}
           </ConfirmBtn>
         </>
       )}

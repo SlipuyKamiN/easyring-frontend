@@ -47,6 +47,14 @@ export const DeleteButton = styled.button`
     color: ${colors.errorRed};
     background-color: ${colors.light.darkGray};
   }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    svg {
+      color: ${colors.errorRed};
+    }
+  }
 `;
 
 export const CardDetailsList = styled.ul`

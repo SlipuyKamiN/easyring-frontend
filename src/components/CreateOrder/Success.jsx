@@ -17,11 +17,12 @@ import { useEffect } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
 import { useTranslation } from "react-i18next";
 import { notification } from "../Common/notification";
+import { LoadingSpinner } from "../Common/LoadingSection";
 
 export const Success = ({ data }) => {
   const { t } = useTranslation();
   const { _id, mainInfo } = data;
-  const [dispatchPayment] = useUpdatePaymentMutation();
+  const [dispatchPayment, { isLoading }] = useUpdatePaymentMutation();
   const navigate = useNavigate();
 
   const selectPaymentType = (paymentType) => {
@@ -49,7 +50,11 @@ export const Success = ({ data }) => {
   return (
     <>
       <SuccessHeading>
-        <CiBookmarkCheck size={50} />
+        {isLoading ? (
+          <LoadingSpinner size={40} />
+        ) : (
+          <CiBookmarkCheck size={50} />
+        )}
         <h2>{t("form.success.title")}</h2>
       </SuccessHeading>
       <SuccessText>
@@ -67,6 +72,7 @@ export const Success = ({ data }) => {
       <PaymentOptionsList>
         <PaymentOption>
           <PrimaryBtn
+            disabled={isLoading}
             onClick={() => {
               selectPaymentType("online");
             }}
@@ -81,6 +87,7 @@ export const Success = ({ data }) => {
         </PaymentOption>
         <PaymentOption>
           <PrimaryBtn
+            disabled={isLoading}
             onClick={() => {
               selectPaymentType("cash");
             }}

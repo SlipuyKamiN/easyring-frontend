@@ -15,12 +15,13 @@ import { useDeleteParcelMutation } from "~/Redux/parcelsSlice";
 import { statuses } from "~/data/parcelStatuses";
 import { FaCheck } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { LoadingSpinner } from "../Common/LoadingSection";
 
 export const ParcelCard = ({ parcel, isAdmin }) => {
   const { t } = useTranslation();
   const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
   const { date, startTime, endTime } = mainInfo;
-  const [deleteParcel] = useDeleteParcelMutation();
+  const [deleteParcel, { isLoading }] = useDeleteParcelMutation();
   const status = tracking.history[tracking.history.length - 1].status;
 
   return (
@@ -36,8 +37,16 @@ export const ParcelCard = ({ parcel, isAdmin }) => {
           </p>
         </CardLink>
         {isAdmin && (
-          <DeleteButton type="button" onClick={() => deleteParcel(_id)}>
-            <RxCrossCircled size={30} />
+          <DeleteButton
+            disabled={isLoading}
+            type="button"
+            onClick={() => deleteParcel(_id)}
+          >
+            {isLoading ? (
+              <LoadingSpinner size={30} />
+            ) : (
+              <RxCrossCircled size={30} />
+            )}
           </DeleteButton>
         )}
       </CardHeadingWrapper>
