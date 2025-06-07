@@ -26,7 +26,8 @@
       "date": "Pick up date",
       "startTime": "Delivery from",
       "endTime": "until",
-      "description": "Parcel description"
+      "description": "Parcel description",
+      "payment": { "title": "Payment:", "value": ["PAID", "NOT PAID"] }
     },
     "phone": "Phone number",
     "name": "Full name",
@@ -75,6 +76,8 @@
     "confirmed": "Confirmed",
     "picked-up": "Picked-up",
     "delivered": "Delivered",
-    "contact": "Questions? Contact us!"
-  }
+    "contact": "Questions? Contact us!",
+    "status": "Status:"
+  },
+  "filter": { "select-driver": "Select driver" }
 }

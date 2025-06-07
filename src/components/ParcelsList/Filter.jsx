@@ -14,8 +14,10 @@ import Select from "react-select";
 import { TrackInputWrapper } from "../Home/Hero.styled";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 export const Filter = ({ props }) => {
+  const { t } = useTranslation();
   const { setQuery, searchParams, updateParam, get, isAdmin } = props;
   const { data } = useGetAllUsersQuery("", { skip: !isAdmin });
 
@@ -68,7 +70,7 @@ export const Filter = ({ props }) => {
                   minDate={new Date("01.05.2025")}
                   maxDate={addDays(new Date(), 28)}
                   onChange={(data) => updateParam("date", formatISO(data))}
-                  label={"Pick up date"}
+                  label={t("form.mainInfo.date")}
                   format="dd.MM.yy"
                   slotProps={{
                     field: {
@@ -84,7 +86,7 @@ export const Filter = ({ props }) => {
                   value={selectedDriver}
                   className="react-select-container"
                   classNamePrefix="react-select"
-                  placeholder="Select driver"
+                  placeholder={t("filter.select-driver")}
                   isClearable={true}
                   onChange={(e) => updateParam("driver", e?.value?._id)}
                   options={driversOptions}

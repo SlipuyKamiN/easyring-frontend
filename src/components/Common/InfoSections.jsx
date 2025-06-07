@@ -81,10 +81,10 @@ export const ParticipantInfoSection = ({
     <InfoSection>
       {edit ? (
         <SectionTitle to={`/createorder/${participant.toLowerCase()}`}>
-          {t(`form.${participant}`)} <CiEdit size={20} />
+          {t(`form.${participant.toLowerCase()}`)} <CiEdit size={20} />
         </SectionTitle>
       ) : (
-        <SectionTitle>{t(`form.${participant}`)}</SectionTitle>
+        <SectionTitle>{t(`form.${participant.toLowerCase()}`)}</SectionTitle>
       )}
       <address>
         <AddressList>

@@ -26,7 +26,8 @@
       "date": "Lieferdatum",
       "startTime": "Lieferung von",
       "endTime": "bis",
-      "description": "Beschreibung"
+      "description": "Beschreibung",
+      "payment": { "title": "Zahlung:", "value": ["BEZAHLT", "NICHT BEZAHLT"] }
     },
     "phone": "Telefonnummer",
     "name": "Name und Vorname",
@@ -75,6 +76,8 @@
     "confirmed": "Bestätigt",
     "picked-up": "Abgeholt",
     "delivered": "Geliefert",
-    "contact": "Noch Fragen? Kontaktieren Sie uns!"
-  }
+    "contact": "Noch Fragen? Kontaktieren Sie uns!",
+    "status": "Status:"
+  },
+  "filter": { "select-driver": "Fahrer auswählen" }
 }

@@ -14,8 +14,10 @@ import { RxCrossCircled } from "react-icons/rx";
 import { useDeleteParcelMutation } from "~/Redux/parcelsSlice";
 import { statuses } from "~/data/parcelStatuses";
 import { FaCheck } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export const ParcelCard = ({ parcel, isAdmin }) => {
+  const { t } = useTranslation();
   const { _id, mainInfo, sender, recipient, payment, tracking } = parcel;
   const { date, startTime, endTime } = mainInfo;
   const [deleteParcel] = useDeleteParcelMutation();
@@ -42,26 +44,29 @@ export const ParcelCard = ({ parcel, isAdmin }) => {
       <CardDetailsList>
         <li>
           <p>
-            Sender: <b>{sender.name}</b>
+            {t("form.sender")} <b>{sender.name}</b>
           </p>
         </li>
         <li>
           <p>
-            Recipient:<b> {recipient.name}</b>
+            {t("form.recipient")}
+            <b> {recipient.name}</b>
           </p>
         </li>
         <li>
           <p>
-            Is paid:
+            {t("form.mainInfo.payment.title")}
             <span className={payment.isPaid ? "paid" : ""}>
-              {payment.isPaid ? "PAID" : "NOT PAID"}
+              {payment.isPaid
+                ? t("form.mainInfo.payment.value.0")
+                : t("form.mainInfo.payment.value.1")}
             </span>
           </p>
         </li>
         <li>
           <p>
-            Status:
-            <b>{statuses[status].toUpperCase()}</b>
+            {t("tracking.status")}
+            <b>{t(`tracking.${statuses[status]}`).toUpperCase()}</b>
           </p>
         </li>
       </CardDetailsList>
