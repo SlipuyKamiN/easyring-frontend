@@ -9,7 +9,7 @@ import {
 } from "./Footer.styled";
 import { FaReact } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { getUserState } from "~/Redux/userSelectors";
+import { getUserState } from "~/Redux/selectors";
 import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {

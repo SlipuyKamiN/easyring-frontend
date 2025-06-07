@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
-import { getUserState } from "~/Redux/userSelectors";
+import { getUserState } from "~/Redux/selectors";
 import { LoadingSection } from "./Common/LoadingSection";
 
 const PrivateRoute = ({ element, redirectTo = "/auth/signin", roles = [] }) => {

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  darkMode: false,
+  mode: "light",
   language: "EN",
 };
 
@@ -22,7 +22,7 @@ export const uiConfigSlice = createSlice({
     },
     toggleDarkMode: {
       reducer(state) {
-        state = { ...state, darkMode: !state.darkMode };
+        state = { ...state, mode: state.mode === "light" ? "dark" : "light" };
         return state;
       },
     },

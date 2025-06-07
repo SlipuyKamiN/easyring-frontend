@@ -5,7 +5,7 @@ import { RiRoadMapLine } from "react-icons/ri";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getUserState } from "~/Redux/userSelectors";
+import { getUserState } from "~/Redux/selectors";
 
 const optionsList = [
   {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   DarkModeToggler,
   HeaderWrapper,
@@ -10,13 +9,13 @@ import { NavSelect } from "../SharedLayout/NavSelect";
 import { PageLogo } from "../Common/PageLogo";
 import { Container } from "../SharedLayout/SharedLayout.styled";
 import { LangToggler } from "../SharedLayout/LangToggler";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from "~/Redux/uiConfigSlice";
+import { getUiConfigState } from "~/Redux/selectors";
 
 export const Header = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setDarkMode(!isDarkMode);
-  };
-
+  const { mode } = useSelector(getUiConfigState);
+  const dispatch = useDispatch();
   return (
     <PageHeader>
       <Container>
@@ -25,8 +24,15 @@ export const Header = () => {
           <NavSelect />
           <UiConfigWrapper>
             <LangToggler />
-            <DarkModeToggler onClick={toggleDarkMode} className="darkMode">
-              {isDarkMode ? <BsSun size={20} /> : <BsMoonStars size={20} />}
+            <DarkModeToggler
+              onClick={() => dispatch(toggleDarkMode())}
+              className="darkMode"
+            >
+              {mode === "dark" ? (
+                <BsSun size={20} />
+              ) : (
+                <BsMoonStars size={20} />
+              )}
             </DarkModeToggler>
           </UiConfigWrapper>
         </HeaderWrapper>

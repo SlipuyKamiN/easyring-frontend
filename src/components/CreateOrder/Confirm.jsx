@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ConfirmBtn, ConfirmSectionWrapper } from "./Confirm.styled";
 import { useEffect } from "react";
 import { updatePrice } from "~/Redux/newParcelSlice";
-import { getNewParcelState } from "~/Redux/newParcelSelectors";
+import { getNewParcelState } from "~/Redux/selectors";
 import { useCreateParcelMutation } from "~/Redux/parcelsSlice";
 import { newParcelSchema } from "~/schemas/newParcelSchema";
 import {

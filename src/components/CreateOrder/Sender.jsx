@@ -11,7 +11,7 @@ import {
 } from "@geoapify/react-geocoder-autocomplete";
 import { useDispatch, useSelector } from "react-redux";
 import { updSender } from "~/Redux/newParcelSlice";
-import { getNewParcelState } from "~/Redux/newParcelSelectors";
+import { getNewParcelState } from "~/Redux/selectors";
 import {
   FormName,
   FormWrapper,

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Container,
   Section,
@@ -22,7 +22,7 @@ import {
   ParticipantInfoSection,
 } from "~/components/Common/InfoSections";
 import { useSelector } from "react-redux";
-import { getUserState } from "~/Redux/userSelectors";
+import { getUserState } from "~/Redux/selectors";
 import { SocialsLinks } from "~/components/Common/SocialsLinks";
 import { statuses } from "~/data/parcelStatuses";
 import { useTranslation } from "react-i18next";

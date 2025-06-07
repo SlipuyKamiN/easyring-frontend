@@ -29,7 +29,7 @@ import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
 import { combineDateTime, parceInitialDate } from "~/helpers/combineDateTime";
-import { getNewParcelState } from "~/Redux/newParcelSelectors";
+import { getNewParcelState } from "~/Redux/selectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
 
@@ -64,8 +64,6 @@ export const MainInfo = () => {
     data.startTime = combineDateTime(data.date, data.startTime);
     data.endTime = combineDateTime(data.date, data.endTime);
     data.date = formatISO(data.date);
-
-    console.log(data.date, data.startTime);
 
     dispatch(updMainInfo(data));
     navigate("/createorder/sender");
