@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import { LoadingSection } from "../Common/LoadingSection";
 import { ToastContainer } from "react-toastify";
 import { getUserState } from "~/Redux/selectors";
+import { Checkout } from "../CreateOrder/Checkout";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));

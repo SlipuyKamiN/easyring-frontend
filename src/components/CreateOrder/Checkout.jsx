@@ -1,4 +1,5 @@
 import {
+  ConfirmSectionWrapper,
   IconsWrapper,
   PaymentOption,
   PaymentOptionsList,
@@ -13,42 +14,46 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { CiBookmarkCheck } from "react-icons/ci";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { scrollToTop } from "~/helpers/scrollToTop";
 import { useTranslation } from "react-i18next";
 import { notification } from "../Common/notification";
 import { LoadingSpinner } from "../Common/LoadingSection";
+import { useCreateCheckoutMutation } from "~/Redux/stripeSlice";
 
-export const Success = ({ data }) => {
+export const Checkout = ({ data }) => {
   const { t } = useTranslation();
   const { _id, mainInfo } = data;
-  const [dispatchPayment, { isLoading }] = useUpdatePaymentMutation();
   const navigate = useNavigate();
+  const [paymentType, setPaymentType] = useState(null);
 
-  const selectPaymentType = (paymentType) => {
-    const updatePayment = (body) => {
-      dispatchPayment({ _id, body })
-        .then(() => navigate(`/tracking/${_id}`))
-        .catch((e) => notification(e.data.message));
-    };
-
-    switch (paymentType) {
-      case "online":
-        updatePayment({ type: "online", isPaid: true });
-        break;
-
-      default:
-        updatePayment({ type: "cash", isPaid: false });
-        break;
-    }
-  };
+  const [dispatchPayment, { isLoading }] = useUpdatePaymentMutation();
+  const [createCheckout] = useCreateCheckoutMutation();
 
   useEffect(() => {
     scrollToTop();
   }, []);
 
+  useEffect(() => {
+    if (paymentType === "stripe") {
+      createCheckout({ _id, amount: data.payment.price })
+        .unwrap()
+        .then((res) => (window.location.href = res.url))
+        .catch((e) => notification(e.message));
+      return;
+    }
+
+    if (paymentType === "cash") {
+      const body = { type: "cash", isPaid: false };
+
+      dispatchPayment({ _id, body })
+        .then(() => navigate(`/tracking/${_id}`))
+        .catch((e) => notification(e.data.message));
+    }
+  }, [paymentType, _id, data, createCheckout, dispatchPayment, navigate]);
+
   return (
-    <>
+    <ConfirmSectionWrapper>
       <SuccessHeading>
         {isLoading ? (
           <LoadingSpinner size={40} />
@@ -74,7 +79,7 @@ export const Success = ({ data }) => {
           <PrimaryBtn
             disabled={isLoading}
             onClick={() => {
-              selectPaymentType("online");
+              setPaymentType("stripe");
             }}
           >
             <span>{t("form.success.pay-now")}</span>
@@ -89,7 +94,7 @@ export const Success = ({ data }) => {
           <PrimaryBtn
             disabled={isLoading}
             onClick={() => {
-              selectPaymentType("cash");
+              setPaymentType("cash");
             }}
           >
             <span>{t("form.success.pay-later")}</span>
@@ -99,6 +104,6 @@ export const Success = ({ data }) => {
           </PrimaryBtn>
         </PaymentOption>
       </PaymentOptionsList>
-    </>
+    </ConfirmSectionWrapper>
   );
 };

@@ -11,17 +11,29 @@ import {
   ParticipantInfoSection,
 } from "../Common/InfoSections";
 import { FaCheck } from "react-icons/fa6";
-import { Success } from "./Success";
 import { useTranslation } from "react-i18next";
 import { notification } from "../Common/notification";
 import { LoadingSpinner } from "../Common/LoadingSection";
+import { Checkout } from "./Checkout";
+import { useGetSessionQuery } from "~/Redux/stripeSlice";
+import { useSearchParams } from "react-router-dom";
 
 export const Confirm = () => {
   const { t } = useTranslation();
   const [createParcel, { data, error, isLoading }] = useCreateParcelMutation();
+  const [searchParams] = useSearchParams();
+  const { data: session } = useGetSessionQuery(searchParams.get("session_id"), {
+    skip: !searchParams.has("session_id"),
+  });
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
   const { mainInfo, sender, recipient, payment } = newParcel;
+
+  useEffect(() => {
+    if (session?.status === "complete" && session?.payment_status === "paid") {
+      notification("Parcel paid", "success");
+    }
+  }, [session]);
 
   useEffect(() => {
     dispatch(updatePrice({ sender, recipient, size: mainInfo.size }));
@@ -34,27 +46,23 @@ export const Confirm = () => {
       .catch((e) => notification(e.message));
   };
 
-  return (
+  return data && !error ? (
+    <Checkout data={data} />
+  ) : (
     <ConfirmSectionWrapper>
-      {data?._id && !error ? (
-        <Success data={data} />
-      ) : (
-        <>
-          <InfoSections listTitle={t("form.preview.title")}>
-            <ParticipantInfoSection participant={"sender"} data={sender} edit />
-            <MainInfoSection mainInfo={mainInfo} payment={payment} edit />
-            <ParticipantInfoSection
-              participant={"recipient"}
-              data={recipient}
-              edit
-            />
-          </InfoSections>
-          <ConfirmBtn onClick={handleConfirm} disabled={isLoading}>
-            {t("form.preview.confirm")}
-            {isLoading ? <LoadingSpinner size={16} /> : <FaCheck size={16} />}
-          </ConfirmBtn>
-        </>
-      )}
+      <InfoSections listTitle={t("form.preview.title")}>
+        <ParticipantInfoSection participant={"sender"} data={sender} edit />
+        <MainInfoSection mainInfo={mainInfo} payment={payment} edit />
+        <ParticipantInfoSection
+          participant={"recipient"}
+          data={recipient}
+          edit
+        />
+      </InfoSections>
+      <ConfirmBtn onClick={handleConfirm} disabled={isLoading}>
+        {t("form.preview.confirm")}
+        {isLoading ? <LoadingSpinner size={16} /> : <FaCheck size={16} />}
+      </ConfirmBtn>
     </ConfirmSectionWrapper>
   );
 };

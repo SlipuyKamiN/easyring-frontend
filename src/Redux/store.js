@@ -15,6 +15,7 @@ import { parcelsApi } from "./parcelsSlice";
 import { authApi } from "./authSlice";
 import { userReducer } from "./userSlice";
 import { uiConfigReducer } from "./uiConfigSlice";
+import { stripeApi } from "./stripeSlice";
 
 const userPersistConfig = {
   key: "user",
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   newParcel: newParcelReducer,
   [authApi.reducerPath]: authApi.reducer,
   [parcelsApi.reducerPath]: parcelsApi.reducer,
+  [stripeApi.reducerPath]: stripeApi.reducer,
 });
 
 export const store = configureStore({
@@ -45,7 +47,8 @@ export const store = configureStore({
       },
     })
       .concat(authApi.middleware)
-      .concat(parcelsApi.middleware),
+      .concat(parcelsApi.middleware)
+      .concat(stripeApi.middleware),
 });
 
 export const persistor = persistStore(store);
