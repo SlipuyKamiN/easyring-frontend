@@ -86,13 +86,15 @@ export const CardDetailsList = styled.ul`
   }
 `;
 
-export const Overlay = styled.div`
+export const CheckedOverlay = styled.div`
   position: absolute;
   pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
+
   background-color: ${({ theme }) => `${theme.colors.hi100}60`};
   color: ${({ theme }) => theme.base.success};
   text-align: center;

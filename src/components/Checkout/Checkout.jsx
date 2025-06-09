@@ -1,61 +1,32 @@
 import {
-  ConfirmSectionWrapper,
   IconsWrapper,
   PaymentOption,
   PaymentOptionsList,
   SuccessHeading,
   SuccessText,
-} from "./Confirm.styled";
+} from "../CreateOrder/Confirm.styled";
 import { PrimaryBtn } from "../Common/Button.styled";
-import { useUpdatePaymentMutation } from "~/Redux/parcelsSlice";
-import { FaApplePay, FaGooglePay } from "react-icons/fa";
+import { FaApplePay, FaCheck, FaGooglePay } from "react-icons/fa";
 import { SiVisa } from "react-icons/si";
 import { GiReceiveMoney } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { CiBookmarkCheck } from "react-icons/ci";
-import { useEffect, useState } from "react";
-import { scrollToTop } from "~/helpers/scrollToTop";
 import { useTranslation } from "react-i18next";
-import { notification } from "../Common/notification";
 import { LoadingSpinner } from "../Common/LoadingSection";
-import { useCreateCheckoutMutation } from "~/Redux/stripeSlice";
+import { Container } from "../SharedLayout/SharedLayout.styled";
+import { CheckedOverlay } from "../ParcelsList/ParcelCard.styled";
 
-export const Checkout = ({ data }) => {
+export const Checkout = ({ data, setPaymentType, isLoading }) => {
   const { t } = useTranslation();
-  const { _id, mainInfo } = data;
-  const navigate = useNavigate();
-  const [paymentType, setPaymentType] = useState(null);
-
-  const [dispatchPayment, { isLoading }] = useUpdatePaymentMutation();
-  const [createCheckout] = useCreateCheckoutMutation();
-
-  useEffect(() => {
-    scrollToTop();
-  }, []);
-
-  useEffect(() => {
-    if (paymentType === "stripe") {
-      createCheckout({ _id, amount: data.payment.price })
-        .unwrap()
-        .then((res) => (window.location.href = res.url))
-        .catch((e) => notification(e.message));
-      return;
-    }
-
-    if (paymentType === "cash") {
-      const body = { type: "cash", isPaid: false };
-
-      dispatchPayment({ _id, body })
-        .then(() => navigate(`/tracking/${_id}`))
-        .catch((e) => notification(e.data.message));
-    }
-  }, [paymentType, _id, data, createCheckout, dispatchPayment, navigate]);
+  const {
+    mainInfo,
+    payment: { type, isPaid },
+  } = data;
 
   return (
-    <ConfirmSectionWrapper>
+    <Container>
       <SuccessHeading>
-        {isLoading ? (
+        {!mainInfo ? (
           <LoadingSpinner size={40} />
         ) : (
           <CiBookmarkCheck size={50} />
@@ -77,7 +48,7 @@ export const Checkout = ({ data }) => {
       <PaymentOptionsList>
         <PaymentOption>
           <PrimaryBtn
-            disabled={isLoading}
+            disabled={isLoading || isPaid}
             onClick={() => {
               setPaymentType("stripe");
             }}
@@ -89,10 +60,15 @@ export const Checkout = ({ data }) => {
               <SiVisa />
             </IconsWrapper>
           </PrimaryBtn>
+          {type === "stripe" && isPaid && (
+            <CheckedOverlay>
+              <FaCheck size={90} />
+            </CheckedOverlay>
+          )}
         </PaymentOption>
         <PaymentOption>
           <PrimaryBtn
-            disabled={isLoading}
+            disabled={isLoading || isPaid}
             onClick={() => {
               setPaymentType("cash");
             }}
@@ -102,8 +78,13 @@ export const Checkout = ({ data }) => {
               <GiReceiveMoney size={35} />
             </span>
           </PrimaryBtn>
+          {type === "cash" && isPaid && (
+            <CheckedOverlay>
+              <FaCheck size={90} />
+            </CheckedOverlay>
+          )}
         </PaymentOption>
       </PaymentOptionsList>
-    </ConfirmSectionWrapper>
+    </Container>
   );
 };

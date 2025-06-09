@@ -14,26 +14,16 @@ import { FaCheck } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import { notification } from "../Common/notification";
 import { LoadingSpinner } from "../Common/LoadingSection";
-import { Checkout } from "./Checkout";
-import { useGetSessionQuery } from "~/Redux/stripeSlice";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Confirm = () => {
   const { t } = useTranslation();
   const [createParcel, { data, error, isLoading }] = useCreateParcelMutation();
-  const [searchParams] = useSearchParams();
-  const { data: session } = useGetSessionQuery(searchParams.get("session_id"), {
-    skip: !searchParams.has("session_id"),
-  });
+
   const newParcel = useSelector(getNewParcelState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { mainInfo, sender, recipient, payment } = newParcel;
-
-  useEffect(() => {
-    if (session?.status === "complete" && session?.payment_status === "paid") {
-      notification("Parcel paid", "success");
-    }
-  }, [session]);
 
   useEffect(() => {
     dispatch(updatePrice({ sender, recipient, size: mainInfo.size }));
@@ -46,9 +36,11 @@ export const Confirm = () => {
       .catch((e) => notification(e.message));
   };
 
-  return data && !error ? (
-    <Checkout data={data} />
-  ) : (
+  useEffect(() => {
+    if (data && !error && !isLoading) navigate(`/checkout/${data._id}`);
+  }, [data, error, isLoading, navigate]);
+
+  return (
     <ConfirmSectionWrapper>
       <InfoSections listTitle={t("form.preview.title")}>
         <ParticipantInfoSection participant={"sender"} data={sender} edit />

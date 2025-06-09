@@ -9,6 +9,7 @@ import SharedLayout from "~/components/SharedLayout/SharedLayout";
 import Home from "~/pages/Home";
 import CreateOrderPage from "~/pages/CreateOrderPage";
 import ParcelPage from "~/pages/ParcelPage";
+import CheckoutPage from "~/pages/CheckoutPage";
 import RestrictedRoute from "../RestrictedRoute";
 import PrivateRoute from "../PrivateRoute";
 import { useCurrentUserQuery } from "~/Redux/authSlice";
@@ -16,7 +17,6 @@ import { useSelector } from "react-redux";
 import { LoadingSection } from "../Common/LoadingSection";
 import { ToastContainer } from "react-toastify";
 import { getUserState } from "~/Redux/selectors";
-import { Checkout } from "../CreateOrder/Checkout";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
@@ -50,6 +50,7 @@ const App = () => {
             <Route path="confirm" element={<Confirm />}></Route>
           </Route>
           <Route path="tracking/:parcelId" element={<ParcelPage />}></Route>
+          <Route path="checkout/:parcelId" element={<CheckoutPage />}></Route>
           <Route path="auth">
             <Route
               path="signin"

@@ -51,14 +51,16 @@ export const PaymentOptionsList = styled.ul`
 `;
 
 export const PaymentOption = styled.li`
+  position: relative;
+  overflow: hidden;
   max-width: 275px;
+  border-radius: 12px;
 
   button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 95px;
-    border-radius: 12px;
     height: auto;
 
     @media screen and (min-width: 768px) {
