@@ -13,12 +13,14 @@ import {
   useGetSessionQuery,
 } from "~/Redux/stripeSlice";
 import { ConfirmSection } from "./CreateOrderPage.styled";
+import { ConfirmSectionWrapper } from "~/components/CreateOrder/Confirm.styled";
+import { Container } from "~/components/SharedLayout/SharedLayout.styled";
 
 const CheckoutPage = () => {
   const { parcelId } = useParams();
   const { data, isLoading } = useGetParcelByIdQuery(parcelId);
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams("");
   const [paymentType, setPaymentType] = useState(null);
   const [dispatchPayment, { isLoading: isUpdating }] =
     useUpdatePaymentMutation();
@@ -47,7 +49,8 @@ const CheckoutPage = () => {
       searchParams.has("session_id") &&
       session?.payment_status === "paid" &&
       session?.status === "complete" &&
-      !data.payment.isPaid
+      !data.payment.isPaid &&
+      !data.payment?.transactionDetails?.id
     ) {
       const body = {
         transactionDetails: session,
@@ -55,21 +58,23 @@ const CheckoutPage = () => {
         type: "stripe",
       };
 
-      dispatchPayment({ _id: data._id, body }).catch((e) =>
-        notification(e.data.message)
-      );
+      dispatchPayment({ _id: data._id, body })
+        .then(() => setSearchParams(""))
+        .catch((e) => notification(e.data.message));
     }
-  }, [data, dispatchPayment, navigate, searchParams, session]);
+  }, [data, dispatchPayment, navigate, searchParams, session, setSearchParams]);
 
   useEffect(() => {
     if (!data) return;
 
-    if (paymentType === "cash") {
+    if (paymentType === "cash" && paymentType !== data.payment.type) {
       const body = { type: "cash", isPaid: false };
 
-      dispatchPayment({ _id: data._id, body }).catch((e) =>
-        notification(e.data.message)
-      );
+      dispatchPayment({ _id: data._id, body })
+        .then(() => {
+          navigate(`/tracking/${data._id}`);
+        })
+        .catch((e) => notification(e.data.message));
       return;
     }
   }, [data, dispatchPayment, navigate, paymentType]);
@@ -82,11 +87,14 @@ const CheckoutPage = () => {
     <>
       <ProgressBar />
       <ConfirmSection>
-        <Checkout
-          data={data}
-          isLoading={isChekingOut || isUpdating}
-          setPaymentType={setPaymentType}
-        />
+        <Container>
+          <Checkout
+            data={data}
+            isLoading={isChekingOut || isUpdating}
+            setPaymentType={setPaymentType}
+            navigate={navigate}
+          />
+        </Container>
       </ConfirmSection>
     </>
   );

@@ -49,13 +49,15 @@
       "price": "Lieferpreis:",
       "confirm": "Bestätigen"
     },
-    "success": {
-      "title": "Success!",
+    "checkout": {
+      "title": "Pick-up erstellt!",
       "info": [
-        "Der Kurier kommt zwischen",
-        "{{startTime}} und {{endTime}}.",
+        "Der Kurier kommt",
+        "zwischen {{startTime}} und {{endTime}}.",
         "Bitte halten Sie sich in diesem Zeitraum bereit. Sie erhalten außerdem eine Bestätigungs-E-Mail."
       ],
+      "to-pay": "Zu bezahlen: {{price}} EUR",
+      "tracking": "Tracking",
       "pay-now": "Jetzt bezahlen",
       "pay-later": "Später bezahlen"
     },
