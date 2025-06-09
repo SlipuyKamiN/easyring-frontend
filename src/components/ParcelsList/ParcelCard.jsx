@@ -5,7 +5,7 @@ import {
   DeleteButton,
   CardHeadingWrapper,
   CardLink,
-  ChekedOverlay,
+  CheckedOverlay,
 } from "./ParcelCard.styled";
 import { SelectDriver } from "./SelectDriver";
 import { ConfirmStatusBtn } from "./ConfirmParcelStatus";
@@ -87,9 +87,9 @@ export const ParcelCard = ({ parcel, isAdmin }) => {
       )}
       <Joystick parcel={parcel} status={status} />
       {status === 400 && (
-        <ChekedOverlay>
+        <CheckedOverlay>
           <FaCheck size={90} />
-        </ChekedOverlay>
+        </CheckedOverlay>
       )}
     </Card>
   );
