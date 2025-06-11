@@ -158,7 +158,6 @@ export const MainInfo = () => {
                   adapterLocale={de}
                 >
                   <Controller
-                    className="dark"
                     name={"startTime"}
                     control={control}
                     render={({ field }) => (
