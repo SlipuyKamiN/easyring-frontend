@@ -70,12 +70,9 @@ export const MainInfoSection = ({
   );
 };
 
-export const ParticipantInfoSection = ({
-  participant,
-  data: { phone, name, email = "", address = {}, comment },
-  edit = false,
-}) => {
+export const ParticipantInfoSection = ({ participant, data, edit = false }) => {
   const { t } = useTranslation();
+  const { phone, name, email = "", address = {}, comment } = data;
 
   return (
     <InfoSection>

@@ -6,6 +6,7 @@ import {
   CardHeadingWrapper,
   CardLink,
   CheckedOverlay,
+  IsPaidLink,
 } from "./ParcelCard.styled";
 import { SelectDriver } from "./SelectDriver";
 import { ConfirmStatusBtn } from "./ConfirmParcelStatus";
@@ -65,11 +66,14 @@ export const ParcelCard = ({ parcel, isAdmin }) => {
         <li>
           <p>
             {t("form.mainInfo.payment.title")}
-            <span className={payment.isPaid ? "paid" : ""}>
+            <IsPaidLink
+              to={`/checkout/${_id}`}
+              className={payment.isPaid ? "paid" : ""}
+            >
               {payment.isPaid
                 ? t("form.mainInfo.payment.value.0")
                 : t("form.mainInfo.payment.value.1")}
-            </span>
+            </IsPaidLink>
           </p>
         </li>
         <li>

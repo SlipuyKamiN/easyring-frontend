@@ -28,19 +28,26 @@ import { statuses } from "~/data/parcelStatuses";
 import { useTranslation } from "react-i18next";
 import { LoadingSection } from "~/components/Common/LoadingSection";
 import { EmptySection } from "~/components/Common/EmptySection";
+import { useEffect } from "react";
 
 const ParcelPage = () => {
   const { t } = useTranslation();
   const { parcelId } = useParams();
-  const { data, isLoading, error } = useGetParcelByIdQuery(parcelId);
+  const { data, isLoading, error, refetch } = useGetParcelByIdQuery(parcelId);
   const { isLoggedIn } = useSelector(getUserState);
+
+  useEffect(() => {
+    if (isLoggedIn && !data?.sender && !data.recipient) {
+      refetch();
+    }
+  }, [isLoggedIn, data, refetch]);
 
   if (!data && isLoading) {
     return <LoadingSection />;
   }
 
   return !data && !isLoading ? (
-    <EmptySection error={error.status} text={error.data.message} homeLink />
+    <EmptySection error={error.status} text={error.data?.message} homeLink />
   ) : (
     <Section>
       <Container>
@@ -63,7 +70,7 @@ const ParcelPage = () => {
               </TrackingList>
             </li>
             <MainInfoSection mainInfo={data.mainInfo} payment={data.payment} />
-            {isLoggedIn ? (
+            {isLoggedIn && data.sender && data.recipient ? (
               <>
                 <ParticipantInfoSection
                   participant="Sender"

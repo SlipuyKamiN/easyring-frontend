@@ -3,6 +3,7 @@ import Select from "react-select";
 import { useGetAllUsersQuery } from "~/Redux/authSlice";
 import { useUpdateDriverMutation } from "~/Redux/parcelsSlice";
 import { notification } from "../Common/notification";
+import { SelectWrapper } from "./Filter.styled";
 
 export const SelectDriver = ({ parcel, status }) => {
   const { data } = useGetAllUsersQuery();
@@ -36,16 +37,18 @@ export const SelectDriver = ({ parcel, status }) => {
 
   return (
     <li>
-      <Select
-        isDisabled={status >= 200}
-        className="react-select-container"
-        classNamePrefix="react-select"
-        placeholder="Select driver"
-        value={selectedDriver}
-        onChange={handleDriverChange}
-        isClearable={true}
-        options={driversOptions}
-      />
+      <SelectWrapper>
+        <Select
+          isDisabled={status >= 200}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          placeholder="Select driver"
+          value={selectedDriver}
+          onChange={handleDriverChange}
+          isClearable={true}
+          options={driversOptions}
+        />
+      </SelectWrapper>
     </li>
   );
 };

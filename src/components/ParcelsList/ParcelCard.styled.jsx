@@ -74,15 +74,15 @@ export const CardDetailsList = styled.ul`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+  }
+`;
 
-    span {
-      font-weight: 600;
-      color: ${({ theme }) => theme.base.error};
-    }
+export const IsPaidLink = styled(Link)`
+  font-weight: 600;
+  color: ${({ theme }) => theme.base.error};
 
-    span.paid {
-      color: ${({ theme }) => theme.base.success};
-    }
+  &.paid {
+    color: ${({ theme }) => theme.base.success};
   }
 `;
 

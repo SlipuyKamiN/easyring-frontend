@@ -36,8 +36,9 @@ export const SelectWrapper = styled.div`
     }
   }
 
-  .react-nav-select-container .react-nav-select__single-value {
-    color: ${({ theme }) => theme.colors.mid100};
+  .react-nav-select-container .react-nav-select__single-value,
+  .react-select-container .react-select__single-value {
+    color: ${({ theme }) => theme.colors.lo100};
   }
 
   .react-select__menu-list,
