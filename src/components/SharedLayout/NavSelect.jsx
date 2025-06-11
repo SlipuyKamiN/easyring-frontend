@@ -59,6 +59,7 @@ export const NavSelect = () => {
       <Select
         className="react-nav-select-container"
         classNamePrefix="react-nav-select"
+        noOptionsMessage={() => ""}
         placeholder={<FaHome size={20} />}
         isSearchable={false}
         value={value}

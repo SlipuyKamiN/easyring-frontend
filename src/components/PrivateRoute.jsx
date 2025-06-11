@@ -15,7 +15,7 @@ const PrivateRoute = ({ element, redirectTo = "/auth/signin", roles = [] }) => {
   if (isError || (!user.isLoggedIn && !user.token))
     return <Navigate to={redirectTo} />;
 
-  if (!roles.includes(user.role)) return <Navigate to={redirectTo} />;
+  if (!roles.includes(user.role)) return <Navigate to={"/"} />;
 
   if (isLoading) return <LoadingSection />;
 

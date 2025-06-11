@@ -3,11 +3,11 @@ export const calculatePrice = (distance, size) => {
 
   switch (size) {
     case "M":
-      sizePrice = 1.5;
+      sizePrice = 1.25;
       break;
 
     case "L":
-      sizePrice = 1.75;
+      sizePrice = 1.5;
       break;
 
     default:

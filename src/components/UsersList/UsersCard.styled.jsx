@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors } from "~/styles/common/vars";
+import { transition } from "~/styles/common/vars";
 
 export const UpdateRoleRadioList = styled.ul`
   display: flex;
@@ -12,8 +12,10 @@ export const RoleLabel = styled.label`
   border-radius: 0 16px 16px 0;
 
   text-transform: uppercase;
-  color: ${colors.light.gray};
-  background-color: ${colors.light.silver};
+  color: ${({ theme }) => theme.colors.mid100};
+  background-color: ${({ theme }) => theme.colors.hi100};
+
+  transition: all ${transition.duration};
 
   &.left {
     border-radius: 16px 0 0 16px;
@@ -28,7 +30,7 @@ export const RoleInput = styled.input`
 
   &:checked + label {
     font-weight: 600;
-    color: ${colors.light.silver};
-    background-color: ${colors.light.darkGray};
+    color: ${({ theme }) => theme.colors.hi100};
+    background-color: ${({ theme }) => theme.colors.lo100};
   }
 `;

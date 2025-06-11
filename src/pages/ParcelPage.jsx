@@ -37,7 +37,7 @@ const ParcelPage = () => {
   const { isLoggedIn } = useSelector(getUserState);
 
   useEffect(() => {
-    if (isLoggedIn && !data?.sender && !data.recipient) {
+    if (isLoggedIn && !data?.sender && !data?.recipient) {
       refetch();
     }
   }, [isLoggedIn, data, refetch]);
@@ -70,7 +70,7 @@ const ParcelPage = () => {
               </TrackingList>
             </li>
             <MainInfoSection mainInfo={data.mainInfo} payment={data.payment} />
-            {isLoggedIn && data.sender && data.recipient ? (
+            {isLoggedIn && data?.sender && data?.recipient ? (
               <>
                 <ParticipantInfoSection
                   participant="Sender"
