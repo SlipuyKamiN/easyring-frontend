@@ -8,6 +8,7 @@ import { CardList } from "../components/ParcelsList/ParcelsList.styled";
 import { useEffect } from "react";
 import { notification } from "~/components/Common/notification";
 import { LoadingSection } from "~/components/Common/LoadingSection";
+import { EmptySection } from "~/components/Common/EmptySection";
 
 const UsersListPage = () => {
   const { data, error, isLoading } = useGetAllUsersQuery("");
@@ -19,6 +20,9 @@ const UsersListPage = () => {
   }, [error]);
 
   if (!data && isLoading) return <LoadingSection />;
+
+  if (!data & !isLoading)
+    return <EmptySection error={error.status} text={error.data.message} />;
 
   return (
     <Section>

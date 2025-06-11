@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { LoadingSection } from "../Common/LoadingSection";
 import { ToastContainer } from "react-toastify";
 import { getUserState } from "~/Redux/selectors";
+import { EmptySection } from "../Common/EmptySection";
 const ParcelsPage = lazy(() => import("../../pages/ParcelsPage"));
 const SignInPage = lazy(() => import("~/pages/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage"));
@@ -72,7 +73,7 @@ const App = () => {
           </Route>
           <Route path="user">
             <Route
-              path="parcels/"
+              path="parcels"
               element={
                 <PrivateRoute
                   element={<ParcelsPage />}
@@ -82,24 +83,27 @@ const App = () => {
             ></Route>
             <Route
               path="users"
-              redirectTo="user/parcels"
               element={
                 <PrivateRoute element={<UsersListPage />} roles={["admin"]} />
               }
             ></Route>
             <Route
               path="map"
-              redirectTo="user/parcels"
               element={<PrivateRoute element={<MapPage />} roles={["admin"]} />}
             ></Route>
             <Route
               path="settings"
-              redirectTo="user/parcels"
               element={
                 <PrivateRoute element={<SettingsPage />} roles={["admin"]} />
               }
             ></Route>
           </Route>
+          <Route
+            path="*"
+            element={
+              <EmptySection error={404} text="Page not found" homeLink />
+            }
+          ></Route>
         </Route>
       </Routes>
       <ToastContainer />

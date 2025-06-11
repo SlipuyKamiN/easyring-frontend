@@ -27,18 +27,21 @@ import { SocialsLinks } from "~/components/Common/SocialsLinks";
 import { statuses } from "~/data/parcelStatuses";
 import { useTranslation } from "react-i18next";
 import { LoadingSection } from "~/components/Common/LoadingSection";
+import { EmptySection } from "~/components/Common/EmptySection";
 
 const ParcelPage = () => {
   const { t } = useTranslation();
   const { parcelId } = useParams();
-  const { data, isLoading } = useGetParcelByIdQuery(parcelId);
+  const { data, isLoading, error } = useGetParcelByIdQuery(parcelId);
   const { isLoggedIn } = useSelector(getUserState);
 
   if (!data && isLoading) {
     return <LoadingSection />;
   }
 
-  return (
+  return !data && !isLoading ? (
+    <EmptySection error={error.status} text={error.data.message} homeLink />
+  ) : (
     <Section>
       <Container>
         <ConfirmSectionWrapper>

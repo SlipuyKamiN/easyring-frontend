@@ -33,7 +33,9 @@ const ParcelsPage = () => {
     <>
       <Filter props={{ setQuery, searchParams, updateParam, get, isAdmin }} />
       {!error && isLoading && <LoadingSection />}
-      {!isData && !isLoading && <EmptySection />}
+      {!isData && !isLoading && (
+        <EmptySection error={error.status} text={error.data.message} />
+      )}
       {isData && !isLoading && (
         <ParcelsList parcels={data.parcels} isAdmin={isAdmin} />
       )}

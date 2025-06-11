@@ -13,12 +13,12 @@ import {
   useGetSessionQuery,
 } from "~/Redux/stripeSlice";
 import { ConfirmSection } from "./CreateOrderPage.styled";
-import { ConfirmSectionWrapper } from "~/components/CreateOrder/Confirm.styled";
 import { Container } from "~/components/SharedLayout/SharedLayout.styled";
+import { EmptySection } from "~/components/Common/EmptySection";
 
 const CheckoutPage = () => {
   const { parcelId } = useParams();
-  const { data, isLoading } = useGetParcelByIdQuery(parcelId);
+  const { data, isLoading, error } = useGetParcelByIdQuery(parcelId);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams("");
   const [paymentType, setPaymentType] = useState(null);
@@ -79,23 +79,29 @@ const CheckoutPage = () => {
     }
   }, [data, dispatchPayment, navigate, paymentType]);
 
-  if (!data || isLoading) {
+  console.log(error);
+
+  if (isLoading) {
     return <LoadingSection />;
   }
 
   return (
     <>
       <ProgressBar />
-      <ConfirmSection>
-        <Container>
-          <Checkout
-            data={data}
-            isLoading={isChekingOut || isUpdating}
-            setPaymentType={setPaymentType}
-            navigate={navigate}
-          />
-        </Container>
-      </ConfirmSection>
+      {!data && !isLoading ? (
+        <EmptySection error={error.status} text={error.data.message} homeLink />
+      ) : (
+        <ConfirmSection>
+          <Container>
+            <Checkout
+              data={data}
+              isLoading={isChekingOut || isUpdating}
+              setPaymentType={setPaymentType}
+              navigate={navigate}
+            />
+          </Container>
+        </ConfirmSection>
+      )}
     </>
   );
 };

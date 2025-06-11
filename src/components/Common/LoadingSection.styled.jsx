@@ -22,4 +22,22 @@ export const EmptyWrapper = styled.div`
     display: block;
     margin-bottom: 20px;
   }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  a {
+    max-width: 140px;
+    justify-content: center;
+    margin: 0 auto;
+  }
+`;
+
+export const ErrorCode = styled.span`
+  font-size: 120px;
+  background: ${({ theme }) => theme.colors.gradient};
+  color: transparent;
+
+  background-clip: text;
 `;
