@@ -47,7 +47,7 @@ const ParcelPage = () => {
   }
 
   return !data && !isLoading ? (
-    <EmptySection error={error.status} text={error.data?.message} homeLink />
+    <EmptySection error={error?.status} text={error?.data?.message} homeLink />
   ) : (
     <Section>
       <Container>
