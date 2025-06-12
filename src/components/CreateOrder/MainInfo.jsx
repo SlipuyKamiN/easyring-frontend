@@ -29,7 +29,11 @@ import { useNavigate } from "react-router-dom";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
-import { combineDateTime, parceInitialDate } from "~/helpers/combineDateTime";
+import {
+  combineDateTime,
+  getMinTime,
+  parceInitialDate,
+} from "~/helpers/combineDateTime";
 import { getNewParcelState } from "~/Redux/selectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
@@ -165,8 +169,8 @@ export const MainInfo = () => {
                         {...field}
                         label={t("form.mainInfo.startTime")}
                         minutesStep={30}
-                        minTime={new Date(0, 0, 0, 8, 0)}
-                        maxTime={new Date(0, 0, 0, 20, 0)}
+                        minTime={getMinTime(watch("date"))}
+                        maxTime={new Date(0, 0, 0, 18, 0)}
                         slotProps={{ field: { clearable: true } }}
                       />
                     )}
@@ -185,7 +189,7 @@ export const MainInfo = () => {
                       const startTime = watch("startTime");
                       const minEndTime = startTime
                         ? addHours(startTime, 2)
-                        : new Date(0, 0, 0, 8, 0);
+                        : new Date(0, 0, 0, 10, 0);
 
                       return (
                         <TimePicker
@@ -194,7 +198,7 @@ export const MainInfo = () => {
                           label={t("form.mainInfo.endTime")}
                           minutesStep={30}
                           minTime={minEndTime}
-                          maxTime={new Date(0, 0, 0, 22, 0)}
+                          maxTime={new Date(0, 0, 0, 20, 0)}
                           slotProps={{
                             field: {
                               clearable: true,
