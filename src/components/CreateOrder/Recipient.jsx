@@ -56,7 +56,6 @@ export const Recipient = () => {
               type="tel"
               placeholder=" "
               onFocus={() => setValue("phone", "+")}
-              autoFocus
             />
             <label>{t("form.phone")}</label>
             <ValidationErrorText inputError={errors.phone} />
