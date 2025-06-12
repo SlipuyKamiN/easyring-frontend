@@ -31,6 +31,13 @@ const CheckoutPage = () => {
   });
 
   useEffect(() => {
+    if (searchParams.has("session_id") && searchParams.has("canceled")) {
+      setPaymentType(null);
+      setSearchParams("");
+    }
+  }, [searchParams, setPaymentType, setSearchParams]);
+
+  useEffect(() => {
     if (!data) return;
 
     if (paymentType === "stripe" && !searchParams.has("session_id")) {
