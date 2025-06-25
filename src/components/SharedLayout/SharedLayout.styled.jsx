@@ -59,6 +59,6 @@ export const Section = styled.section`
   text-align: center;
 
   @media screen and (min-width: 768px) {
-    padding: 100px 0;
+    padding: 80px 0;
   }
 `;
