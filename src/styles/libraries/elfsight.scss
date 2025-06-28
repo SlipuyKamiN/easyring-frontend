@@ -2,4 +2,9 @@
   @media (min-width: 768px) {
     display: block !important;
   }
+
+  .swiper-wrapper {
+    gap: 20px;
+    min-height: 275px;
+  }
 }
