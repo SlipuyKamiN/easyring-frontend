@@ -1,1 +1,0 @@
-import{X as n,Y as r,j as a}from"./index-DVrz8gH-.js";import{U as i}from"./UserForm-Di9RW4qg.js";import"./handleInputTextCase-DIRdOVT4.js";const m=()=>{const[s]=n(),e=r(),t=o=>{s({...o,login:o.login.toLowerCase(),carNumber:o.carNumber.toUpperCase()}).then(()=>{e("/auth/signin")}).catch(console.log)};return a.jsx(i,{onSubmit:t,pageName:"signup"})};export{m as default};
