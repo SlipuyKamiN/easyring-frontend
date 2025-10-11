@@ -34,6 +34,14 @@ export const Confirm = () => {
       .validate(newParcel)
       .then(() => createParcel(newParcel))
       .catch((e) => notification(e.message));
+
+    try {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17606164650/a4_aCJ3hjqobEKqBo8tB",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
