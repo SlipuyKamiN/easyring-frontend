@@ -51,4 +51,18 @@ export const AddressListItem = styled.li`
   h5 {
     font-size: 16px;
   }
+
+  &.price {
+    text-transform: uppercase;
+    font-size: 18px;
+    align-items: flex-end;
+
+    p {
+      font-weight: bolder;
+    }
+
+    b {
+      font-size: 26px;
+    }
+  }
 `;

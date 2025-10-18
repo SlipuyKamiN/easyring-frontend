@@ -61,9 +61,9 @@ export const MainInfoSection = ({
           <p>{t("form.preview.distance")}</p>
           <b>{distance} km</b>
         </AddressListItem>
-        <AddressListItem>
+        <AddressListItem className="price">
           <p>{t("form.preview.price")}</p>
-          <b>{price} EUR</b>
+          <b>{price} €</b>
         </AddressListItem>
       </AddressList>
     </InfoSection>
