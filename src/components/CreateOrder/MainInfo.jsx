@@ -31,6 +31,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updMainInfo } from "~/Redux/newParcelSlice";
 import {
   combineDateTime,
+  getMinDate,
   getMinTime,
   parceInitialDate,
 } from "~/helpers/combineDateTime";
@@ -138,7 +139,7 @@ export const MainInfo = () => {
                   render={({ field }) => (
                     <DatePicker
                       {...field}
-                      minDate={new Date()}
+                      minDate={getMinDate()}
                       maxDate={addDays(new Date(), 14)}
                       label={t("form.mainInfo.date")}
                       format="dd.MM.yy"
