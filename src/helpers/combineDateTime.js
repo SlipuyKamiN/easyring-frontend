@@ -20,9 +20,8 @@ export const getMinTime = (selectedDate) => {
   if (selectedDate && isToday(selectedDate)) {
     const currentMinutes = now.getMinutes();
     const roundedMinutes = currentMinutes < 30 ? 0 : 30;
-    const extraHour = 1 + (currentMinutes >= 30 ? 1 : 0);
 
-    const hours = now.getHours() + extraHour;
+    const hours = now.getHours() + 1;
 
     return new Date(0, 0, 0, hours, roundedMinutes, 0, 0);
   }
