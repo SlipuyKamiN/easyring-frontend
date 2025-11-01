@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://slipuykamin.github.io/easyring-frontend",
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

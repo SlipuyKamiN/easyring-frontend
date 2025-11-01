@@ -1,5 +1,8 @@
 import * as yup from "yup";
 
+const WORK_START_HOUR = 8;
+const WORK_END_HOUR = 20;
+
 export const mainInfoSchema = yup.object().shape({
   size: yup
     .string()
@@ -14,12 +17,34 @@ export const mainInfoSchema = yup.object().shape({
   startTime: yup
     .date()
     .required("Please provide the delivery time window")
-    .typeError("Please provide the delivery time window"),
+    .typeError("Please provide the delivery time window")
+    .test(
+      "working-hours",
+      `Start time must be between ${WORK_START_HOUR}:00 and ${WORK_END_HOUR}:00`,
+      (value) => {
+        if (!value) return true;
+        const h = value.getHours();
+        return h >= WORK_START_HOUR && h <= WORK_END_HOUR;
+      }
+    ),
 
   endTime: yup
     .date()
     .required("Please provide the delivery time window")
-    .typeError("Please provide the delivery time window"),
+    .typeError("Please provide the delivery time window")
+    .when("startTime", (startTime, schema) =>
+      startTime ? schema.min(startTime, "End must be after start") : schema
+    )
+    .test(
+      "working-hours",
+      `End time must be between ${WORK_START_HOUR}:00 and ${WORK_END_HOUR}:00`,
+      (value) => {
+        if (!value) return true;
+        const h = value.getHours();
+        const m = value.getMinutes();
+        return h >= WORK_START_HOUR && h <= WORK_END_HOUR && !m;
+      }
+    ),
 
   description: yup.string().required("Please provide the parcel description"),
 });

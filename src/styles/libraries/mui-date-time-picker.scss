@@ -82,5 +82,25 @@
 }
 
 .MuiPickersInputBase-root.MuiPickersOutlinedInput-root.MuiPickersInputBase-colorPrimary.MuiPickersInputBase-adornedEnd {
+  position: relative;
   padding: 0px 15px;
+}
+
+.MuiInputAdornment-root .MuiButtonBase-root.MuiIconButton-edgeEnd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  border-radius: 16px;
+  background-color: transparent;
+  padding: 0 0 0 75%;
+}
+
+.MuiPickersInputBase-root .MuiPickersSectionList-section {
+  pointer-events: none;
+
+  &::selection {
+    background-color: transparent;
+  }
 }

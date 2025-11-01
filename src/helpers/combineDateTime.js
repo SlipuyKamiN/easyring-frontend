@@ -32,7 +32,7 @@ export const getMinTime = (selectedDate) => {
 export const getMinDate = () => {
   const now = new Date();
   const cutoff = new Date();
-  cutoff.setHours(17, 30, 0, 0);
+  cutoff.setHours(18, 30, 0, 0);
 
   if (now > cutoff) {
     const tomorrow = new Date();
