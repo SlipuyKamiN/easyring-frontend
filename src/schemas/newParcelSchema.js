@@ -19,7 +19,10 @@ export const mainInfoSchema = yup.object().shape({
   endTime: yup
     .date()
     .required("Please provide the delivery time window")
-    .typeError("Please provide the delivery time window"),
+    .typeError("Please provide the delivery time window")
+    .when("startTime", (startTime, schema) =>
+      startTime ? schema.min(startTime, "End must be after start") : schema
+    ),
 
   description: yup.string().required("Please provide the parcel description"),
 });

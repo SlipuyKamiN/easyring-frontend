@@ -38,7 +38,7 @@ import {
 import { getNewParcelState } from "~/Redux/selectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
-import { TextField } from "@mui/material";
+import { useEffect } from "react";
 
 export const MainInfo = () => {
   const { t } = useTranslation();
@@ -51,6 +51,7 @@ export const MainInfo = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: "onBlur",
@@ -66,6 +67,20 @@ export const MainInfo = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const selectedStartTime = watch("startTime");
+  const selectedEndTime = watch("endTime");
+
+  useEffect(() => {
+    if (!selectedStartTime) return;
+    if (!selectedEndTime) return;
+
+    const minEnd = addHours(selectedStartTime, 1);
+
+    if (selectedEndTime < minEnd) {
+      setValue("endTime", minEnd, { shouldValidate: true });
+    }
+  }, [selectedStartTime, selectedEndTime, setValue]);
 
   const onSubmit = (data) => {
     data.startTime = combineDateTime(data.date, data.startTime);
@@ -175,7 +190,7 @@ export const MainInfo = () => {
                         label={t("form.mainInfo.startTime")}
                         minutesStep={30}
                         minTime={getMinTime(watch("date"))}
-                        maxTime={new Date(0, 0, 0, 18, 0)}
+                        maxTime={new Date(0, 0, 0, 19, 0)}
                         slotProps={{
                           field: {
                             readOnly: true,
@@ -198,7 +213,7 @@ export const MainInfo = () => {
                     render={({ field }) => {
                       const startTime = watch("startTime");
                       const minEndTime = startTime
-                        ? addHours(startTime, 2)
+                        ? addHours(startTime, 1)
                         : new Date(0, 0, 0, 10, 0);
 
                       return (
