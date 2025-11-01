@@ -38,6 +38,7 @@ import {
 import { getNewParcelState } from "~/Redux/selectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
+import { TextField } from "@mui/material";
 
 export const MainInfo = () => {
   const { t } = useTranslation();
@@ -145,7 +146,9 @@ export const MainInfo = () => {
                       format="dd.MM.yy"
                       slotProps={{
                         field: {
+                          readOnly: true,
                           clearable: true,
+                          variant: "outlined",
                         },
                       }}
                     />
@@ -164,6 +167,7 @@ export const MainInfo = () => {
                 >
                   <Controller
                     name={"startTime"}
+                    placeholder="qwe"
                     control={control}
                     render={({ field }) => (
                       <TimePicker
@@ -172,7 +176,12 @@ export const MainInfo = () => {
                         minutesStep={30}
                         minTime={getMinTime(watch("date"))}
                         maxTime={new Date(0, 0, 0, 18, 0)}
-                        slotProps={{ field: { clearable: true } }}
+                        slotProps={{
+                          field: {
+                            readOnly: true,
+                            clearable: true,
+                          },
+                        }}
                       />
                     )}
                   />
@@ -202,8 +211,8 @@ export const MainInfo = () => {
                           maxTime={new Date(0, 0, 0, 20, 0)}
                           slotProps={{
                             field: {
+                              readOnly: true,
                               clearable: true,
-                              variant: "outlined",
                             },
                           }}
                         />
