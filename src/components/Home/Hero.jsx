@@ -59,7 +59,10 @@ export const Hero = () => {
         <HeroSubtitle>in Berlin</HeroSubtitle>
         <HeroBtnsList>
           <li>
-            <HeroMainBtn to={"createorder/maininfo"}>
+            <HeroMainBtn
+              className="plausible-event-name=create-pickup"
+              to={"createorder/maininfo"}
+            >
               {t("create-pickup")}
             </HeroMainBtn>
           </li>
