@@ -257,7 +257,12 @@ export const MainInfo = () => {
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
+            <PrimaryBtn
+              className="plausible-event-name=main-info"
+              type="Submit"
+            >
+              {t("form.nav.next")}
+            </PrimaryBtn>
           </li>
           <li>
             <SecondaryBtnLink to={"/"}>{t("form.nav.cancel")}</SecondaryBtnLink>

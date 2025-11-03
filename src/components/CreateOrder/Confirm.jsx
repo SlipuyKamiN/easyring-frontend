@@ -59,7 +59,11 @@ export const Confirm = () => {
           edit
         />
       </InfoSections>
-      <ConfirmBtn onClick={handleConfirm} disabled={isLoading}>
+      <ConfirmBtn
+        className="plausible-event-name=confirm"
+        onClick={handleConfirm}
+        disabled={isLoading}
+      >
         {t("form.preview.confirm")}
         {isLoading ? <LoadingSpinner size={16} /> : <FaCheck size={16} />}
       </ConfirmBtn>
