@@ -99,7 +99,12 @@ export const Recipient = () => {
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
+            <PrimaryBtn
+              className="plausible-event-name=recipient"
+              type="Submit"
+            >
+              {t("form.nav.next")}
+            </PrimaryBtn>
           </li>
           <li>
             <SecondaryBtnLink to={-1}>{t("form.nav.back")}</SecondaryBtnLink>
