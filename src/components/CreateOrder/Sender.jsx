@@ -47,7 +47,11 @@ export const Sender = () => {
 
   return (
     <DecorationBg>
-      <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+      <FormWrapper
+        className="plausible-event-name=sender"
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+      >
         <FormName>{t("form.sender")}</FormName>
         <InputList>
           <InputItem>
@@ -104,9 +108,7 @@ export const Sender = () => {
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn className="plausible-event-name=sender" type="Submit">
-              {t("form.nav.next")}
-            </PrimaryBtn>
+            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
           </li>
           <li>
             <SecondaryBtnLink to={-1}>{t("form.nav.back")}</SecondaryBtnLink>
