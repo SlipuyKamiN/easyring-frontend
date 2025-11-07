@@ -27,9 +27,11 @@ export const MainInfoSection = ({
     startTime = "00:00",
     endTime = "00:00",
     distance = 0,
+    description = "",
   },
   payment: { price },
   edit = false,
+  isLoggedIn = false,
 }) => {
   const { t } = useTranslation();
 
@@ -53,16 +55,27 @@ export const MainInfoSection = ({
         </AddressListItem>
         <AddressListItem>
           <p>{t("form.preview.time")}</p>
-          <b>{format(startTime, "HH:mm")}</b>
-          {" — "}
-          <b>{format(endTime, "HH:mm")}</b>
+          <b>
+            {format(startTime, "HH:mm")}
+            {"-"}
+            {format(endTime, "HH:mm")}
+          </b>
         </AddressListItem>
         <AddressListItem>
           <p>{t("form.preview.distance")}</p>
           <b>{distance} km</b>
         </AddressListItem>
+        {isLoggedIn && (
+          <AddressListItem className="description">
+            <p>{t("form.preview.description")}</p>
+            <b>{description}</b>
+          </AddressListItem>
+        )}
         <AddressListItem className="price">
-          <p>{t("form.preview.price")}</p>
+          <div>
+            <p>{t("form.preview.price")}</p>
+            <span>{t("form.checkout.VAT")}</span>
+          </div>
           <b>{price} €</b>
         </AddressListItem>
       </AddressList>

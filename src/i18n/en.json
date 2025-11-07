@@ -47,6 +47,7 @@
       "date": "Pick up date:",
       "time": "Time window:",
       "distance": "Distance:",
+      "description": "Description:",
       "price": "Delivery price:",
       "confirm": "Confirm"
     },
@@ -58,6 +59,7 @@
         "Please stay available during this time. You’ll also receive a confirmation email."
       ],
       "to-pay": "To pay: {{price}} EUR",
+      "VAT": "incl. VAT",
       "tracking": "Tracking",
       "pay-now": "Pay now",
       "pay-later": "Pay later"

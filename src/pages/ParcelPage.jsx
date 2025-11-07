@@ -69,7 +69,11 @@ const ParcelPage = () => {
                 ))}
               </TrackingList>
             </li>
-            <MainInfoSection mainInfo={data.mainInfo} payment={data.payment} />
+            <MainInfoSection
+              mainInfo={data.mainInfo}
+              payment={data.payment}
+              isLoggedIn={isLoggedIn}
+            />
             {isLoggedIn && data?.sender && data?.recipient ? (
               <>
                 <ParticipantInfoSection

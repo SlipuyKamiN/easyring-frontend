@@ -21,8 +21,10 @@ export const Reviews = () => {
     <Section>
       <Container>
         <SectionTitle>{t("reviews")}</SectionTitle>
+
         <div
-          className="elfsight-app-4b8e65b5-496e-4c5f-a2be-5d66e548616e elfsight-wrapper"
+          // className="elfsight-app-4b8e65b5-496e-4c5f-a2be-5d66e548616e elfsight-wrapper"
+          className="elfsight-app-447c41b7-0ac4-47aa-843a-130feaca7395 elfsight-wrapper"
           data-elfsight-app-lazy
         ></div>
       </Container>

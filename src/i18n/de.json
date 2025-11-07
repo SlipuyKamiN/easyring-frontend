@@ -47,6 +47,7 @@
       "date": "Lieferdatum:",
       "time": "Zeitfenster:",
       "distance": "Entfernung:",
+      "description": "Beschreibung:",
       "price": "Lieferpreis:",
       "confirm": "Bestätigen"
     },
@@ -58,6 +59,7 @@
         "Bitte halten Sie sich in diesem Zeitraum bereit. Sie erhalten außerdem eine Bestätigungs-E-Mail."
       ],
       "to-pay": "Zu bezahlen: {{price}} EUR",
+      "VAT": "inkl. MwSt.",
       "tracking": "Tracking",
       "pay-now": "Jetzt bezahlen",
       "pay-later": "Später bezahlen"

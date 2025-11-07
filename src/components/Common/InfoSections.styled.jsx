@@ -52,17 +52,31 @@ export const AddressListItem = styled.li`
     font-size: 16px;
   }
 
+  &.description {
+    flex-wrap: wrap;
+  }
+
   &.price {
     text-transform: uppercase;
     font-size: 18px;
-    align-items: flex-end;
+
+    div {
+      max-width: 65%;
+    }
 
     p {
       font-weight: bolder;
+      line-height: 1;
     }
 
     b {
       font-size: 26px;
+    }
+
+    span {
+      font-size: 12px;
+      text-transform: none;
+      line-height: 1;
     }
   }
 `;
