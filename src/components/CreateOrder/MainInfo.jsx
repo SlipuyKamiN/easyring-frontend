@@ -93,7 +93,11 @@ export const MainInfo = () => {
 
   return (
     <DecorationBg>
-      <FormWrapper autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+      <FormWrapper
+        className="plausible-event-name=main-info"
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <InputList>
           <li>
             <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>
@@ -257,12 +261,7 @@ export const MainInfo = () => {
         </InputList>
         <FormBtnsList>
           <li>
-            <PrimaryBtn
-              className="plausible-event-name=main-info"
-              type="Submit"
-            >
-              {t("form.nav.next")}
-            </PrimaryBtn>
+            <PrimaryBtn type="Submit">{t("form.nav.next")}</PrimaryBtn>
           </li>
           <li>
             <SecondaryBtnLink to={"/"}>{t("form.nav.cancel")}</SecondaryBtnLink>
