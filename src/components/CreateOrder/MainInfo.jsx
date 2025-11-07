@@ -88,16 +88,17 @@ export const MainInfo = () => {
     data.date = formatISO(data.date);
 
     dispatch(updMainInfo(data));
-    navigate("/createorder/sender");
+
+    window.plausible?.("main-info", {
+      callback: () => {
+        navigate("/createorder/sender");
+      },
+    });
   };
 
   return (
     <DecorationBg>
-      <FormWrapper
-        className="plausible-event-name=main-info"
-        autoComplete="off"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <FormWrapper autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <InputList>
           <li>
             <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>

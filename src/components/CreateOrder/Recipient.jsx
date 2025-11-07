@@ -42,16 +42,17 @@ export const Recipient = () => {
 
   const onSubmit = (data) => {
     dispatch(updRecipient(data));
-    navigate("/createorder/confirm");
+
+    window.plausible?.("recipient", {
+      callback: () => {
+        navigate("/createorder/confirm");
+      },
+    });
   };
 
   return (
     <DecorationBg>
-      <FormWrapper
-        className="plausible-event-name=recipient"
-        onSubmit={handleSubmit(onSubmit)}
-        autoComplete="off"
-      >
+      <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <FormName>{t("form.recipient")}</FormName>
         <InputList>
           <InputItem>
