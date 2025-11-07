@@ -52,6 +52,10 @@ export const AddressListItem = styled.li`
     font-size: 16px;
   }
 
+  &.description {
+    flex-wrap: wrap;
+  }
+
   &.price {
     text-transform: uppercase;
     font-size: 18px;

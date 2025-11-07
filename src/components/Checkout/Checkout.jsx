@@ -55,7 +55,10 @@ export const Checkout = ({ data, setPaymentType, isLoading, navigate }) => {
       </SuccessText>
       <ToPayWrapper>
         {!isPaid ? (
-          <h3>{t("form.checkout.to-pay", { price })}</h3>
+          <>
+            <h3>{t("form.checkout.to-pay", { price })}</h3>
+            <p>{t("form.checkout.VAT")}</p>
+          </>
         ) : (
           <SecondaryBtnLink to={`/tracking/${_id}`}>
             {t("form.checkout.tracking")}
