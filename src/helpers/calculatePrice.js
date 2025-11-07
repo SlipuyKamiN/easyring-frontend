@@ -14,7 +14,7 @@ export const calculatePrice = (distance, size) => {
       sizePrice = 1;
       break;
   }
-  const price = distance * sizePrice;
+  const price = distance * sizePrice * 1.19;
 
   if (!size || !distance) return 0;
 

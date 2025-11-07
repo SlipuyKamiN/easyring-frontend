@@ -27,11 +27,14 @@ export const MainInfoSection = ({
     startTime = "00:00",
     endTime = "00:00",
     distance = 0,
+    description = "",
   },
   payment: { price },
   edit = false,
 }) => {
   const { t } = useTranslation();
+
+  console.log(description);
 
   return (
     <InfoSection>
@@ -61,8 +64,17 @@ export const MainInfoSection = ({
           <p>{t("form.preview.distance")}</p>
           <b>{distance} km</b>
         </AddressListItem>
+        {!edit && (
+          <AddressListItem>
+            <p>{t("form.preview.description")}</p>
+            <b>{description}</b>
+          </AddressListItem>
+        )}
         <AddressListItem className="price">
-          <p>{t("form.preview.price")}</p>
+          <div>
+            <p>{t("form.preview.price")}</p>
+            <span>{t("form.checkout.VAT")}</span>
+          </div>
           <b>{price} €</b>
         </AddressListItem>
       </AddressList>
