@@ -33,7 +33,7 @@ export const AddressAutocomplete = ({
                 setValue(name, value);
               }}
               value={field.value?.properties?.formatted || ""}
-              debounceDelay={250}
+              debounceDelay={200}
             />
           </GeoapifyContext>
         )}

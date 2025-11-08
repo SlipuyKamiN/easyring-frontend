@@ -11,6 +11,7 @@ import { calculateDistance } from "~/helpers/calculateDistance";
 import { calculatePrice } from "~/helpers/calculatePrice";
 import { LoadingSpinner } from "../Common/LoadingSection";
 import { SizeLabel } from "../Common/SizeButtons.styled";
+import { CreatePickUpWrapper, HeroMainBtn } from "../Common/Button.styled";
 
 export const Calculator = () => {
   const { t } = useTranslation();
@@ -85,6 +86,14 @@ export const Calculator = () => {
               </div>
               {isLoading ? <LoadingSpinner /> : <b>{price} €</b>}
             </AddressListItem>
+            <CreatePickUpWrapper>
+              <HeroMainBtn
+                className="plausible-event-name=create-pickup-calculator"
+                to={"createorder/maininfo"}
+              >
+                {t("create-pickup")}
+              </HeroMainBtn>
+            </CreatePickUpWrapper>
           </ul>
         </FormWrapper>
       </Container>
