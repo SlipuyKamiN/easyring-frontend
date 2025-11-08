@@ -15,17 +15,6 @@ export const FormWrapper = styled.form`
   @media screen and (min-width: 768px) {
     padding: 30px;
   }
-
-  &.calculator {
-    max-width: none;
-
-    ul {
-      /* display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; */
-    }
-  }
 `;
 
 export const FormName = styled.h3`

@@ -10,6 +10,7 @@ import { AddressListItem } from "../Common/InfoSections.styled";
 import { calculateDistance } from "~/helpers/calculateDistance";
 import { calculatePrice } from "~/helpers/calculatePrice";
 import { LoadingSpinner } from "../Common/LoadingSection";
+import { SizeLabel } from "../Common/SizeButtons.styled";
 
 export const Calculator = () => {
   const { t } = useTranslation();
@@ -50,10 +51,11 @@ export const Calculator = () => {
   return (
     <Section>
       <Container>
-        <SectionTitle>How much it costs</SectionTitle>
+        <SectionTitle>{t("price-calculator")}</SectionTitle>
         <FormWrapper autoComplete="off" className="calculator">
           <ul>
             <li>
+              <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>
               <SizeButtons register={register} />
             </li>
             <InputItem>
