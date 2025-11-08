@@ -6,7 +6,12 @@ import {
 } from "@geoapify/react-geocoder-autocomplete";
 import { useTranslation } from "react-i18next";
 
-export const AddressAutocomplete = ({ control, setValue, name }) => {
+export const AddressAutocomplete = ({
+  control,
+  setValue,
+  name,
+  placeholder = "form.address",
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -17,7 +22,7 @@ export const AddressAutocomplete = ({ control, setValue, name }) => {
         render={({ field }) => (
           <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
             <GeoapifyGeocoderAutocomplete
-              placeholder={t("form.address")}
+              placeholder={t(placeholder)}
               limit={5}
               filterByCircle={{
                 lat: 52.52,
@@ -28,6 +33,7 @@ export const AddressAutocomplete = ({ control, setValue, name }) => {
                 setValue(name, value);
               }}
               value={field.value?.properties?.formatted || ""}
+              debounceDelay={250}
             />
           </GeoapifyContext>
         )}
