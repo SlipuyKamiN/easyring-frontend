@@ -52,7 +52,7 @@ export const senderSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^\+?[0-9]+$/,
+      /^\+?[0-9]{10,15}$/,
       'Phone number must contain digits and start with "+"'
     )
     .required("Phone number is required"),
@@ -91,7 +91,7 @@ export const recipientSchema = yup.object().shape({
   phone: yup
     .string()
     .matches(
-      /^\+?[0-9]+$/,
+      /^\+?[0-9]{10,15}$/,
       'Phone number must contain digits and start with "+"'
     )
     .required("Phone number is required"),

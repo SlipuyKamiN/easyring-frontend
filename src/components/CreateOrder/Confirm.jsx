@@ -45,7 +45,8 @@ export const Confirm = () => {
   };
 
   useEffect(() => {
-    if (data && !error && !isLoading) navigate(`/checkout/${data._id}`);
+    if (data && !error && !isLoading) return navigate(`/checkout/${data._id}`);
+    if (!data && error && !isLoading) notification(error?.data?.message);
   }, [data, error, isLoading, navigate]);
 
   return (
