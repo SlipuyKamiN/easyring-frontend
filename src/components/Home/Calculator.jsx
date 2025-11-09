@@ -78,7 +78,11 @@ export const Calculator = () => {
     dispatch(updSender({ ...sender, address: senderAddress }));
     dispatch(updRecipient({ ...recipient, address: recipientAddress }));
 
-    navigate("/createorder/maininfo");
+    window.plausible?.("create-pickup-calculator", {
+      callback: () => {
+        navigate("/createorder/maininfo");
+      },
+    });
   };
 
   return (
@@ -126,12 +130,7 @@ export const Calculator = () => {
               {isLoading ? <LoadingSpinner /> : <b>{price} €</b>}
             </AddressListItem>
             <CreatePickUpWrapper>
-              <PrimaryBtn
-                className="plausible-event-name=create-pickup-calculator"
-                type="submit"
-              >
-                {t("create-pickup")}
-              </PrimaryBtn>
+              <PrimaryBtn type="submit">{t("create-pickup")}</PrimaryBtn>
             </CreatePickUpWrapper>
           </ul>
         </FormWrapper>
