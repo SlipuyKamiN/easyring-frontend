@@ -41,8 +41,7 @@ export const mainInfoSchema = yup.object().shape({
       (value) => {
         if (!value) return true;
         const h = value.getHours();
-        const m = value.getMinutes();
-        return h >= WORK_START_HOUR && h <= WORK_END_HOUR && !m;
+        return h >= WORK_START_HOUR && h <= WORK_END_HOUR;
       }
     ),
 

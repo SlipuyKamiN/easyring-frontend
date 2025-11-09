@@ -93,7 +93,6 @@ export const SecondaryBtnLink = styled(PrimaryBtnLink)`
 `;
 
 export const HeroMainBtn = styled(PrimaryBtnLink)`
-  font-weight: 600;
   color: ${({ theme }) => theme.colors.hi200};
   background: ${({ theme }) => theme.colors.gradient};
 `;
@@ -102,6 +101,12 @@ export const CreatePickUpWrapper = styled.li`
   max-width: 85%;
   margin: 0 auto;
   padding: 20px 0 0;
+
+  button {
+    margin: 0 auto;
+    color: ${({ theme }) => theme.colors.hi200};
+    background: ${({ theme }) => theme.colors.gradient};
+  }
 `;
 
 export const HeroSecondaryBtn = styled(SecondaryBtn)`
