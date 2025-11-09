@@ -11,69 +11,108 @@ import { calculateDistance } from "~/helpers/calculateDistance";
 import { calculatePrice } from "~/helpers/calculatePrice";
 import { LoadingSpinner } from "../Common/LoadingSection";
 import { SizeLabel } from "../Common/SizeButtons.styled";
-import { CreatePickUpWrapper, HeroMainBtn } from "../Common/Button.styled";
+import { CreatePickUpWrapper, PrimaryBtn } from "../Common/Button.styled";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
+import { calculatorSchema } from "~/schemas/newParcelSchema";
+import { useDispatch, useSelector } from "react-redux";
+import { getNewParcelState } from "~/Redux/selectors";
+import { useNavigate } from "react-router-dom";
+import { updMainInfo, updRecipient, updSender } from "~/Redux/newParcelSlice";
 
 export const Calculator = () => {
   const { t } = useTranslation();
   const [distance, setDistance] = useState(0);
   const [price, setPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const { control, setValue, register, watch, getValues } = useForm({
-    mode: "onChange",
+  const { mainInfo, sender, recipient } = useSelector(getNewParcelState);
+  const {
+    control,
+    setValue,
+    register,
+    watch,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     defaultValues: {
-      size: "S",
-      sender: "",
-      recipient: "",
+      size: mainInfo.size,
+      senderAddress: sender.address,
+      recipientAddress: recipient.address,
     },
+    resolver: yupResolver(calculatorSchema),
   });
 
-  const [sender, recipient] = watch(["sender", "recipient"]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [senderAddress, recipientAddress] = watch([
+    "senderAddress",
+    "recipientAddress",
+  ]);
 
   useEffect(() => {
-    if (sender && recipient) {
+    if (senderAddress && recipientAddress) {
       setIsLoading(true);
-      calculateDistance({ address: sender }, { address: recipient }).then(
-        (distance) => {
-          setDistance(distance);
-          setIsLoading(false);
+      calculateDistance(
+        { address: senderAddress },
+        { address: recipientAddress }
+      ).then((distance) => {
+        setDistance(distance);
+        setIsLoading(false);
 
-          const size = getValues("size");
-          setPrice(calculatePrice(distance, size));
-        }
-      );
+        const size = getValues("size");
+        setPrice(calculatePrice(distance, size));
+      });
     }
-  }, [sender, recipient, getValues]);
+  }, [senderAddress, recipientAddress, getValues]);
 
   const size = watch("size");
   useEffect(() => {
     setPrice(calculatePrice(distance, size));
   }, [size, distance]);
 
+  const onSubmit = ({ size, senderAddress, recipientAddress }) => {
+    dispatch(updMainInfo({ ...mainInfo, size }));
+    dispatch(updSender({ ...sender, address: senderAddress }));
+    dispatch(updRecipient({ ...recipient, address: recipientAddress }));
+
+    navigate("/createorder/maininfo");
+  };
+
   return (
     <Section>
       <Container>
         <SectionTitle>{t("price-calculator")}</SectionTitle>
-        <FormWrapper autoComplete="off" className="calculator">
+        <FormWrapper
+          autoComplete="off"
+          className="calculator"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <ul>
             <li>
               <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>
               <SizeButtons register={register} />
+              <ValidationErrorText inputError={errors.size} />
             </li>
             <InputItem>
               <AddressAutocomplete
                 control={control}
                 setValue={setValue}
-                name={"sender"}
+                name={"senderAddress"}
                 placeholder="From"
               />
+              <ValidationErrorText inputError={errors.senderAddress} />
             </InputItem>
             <InputItem>
               <AddressAutocomplete
                 control={control}
                 setValue={setValue}
-                name={"recipient"}
+                name={"recipientAddress"}
                 placeholder="To"
               />
+              <ValidationErrorText inputError={errors.recipientAddress} />
             </InputItem>
             <AddressListItem>
               <p>{t("form.preview.distance")}</p>
@@ -87,12 +126,12 @@ export const Calculator = () => {
               {isLoading ? <LoadingSpinner /> : <b>{price} €</b>}
             </AddressListItem>
             <CreatePickUpWrapper>
-              <HeroMainBtn
+              <PrimaryBtn
                 className="plausible-event-name=create-pickup-calculator"
-                to={"createorder/maininfo"}
+                type="submit"
               >
                 {t("create-pickup")}
-              </HeroMainBtn>
+              </PrimaryBtn>
             </CreatePickUpWrapper>
           </ul>
         </FormWrapper>

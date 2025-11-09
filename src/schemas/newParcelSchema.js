@@ -138,3 +138,28 @@ export const newParcelSchema = yup.object().shape({
     _id: yup.string(),
   }),
 });
+
+export const calculatorSchema = yup.object().shape({
+  size: yup
+    .string()
+    .oneOf(["S", "M", "L"], "Size must be one of:  S, M or L")
+    .required("Size is required"),
+
+  senderAddress: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the pick-up address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the pick-up address"),
+
+  recipientAddress: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the delivery address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the delivery address"),
+});
