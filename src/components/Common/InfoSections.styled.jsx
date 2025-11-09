@@ -59,6 +59,7 @@ export const AddressListItem = styled.li`
   &.price {
     text-transform: uppercase;
     font-size: 18px;
+    text-align: left;
 
     div {
       max-width: 65%;

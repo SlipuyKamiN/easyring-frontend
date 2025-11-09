@@ -1,6 +1,7 @@
 {
   "create-pickup": "Pick-up erstellen",
   "track-parcel": "Track-Paket",
+  "price-calculator": "Preisrechner",
   "how-it-works": "Wie es funktioniert",
   "reviews": "Bewertungen",
   "steps": [
@@ -17,8 +18,8 @@
       "desc": "Stimmen Sie die <b>Paket-ID</b> ab und übergeben Sie das Paket."
     },
     {
-      "title": "Genießen",
-      "desc": "Sie erhalten das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
+      "title": "Erhalten",
+      "desc": "Sie bekommen das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
     }
   ],
   "form": {

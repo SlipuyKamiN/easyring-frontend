@@ -3,16 +3,9 @@ import {
   InputListItem,
   MuiPickerWrapper,
   ParcelDescription,
-  SizeButton,
-  SizeButtonsList,
-  SizeDescription,
-  SizeInput,
-  SizeLabel,
-  SizeText,
   TimePickerWrapper,
 } from "./MainInfo.styled";
-import { TbBoxAlignBottomRight, TbBoxAlignBottom } from "react-icons/tb";
-import { BsBox } from "react-icons/bs";
+
 import {
   DatePicker,
   LocalizationProvider,
@@ -39,6 +32,8 @@ import { getNewParcelState } from "~/Redux/selectors";
 import { FormWrapper, InputList, FormBtnsList } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { SizeLabel } from "../Common/SizeButtons.styled";
+import { SizeButtons } from "../Common/SizeButtons";
 
 export const MainInfo = () => {
   const { t } = useTranslation();
@@ -102,50 +97,7 @@ export const MainInfo = () => {
         <InputList>
           <li>
             <SizeLabel>{t("form.mainInfo.size")}</SizeLabel>
-            <SizeButtonsList>
-              <li>
-                <SizeButton>
-                  <SizeInput
-                    type="radio"
-                    name="size"
-                    value={"S"}
-                    {...register("size")}
-                  />
-                  <SizeText>
-                    <TbBoxAlignBottomRight size={36} />S
-                  </SizeText>
-                  <SizeDescription>2kg</SizeDescription>
-                </SizeButton>
-              </li>
-              <li>
-                <SizeButton>
-                  <SizeInput
-                    type="radio"
-                    name="size"
-                    value={"M"}
-                    {...register("size")}
-                  />
-                  <SizeText>
-                    <TbBoxAlignBottom size={36} />M
-                  </SizeText>
-                  <SizeDescription>10kg</SizeDescription>
-                </SizeButton>
-              </li>
-              <li>
-                <SizeButton>
-                  <SizeInput
-                    type="radio"
-                    name="size"
-                    value={"L"}
-                    {...register("size")}
-                  />
-                  <SizeText>
-                    <BsBox size={36} />L
-                  </SizeText>
-                  <SizeDescription>30kg</SizeDescription>
-                </SizeButton>
-              </li>
-            </SizeButtonsList>
+            <SizeButtons register={register} />
             <ValidationErrorText inputError={errors.size} />
           </li>
           <InputListItem>
