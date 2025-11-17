@@ -60,8 +60,8 @@ export const senderSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
-      "Name must contain first and last name using only letters"
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)?$/,
+      "Must contain name using only letters"
     )
     .required("Name is required"),
 
@@ -78,12 +78,10 @@ export const senderSchema = yup.object().shape({
     .string()
     .email("Invalid email address")
     .test("domain-has-dot", "Email domain must contain a dot", (value) => {
-      if (!value) return false;
+      if (!value) return true;
       const domain = value.split("@")[1];
       return domain && domain.includes(".");
-    })
-    .required("Email is required"),
-
+    }),
   comment: yup.string(),
 });
 
@@ -99,8 +97,8 @@ export const recipientSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
-      "Name must contain first and last name using only letters"
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)?$/,
+      "Must contain name using only letters"
     )
     .required("Name is required"),
 

@@ -5,7 +5,6 @@ import { recipientSchema } from "~/schemas/newParcelSchema";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { updRecipient } from "~/Redux/newParcelSlice";
 import { getNewParcelState } from "~/Redux/selectors";
@@ -54,18 +53,22 @@ export const Recipient = () => {
         <InputList>
           <InputItem>
             <TextInput
+              {...register("name", { setValueAs: (v) => v.trim() })}
+              type="text"
+              placeholder=" "
+            />
+            <label>{t("form.name")} *</label>
+            <ValidationErrorText inputError={errors.name} />
+          </InputItem>
+          <InputItem>
+            <TextInput
               {...register("phone")}
               type="tel"
               placeholder=" "
               onFocus={() => setValue("phone", "+")}
             />
-            <label>{t("form.phone")}</label>
+            <label>{t("form.phone")} *</label>
             <ValidationErrorText inputError={errors.phone} />
-          </InputItem>
-          <InputItem>
-            <TextInput {...register("name")} type="text" placeholder=" " />
-            <label>{t("form.name")}</label>
-            <ValidationErrorText inputError={errors.name} />
           </InputItem>
           <InputItem>
             <AddressAutocomplete

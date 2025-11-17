@@ -57,7 +57,7 @@
       "info": [
         "The courier will arrive",
         "between {{startTime}} and {{endTime}}.",
-        "Please stay available during this time. You’ll also receive a confirmation email."
+        "Please stay available during this time."
       ],
       "to-pay": "To pay: {{price}} EUR",
       "VAT": "incl. VAT",

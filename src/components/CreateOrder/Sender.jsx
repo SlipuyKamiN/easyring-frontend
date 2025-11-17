@@ -46,6 +46,8 @@ export const Sender = () => {
     });
   };
 
+  console.log(errors);
+
   return (
     <DecorationBg>
       <FormWrapper onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -53,18 +55,22 @@ export const Sender = () => {
         <InputList>
           <InputItem>
             <TextInput
+              {...register("name", { setValueAs: (v) => v.trim() })}
+              type="text"
+              placeholder=" "
+            />
+            <label>{t("form.name")} *</label>
+            <ValidationErrorText inputError={errors.name} />
+          </InputItem>
+          <InputItem>
+            <TextInput
               {...register("phone")}
               type="tel"
               placeholder=" "
               onFocus={() => setValue("phone", "+")}
             />
-            <label>{t("form.phone")}</label>
+            <label>{t("form.phone")} *</label>
             <ValidationErrorText inputError={errors.phone} />
-          </InputItem>
-          <InputItem>
-            <TextInput {...register("name")} type="text" placeholder=" " />
-            <label>{t("form.name")}</label>
-            <ValidationErrorText inputError={errors.name} />
           </InputItem>
           <InputItem>
             <AddressAutocomplete
@@ -74,11 +80,11 @@ export const Sender = () => {
             />
             <ValidationErrorText inputError={errors.address} />
           </InputItem>
-          <InputItem>
+          {/* <InputItem>
             <TextInput {...register("email")} type="email" placeholder=" " />
             <label>{t("form.email")}</label>
             <ValidationErrorText inputError={errors.email} />
-          </InputItem>
+          </InputItem> */}
           <InputItem>
             <TextInput {...register("comment")} type="text" placeholder=" " />
             <label>{t("form.comment")}</label>
