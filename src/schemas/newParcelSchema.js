@@ -41,8 +41,7 @@ export const mainInfoSchema = yup.object().shape({
       (value) => {
         if (!value) return true;
         const h = value.getHours();
-        const m = value.getMinutes();
-        return h >= WORK_START_HOUR && h <= WORK_END_HOUR && !m;
+        return h >= WORK_START_HOUR && h <= WORK_END_HOUR;
       }
     ),
 
@@ -61,8 +60,8 @@ export const senderSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
-      "Name must contain first and last name using only letters"
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)?$/,
+      "Must contain name using only letters"
     )
     .required("Name is required"),
 
@@ -79,12 +78,10 @@ export const senderSchema = yup.object().shape({
     .string()
     .email("Invalid email address")
     .test("domain-has-dot", "Email domain must contain a dot", (value) => {
-      if (!value) return false;
+      if (!value) return true;
       const domain = value.split("@")[1];
       return domain && domain.includes(".");
-    })
-    .required("Email is required"),
-
+    }),
   comment: yup.string(),
 });
 
@@ -100,8 +97,8 @@ export const recipientSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)$/,
-      "Name must contain first and last name using only letters"
+      /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+(?: [A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+)?$/,
+      "Must contain name using only letters"
     )
     .required("Name is required"),
 
@@ -137,4 +134,29 @@ export const newParcelSchema = yup.object().shape({
     name: yup.string(),
     _id: yup.string(),
   }),
+});
+
+export const calculatorSchema = yup.object().shape({
+  size: yup
+    .string()
+    .oneOf(["S", "M", "L"], "Size must be one of:  S, M or L")
+    .required("Size is required"),
+
+  senderAddress: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the pick-up address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the pick-up address"),
+
+  recipientAddress: yup
+    .object()
+    .test(
+      "not-empty",
+      "Please provide the delivery address",
+      (value) => value && Object.keys(value).length > 0
+    )
+    .required("Please provide the delivery address"),
 });

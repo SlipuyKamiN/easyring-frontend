@@ -1,6 +1,7 @@
 {
   "create-pickup": "Pick-up erstellen",
   "track-parcel": "Track-Paket",
+  "price-calculator": "Preisrechner",
   "how-it-works": "Wie es funktioniert",
   "reviews": "Bewertungen",
   "steps": [
@@ -17,8 +18,8 @@
       "desc": "Stimmen Sie die <b>Paket-ID</b> ab und übergeben Sie das Paket."
     },
     {
-      "title": "Genießen",
-      "desc": "Sie erhalten das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
+      "title": "Erhalten",
+      "desc": "Sie bekommen das Paket zu dem von Ihnen gewünschten Zeitpunkt und Ort."
     }
   ],
   "form": {
@@ -31,7 +32,7 @@
       "payment": { "title": "Zahlung:", "value": ["BEZAHLT", "NICHT BEZAHLT"] }
     },
     "phone": "Telefonnummer",
-    "name": "Name und Vorname",
+    "name": "Name",
     "address": "Komplette Adresse",
     "email": "Email",
     "login": "Login",
@@ -56,7 +57,7 @@
       "info": [
         "Der Kurier kommt",
         "zwischen {{startTime}} und {{endTime}}.",
-        "Bitte halten Sie sich in diesem Zeitraum bereit. Sie erhalten außerdem eine Bestätigungs-E-Mail."
+        "Bitte halten Sie sich in diesem Zeitraum bereit."
       ],
       "to-pay": "Zu bezahlen: {{price}} EUR",
       "VAT": "inkl. MwSt.",
