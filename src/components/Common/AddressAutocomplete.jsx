@@ -22,7 +22,7 @@ export const AddressAutocomplete = ({
         render={({ field }) => (
           <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
             <GeoapifyGeocoderAutocomplete
-              placeholder={t(placeholder)}
+              placeholder={t(placeholder) + " *"}
               limit={5}
               filterByCircle={{
                 lat: 52.52,
