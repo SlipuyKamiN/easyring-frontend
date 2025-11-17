@@ -1,6 +1,7 @@
 {
   "create-pickup": "Create pick-up",
   "track-parcel": "Track parcel",
+  "price-calculator": "Pricing",
   "how-it-works": "How it works",
   "reviews": "Reviews",
   "steps": [
@@ -17,8 +18,8 @@
       "desc": "Match the <b>Parcel ID</b> and hand over the parcel."
     },
     {
-      "title": "Enjoy",
-      "desc": "Receive the parcel at your preferred time and place."
+      "title": "Receive",
+      "desc": "You get the parcel at your preferred time and place."
     }
   ],
   "form": {

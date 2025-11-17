@@ -61,10 +61,12 @@ export const HeroBtnsList = styled.ul`
 
   @media screen and (min-width: 768px) {
     max-width: none;
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 
     & + a {
-      display: none;
+      pointer-events: none;
+      cursor: none;
+      /* display: none; */
     }
   }
 `;

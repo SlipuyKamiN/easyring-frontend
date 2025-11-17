@@ -1,14 +1,10 @@
 import { DecorationBg } from "../../pages/CreateOrderPage.styled";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { recipientSchema } from "~/schemas/newParcelSchema";
 import { PrimaryBtn, SecondaryBtnLink } from "../Common/Button.styled";
 import { ValidationErrorText } from "../SharedLayout/ValidationErrorText";
 import { useNavigate } from "react-router-dom";
-import {
-  GeoapifyContext,
-  GeoapifyGeocoderAutocomplete,
-} from "@geoapify/react-geocoder-autocomplete";
 import { useDispatch, useSelector } from "react-redux";
 import { updRecipient } from "~/Redux/newParcelSlice";
 import { getNewParcelState } from "~/Redux/selectors";
@@ -19,9 +15,9 @@ import {
   InputList,
   TextInput,
   FormBtnsList,
-  GeoAddressWrapper,
 } from "../Common/Form.styled";
 import { useTranslation } from "react-i18next";
+import { AddressAutocomplete } from "../Common/AddressAutocomplete";
 
 export const Recipient = () => {
   const { t } = useTranslation();
@@ -75,29 +71,11 @@ export const Recipient = () => {
             <ValidationErrorText inputError={errors.phone} />
           </InputItem>
           <InputItem>
-            <GeoAddressWrapper>
-              <Controller
-                name="address"
-                control={control}
-                render={({ field }) => (
-                  <GeoapifyContext apiKey="de6774ac4979423286c131f56e59ff31">
-                    <GeoapifyGeocoderAutocomplete
-                      placeholder={t("form.address") + " *"}
-                      limit={5}
-                      filterByCircle={{
-                        lat: 52.52,
-                        lon: 13.405,
-                        radiusMeters: 30000,
-                      }}
-                      placeSelect={(value) => {
-                        setValue("address", value);
-                      }}
-                      value={field.value?.properties?.formatted || ""}
-                    />
-                  </GeoapifyContext>
-                )}
-              />
-            </GeoAddressWrapper>
+            <AddressAutocomplete
+              control={control}
+              setValue={setValue}
+              name={"address"}
+            />
             <ValidationErrorText inputError={errors.address} />
           </InputItem>
           <InputItem>
