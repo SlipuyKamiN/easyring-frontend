@@ -15,8 +15,8 @@ import { TbBoxAlignBottomRight, TbBoxAlignBottom } from "react-icons/tb";
 import { BsBox } from "react-icons/bs";
 import {
   DatePicker,
+  DesktopTimePicker,
   LocalizationProvider,
-  TimePicker,
 } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { de } from "date-fns/locale/de";
@@ -190,7 +190,7 @@ export const MainInfo = () => {
                     placeholder="qwe"
                     control={control}
                     render={({ field }) => (
-                      <TimePicker
+                      <DesktopTimePicker
                         {...field}
                         label={t("form.mainInfo.startTime")}
                         minutesStep={30}
@@ -222,7 +222,7 @@ export const MainInfo = () => {
                         : new Date(0, 0, 0, 10, 0);
 
                       return (
-                        <TimePicker
+                        <DesktopTimePicker
                           {...field}
                           disabled={!isValid(startTime)}
                           label={t("form.mainInfo.endTime")}

@@ -82,6 +82,7 @@
 }
 
 .MuiPickersInputBase-root.MuiPickersOutlinedInput-root.MuiPickersInputBase-colorPrimary.MuiPickersInputBase-adornedEnd {
+  font-family: inherit;
   position: relative;
   padding: 0px 15px;
 }
@@ -99,8 +100,60 @@
 
 .MuiPickersInputBase-root .MuiPickersSectionList-section {
   pointer-events: none;
+  font-family: Montserrat;
 
   &::selection {
     background-color: transparent;
+  }
+}
+
+.MuiPickersSectionList-root span {
+  font-family: Montserrat !important;
+}
+
+.MuiFormControl-root.MuiPickersTextField-root .MuiPopper-root {
+  width: 160px;
+}
+
+.MuiPopper-root {
+  .MuiMultiSectionDigitalClock-root {
+    justify-content: center;
+  }
+
+  .MuiList-root {
+    width: 50%;
+    overflow-y: scroll;
+  }
+
+  .MuiList-root:first-of-type {
+    .MuiButtonBase-root.Mui-disabled:nth-child(-n + 7) {
+      display: none;
+    }
+  }
+
+  .MuiList-root:last-of-type {
+    .MuiButtonBase-root.Mui-disabled:nth-child(2n) {
+      display: none;
+    }
+  }
+  .MuiButtonBase-root {
+    margin: 0 auto;
+    font-family: inherit;
+
+    &.Mui-disabled {
+      opacity: 0.25;
+    }
+  }
+
+  .MuiPickersLayout-root {
+    .MuiPickersLayout-contentWrapper {
+      grid-column: 1/4;
+    }
+  }
+
+  left: 10px !important;
+
+  @media screen and (max-width: 768px) {
+    left: 25px !important;
   }
 }
