@@ -11,6 +11,15 @@ export const SectionTitle = styled.h2`
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
+
+  a {
+    margin: 0 auto;
+    max-width: 285px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
 `;
 
 export const StepsList = styled.ul`
