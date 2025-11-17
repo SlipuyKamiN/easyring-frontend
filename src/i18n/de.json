@@ -31,7 +31,7 @@
       "payment": { "title": "Zahlung:", "value": ["BEZAHLT", "NICHT BEZAHLT"] }
     },
     "phone": "Telefonnummer",
-    "name": "Name und Vorname",
+    "name": "Name",
     "address": "Komplette Adresse",
     "email": "Email",
     "login": "Login",
@@ -56,7 +56,7 @@
       "info": [
         "Der Kurier kommt",
         "zwischen {{startTime}} und {{endTime}}.",
-        "Bitte halten Sie sich in diesem Zeitraum bereit. Sie erhalten außerdem eine Bestätigungs-E-Mail."
+        "Bitte halten Sie sich in diesem Zeitraum bereit."
       ],
       "to-pay": "Zu bezahlen: {{price}} EUR",
       "VAT": "inkl. MwSt.",
