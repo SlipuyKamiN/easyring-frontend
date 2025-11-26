@@ -33,10 +33,9 @@ export const Reviews = () => {
         </SectionTitle>
 
         <div
-          // className="elfsight-app-4b8e65b5-496e-4c5f-a2be-5d66e548616e elfsight-wrapper"
-          className="elfsight-app-86b66e53-2179-4d1a-b0e4-e075184e7636 elfsight-wrapper"
+          className="elfsight-app-4b8e65b5-496e-4c5f-a2be-5d66e548616e elfsight-wrapper"
           // className="elfsight-app-447c41b7-0ac4-47aa-843a-130feaca7395 elfsight-wrapper"
-
+          // className="elfsight-app-86b66e53-2179-4d1a-b0e4-e075184e7636 elfsight-wrapper"
           data-elfsight-app-lazy
         ></div>
       </Container>
