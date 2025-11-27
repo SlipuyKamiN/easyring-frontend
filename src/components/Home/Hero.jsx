@@ -23,6 +23,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { trackingIDSchema } from "~/schemas/trackingIDSchema";
 import { handleInputTextCase } from "~/helpers/handleInputTextCase";
 import { useTranslation } from "react-i18next";
+import { scrollToSection } from "~/helpers/scrollToTop";
+import { AiOutlineEuro } from "react-icons/ai";
+import { FiPlusCircle } from "react-icons/fi";
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -63,10 +66,20 @@ export const Hero = () => {
               className="plausible-event-name=create-pickup"
               to={"createorder/maininfo"}
             >
+              <FiPlusCircle size={28} />
               {t("create-pickup")}
             </HeroMainBtn>
           </li>
-          {!inputVisible && (
+          <li>
+            <HeroSecondaryBtn
+              type="button"
+              onClick={() => scrollToSection("calculator")}
+            >
+              <AiOutlineEuro size={28} />
+              {t("get-price")}
+            </HeroSecondaryBtn>
+          </li>
+          {inputVisible && (
             <li>
               <HeroSecondaryBtn onClick={showInput}>
                 {t("track-parcel")}

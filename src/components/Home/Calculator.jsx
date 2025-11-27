@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNewParcelState } from "~/Redux/selectors";
 import { useNavigate } from "react-router-dom";
 import { updMainInfo, updRecipient, updSender } from "~/Redux/newParcelSlice";
+import { FiPlusCircle } from "react-icons/fi";
 
 export const Calculator = () => {
   const { t } = useTranslation();
@@ -86,7 +87,7 @@ export const Calculator = () => {
   };
 
   return (
-    <Section>
+    <Section id="calculator">
       <Container>
         <SectionTitle>{t("price-calculator")}</SectionTitle>
         <FormWrapper
@@ -130,7 +131,10 @@ export const Calculator = () => {
               {isLoading ? <LoadingSpinner /> : <b>{price} €</b>}
             </AddressListItem>
             <CreatePickUpWrapper>
-              <PrimaryBtn type="submit">{t("create-pickup")}</PrimaryBtn>
+              <PrimaryBtn type="submit">
+                <FiPlusCircle size={26} />
+                {t("create-pickup")}
+              </PrimaryBtn>
             </CreatePickUpWrapper>
           </ul>
         </FormWrapper>
