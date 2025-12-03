@@ -84,11 +84,16 @@ export const MainInfo = () => {
 
     dispatch(updMainInfo(data));
 
-    window.plausible?.("main-info", {
-      callback: () => {
-        navigate("/createorder/sender");
-      },
-    });
+    try {
+      window.plausible?.("main-info", {
+        callback: () => {
+          navigate("/createorder/sender");
+        },
+      });
+    } catch (error) {
+      navigate("/createorder/sender");
+      console.warn(error);
+    }
   };
 
   return (

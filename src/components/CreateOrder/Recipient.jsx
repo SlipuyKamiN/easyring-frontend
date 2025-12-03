@@ -39,11 +39,17 @@ export const Recipient = () => {
   const onSubmit = (data) => {
     dispatch(updRecipient(data));
 
-    window.plausible?.("recipient", {
-      callback: () => {
-        navigate("/createorder/confirm");
-      },
-    });
+    try {
+      window.plausible?.("recipient", {
+        callback: () => {
+          navigate("/createorder/confirm");
+        },
+      });
+    } catch (error) {
+      navigate("/createorder/confirm");
+
+      console.warn(error);
+    }
   };
 
   return (
