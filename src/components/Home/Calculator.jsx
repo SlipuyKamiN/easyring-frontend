@@ -79,11 +79,17 @@ export const Calculator = () => {
     dispatch(updSender({ ...sender, address: senderAddress }));
     dispatch(updRecipient({ ...recipient, address: recipientAddress }));
 
-    window.plausible?.("create-pickup-calculator", {
-      callback: () => {
-        navigate("/createorder/maininfo");
-      },
-    });
+    try {
+      window.plausible?.("create-pickup-calculator", {
+        callback: () => {
+          navigate("/createorder/maininfo");
+        },
+      });
+    } catch (error) {
+      console.warn(error);
+
+      navigate("/createorder/maininfo");
+    }
   };
 
   return (
