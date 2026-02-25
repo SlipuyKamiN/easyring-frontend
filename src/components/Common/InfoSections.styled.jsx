@@ -72,12 +72,21 @@ export const AddressListItem = styled.li`
 
     b {
       font-size: 26px;
+      cursor: pointer;
     }
 
     span {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
       font-size: 12px;
       text-transform: none;
       line-height: 1;
+    }
+
+    svg {
+      cursor: pointer;
     }
   }
 `;

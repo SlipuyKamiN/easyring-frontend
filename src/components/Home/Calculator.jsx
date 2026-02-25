@@ -20,6 +20,7 @@ import { getNewParcelState } from "~/Redux/selectors";
 import { useNavigate } from "react-router-dom";
 import { updMainInfo, updRecipient, updSender } from "~/Redux/newParcelSlice";
 import { FiPlusCircle } from "react-icons/fi";
+import { IoMdInformationCircleOutline } from "react-icons/io";
 
 export const Calculator = () => {
   const { t } = useTranslation();
@@ -58,7 +59,7 @@ export const Calculator = () => {
       setIsLoading(true);
       calculateDistance(
         { address: senderAddress },
-        { address: recipientAddress }
+        { address: recipientAddress },
       ).then((distance) => {
         setDistance(distance);
         setIsLoading(false);
@@ -132,9 +133,19 @@ export const Calculator = () => {
             <AddressListItem className="price">
               <div>
                 <p>{t("form.preview.price")}</p>
-                <span>{t("form.checkout.VAT")}</span>
+                <span>
+                  <IoMdInformationCircleOutline
+                    size={20}
+                    title={t("form.checkout.disclaimer")}
+                  />
+                  {t("form.checkout.VAT")}
+                </span>
               </div>
-              {isLoading ? <LoadingSpinner /> : <b>{price} €</b>}
+              {isLoading ? (
+                <LoadingSpinner />
+              ) : (
+                <b title={t("form.checkout.disclaimer")}>{price} €</b>
+              )}
             </AddressListItem>
             <CreatePickUpWrapper>
               <PrimaryBtn type="submit">
