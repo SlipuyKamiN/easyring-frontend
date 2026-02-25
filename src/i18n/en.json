@@ -62,6 +62,7 @@
       ],
       "to-pay": "To pay: {{price}} EUR",
       "VAT": "incl. VAT",
+      "disclaimer": "How the price is calculated\n\nThe delivery cost is based on working time:\n• Travel time = distance ÷ average speed\n• Loading / unloading time is added (depends on cargo size)\n\nHourly rate:\n• S (up to 50 kg) — 50 € / hour\n• M (up to 500 kg) — 65 € / hour\n• L (up to 1000 kg) — 80 € / hour\n\nThe final price includes VAT (19%).",
       "tracking": "Tracking",
       "pay-now": "Pay now",
       "pay-later": "Pay later"

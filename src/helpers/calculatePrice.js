@@ -1,24 +1,28 @@
 export const calculatePrice = (distance, size) => {
-  let sizePrice = 1;
+  const minimumPrice = 50;
+  const vat = 1.19;
+  const avgSpeed = 27;
+  const maxDistance = 50;
+  const distanceKm = distance > maxDistance ? maxDistance : distance;
 
-  switch (size) {
-    case "M":
-      sizePrice = 1.25;
-      break;
+  if (!distanceKm || !size) return 0;
 
-    case "L":
-      sizePrice = 1.5;
-      break;
+  const rates = {
+    S: { hourlyRate: 50, handlingTime: 0.25 },
+    M: { hourlyRate: 65, handlingTime: 0.33 },
+    L: { hourlyRate: 80, handlingTime: 0.5 },
+  };
 
-    default:
-      sizePrice = 1;
-      break;
-  }
-  const price = distance * sizePrice * 1.19;
+  const config = rates[size];
+  if (!config) return minimumPrice;
 
-  if (!size || !distance) return 0;
+  const travelTime = distanceKm / avgSpeed;
+  const totalTime = travelTime + config.handlingTime;
 
-  if (price < 20) return 20;
+  const netPrice = totalTime * config.hourlyRate;
+  const grossPrice = netPrice * vat;
 
-  return Math.ceil(price / 5) * 5;
+  if (grossPrice < minimumPrice) return minimumPrice;
+
+  return Math.ceil(grossPrice / 5) * 5;
 };

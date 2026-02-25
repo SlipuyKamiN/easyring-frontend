@@ -4,17 +4,17 @@ import { BsBox } from "react-icons/bs";
 export const sizes = [
   {
     value: "S",
-    weight: 2,
+    weight: 50,
     icon: TbBoxAlignBottomRight,
   },
   {
     value: "M",
-    weight: 10,
+    weight: 500,
     icon: TbBoxAlignBottom,
   },
   {
     value: "L",
-    weight: 30,
+    weight: 1000,
     icon: BsBox,
   },
 ];

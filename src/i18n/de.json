@@ -62,6 +62,7 @@
       ],
       "to-pay": "Zu bezahlen: {{price}} EUR",
       "VAT": "inkl. MwSt.",
+      "disclaimer": "Wie wird der Preis berechnet\n\nDie Lieferkosten basieren auf der Arbeitszeit:\n• Fahrzeit = Entfernung ÷ Durchschnittsgeschwindigkeit\n• Lade- / Entladezeit wird hinzugefügt (abhängig von der Größe der Sendung)\n\nStundensatz:\n• S (bis 50 kg) — 50 € / Std.\n• M (bis 500 kg) — 65 € / Std.\n• L (bis 1000 kg) — 80 € / Std.\n\nDer Endpreis enthält MwSt. (19%).",
       "tracking": "Tracking",
       "pay-now": "Jetzt bezahlen",
       "pay-later": "Später bezahlen"
